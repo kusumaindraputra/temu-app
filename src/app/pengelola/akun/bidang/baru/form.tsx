@@ -6,21 +6,23 @@ import { buatAkunBidang, type AkunState } from "../../actions";
 
 const kosong: AkunState = {};
 
+const inputCls =
+  "rounded-lg border border-stone-200 bg-white px-3.5 py-2.5 text-sm text-stone-900 outline-none transition placeholder:text-stone-300 focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10";
+
 export default function FormBidangBaru() {
   const [state, formAction, pending] = useActionState(buatAkunBidang, kosong);
-
   const nilai = state.nilai ?? { nama: "", username: "" };
 
   return (
     <form action={formAction} className="flex max-w-md flex-col gap-5">
       {state.error && (
-        <p className="rounded-md bg-red-50 px-3 py-2 text-sm text-red-700 ring-1 ring-red-200">
+        <div className="rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700">
           {state.error}
-        </p>
+        </div>
       )}
 
       <div className="flex flex-col gap-1.5">
-        <label htmlFor="nama" className="text-sm font-medium text-zinc-700">
+        <label htmlFor="nama" className="text-sm font-medium text-stone-700">
           Nama bidang
         </label>
         <input
@@ -30,12 +32,12 @@ export default function FormBidangBaru() {
           required
           defaultValue={nilai.nama}
           placeholder="mis. Bidang Kesehatan Masyarakat"
-          className="rounded-md border border-zinc-300 px-3 py-2 text-sm outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-100"
+          className={inputCls}
         />
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label htmlFor="username" className="text-sm font-medium text-zinc-700">
+        <label htmlFor="username" className="text-sm font-medium text-stone-700">
           Username
         </label>
         <input
@@ -45,13 +47,13 @@ export default function FormBidangBaru() {
           required
           defaultValue={nilai.username}
           placeholder="mis. kesmas"
-          className="rounded-md border border-zinc-300 px-3 py-2 text-sm outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-100"
+          className={inputCls}
         />
-        <p className="text-xs text-zinc-400">Huruf kecil, angka, dan underscore saja.</p>
+        <p className="text-xs text-stone-400">Huruf kecil, angka, dan underscore saja.</p>
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label htmlFor="password" className="text-sm font-medium text-zinc-700">
+        <label htmlFor="password" className="text-sm font-medium text-stone-700">
           Password
         </label>
         <input
@@ -60,21 +62,21 @@ export default function FormBidangBaru() {
           type="password"
           required
           minLength={6}
-          className="rounded-md border border-zinc-300 px-3 py-2 text-sm outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-100"
+          className={inputCls}
         />
       </div>
 
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-3 pt-1">
         <button
           type="submit"
           disabled={pending}
-          className="rounded-md bg-teal-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-teal-700 disabled:opacity-60"
+          className="rounded-lg bg-teal-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-teal-700 disabled:opacity-60"
         >
           {pending ? "Menyimpan…" : "Buat Akun Bidang"}
         </button>
         <Link
           href="/pengelola/akun"
-          className="rounded-md px-4 py-2.5 text-sm font-medium text-zinc-600 hover:bg-zinc-100"
+          className="rounded-lg px-4 py-2.5 text-sm font-medium text-stone-500 transition-colors hover:bg-stone-100"
         >
           Batal
         </Link>

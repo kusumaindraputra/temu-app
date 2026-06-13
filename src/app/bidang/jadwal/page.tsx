@@ -24,9 +24,7 @@ export default async function HalamanJadwal({
         waktuMulai: { lt: hariSelesai },
         waktuSelesai: { gt: hariMulai },
       },
-      include: {
-        bidang: { select: { nama: true } },
-      },
+      include: { bidang: { select: { nama: true } } },
       orderBy: { waktuMulai: "asc" },
     }),
   ]);
@@ -50,9 +48,9 @@ export default async function HalamanJadwal({
   return (
     <div>
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-zinc-900">Jadwal Ruangan</h1>
-        <p className="mt-1 text-sm text-zinc-500">
-          Slot yang sudah disetujui. Gunakan ini untuk memilih waktu yang tepat sebelum membuat booking.
+        <h1 className="text-2xl font-bold tracking-tight text-stone-900">Jadwal Ruangan</h1>
+        <p className="mt-1 text-sm text-stone-400">
+          Slot yang sudah disetujui. Gunakan ini untuk memilih waktu sebelum membuat booking.
         </p>
       </div>
       <TimelineJadwal ruangan={ruangan} tanggal={tanggal} baseHref="/bidang/jadwal" />

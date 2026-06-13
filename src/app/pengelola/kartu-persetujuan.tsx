@@ -20,26 +20,28 @@ export default function KartuPersetujuan({ data }: { data: DataKartu }) {
   const [state, formAction, pending] = useActionState(prosesBooking, kondisiAwal);
 
   return (
-    <li className="rounded-xl border border-zinc-200 bg-white p-4 shadow-sm">
-      <div className="flex flex-wrap items-start justify-between gap-3">
-        <div>
-          <div className="flex items-center gap-2">
-            <h2 className="font-semibold text-zinc-900">{data.ruanganNama}</h2>
-            <span className="text-xs text-zinc-400">·</span>
-            <span className="text-xs text-zinc-500">{data.lokasi}</span>
+    <li className="rounded-2xl bg-white p-5 shadow-sm">
+      <div className="flex flex-wrap items-start justify-between gap-4">
+        <div className="min-w-0">
+          <div className="flex flex-wrap items-center gap-2">
+            <h2 className="font-semibold text-stone-900">{data.ruanganNama}</h2>
+            <span className="text-stone-300">·</span>
+            <span className="text-xs text-stone-400">{data.lokasi}</span>
           </div>
-          <p className="mt-1 text-sm text-zinc-700">{data.rentang}</p>
-          <p className="mt-1 text-sm text-zinc-600">{data.tujuan}</p>
-          <p className="mt-1 text-xs text-zinc-500">
-            Pemohon: <b>{data.bidangNama}</b> · {data.jumlahPeserta} peserta
-          </p>
+          <p className="mt-1.5 text-sm text-stone-600">{data.rentang}</p>
+          <p className="mt-0.5 text-sm text-stone-700">{data.tujuan}</p>
+        </div>
+        <div className="shrink-0 text-right">
+          <p className="text-xs text-stone-400">Pemohon</p>
+          <p className="text-sm font-semibold text-stone-900">{data.bidangNama}</p>
+          <p className="mt-0.5 text-xs text-stone-400">{data.jumlahPeserta} peserta</p>
         </div>
       </div>
 
       {data.peringatanBentrok.length > 0 && (
-        <div className="mt-3 rounded-md bg-amber-50 px-3 py-2 text-xs text-amber-800 ring-1 ring-amber-200">
-          <p className="font-semibold">⚠ Berpotensi bentrok dengan booking disetujui:</p>
-          <ul className="mt-1 list-inside list-disc">
+        <div className="mt-4 rounded-lg bg-amber-50 px-4 py-3 text-xs text-amber-800">
+          <p className="font-semibold">Berpotensi bentrok dengan booking yang sudah disetujui:</p>
+          <ul className="mt-1.5 list-inside list-disc space-y-0.5">
             {data.peringatanBentrok.map((s, i) => (
               <li key={i}>{s}</li>
             ))}
@@ -48,24 +50,24 @@ export default function KartuPersetujuan({ data }: { data: DataKartu }) {
       )}
 
       {state.error && (
-        <p className="mt-3 rounded-md bg-red-50 px-3 py-2 text-sm text-red-700 ring-1 ring-red-200">
+        <div className="mt-4 rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700">
           {state.error}
-        </p>
+        </div>
       )}
       {state.ok && (
-        <p className="mt-3 rounded-md bg-green-50 px-3 py-2 text-sm text-green-700 ring-1 ring-green-200">
+        <div className="mt-4 rounded-lg bg-teal-50 px-4 py-3 text-sm text-teal-700">
           {state.ok}
-        </p>
+        </div>
       )}
 
       {!state.ok && (
-        <form action={formAction} className="mt-3 flex flex-col gap-2">
+        <form action={formAction} className="mt-4 flex flex-col gap-3">
           <input type="hidden" name="id" value={data.id} />
           <textarea
             name="catatan"
             rows={2}
             placeholder="Catatan untuk pemohon (opsional)…"
-            className="rounded-md border border-zinc-300 px-3 py-2 text-sm outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-100"
+            className="rounded-lg border border-stone-200 px-3.5 py-2.5 text-sm text-stone-900 outline-none transition placeholder:text-stone-300 focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10 resize-none"
           />
           <div className="flex gap-2">
             <button
@@ -73,7 +75,7 @@ export default function KartuPersetujuan({ data }: { data: DataKartu }) {
               name="aksi"
               value="setujui"
               disabled={pending}
-              className="rounded-md bg-green-600 px-4 py-2 text-sm font-semibold text-white hover:bg-green-700 disabled:opacity-60"
+              className="rounded-lg bg-teal-600 px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-teal-700 disabled:opacity-60"
             >
               {pending ? "Memproses…" : "Setujui"}
             </button>
@@ -82,7 +84,7 @@ export default function KartuPersetujuan({ data }: { data: DataKartu }) {
               name="aksi"
               value="tolak"
               disabled={pending}
-              className="rounded-md border border-red-300 px-4 py-2 text-sm font-semibold text-red-700 hover:bg-red-50 disabled:opacity-60"
+              className="rounded-lg border border-stone-200 px-5 py-2 text-sm font-medium text-red-600 transition-colors hover:bg-red-50 disabled:opacity-60"
             >
               Tolak
             </button>

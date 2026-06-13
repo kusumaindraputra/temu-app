@@ -19,7 +19,7 @@ export default async function HalamanResetBidang({
 
   return (
     <div>
-      <h1 className="mb-6 text-2xl font-bold text-zinc-900">Reset Password Bidang</h1>
+      <h1 className="mb-6 text-2xl font-bold tracking-tight text-stone-900">Reset Password Bidang</h1>
       <FormResetPassword aksi={resetPasswordBidang} id={akun.id} nama={akun.nama} />
     </div>
   );

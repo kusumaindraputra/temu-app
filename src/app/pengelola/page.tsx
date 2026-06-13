@@ -13,24 +13,24 @@ function StatCard({
   label,
   nilai,
   sub,
-  warna = "zinc",
+  warna = "stone",
 }: {
   label: string;
   nilai: number;
   sub?: string;
-  warna?: "zinc" | "teal" | "amber" | "red";
+  warna?: "stone" | "teal" | "amber" | "red";
 }) {
   const cls = {
-    zinc: "text-zinc-900",
+    stone: "text-stone-900",
     teal: "text-teal-600",
     amber: "text-amber-600",
     red: "text-red-500",
   }[warna];
   return (
-    <div className="rounded-xl border border-zinc-200 bg-white p-5">
-      <p className="text-sm font-medium text-zinc-500">{label}</p>
-      <p className={`mt-1 text-3xl font-bold tabular-nums ${cls}`}>{nilai}</p>
-      {sub && <p className="mt-1 text-xs text-zinc-400">{sub}</p>}
+    <div className="rounded-2xl bg-white p-5 shadow-sm">
+      <p className="text-xs font-medium uppercase tracking-wider text-stone-400">{label}</p>
+      <p className={`mt-2 text-3xl font-bold tabular-nums tracking-tight ${cls}`}>{nilai}</p>
+      {sub && <p className="mt-1 text-xs text-stone-400">{sub}</p>}
     </div>
   );
 }
@@ -42,7 +42,6 @@ export default async function HalamanPersetujuan() {
   const startBulan = new Date(`${padDateStr(tahun, bulan, 1)}T00:00:00+07:00`);
   const endBulan = new Date(new Date(tahun, bulan, 1).getTime() - 1);
 
-  const now = new Date();
   const hariMulai = new Date(
     `${new Date(Date.now() + 7 * 3600 * 1000).toISOString().slice(0, 10)}T00:00:00+07:00`,
   );
@@ -98,10 +97,10 @@ export default async function HalamanPersetujuan() {
     <div className="flex flex-col gap-8">
       {/* Salam */}
       <div>
-        <h1 className="text-2xl font-bold text-zinc-900">
-          {salamWaktu()}, {sesi.nama}!
+        <h1 className="text-2xl font-bold tracking-tight text-stone-900">
+          {salamWaktu()}, {sesi.nama}
         </h1>
-        <p className="mt-1 text-sm text-zinc-500">
+        <p className="mt-1 text-sm text-stone-400">
           {new Date(Date.now() + 7 * 3600 * 1000).toLocaleDateString("id-ID", {
             weekday: "long",
             day: "numeric",
@@ -113,11 +112,11 @@ export default async function HalamanPersetujuan() {
       </div>
 
       {/* Stat cards */}
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         <StatCard
           label="Perlu Disetujui"
           nilai={kartu.length}
-          warna={kartu.length > 0 ? "amber" : "zinc"}
+          warna={kartu.length > 0 ? "amber" : "stone"}
           sub={kartu.length > 0 ? "menunggu tindakan" : "sudah bersih"}
         />
         <StatCard
@@ -139,18 +138,20 @@ export default async function HalamanPersetujuan() {
 
       {/* Approval queue */}
       <section>
-        <h2 className="mb-4 text-lg font-semibold text-zinc-900">
-          Persetujuan Booking
+        <div className="mb-4 flex items-center gap-3">
+          <h2 className="text-base font-semibold text-stone-900">
+            Persetujuan Booking
+          </h2>
           {kartu.length > 0 && (
-            <span className="ml-2 rounded-full bg-amber-100 px-2 py-0.5 text-sm font-medium text-amber-700">
+            <span className="rounded-full bg-amber-100 px-2 py-0.5 text-xs font-semibold text-amber-700">
               {kartu.length}
             </span>
           )}
-        </h2>
+        </div>
 
         {kartu.length === 0 ? (
-          <div className="rounded-xl border border-dashed border-zinc-300 bg-white p-10 text-center text-zinc-600">
-            Tidak ada permintaan yang menunggu. 🎉
+          <div className="rounded-2xl border border-dashed border-stone-200 bg-white p-12 text-center text-stone-400">
+            Tidak ada permintaan yang menunggu.
           </div>
         ) : (
           <ul className="flex flex-col gap-3">

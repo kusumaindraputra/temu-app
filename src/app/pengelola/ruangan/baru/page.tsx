@@ -10,7 +10,7 @@ export default async function HalamanRuanganBaru() {
 
   return (
     <div>
-      <h1 className="mb-6 text-2xl font-bold text-zinc-900">Tambah Ruangan</h1>
+      <h1 className="mb-6 text-2xl font-bold tracking-tight text-stone-900">Tambah Ruangan</h1>
       <FormRuangan aksi={buatRuangan} semuaKomponen={komponen} />
     </div>
   );

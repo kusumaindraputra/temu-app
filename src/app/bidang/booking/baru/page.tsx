@@ -13,8 +13,8 @@ export default async function HalamanBuatBooking() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-zinc-900">Buat Booking</h1>
-      <p className="mb-6 mt-1 text-zinc-600">
+      <h1 className="text-2xl font-bold tracking-tight text-stone-900">Buat Booking</h1>
+      <p className="mb-6 mt-1 text-sm text-stone-400">
         Ajukan pemesanan ruang meeting. Permintaan akan ditinjau pengelola.
       </p>
       <FormBooking ruangan={ruangan} />

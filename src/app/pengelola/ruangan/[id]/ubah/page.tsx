@@ -26,7 +26,7 @@ export default async function HalamanUbahRuangan({
 
   return (
     <div>
-      <h1 className="mb-6 text-2xl font-bold text-zinc-900">Ubah Ruangan</h1>
+      <h1 className="mb-6 text-2xl font-bold tracking-tight text-stone-900">Ubah Ruangan</h1>
       <FormRuangan
         aksi={ubahRuangan}
         semuaKomponen={komponen}

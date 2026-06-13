@@ -24,9 +24,7 @@ export default async function HalamanJadwalPengelola({
         waktuMulai: { lt: hariSelesai },
         waktuSelesai: { gt: hariMulai },
       },
-      include: {
-        bidang: { select: { nama: true } },
-      },
+      include: { bidang: { select: { nama: true } } },
       orderBy: { waktuMulai: "asc" },
     }),
   ]);
@@ -50,10 +48,10 @@ export default async function HalamanJadwalPengelola({
   return (
     <div>
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-zinc-900">Jadwal Ruangan</h1>
-        <p className="mt-1 text-sm text-zinc-500">
-          Booking disetujui <span className="font-medium text-teal-600">(hijau)</span> dan menunggu persetujuan{" "}
-          <span className="font-medium text-amber-600">(kuning)</span>.
+        <h1 className="text-2xl font-bold tracking-tight text-stone-900">Jadwal Ruangan</h1>
+        <p className="mt-1 text-sm text-stone-400">
+          Booking <span className="font-medium text-teal-600">disetujui</span> dan{" "}
+          <span className="font-medium text-amber-500">menunggu persetujuan</span>.
         </p>
       </div>
       <TimelineJadwal ruangan={ruangan} tanggal={tanggal} baseHref="/pengelola/jadwal" />

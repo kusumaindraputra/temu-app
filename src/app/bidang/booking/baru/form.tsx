@@ -14,19 +14,22 @@ type RuanganOpsi = {
 
 const kondisiAwal: BookingState = {};
 
+const inputCls =
+  "rounded-lg border border-stone-200 bg-white px-3.5 py-2.5 text-sm text-stone-900 outline-none transition placeholder:text-stone-300 focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10";
+
 export default function FormBooking({ ruangan }: { ruangan: RuanganOpsi[] }) {
   const [state, formAction, pending] = useActionState(buatBooking, kondisiAwal);
 
   return (
     <form action={formAction} className="flex max-w-xl flex-col gap-5">
       {state.error && (
-        <p className="rounded-md bg-red-50 px-3 py-2 text-sm text-red-700 ring-1 ring-red-200">
+        <div className="rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700">
           {state.error}
-        </p>
+        </div>
       )}
 
       <div className="flex flex-col gap-1.5">
-        <label htmlFor="ruanganId" className="text-sm font-medium text-zinc-700">
+        <label htmlFor="ruanganId" className="text-sm font-medium text-stone-700">
           Ruangan
         </label>
         <select
@@ -35,7 +38,7 @@ export default function FormBooking({ ruangan }: { ruangan: RuanganOpsi[] }) {
           name="ruanganId"
           required
           defaultValue={state.nilai?.ruanganId ?? ""}
-          className="rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-100"
+          className={inputCls}
         >
           <option value="" disabled>
             — Pilih ruangan —
@@ -50,7 +53,7 @@ export default function FormBooking({ ruangan }: { ruangan: RuanganOpsi[] }) {
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div className="flex flex-col gap-1.5">
-          <label htmlFor="waktuMulai" className="text-sm font-medium text-zinc-700">
+          <label htmlFor="waktuMulai" className="text-sm font-medium text-stone-700">
             Waktu mulai
           </label>
           <input
@@ -59,11 +62,11 @@ export default function FormBooking({ ruangan }: { ruangan: RuanganOpsi[] }) {
             type="datetime-local"
             required
             defaultValue={state.nilai?.waktuMulai ?? ""}
-            className="rounded-md border border-zinc-300 px-3 py-2 text-sm outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-100"
+            className={inputCls}
           />
         </div>
         <div className="flex flex-col gap-1.5">
-          <label htmlFor="waktuSelesai" className="text-sm font-medium text-zinc-700">
+          <label htmlFor="waktuSelesai" className="text-sm font-medium text-stone-700">
             Waktu selesai
           </label>
           <input
@@ -72,13 +75,13 @@ export default function FormBooking({ ruangan }: { ruangan: RuanganOpsi[] }) {
             type="datetime-local"
             required
             defaultValue={state.nilai?.waktuSelesai ?? ""}
-            className="rounded-md border border-zinc-300 px-3 py-2 text-sm outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-100"
+            className={inputCls}
           />
         </div>
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label htmlFor="tujuan" className="text-sm font-medium text-zinc-700">
+        <label htmlFor="tujuan" className="text-sm font-medium text-stone-700">
           Tujuan / agenda rapat
         </label>
         <input
@@ -88,12 +91,12 @@ export default function FormBooking({ ruangan }: { ruangan: RuanganOpsi[] }) {
           required
           defaultValue={state.nilai?.tujuan ?? ""}
           placeholder="mis. Rapat koordinasi program imunisasi"
-          className="rounded-md border border-zinc-300 px-3 py-2 text-sm outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-100"
+          className={inputCls}
         />
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label htmlFor="jumlahPeserta" className="text-sm font-medium text-zinc-700">
+        <label htmlFor="jumlahPeserta" className="text-sm font-medium text-stone-700">
           Jumlah peserta
         </label>
         <input
@@ -103,33 +106,33 @@ export default function FormBooking({ ruangan }: { ruangan: RuanganOpsi[] }) {
           min={1}
           required
           defaultValue={state.nilai?.jumlahPeserta ?? "1"}
-          className="w-32 rounded-md border border-zinc-300 px-3 py-2 text-sm outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-100"
+          className={`w-32 ${inputCls}`}
         />
       </div>
 
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-3 pt-1">
         <button
           type="submit"
           disabled={pending}
-          className="rounded-md bg-teal-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-teal-700 disabled:opacity-60"
+          className="rounded-lg bg-teal-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-teal-700 disabled:opacity-60"
         >
           {pending ? "Menyimpan…" : "Ajukan Booking"}
         </button>
         <Link
           href="/bidang"
-          className="rounded-md px-4 py-2.5 text-sm font-medium text-zinc-600 hover:bg-zinc-100"
+          className="rounded-lg px-4 py-2.5 text-sm font-medium text-stone-500 transition-colors hover:bg-stone-100"
         >
           Batal
         </Link>
       </div>
 
-      <p className="text-xs text-zinc-500">
-        Booking akan berstatus <b>Menunggu</b> hingga disetujui pengelola.
-        Belum yakin waktunya? Cek{" "}
+      <p className="text-xs text-stone-400">
+        Booking akan berstatus <span className="font-medium text-stone-600">Menunggu</span> hingga
+        disetujui pengelola. Cek{" "}
         <a href="/bidang/jadwal" className="font-medium text-teal-600 hover:underline">
           jadwal ruangan
         </a>{" "}
-        terlebih dahulu.
+        untuk melihat ketersediaan.
       </p>
     </form>
   );

@@ -85,22 +85,22 @@ export default async function HalamanKalenderBidang({
     <div className="flex flex-col gap-8">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-zinc-900">Ketersediaan Ruangan</h1>
-          <p className="mt-1 text-sm text-zinc-500">
+          <h1 className="text-2xl font-bold tracking-tight text-stone-900">Ketersediaan Ruangan</h1>
+          <p className="mt-1 text-sm text-stone-500">
             {namaBulan(bulan)} {tahun} — {totalRuangan} ruangan aktif
           </p>
         </div>
         <Link
           href="/bidang/jadwal"
-          className="rounded-md border border-zinc-300 px-3 py-1.5 text-sm font-medium text-zinc-600 hover:bg-zinc-50"
+          className="rounded-lg border border-stone-200 px-3 py-1.5 text-sm font-medium text-stone-600 hover:bg-stone-50"
         >
           Tampilan Hari →
         </Link>
       </div>
 
       {/* Legend */}
-      <div className="flex items-center gap-6 rounded-xl border border-zinc-200 bg-white px-5 py-3 text-xs text-zinc-600">
-        <span className="font-medium text-zinc-500">Keterangan:</span>
+      <div className="flex items-center gap-6 rounded-2xl bg-white px-5 py-3 text-xs text-stone-600 shadow-sm">
+        <span className="font-medium text-stone-500">Keterangan:</span>
         <span className="flex items-center gap-1.5">
           <span className="inline-block h-3 w-3 rounded-full bg-teal-500" />
           Ada booking disetujui
@@ -110,14 +110,14 @@ export default async function HalamanKalenderBidang({
           Ada booking menunggu
         </span>
         <span className="flex items-center gap-1.5">
-          <span className="inline-block h-3 w-3 rounded-sm border border-zinc-200 bg-zinc-50" />
+          <span className="inline-block h-3 w-3 rounded-sm border border-stone-200 bg-stone-50" />
           Bebas
         </span>
       </div>
 
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-[320px_1fr]">
         {/* Kalender */}
-        <div className="rounded-xl border border-zinc-200 bg-white p-6">
+        <div className="rounded-2xl bg-white p-6 shadow-sm">
           <KalenderBulanan
             bulan={bulan}
             tahun={tahun}
@@ -125,20 +125,20 @@ export default async function HalamanKalenderBidang({
             jadwalHref="/bidang/jadwal"
             kalenderHref="/bidang/kalender"
           />
-          <p className="mt-4 text-center text-xs text-zinc-400">
+          <p className="mt-4 text-center text-xs text-stone-400">
             Klik tanggal untuk lihat jadwal hari itu
           </p>
         </div>
 
         {/* Ketersediaan per hari */}
-        <div className="rounded-xl border border-zinc-200 bg-white p-6">
-          <h2 className="mb-4 text-sm font-semibold text-zinc-700">
+        <div className="rounded-2xl bg-white p-6 shadow-sm">
+          <h2 className="mb-4 text-sm font-semibold text-stone-700">
             Ketersediaan Ruangan — {namaBulan(bulan)} {tahun}
           </h2>
 
           {hariAdaBooking.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-12 text-center">
-              <p className="text-zinc-500">Semua ruangan bebas bulan ini.</p>
+              <p className="text-stone-500">Semua ruangan bebas bulan ini.</p>
               <Link
                 href="/bidang/booking/baru"
                 className="mt-2 text-sm font-medium text-teal-600 hover:underline"
@@ -157,7 +157,7 @@ export default async function HalamanKalenderBidang({
                 return (
                   <li key={ds}>
                     <div className="mb-2 flex items-center gap-2">
-                      <p className="text-xs font-semibold uppercase tracking-wide text-zinc-400">
+                      <p className="text-xs font-semibold uppercase tracking-wide text-stone-400">
                         {new Date(`${ds}T12:00:00Z`).toLocaleDateString("id-ID", {
                           weekday: "long",
                           day: "numeric",
@@ -180,17 +180,17 @@ export default async function HalamanKalenderBidang({
                         return (
                           <div
                             key={r.id}
-                            className="rounded-lg border border-zinc-200 bg-zinc-50 px-3 py-2.5"
+                            className="rounded-lg border border-stone-100 bg-stone-50 px-3 py-2.5"
                           >
                             <div className="flex items-center justify-between gap-2">
-                              <p className="text-sm font-medium text-zinc-700">{r.nama}</p>
-                              <span className="shrink-0 rounded-full bg-zinc-200 px-2 py-0.5 text-xs text-zinc-500">
+                              <p className="text-sm font-medium text-stone-700">{r.nama}</p>
+                              <span className="shrink-0 rounded-full bg-stone-200 px-2 py-0.5 text-xs text-stone-500">
                                 Terisi
                               </span>
                             </div>
                             <ul className="mt-1.5 flex flex-col gap-1">
                               {items.map((b) => (
-                                <li key={b.id} className="flex items-center gap-1.5 text-xs text-zinc-500">
+                                <li key={b.id} className="flex items-center gap-1.5 text-xs text-stone-500">
                                   <span
                                     className={`inline-block h-1.5 w-1.5 shrink-0 rounded-full ${
                                       b.status === "DISETUJUI" ? "bg-teal-500" : "bg-amber-400"
@@ -227,7 +227,7 @@ export default async function HalamanKalenderBidang({
           )}
 
           {hariAdaBooking.length > 0 && (
-            <p className="mt-6 text-xs text-zinc-400">
+            <p className="mt-6 text-xs text-stone-400">
               {totalHariBusy} hari ada booking · {totalRuangan} ruangan aktif
             </p>
           )}

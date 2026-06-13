@@ -73,14 +73,14 @@ export default async function HalamanKalenderPengelola({
     <div className="flex flex-col gap-8">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-zinc-900">Kalender Semua Booking</h1>
-          <p className="mt-1 text-sm text-zinc-500">
+          <h1 className="text-2xl font-bold tracking-tight text-stone-900">Kalender Semua Booking</h1>
+          <p className="mt-1 text-sm text-stone-500">
             {namaBulan(bulan)} {tahun} — {bookings.length} booking
           </p>
         </div>
         <Link
           href="/pengelola/jadwal"
-          className="rounded-md border border-zinc-300 px-3 py-1.5 text-sm font-medium text-zinc-600 hover:bg-zinc-50"
+          className="rounded-lg border border-stone-200 px-3 py-1.5 text-sm font-medium text-stone-600 hover:bg-stone-50"
         >
           Tampilan Hari →
         </Link>
@@ -92,7 +92,7 @@ export default async function HalamanKalenderPengelola({
           { label: "Disetujui", nilai: ringkasan.disetujui, cls: "text-teal-600 bg-teal-50 border-teal-200" },
           { label: "Menunggu", nilai: ringkasan.menunggu, cls: "text-amber-600 bg-amber-50 border-amber-200" },
           { label: "Ditolak", nilai: ringkasan.ditolak, cls: "text-red-600 bg-red-50 border-red-200" },
-          { label: "Batal", nilai: ringkasan.batal, cls: "text-zinc-600 bg-zinc-50 border-zinc-200" },
+          { label: "Batal", nilai: ringkasan.batal, cls: "text-stone-600 bg-stone-50 border-stone-200" },
         ].map((s) => (
           <div key={s.label} className={`rounded-xl border p-4 ${s.cls}`}>
             <p className="text-xs font-medium opacity-70">{s.label}</p>
@@ -103,7 +103,7 @@ export default async function HalamanKalenderPengelola({
 
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-[320px_1fr]">
         {/* Kalender */}
-        <div className="rounded-xl border border-zinc-200 bg-white p-6">
+        <div className="rounded-2xl bg-white p-6 shadow-sm">
           <KalenderBulanan
             bulan={bulan}
             tahun={tahun}
@@ -114,13 +114,13 @@ export default async function HalamanKalenderPengelola({
         </div>
 
         {/* Daftar booking bulan ini */}
-        <div className="rounded-xl border border-zinc-200 bg-white p-6">
-          <h2 className="mb-4 text-sm font-semibold text-zinc-700">
+        <div className="rounded-2xl bg-white p-6 shadow-sm">
+          <h2 className="mb-4 text-sm font-semibold text-stone-700">
             Detail Booking — {namaBulan(bulan)} {tahun}
           </h2>
 
           {bookings.length === 0 ? (
-            <p className="py-12 text-center text-sm text-zinc-500">
+            <p className="py-12 text-center text-sm text-stone-500">
               Tidak ada booking bulan ini.
             </p>
           ) : (
@@ -128,7 +128,7 @@ export default async function HalamanKalenderPengelola({
               {Array.from(perHari.entries()).map(([ds, items]) => (
                 <li key={ds}>
                   <div className="mb-2 flex items-center gap-2">
-                    <p className="text-xs font-semibold uppercase tracking-wide text-zinc-400">
+                    <p className="text-xs font-semibold uppercase tracking-wide text-stone-400">
                       {new Date(`${ds}T12:00:00Z`).toLocaleDateString("id-ID", {
                         weekday: "long",
                         day: "numeric",
@@ -147,17 +147,17 @@ export default async function HalamanKalenderPengelola({
                     {items.map((b) => (
                       <li
                         key={b.id}
-                        className="flex items-center gap-3 rounded-lg border border-zinc-100 bg-zinc-50 px-3 py-2.5"
+                        className="flex items-center gap-3 rounded-lg border border-stone-100 bg-stone-50 px-3 py-2.5"
                       >
                         <div className="min-w-0 flex-1">
                           <div className="flex items-center gap-2">
-                            <p className="text-sm font-medium text-zinc-900">
+                            <p className="text-sm font-medium text-stone-900">
                               {b.ruangan.nama}
                             </p>
-                            <span className="text-xs text-zinc-400">·</span>
-                            <p className="text-xs text-zinc-500">{b.bidang.nama}</p>
+                            <span className="text-xs text-stone-400">·</span>
+                            <p className="text-xs text-stone-500">{b.bidang.nama}</p>
                           </div>
-                          <p className="text-xs text-zinc-500">
+                          <p className="text-xs text-stone-500">
                             {fmtRentang(b.waktuMulai, b.waktuSelesai)} · {b.tujuan}
                           </p>
                         </div>

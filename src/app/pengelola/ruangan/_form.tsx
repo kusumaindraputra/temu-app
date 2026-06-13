@@ -22,6 +22,9 @@ type PropsForm = {
 
 const kosong: RuanganState = {};
 
+const inputCls =
+  "rounded-lg border border-stone-200 bg-white px-3.5 py-2.5 text-sm text-stone-900 outline-none transition placeholder:text-stone-300 focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10";
+
 export default function FormRuangan({ aksi, semuaKomponen, awal }: PropsForm) {
   const [state, formAction, pending] = useActionState(aksi, kosong);
 
@@ -33,39 +36,28 @@ export default function FormRuangan({ aksi, semuaKomponen, awal }: PropsForm) {
   };
 
   const aktifAwal = state.nilai ? undefined : awal?.aktif;
-  const selectedIds: number[] =
-    state.nilai
-      ? [] // setelah error, komponen tidak ada di state, pakai DOM
-      : (awal?.komponenIds ?? []);
-
+  const selectedIds: number[] = state.nilai ? [] : (awal?.komponenIds ?? []);
   const isEdit = awal?.id !== undefined;
 
   return (
     <form action={formAction} className="flex max-w-xl flex-col gap-5">
       {state.error && (
-        <p className="rounded-md bg-red-50 px-3 py-2 text-sm text-red-700 ring-1 ring-red-200">
+        <div className="rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700">
           {state.error}
-        </p>
+        </div>
       )}
 
       {isEdit && <input type="hidden" name="id" value={awal!.id} />}
 
       <div className="flex flex-col gap-1.5">
-        <label htmlFor="nama" className="text-sm font-medium text-zinc-700">
+        <label htmlFor="nama" className="text-sm font-medium text-stone-700">
           Nama ruangan
         </label>
-        <input
-          id="nama"
-          name="nama"
-          type="text"
-          required
-          defaultValue={v.nama}
-          className="rounded-md border border-zinc-300 px-3 py-2 text-sm outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-100"
-        />
+        <input id="nama" name="nama" type="text" required defaultValue={v.nama} className={inputCls} />
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label htmlFor="lokasi" className="text-sm font-medium text-zinc-700">
+        <label htmlFor="lokasi" className="text-sm font-medium text-stone-700">
           Lokasi / lantai
         </label>
         <input
@@ -75,12 +67,12 @@ export default function FormRuangan({ aksi, semuaKomponen, awal }: PropsForm) {
           required
           defaultValue={v.lokasi}
           placeholder="mis. Lantai 2"
-          className="rounded-md border border-zinc-300 px-3 py-2 text-sm outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-100"
+          className={inputCls}
         />
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label htmlFor="kapasitas" className="text-sm font-medium text-zinc-700">
+        <label htmlFor="kapasitas" className="text-sm font-medium text-stone-700">
           Kapasitas (orang)
         </label>
         <input
@@ -90,14 +82,14 @@ export default function FormRuangan({ aksi, semuaKomponen, awal }: PropsForm) {
           min={1}
           required
           defaultValue={v.kapasitas || "1"}
-          className="w-32 rounded-md border border-zinc-300 px-3 py-2 text-sm outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-100"
+          className={`w-32 ${inputCls}`}
         />
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label htmlFor="fasilitas" className="text-sm font-medium text-zinc-700">
+        <label htmlFor="fasilitas" className="text-sm font-medium text-stone-700">
           Fasilitas
-          <span className="ml-1 font-normal text-zinc-400">(pisahkan dengan koma)</span>
+          <span className="ml-1 font-normal text-stone-400">(pisahkan dengan koma)</span>
         </label>
         <input
           id="fasilitas"
@@ -105,13 +97,13 @@ export default function FormRuangan({ aksi, semuaKomponen, awal }: PropsForm) {
           type="text"
           defaultValue={v.fasilitas}
           placeholder="mis. Proyektor, AC, Whiteboard"
-          className="rounded-md border border-zinc-300 px-3 py-2 text-sm outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-100"
+          className={inputCls}
         />
       </div>
 
       <fieldset className="flex flex-col gap-2">
-        <legend className="text-sm font-medium text-zinc-700">
-          Komponen <span className="font-normal text-zinc-400">(pilih minimal 1)</span>
+        <legend className="text-sm font-medium text-stone-700">
+          Komponen <span className="font-normal text-stone-400">(pilih minimal 1)</span>
         </legend>
         <div className="flex flex-wrap gap-3">
           {semuaKomponen.map((k) => (
@@ -121,9 +113,9 @@ export default function FormRuangan({ aksi, semuaKomponen, awal }: PropsForm) {
                 name="komponenId"
                 value={k.id}
                 defaultChecked={selectedIds.includes(k.id)}
-                className="h-4 w-4 rounded border-zinc-300 text-teal-600 focus:ring-teal-500"
+                className="h-4 w-4 rounded border-stone-300 text-teal-600 focus:ring-teal-500"
               />
-              <span className="text-sm text-zinc-700">{k.nama}</span>
+              <span className="text-sm text-stone-700">{k.nama}</span>
             </label>
           ))}
         </div>
@@ -131,14 +123,14 @@ export default function FormRuangan({ aksi, semuaKomponen, awal }: PropsForm) {
 
       {isEdit && (
         <div className="flex flex-col gap-1.5">
-          <label htmlFor="aktif" className="text-sm font-medium text-zinc-700">
+          <label htmlFor="aktif" className="text-sm font-medium text-stone-700">
             Status
           </label>
           <select
             id="aktif"
             name="aktif"
             defaultValue={aktifAwal === false ? "false" : "true"}
-            className="w-40 rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-100"
+            className={`w-40 ${inputCls}`}
           >
             <option value="true">Aktif</option>
             <option value="false">Nonaktif</option>
@@ -146,17 +138,17 @@ export default function FormRuangan({ aksi, semuaKomponen, awal }: PropsForm) {
         </div>
       )}
 
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-3 pt-1">
         <button
           type="submit"
           disabled={pending}
-          className="rounded-md bg-teal-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-teal-700 disabled:opacity-60"
+          className="rounded-lg bg-teal-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-teal-700 disabled:opacity-60"
         >
           {pending ? "Menyimpan…" : isEdit ? "Simpan Perubahan" : "Tambah Ruangan"}
         </button>
         <Link
           href="/pengelola/ruangan"
-          className="rounded-md px-4 py-2.5 text-sm font-medium text-zinc-600 hover:bg-zinc-100"
+          className="rounded-lg px-4 py-2.5 text-sm font-medium text-stone-500 transition-colors hover:bg-stone-100"
         >
           Batal
         </Link>

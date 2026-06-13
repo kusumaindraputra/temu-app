@@ -6,7 +6,7 @@ export default async function HalamanPengelolaBaru() {
 
   return (
     <div>
-      <h1 className="mb-6 text-2xl font-bold text-zinc-900">Tambah Akun Pengelola</h1>
+      <h1 className="mb-6 text-2xl font-bold tracking-tight text-stone-900">Tambah Akun Pengelola</h1>
       <FormPengelolaBaru />
     </div>
   );

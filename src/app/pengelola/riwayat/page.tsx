@@ -38,9 +38,9 @@ export default async function HalamanRiwayat({
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-zinc-900">Riwayat Booking</h1>
+      <h1 className="text-2xl font-bold tracking-tight text-stone-900">Riwayat Booking</h1>
 
-      <div className="mb-5 mt-3 flex flex-wrap gap-2">
+      <div className="mb-6 mt-4 flex flex-wrap gap-1.5">
         {tab.map((t) => {
           const aktif = (t.nilai ?? undefined) === (filter ?? undefined);
           const href = t.nilai ? `/pengelola/riwayat?status=${t.nilai}` : "/pengelola/riwayat";
@@ -48,10 +48,10 @@ export default async function HalamanRiwayat({
             <a
               key={t.label}
               href={href}
-              className={`rounded-full px-3 py-1.5 text-sm font-medium ring-1 ${
+              className={`rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors ${
                 aktif
-                  ? "bg-teal-600 text-white ring-teal-600"
-                  : "bg-white text-zinc-600 ring-zinc-300 hover:bg-zinc-50"
+                  ? "bg-stone-900 text-white"
+                  : "bg-white text-stone-600 shadow-sm hover:bg-stone-50"
               }`}
             >
               {t.label}
@@ -61,42 +61,42 @@ export default async function HalamanRiwayat({
       </div>
 
       {bookings.length === 0 ? (
-        <div className="rounded-xl border border-dashed border-zinc-300 bg-white p-10 text-center text-zinc-600">
+        <div className="rounded-2xl border border-dashed border-stone-200 bg-white p-12 text-center text-stone-400">
           Tidak ada data.
         </div>
       ) : (
-        <div className="overflow-x-auto rounded-xl border border-zinc-200 bg-white">
+        <div className="overflow-x-auto rounded-2xl bg-white shadow-sm">
           <table className="w-full text-left text-sm">
-            <thead className="border-b border-zinc-200 text-xs uppercase text-zinc-500">
+            <thead className="border-b border-stone-100">
               <tr>
-                <th className="px-4 py-3 font-medium">Ruangan</th>
-                <th className="px-4 py-3 font-medium">Waktu</th>
-                <th className="px-4 py-3 font-medium">Pemohon</th>
-                <th className="px-4 py-3 font-medium">Tujuan</th>
-                <th className="px-4 py-3 font-medium">Status</th>
+                <th className="px-5 py-3.5 text-xs font-medium uppercase tracking-wider text-stone-400">Ruangan</th>
+                <th className="px-5 py-3.5 text-xs font-medium uppercase tracking-wider text-stone-400">Waktu</th>
+                <th className="px-5 py-3.5 text-xs font-medium uppercase tracking-wider text-stone-400">Pemohon</th>
+                <th className="px-5 py-3.5 text-xs font-medium uppercase tracking-wider text-stone-400">Tujuan</th>
+                <th className="px-5 py-3.5 text-xs font-medium uppercase tracking-wider text-stone-400">Status</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-zinc-100">
+            <tbody className="divide-y divide-stone-50">
               {bookings.map((b) => (
                 <tr key={b.id} className="align-top">
-                  <td className="px-4 py-3">
-                    <div className="font-medium text-zinc-900">{b.ruangan.nama}</div>
-                    <div className="text-xs text-zinc-500">{b.ruangan.lokasi}</div>
+                  <td className="px-5 py-3.5">
+                    <div className="font-medium text-stone-900">{b.ruangan.nama}</div>
+                    <div className="text-xs text-stone-400">{b.ruangan.lokasi}</div>
                   </td>
-                  <td className="px-4 py-3 text-zinc-700">
+                  <td className="px-5 py-3.5 text-stone-600">
                     {fmtRentang(b.waktuMulai, b.waktuSelesai)}
                   </td>
-                  <td className="px-4 py-3 text-zinc-700">{b.bidang.nama}</td>
-                  <td className="px-4 py-3 text-zinc-700">
+                  <td className="px-5 py-3.5 text-stone-600">{b.bidang.nama}</td>
+                  <td className="px-5 py-3.5 text-stone-600">
                     {b.tujuan}
                     {b.catatan && (
-                      <div className="mt-1 text-xs text-zinc-500">Catatan: {b.catatan}</div>
+                      <div className="mt-1 text-xs text-stone-400">Catatan: {b.catatan}</div>
                     )}
                   </td>
-                  <td className="px-4 py-3">
+                  <td className="px-5 py-3.5">
                     <BadgeStatus status={b.status} />
                     {b.diprosesOleh && (
-                      <div className="mt-1 text-xs text-zinc-400">oleh {b.diprosesOleh.nama}</div>
+                      <div className="mt-1 text-xs text-stone-400">oleh {b.diprosesOleh.nama}</div>
                     )}
                   </td>
                 </tr>

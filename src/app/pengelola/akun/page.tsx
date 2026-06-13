@@ -17,12 +17,12 @@ export default async function HalamanAkun() {
       <section>
         <div className="mb-4 flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-zinc-900">Akun Bidang</h1>
-            <p className="mt-0.5 text-sm text-zinc-500">{bidangList.length} akun bidang.</p>
+            <h1 className="text-2xl font-bold text-stone-900">Akun Bidang</h1>
+            <p className="mt-0.5 text-sm text-stone-500">{bidangList.length} akun bidang.</p>
           </div>
           <Link
             href="/pengelola/akun/bidang/baru"
-            className="rounded-md bg-teal-600 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-700"
+            className="rounded-lg bg-teal-600 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-700"
           >
             + Tambah Akun Bidang
           </Link>
@@ -45,12 +45,12 @@ export default async function HalamanAkun() {
       <section>
         <div className="mb-4 flex items-center justify-between">
           <div>
-            <h2 className="text-2xl font-bold text-zinc-900">Akun Pengelola</h2>
-            <p className="mt-0.5 text-sm text-zinc-500">{pengelolaList.length} akun pengelola.</p>
+            <h2 className="text-2xl font-bold text-stone-900">Akun Pengelola</h2>
+            <p className="mt-0.5 text-sm text-stone-500">{pengelolaList.length} akun pengelola.</p>
           </div>
           <Link
             href="/pengelola/akun/pengelola/baru"
-            className="rounded-md bg-teal-600 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-700"
+            className="rounded-lg bg-teal-600 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-700"
           >
             + Tambah Akun Pengelola
           </Link>
@@ -84,23 +84,23 @@ type AkunRow = {
 
 function TabelAkun({ rows }: { rows: AkunRow[] }) {
   return (
-    <div className="overflow-hidden rounded-xl border border-zinc-200 bg-white">
+    <div className="overflow-hidden rounded-2xl bg-white shadow-sm">
       <table className="w-full text-sm">
         <thead>
-          <tr className="border-b border-zinc-100 bg-zinc-50 text-left text-xs font-semibold uppercase tracking-wide text-zinc-500">
-            <th className="px-4 py-3">Nama</th>
-            <th className="px-4 py-3">Username</th>
-            <th className="px-4 py-3">Peran</th>
-            <th className="px-4 py-3">Status</th>
-            <th className="px-4 py-3"></th>
+          <tr className="border-b border-stone-100 text-left text-xs font-medium uppercase tracking-wider text-stone-400">
+            <th className="px-5 py-3.5">Nama</th>
+            <th className="px-5 py-3.5">Username</th>
+            <th className="px-5 py-3.5">Peran</th>
+            <th className="px-5 py-3.5">Status</th>
+            <th className="px-5 py-3.5"></th>
           </tr>
         </thead>
-        <tbody className="divide-y divide-zinc-100">
+        <tbody className="divide-y divide-stone-50">
           {rows.map((r) => (
-            <tr key={r.id} className={r.aktif ? "" : "bg-zinc-50 opacity-60"}>
-              <td className="px-4 py-3 font-medium text-zinc-900">{r.nama}</td>
-              <td className="px-4 py-3 font-mono text-zinc-600">{r.username}</td>
-              <td className="px-4 py-3 text-zinc-500">
+            <tr key={r.id} className={r.aktif ? "" : "bg-stone-50 opacity-60"}>
+              <td className="px-5 py-3.5 font-medium text-stone-900">{r.nama}</td>
+              <td className="px-5 py-3.5 font-mono text-stone-600">{r.username}</td>
+              <td className="px-5 py-3.5 text-stone-500">
                 {r.role === "ADMIN" ? (
                   <span className="rounded-full bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-700">
                     Admin
@@ -110,27 +110,27 @@ function TabelAkun({ rows }: { rows: AkunRow[] }) {
                     Pengelola
                   </span>
                 ) : (
-                  <span className="rounded-full bg-zinc-100 px-2 py-0.5 text-xs font-medium text-zinc-600">
+                  <span className="rounded-full bg-stone-100 px-2 py-0.5 text-xs font-medium text-stone-600">
                     Bidang
                   </span>
                 )}
               </td>
-              <td className="px-4 py-3">
+              <td className="px-5 py-3.5">
                 <span
                   className={`rounded-full px-2 py-0.5 text-xs font-medium ${
                     r.aktif
                       ? "bg-green-100 text-green-700"
-                      : "bg-zinc-200 text-zinc-500"
+                      : "bg-stone-200 text-stone-500"
                   }`}
                 >
                   {r.aktif ? "Aktif" : "Nonaktif"}
                 </span>
               </td>
-              <td className="px-4 py-3">
+              <td className="px-5 py-3.5">
                 <div className="flex items-center gap-2">
                   <Link
                     href={r.resetHref}
-                    className="rounded px-2.5 py-1 text-xs font-medium text-zinc-600 hover:bg-zinc-100"
+                    className="rounded px-2.5 py-1 text-xs font-medium text-stone-600 hover:bg-stone-100"
                   >
                     Reset Sandi
                   </Link>
@@ -139,7 +139,7 @@ function TabelAkun({ rows }: { rows: AkunRow[] }) {
                     <input type="hidden" name="aktif" value={String(r.aktif)} />
                     <button
                       type="submit"
-                      className="rounded px-2.5 py-1 text-xs font-medium text-zinc-600 hover:bg-zinc-100"
+                      className="rounded px-2.5 py-1 text-xs font-medium text-stone-600 hover:bg-stone-100"
                     >
                       {r.aktif ? "Nonaktifkan" : "Aktifkan"}
                     </button>
@@ -150,7 +150,7 @@ function TabelAkun({ rows }: { rows: AkunRow[] }) {
           ))}
           {rows.length === 0 && (
             <tr>
-              <td colSpan={5} className="px-4 py-8 text-center text-zinc-500">
+              <td colSpan={5} className="px-4 py-8 text-center text-stone-500">
                 Belum ada akun.
               </td>
             </tr>

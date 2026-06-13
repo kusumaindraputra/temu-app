@@ -1,18 +1,42 @@
 import type { StatusBooking } from "@prisma/client";
 
-const peta: Record<StatusBooking, { label: string; kelas: string }> = {
-  MENUNGGU: { label: "Menunggu", kelas: "bg-amber-50 text-amber-700 ring-amber-200" },
-  DISETUJUI: { label: "Disetujui", kelas: "bg-green-50 text-green-700 ring-green-200" },
-  DITOLAK: { label: "Ditolak", kelas: "bg-red-50 text-red-700 ring-red-200" },
-  BATAL: { label: "Dibatalkan", kelas: "bg-zinc-100 text-zinc-600 ring-zinc-200" },
+const peta: Record<
+  StatusBooking,
+  { label: string; dot: string; text: string; bg: string }
+> = {
+  MENUNGGU: {
+    label: "Menunggu",
+    dot: "bg-amber-400",
+    text: "text-amber-700",
+    bg: "bg-amber-50",
+  },
+  DISETUJUI: {
+    label: "Disetujui",
+    dot: "bg-teal-500",
+    text: "text-teal-700",
+    bg: "bg-teal-50",
+  },
+  DITOLAK: {
+    label: "Ditolak",
+    dot: "bg-red-400",
+    text: "text-red-600",
+    bg: "bg-red-50",
+  },
+  BATAL: {
+    label: "Dibatalkan",
+    dot: "bg-stone-300",
+    text: "text-stone-500",
+    bg: "bg-stone-100",
+  },
 };
 
 export default function BadgeStatus({ status }: { status: StatusBooking }) {
   const s = peta[status];
   return (
     <span
-      className={`inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium ring-1 ${s.kelas}`}
+      className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium ${s.bg} ${s.text}`}
     >
+      <span className={`h-1.5 w-1.5 rounded-full ${s.dot}`} />
       {s.label}
     </span>
   );

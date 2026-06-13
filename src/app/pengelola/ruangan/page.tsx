@@ -23,36 +23,36 @@ export default async function HalamanRuangan() {
       <section>
         <div className="mb-4 flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-zinc-900">Ruangan</h1>
-            <p className="mt-0.5 text-sm text-zinc-500">{ruanganList.length} ruangan terdaftar.</p>
+            <h1 className="text-2xl font-bold text-stone-900">Ruangan</h1>
+            <p className="mt-0.5 text-sm text-stone-500">{ruanganList.length} ruangan terdaftar.</p>
           </div>
           <Link
             href="/pengelola/ruangan/baru"
-            className="rounded-md bg-teal-600 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-700"
+            className="rounded-lg bg-teal-600 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-700"
           >
             + Tambah Ruangan
           </Link>
         </div>
 
-        <div className="overflow-hidden rounded-xl border border-zinc-200 bg-white">
+        <div className="overflow-hidden rounded-2xl bg-white shadow-sm">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-zinc-100 bg-zinc-50 text-left text-xs font-semibold uppercase tracking-wide text-zinc-500">
-                <th className="px-4 py-3">Nama</th>
-                <th className="px-4 py-3">Lokasi</th>
-                <th className="px-4 py-3">Kap.</th>
-                <th className="px-4 py-3">Komponen</th>
-                <th className="px-4 py-3">Status</th>
-                <th className="px-4 py-3"></th>
+              <tr className="border-b border-stone-100 text-left text-xs font-medium uppercase tracking-wider text-stone-400">
+                <th className="px-5 py-3.5">Nama</th>
+                <th className="px-5 py-3.5">Lokasi</th>
+                <th className="px-5 py-3.5">Kap.</th>
+                <th className="px-5 py-3.5">Komponen</th>
+                <th className="px-5 py-3.5">Status</th>
+                <th className="px-5 py-3.5"></th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-zinc-100">
+            <tbody className="divide-y divide-stone-50">
               {ruanganList.map((r) => (
-                <tr key={r.id} className={r.aktif ? "" : "bg-zinc-50 opacity-60"}>
-                  <td className="px-4 py-3 font-medium text-zinc-900">{r.nama}</td>
-                  <td className="px-4 py-3 text-zinc-600">{r.lokasi}</td>
-                  <td className="px-4 py-3 text-zinc-600">{r.kapasitas}</td>
-                  <td className="px-4 py-3">
+                <tr key={r.id} className={r.aktif ? "" : "bg-stone-50 opacity-60"}>
+                  <td className="px-5 py-3.5 font-medium text-stone-900">{r.nama}</td>
+                  <td className="px-5 py-3.5 text-stone-600">{r.lokasi}</td>
+                  <td className="px-5 py-3.5 text-stone-600">{r.kapasitas}</td>
+                  <td className="px-5 py-3.5">
                     <span className="flex flex-wrap gap-1">
                       {r.komponen.map((k) => (
                         <span
@@ -64,22 +64,22 @@ export default async function HalamanRuangan() {
                       ))}
                     </span>
                   </td>
-                  <td className="px-4 py-3">
+                  <td className="px-5 py-3.5">
                     <span
                       className={`rounded-full px-2 py-0.5 text-xs font-medium ${
                         r.aktif
                           ? "bg-green-100 text-green-700"
-                          : "bg-zinc-200 text-zinc-500"
+                          : "bg-stone-200 text-stone-500"
                       }`}
                     >
                       {r.aktif ? "Aktif" : "Nonaktif"}
                     </span>
                   </td>
-                  <td className="px-4 py-3">
+                  <td className="px-5 py-3.5">
                     <div className="flex items-center gap-2">
                       <Link
                         href={`/pengelola/ruangan/${r.id}/ubah`}
-                        className="rounded px-2.5 py-1 text-xs font-medium text-zinc-600 hover:bg-zinc-100"
+                        className="rounded px-2.5 py-1 text-xs font-medium text-stone-600 hover:bg-stone-100"
                       >
                         Ubah
                       </Link>
@@ -88,7 +88,7 @@ export default async function HalamanRuangan() {
                         <input type="hidden" name="aktif" value={String(r.aktif)} />
                         <button
                           type="submit"
-                          className="rounded px-2.5 py-1 text-xs font-medium text-zinc-600 hover:bg-zinc-100"
+                          className="rounded px-2.5 py-1 text-xs font-medium text-stone-600 hover:bg-stone-100"
                         >
                           {r.aktif ? "Nonaktifkan" : "Aktifkan"}
                         </button>
@@ -99,7 +99,7 @@ export default async function HalamanRuangan() {
               ))}
               {ruanganList.length === 0 && (
                 <tr>
-                  <td colSpan={6} className="px-4 py-8 text-center text-zinc-500">
+                  <td colSpan={6} className="px-4 py-8 text-center text-stone-500">
                     Belum ada ruangan.
                   </td>
                 </tr>
@@ -112,8 +112,8 @@ export default async function HalamanRuangan() {
       {/* === Komponen === */}
       <section>
         <div className="mb-4">
-          <h2 className="text-lg font-semibold text-zinc-900">Komponen</h2>
-          <p className="mt-0.5 text-sm text-zinc-500">
+          <h2 className="text-lg font-semibold text-stone-900">Komponen</h2>
+          <p className="mt-0.5 text-sm text-stone-500">
             Unit fisik terkecil ruangan. Dipakai untuk deteksi bentrok Aula split.
           </p>
         </div>
@@ -122,10 +122,10 @@ export default async function HalamanRuangan() {
           {komponenList.map((k) => (
             <div
               key={k.id}
-              className="flex items-center gap-2 rounded-lg border border-zinc-200 bg-white px-3 py-2"
+              className="flex items-center gap-2 rounded-lg border border-stone-200 bg-white px-3 py-2"
             >
-              <span className="text-sm font-medium text-zinc-800">{k.nama}</span>
-              <span className="text-xs text-zinc-400">({k.ruangan.length} ruangan)</span>
+              <span className="text-sm font-medium text-stone-800">{k.nama}</span>
+              <span className="text-xs text-stone-400">({k.ruangan.length} ruangan)</span>
               {k.ruangan.length === 0 && (
                 <form action={hapusKomponen}>
                   <input type="hidden" name="id" value={k.id} />
@@ -147,11 +147,11 @@ export default async function HalamanRuangan() {
               type="text"
               name="nama"
               placeholder="Nama komponen baru"
-              className="rounded-md border border-zinc-300 px-3 py-2 text-sm outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-100"
+              className="rounded-lg border border-stone-300 px-3 py-2 text-sm outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-100"
             />
             <button
               type="submit"
-              className="rounded-md border border-zinc-300 px-3 py-2 text-sm font-medium text-zinc-700 hover:bg-zinc-50"
+              className="rounded-lg border border-stone-300 px-3 py-2 text-sm font-medium text-stone-700 hover:bg-stone-50"
             >
               + Tambah
             </button>

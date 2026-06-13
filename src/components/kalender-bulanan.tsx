@@ -15,9 +15,7 @@ type Props = {
   bulan: number;
   tahun: number;
   tandai: TandaiHari;
-  /** Base href untuk link hari → jadwal, e.g. "/bidang/jadwal". */
   jadwalHref: string;
-  /** Base href untuk navigasi bulan (omit di mini). */
   kalenderHref?: string;
 };
 
@@ -52,22 +50,24 @@ export default function KalenderBulanan({
   return (
     <div className={isMini ? "" : "w-full"}>
       {/* Header bulan */}
-      <div className={`mb-3 flex items-center ${isMini ? "justify-center" : "justify-between"}`}>
+      <div
+        className={`mb-4 flex items-center ${isMini ? "justify-center" : "justify-between"}`}
+      >
         {!isMini && (
           <Link
             href={prevHref}
-            className="rounded-md px-2 py-1 text-sm text-zinc-500 hover:bg-zinc-100"
+            className="flex h-7 w-7 items-center justify-center rounded-full text-stone-400 transition-colors hover:bg-stone-100 hover:text-stone-700"
           >
             ←
           </Link>
         )}
-        <span className="text-sm font-semibold text-zinc-800">
+        <span className="text-sm font-semibold text-stone-800">
           {namaBulan(bulan)} {tahun}
         </span>
         {!isMini && (
           <Link
             href={nextHref}
-            className="rounded-md px-2 py-1 text-sm text-zinc-500 hover:bg-zinc-100"
+            className="flex h-7 w-7 items-center justify-center rounded-full text-stone-400 transition-colors hover:bg-stone-100 hover:text-stone-700"
           >
             →
           </Link>
@@ -75,15 +75,15 @@ export default function KalenderBulanan({
       </div>
 
       {/* Label hari */}
-      <div className="mb-1 grid grid-cols-7 text-center">
+      <div className="mb-2 grid grid-cols-7 text-center">
         {LABEL_HARI.map((h) => (
-          <div key={h} className="py-1 text-xs font-medium text-zinc-400">
+          <div key={h} className="py-1 text-[11px] font-medium uppercase tracking-wider text-stone-400">
             {h}
           </div>
         ))}
       </div>
 
-      {/* Sel hari */}
+      {/* Grid hari */}
       {weeks.map((week, wi) => (
         <div key={wi} className="grid grid-cols-7">
           {week.map((day, di) => {
@@ -96,15 +96,13 @@ export default function KalenderBulanan({
               <Link
                 key={di}
                 href={`${jadwalHref}?tanggal=${dateStr}`}
-                className={`group flex flex-col items-center rounded-lg py-1 transition-colors hover:bg-zinc-100 ${
-                  isToday ? "ring-2 ring-teal-500 ring-inset" : ""
-                }`}
+                className="group flex flex-col items-center py-1"
               >
                 <span
-                  className={`text-xs leading-5 ${
+                  className={`flex h-7 w-7 items-center justify-center rounded-full text-xs transition-colors ${
                     isToday
-                      ? "font-bold text-teal-700"
-                      : "text-zinc-700 group-hover:text-zinc-900"
+                      ? "bg-teal-600 font-bold text-white"
+                      : "text-stone-700 group-hover:bg-stone-100 group-hover:text-stone-900"
                   }`}
                 >
                   {day}
@@ -127,17 +125,17 @@ export default function KalenderBulanan({
         </div>
       ))}
 
-      {/* Legenda (hanya di full view) */}
+      {/* Legenda (full view only) */}
       {!isMini && (
-        <div className="mt-4 flex flex-wrap gap-4 text-xs text-zinc-500">
+        <div className="mt-5 flex flex-wrap gap-4 border-t border-stone-100 pt-4 text-xs text-stone-400">
           <span className="flex items-center gap-1.5">
-            <span className="h-2 w-2 rounded-full bg-teal-500" /> Disetujui
+            <span className="h-1.5 w-1.5 rounded-full bg-teal-500" /> Disetujui
           </span>
           <span className="flex items-center gap-1.5">
-            <span className="h-2 w-2 rounded-full bg-amber-400" /> Menunggu
+            <span className="h-1.5 w-1.5 rounded-full bg-amber-400" /> Menunggu
           </span>
           <span className="flex items-center gap-1.5">
-            <span className="h-2 w-2 rounded-full bg-red-400" /> Ditolak / Batal
+            <span className="h-1.5 w-1.5 rounded-full bg-red-400" /> Ditolak/Batal
           </span>
         </div>
       )}

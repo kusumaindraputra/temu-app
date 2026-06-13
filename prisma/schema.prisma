@@ -1,0 +1,108 @@
+// Skema database Aplikasi Booking Ruang Meeting Dinas Kesehatan
+// Dokumentasi: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  PENGELOLA
+  ADMIN
+}
+
+enum StatusBooking {
+  MENUNGGU
+  DISETUJUI
+  DITOLAK
+  BATAL
+}
+
+/// Akun per Bidang (pemesan ruangan)
+model Bidang {
+  id          Int           @id @default(autoincrement())
+  nama        String
+  username    String        @unique
+  password    String // hash bcrypt
+  aktif       Boolean       @default(true)
+  bookings    Booking[]
+  notifikasi  Notifikasi[]
+  dibuatPada  DateTime      @default(now())
+}
+
+/// Akun Pengelola/Admin (menyetujui booking & mengelola data)
+model Pengelola {
+  id        Int      @id @default(autoincrement())
+  nama      String
+  username  String   @unique
+  password  String // hash bcrypt
+  role      Role     @default(PENGELOLA)
+  aktif     Boolean  @default(true)
+  // Booking yang diproses (disetujui/ditolak) oleh pengelola ini
+  bookingDiproses Booking[] @relation("BookingDiproses")
+  dibuatPada DateTime @default(now())
+}
+
+/// Unit fisik terkecil dari sebuah ruang.
+/// Contoh: "RR-1" (ruang rapat biasa), "Aula-1", "Aula-2".
+/// Dipakai untuk deteksi bentrok: dua booking bentrok bila komponennya beririsan.
+model Komponen {
+  id      Int       @id @default(autoincrement())
+  nama    String    @unique
+  ruangan Ruangan[] @relation("RuanganKomponen")
+}
+
+/// Ruangan yang bisa dibooking pengguna.
+/// Satu ruangan terdiri dari 1+ komponen.
+/// - Ruang biasa: 1 komponen unik.
+/// - Aula bisa di-split: "Aula A" = {Aula-1}, "Aula B" = {Aula-2},
+///   "Aula Penuh" = {Aula-1, Aula-2} -> otomatis bentrok dengan A maupun B.
+model Ruangan {
+  id        Int        @id @default(autoincrement())
+  nama      String
+  lokasi    String
+  kapasitas Int
+  fasilitas String[]
+  aktif     Boolean    @default(true)
+  komponen  Komponen[] @relation("RuanganKomponen")
+  bookings  Booking[]
+  dibuatPada DateTime  @default(now())
+}
+
+model Booking {
+  id            Int           @id @default(autoincrement())
+  ruangan       Ruangan       @relation(fields: [ruanganId], references: [id])
+  ruanganId     Int
+  bidang        Bidang        @relation(fields: [bidangId], references: [id])
+  bidangId      Int
+  waktuMulai    DateTime
+  waktuSelesai  DateTime
+  tujuan        String
+  jumlahPeserta Int
+  status        StatusBooking @default(MENUNGGU)
+  catatan       String? // catatan dari pengelola saat menyetujui/menolak
+  diprosesOleh  Pengelola?    @relation("BookingDiproses", fields: [diprosesOlehId], references: [id])
+  diprosesOlehId Int?
+  diprosesPada  DateTime?
+  dibuatPada    DateTime      @default(now())
+
+  @@index([ruanganId, waktuMulai, waktuSelesai])
+  @@index([status])
+}
+
+model Notifikasi {
+  id          Int      @id @default(autoincrement())
+  bidangId    Int
+  bidang      Bidang   @relation(fields: [bidangId], references: [id])
+  judul       String
+  pesan       String
+  bookingId   Int?
+  sudahDibaca Boolean  @default(false)
+  dibuatPada  DateTime @default(now())
+
+  @@index([bidangId, sudahDibaca])
+}

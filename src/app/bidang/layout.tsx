@@ -1,0 +1,31 @@
+import TopBar from "@/components/topbar";
+import { wajibBidang } from "@/lib/auth";
+import { db } from "@/lib/db";
+
+export default async function BidangLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const sesi = await wajibBidang();
+
+  const unreadCount = await db.notifikasi.count({
+    where: { bidangId: sesi.id, sudahDibaca: false },
+  });
+
+  return (
+    <div className="min-h-screen">
+      <TopBar
+        sesi={sesi}
+        unreadCount={unreadCount}
+        nav={[
+          { href: "/bidang", label: "Beranda" },
+          { href: "/bidang/kalender", label: "Kalender" },
+          { href: "/bidang/jadwal", label: "Jadwal" },
+          { href: "/bidang/booking/baru", label: "Buat Booking" },
+        ]}
+      />
+      <main className="mx-auto max-w-6xl px-4 py-6">{children}</main>
+    </div>
+  );
+}

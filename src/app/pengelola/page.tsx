@@ -5,12 +5,14 @@ import { cariBentrok, deskripsiBentrok } from "@/lib/booking";
 import { fmtRentang } from "@/lib/format";
 import BadgeStatus from "@/components/badge-status";
 import KalenderBulanan, { type TandaiHari } from "@/components/kalender-bulanan";
+import TimelineJadwal, { type RuanganSlot } from "@/components/timeline-jadwal";
 import {
   bulanTahunJakarta,
   toJakartaDateStr,
   padDateStr,
   namaBulan,
   salamWaktu,
+  hariIniJakarta,
 } from "@/lib/jadwal";
 import KartuPersetujuan, { type DataKartu } from "./kartu-persetujuan";
 
@@ -45,7 +47,7 @@ function StatCard({
 export default async function HalamanPersetujuan({
   searchParams,
 }: {
-  searchParams: Promise<{ bulan?: string; tahun?: string; halaman?: string }>;
+  searchParams: Promise<{ bulan?: string; tahun?: string; halaman?: string; tanggal?: string }>;
 }) {
   const sesi = await wajibPengelola();
   const now = new Date();
@@ -55,6 +57,10 @@ export default async function HalamanPersetujuan({
   const bulan = Math.max(1, Math.min(12, Number(sp.bulan) || bJakarta));
   const tahun = Number(sp.tahun) || tJakarta;
   const halamanParam = Math.max(1, Number(sp.halaman) || 1);
+  const tanggal =
+    sp.tanggal && /^\d{4}-\d{2}-\d{2}$/.test(sp.tanggal)
+      ? sp.tanggal
+      : hariIniJakarta();
 
   const startBulan = new Date(`${padDateStr(tahun, bulan, 1)}T00:00:00+07:00`);
   const endBulan = new Date(new Date(tahun, bulan, 1).getTime() - 1);
@@ -64,11 +70,16 @@ export default async function HalamanPersetujuan({
   );
   const hariSelesai = new Date(hariMulai.getTime() + 86400_000 - 1);
 
+  const timelineMulai = new Date(`${tanggal}T00:00:00+07:00`);
+  const timelineSelesai = new Date(`${tanggal}T23:59:59+07:00`);
+
   const [
     menungguList,
     disetujuiHariIni,
     totalBulanIni,
     ruanganAktif,
+    semuaRuangan,
+    bookingHariIni,
     bookingKalender,
     upcomingCount,
     pastCount,
@@ -94,6 +105,20 @@ export default async function HalamanPersetujuan({
       },
     }),
     db.ruangan.count({ where: { aktif: true } }),
+    // Timeline
+    db.ruangan.findMany({
+      orderBy: { nama: "asc" },
+      select: { id: true, nama: true, aktif: true },
+    }),
+    db.booking.findMany({
+      where: {
+        status: { in: ["DISETUJUI", "MENUNGGU"] },
+        waktuMulai: { lt: timelineSelesai },
+        waktuSelesai: { gt: timelineMulai },
+      },
+      include: { bidang: { select: { nama: true } } },
+      orderBy: { waktuMulai: "asc" },
+    }),
     db.booking.findMany({
       where: {
         status: { in: ["DISETUJUI", "MENUNGGU", "DITOLAK", "BATAL"] },
@@ -106,6 +131,23 @@ export default async function HalamanPersetujuan({
   ]);
 
   const total = upcomingCount + pastCount;
+
+  // Timeline slots
+  const ruangan: RuanganSlot[] = semuaRuangan.map((r) => ({
+    id: r.id,
+    nama: r.nama,
+    aktif: r.aktif,
+    slots: bookingHariIni
+      .filter((b) => b.ruanganId === r.id)
+      .map((b) => ({
+        id: b.id,
+        waktuMulai: b.waktuMulai,
+        waktuSelesai: b.waktuSelesai,
+        bidangNama: b.bidang.nama,
+        tujuan: b.tujuan,
+        status: b.status as "DISETUJUI" | "MENUNGGU",
+      })),
+  }));
 
   // Calendar dots
   const tandai: TandaiHari = {};
@@ -214,6 +256,7 @@ export default async function HalamanPersetujuan({
           jadwalHref="/pengelola"
           kalenderHref="/pengelola"
         />
+
         <div className="mt-4 flex flex-wrap items-center gap-4 border-t border-stone-100 pt-3 text-xs text-stone-500">
           <span className="font-medium text-stone-400">Keterangan:</span>
           <span className="flex items-center gap-1.5">
@@ -230,6 +273,9 @@ export default async function HalamanPersetujuan({
           </span>
         </div>
       </div>
+
+      {/* Timeline jadwal per ruangan */}
+      <TimelineJadwal ruangan={ruangan} tanggal={tanggal} baseHref="/pengelola" />
 
       {/* Jadwal semua booking */}
       <section>

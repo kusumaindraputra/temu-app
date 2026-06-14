@@ -3,12 +3,14 @@ import { db } from "@/lib/db";
 import { wajibBidang } from "@/lib/auth";
 import BadgeStatus from "@/components/badge-status";
 import KalenderBulanan, { type TandaiHari } from "@/components/kalender-bulanan";
+import TimelineJadwal, { type RuanganSlot } from "@/components/timeline-jadwal";
 import { fmtRentang } from "@/lib/format";
 import {
   bulanTahunJakarta,
   toJakartaDateStr,
   salamWaktu,
   padDateStr,
+  hariIniJakarta,
 } from "@/lib/jadwal";
 import { batalBooking } from "./booking/actions";
 
@@ -43,16 +45,23 @@ function StatCard({
 export default async function BerandaBidang({
   searchParams,
 }: {
-  searchParams: Promise<{ halaman?: string }>;
+  searchParams: Promise<{ halaman?: string; tanggal?: string }>;
 }) {
   const sesi = await wajibBidang();
   const now = new Date();
   const { bulan, tahun } = bulanTahunJakarta();
   const sp = await searchParams;
   const halamanParam = Math.max(1, Number(sp.halaman) || 1);
+  const tanggal =
+    sp.tanggal && /^\d{4}-\d{2}-\d{2}$/.test(sp.tanggal)
+      ? sp.tanggal
+      : hariIniJakarta();
 
   const startBulan = new Date(`${padDateStr(tahun, bulan, 1)}T00:00:00+07:00`);
   const endBulan = new Date(new Date(tahun, bulan, 1).getTime() - 1);
+
+  const hariMulai = new Date(`${tanggal}T00:00:00+07:00`);
+  const hariSelesai = new Date(`${tanggal}T23:59:59+07:00`);
 
   const [
     bookingKalender,
@@ -62,6 +71,8 @@ export default async function BerandaBidang({
     batalDitolakCount,
     upcomingCount,
     pastCount,
+    semuaRuangan,
+    bookingHariIni,
   ] = await Promise.all([
     // Kalender: dot booking bulan ini
     db.booking.findMany({
@@ -90,9 +101,40 @@ export default async function BerandaBidang({
     // Pagination counts
     db.booking.count({ where: { bidangId: sesi.id, waktuMulai: { gte: now } } }),
     db.booking.count({ where: { bidangId: sesi.id, waktuMulai: { lt: now } } }),
+    // Timeline jadwal
+    db.ruangan.findMany({
+      orderBy: { nama: "asc" },
+      select: { id: true, nama: true, aktif: true },
+    }),
+    db.booking.findMany({
+      where: {
+        status: { in: ["DISETUJUI", "MENUNGGU"] },
+        waktuMulai: { lt: hariSelesai },
+        waktuSelesai: { gt: hariMulai },
+      },
+      include: { bidang: { select: { nama: true } } },
+      orderBy: { waktuMulai: "asc" },
+    }),
   ]);
 
   const total = upcomingCount + pastCount;
+
+  // Timeline slots
+  const ruangan: RuanganSlot[] = semuaRuangan.map((r) => ({
+    id: r.id,
+    nama: r.nama,
+    aktif: r.aktif,
+    slots: bookingHariIni
+      .filter((b) => b.ruanganId === r.id)
+      .map((b) => ({
+        id: b.id,
+        waktuMulai: b.waktuMulai,
+        waktuSelesai: b.waktuSelesai,
+        bidangNama: b.bidang.nama,
+        tujuan: b.tujuan,
+        status: b.status as "DISETUJUI" | "MENUNGGU",
+      })),
+  }));
 
   // Calendar dots
   const tandai: TandaiHari = {};
@@ -168,6 +210,7 @@ export default async function BerandaBidang({
             tahun={tahun}
             tandai={tandai}
             jadwalHref="/bidang"
+            kalenderHref="/bidang"
           />
           {/* Legend */}
           <div className="mt-3 flex flex-wrap gap-3 border-t border-stone-100 pt-3 text-xs text-stone-500">
@@ -228,6 +271,9 @@ export default async function BerandaBidang({
           )}
         </div>
       </div>
+
+      {/* Timeline jadwal per ruangan */}
+      <TimelineJadwal ruangan={ruangan} tanggal={tanggal} baseHref="/bidang" />
 
       {/* Jadwal semua booking — paginated */}
       <section>

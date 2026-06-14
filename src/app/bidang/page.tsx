@@ -9,7 +9,6 @@ import {
   toJakartaDateStr,
   salamWaktu,
   padDateStr,
-  namaBulan,
 } from "@/lib/jadwal";
 import { batalBooking } from "./booking/actions";
 
@@ -44,15 +43,12 @@ function StatCard({
 export default async function BerandaBidang({
   searchParams,
 }: {
-  searchParams: Promise<{ bulan?: string; tahun?: string; halaman?: string }>;
+  searchParams: Promise<{ halaman?: string }>;
 }) {
   const sesi = await wajibBidang();
   const now = new Date();
-  const { bulan: bJakarta, tahun: tJakarta } = bulanTahunJakarta();
+  const { bulan, tahun } = bulanTahunJakarta();
   const sp = await searchParams;
-
-  const bulan = Math.max(1, Math.min(12, Number(sp.bulan) || bJakarta));
-  const tahun = Number(sp.tahun) || tJakarta;
   const halamanParam = Math.max(1, Number(sp.halaman) || 1);
 
   const startBulan = new Date(`${padDateStr(tahun, bulan, 1)}T00:00:00+07:00`);
@@ -60,12 +56,14 @@ export default async function BerandaBidang({
 
   const [
     bookingKalender,
+    mendatang,
     menungguCount,
     disetujuiMendatangCount,
     batalDitolakCount,
     upcomingCount,
     pastCount,
   ] = await Promise.all([
+    // Kalender: dot booking bulan ini
     db.booking.findMany({
       where: {
         bidangId: sesi.id,
@@ -74,6 +72,14 @@ export default async function BerandaBidang({
       },
       select: { waktuMulai: true, status: true },
     }),
+    // Panel kanan: booking mendatang yang sudah disetujui (maks 5)
+    db.booking.findMany({
+      where: { bidangId: sesi.id, status: "DISETUJUI", waktuMulai: { gte: now } },
+      orderBy: { waktuMulai: "asc" },
+      take: 5,
+      include: { ruangan: { select: { nama: true, lokasi: true } } },
+    }),
+    // Stat cards
     db.booking.count({ where: { bidangId: sesi.id, status: "MENUNGGU" } }),
     db.booking.count({
       where: { bidangId: sesi.id, status: "DISETUJUI", waktuMulai: { gte: now } },
@@ -81,6 +87,7 @@ export default async function BerandaBidang({
     db.booking.count({
       where: { bidangId: sesi.id, status: { in: ["BATAL", "DITOLAK"] } },
     }),
+    // Pagination counts
     db.booking.count({ where: { bidangId: sesi.id, waktuMulai: { gte: now } } }),
     db.booking.count({ where: { bidangId: sesi.id, waktuMulai: { lt: now } } }),
   ]);
@@ -102,8 +109,6 @@ export default async function BerandaBidang({
   const offset = (halaman - 1) * PAGE_SIZE;
 
   const jadwal = await ambilJadwalBidang(sesi.id, now, offset, PAGE_SIZE, upcomingCount);
-
-  const pageUrl = (h: number) => `/bidang?bulan=${bulan}&tahun=${tahun}&halaman=${h}`;
 
   return (
     <div className="flex flex-col gap-8">
@@ -153,35 +158,81 @@ export default async function BerandaBidang({
         />
       </div>
 
-      {/* Kalender */}
-      <div className="rounded-2xl bg-white p-5 shadow-sm">
-        <p className="mb-4 text-sm font-semibold text-stone-700">
-          {namaBulan(bulan)} {tahun}
-        </p>
-        <KalenderBulanan
-          bulan={bulan}
-          tahun={tahun}
-          tandai={tandai}
-          jadwalHref="/bidang"
-          kalenderHref="/bidang"
-        />
-        <div className="mt-4 flex flex-wrap items-center gap-4 border-t border-stone-100 pt-3 text-xs text-stone-500">
-          <span className="font-medium text-stone-400">Keterangan:</span>
-          <span className="flex items-center gap-1.5">
-            <span className="h-2 w-2 rounded-full bg-teal-500" />
-            Disetujui
-          </span>
-          <span className="flex items-center gap-1.5">
-            <span className="h-2 w-2 rounded-full bg-amber-400" />
-            Menunggu persetujuan
-          </span>
+      {/* Kalender + Mendatang */}
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-[auto_1fr]">
+        {/* Mini kalender */}
+        <div className="rounded-2xl bg-white p-5 shadow-sm">
+          <p className="mb-4 text-sm font-semibold text-stone-700">Bulan Ini</p>
+          <KalenderBulanan
+            bulan={bulan}
+            tahun={tahun}
+            tandai={tandai}
+            jadwalHref="/bidang"
+          />
+          {/* Legend */}
+          <div className="mt-3 flex flex-wrap gap-3 border-t border-stone-100 pt-3 text-xs text-stone-500">
+            <span className="flex items-center gap-1.5">
+              <span className="h-2 w-2 rounded-full bg-teal-500" />
+              Disetujui
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="h-2 w-2 rounded-full bg-amber-400" />
+              Menunggu
+            </span>
+          </div>
+        </div>
+
+        {/* Booking mendatang */}
+        <div className="rounded-2xl bg-white p-5 shadow-sm">
+          <h2 className="mb-4 text-sm font-semibold text-stone-700">Booking Mendatang</h2>
+          {mendatang.length === 0 ? (
+            <div className="flex flex-col items-center justify-center py-8 text-center">
+              <p className="text-sm text-stone-400">Tidak ada booking mendatang.</p>
+              <Link
+                href="/bidang/booking/baru"
+                className="mt-2 text-xs font-medium text-teal-600 hover:underline"
+              >
+                Buat booking baru →
+              </Link>
+            </div>
+          ) : (
+            <ul className="flex flex-col divide-y divide-stone-50">
+              {mendatang.map((b) => (
+                <li key={b.id} className="flex items-start gap-3 py-3.5 first:pt-0 last:pb-0">
+                  <div className="flex h-10 w-10 shrink-0 flex-col items-center justify-center rounded-xl bg-teal-50 text-teal-700">
+                    <span className="text-xs font-bold leading-none">
+                      {b.waktuMulai.toLocaleDateString("id-ID", {
+                        day: "numeric",
+                        timeZone: "Asia/Jakarta",
+                      })}
+                    </span>
+                    <span className="mt-0.5 text-[10px] leading-none text-teal-500">
+                      {b.waktuMulai.toLocaleDateString("id-ID", {
+                        month: "short",
+                        timeZone: "Asia/Jakarta",
+                      })}
+                    </span>
+                  </div>
+                  <div className="min-w-0">
+                    <p className="truncate text-sm font-medium text-stone-900">
+                      {b.ruangan.nama}
+                    </p>
+                    <p className="text-xs text-stone-500">
+                      {fmtRentang(b.waktuMulai, b.waktuSelesai)}
+                    </p>
+                    <p className="truncate text-xs text-stone-400">{b.tujuan}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </div>
 
-      {/* Jadwal */}
+      {/* Jadwal semua booking — paginated */}
       <section>
         <h2 className="mb-4 text-base font-semibold text-stone-900">
-          Jadwal Booking
+          Semua Booking
           <span className="ml-2 text-sm font-normal text-stone-400">({total})</span>
         </h2>
 
@@ -241,7 +292,7 @@ export default async function BerandaBidang({
               <div className="mt-5 flex items-center justify-center gap-2">
                 {halaman > 1 ? (
                   <Link
-                    href={pageUrl(halaman - 1)}
+                    href={`/bidang?halaman=${halaman - 1}`}
                     className="rounded-lg border border-stone-200 px-3 py-1.5 text-xs font-medium text-stone-600 transition-colors hover:bg-stone-50"
                   >
                     ← Sebelumnya
@@ -256,7 +307,7 @@ export default async function BerandaBidang({
                 </span>
                 {halaman < totalHalaman ? (
                   <Link
-                    href={pageUrl(halaman + 1)}
+                    href={`/bidang?halaman=${halaman + 1}`}
                     className="rounded-lg border border-stone-200 px-3 py-1.5 text-xs font-medium text-stone-600 transition-colors hover:bg-stone-50"
                   >
                     Berikutnya →
@@ -274,8 +325,6 @@ export default async function BerandaBidang({
     </div>
   );
 }
-
-type BookingBidang = Awaited<ReturnType<typeof ambilJadwalBidang>>[number];
 
 async function ambilJadwalBidang(
   bidangId: number,

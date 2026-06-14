@@ -92,10 +92,15 @@ export default function KalenderBulanan({
             const marks = tandai[dateStr];
             const isToday = dateStr === today;
 
+            const dateHref = jadwalHref.includes("?")
+              ? `${jadwalHref}&tanggal=${dateStr}`
+              : `${jadwalHref}?tanggal=${dateStr}`;
+
             return (
               <Link
                 key={di}
-                href={`${jadwalHref}?tanggal=${dateStr}`}
+                href={dateHref}
+                scroll={false}
                 className="group flex flex-col items-center py-1"
               >
                 <span

@@ -214,7 +214,7 @@ export default async function BerandaBidang({
             bulan={bulan}
             tahun={tahun}
             tandai={tandai}
-            jadwalHref="/bidang"
+            jadwalHref={`/bidang?bulan=${bulan}&tahun=${tahun}`}
             kalenderHref="/bidang"
           />
         </div>

@@ -210,7 +210,6 @@ export default async function BerandaBidang({
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-[auto_1fr]">
         {/* Mini kalender */}
         <div className="rounded-2xl bg-white p-5 shadow-sm">
-          <p className="mb-4 text-sm font-semibold text-stone-700">Bulan Ini</p>
           <KalenderBulanan
             bulan={bulan}
             tahun={tahun}

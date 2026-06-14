@@ -9,10 +9,8 @@ export default async function PengelolaLayout({
   const sesi = await wajibPengelola();
 
   const nav = [
-    { href: "/pengelola", label: "Persetujuan" },
+    { href: "/pengelola", label: "Beranda" },
     { href: "/pengelola/riwayat", label: "Riwayat" },
-    { href: "/pengelola/kalender", label: "Kalender" },
-    { href: "/pengelola/jadwal", label: "Jadwal" },
   ];
   if (sesi.role === "ADMIN") {
     nav.push(

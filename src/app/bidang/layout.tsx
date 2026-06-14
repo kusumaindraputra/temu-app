@@ -20,9 +20,8 @@ export default async function BidangLayout({
         unreadCount={unreadCount}
         nav={[
           { href: "/bidang", label: "Beranda" },
-          { href: "/bidang/kalender", label: "Kalender" },
-          { href: "/bidang/jadwal", label: "Jadwal" },
           { href: "/bidang/booking/baru", label: "Buat Booking" },
+          { href: "/bidang/notifikasi", label: "Notifikasi" },
         ]}
       />
       <main className="mx-auto max-w-6xl px-4 py-6">{children}</main>

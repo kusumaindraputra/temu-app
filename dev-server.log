@@ -1,0 +1,797 @@
+▲ Next.js 16.2.9 (Turbopack)
+- Local:         http://localhost:3100
+- Network:       http://192.168.18.3:3100
+- Environments: .env
+✓ Ready in 477ms
+
+ GET /login 200 in 993ms (next.js: 253ms, proxy.ts: 401ms, application-code: 339ms)
+ GET /pengelola 200 in 388ms (next.js: 88ms, proxy.ts: 20ms, application-code: 281ms)
+ POST /login 303 in 814ms (next.js: 10ms, proxy.ts: 10ms, application-code: 794ms)
+  └─ ƒ aksiLogin({}, {}) in 297ms src/app/login/actions.ts
+ GET /pengelola/kalender 200 in 413ms (next.js: 56ms, proxy.ts: 9ms, application-code: 347ms)
+ GET /pengelola/ruangan 200 in 223ms (next.js: 113ms, proxy.ts: 6ms, application-code: 105ms)
+ GET /pengelola/akun 200 in 294ms (next.js: 108ms, proxy.ts: 5ms, application-code: 181ms)
+ GET /api/auth/signout 404 in 98ms (next.js: 42ms, proxy.ts: 5ms, application-code: 51ms)
+ GET /pengelola 200 in 162ms (next.js: 7ms, proxy.ts: 6ms, application-code: 149ms)
+ GET /login 200 in 115ms (next.js: 8ms, proxy.ts: 7ms, application-code: 100ms)
+ GET /pengelola 200 in 122ms (next.js: 13ms, proxy.ts: 16ms, application-code: 93ms)
+ POST /login 303 in 261ms (next.js: 5ms, proxy.ts: 6ms, application-code: 250ms)
+  └─ ƒ aksiLogin({}, {}) in 112ms src/app/login/actions.ts
+ GET /pengelola/kalender 200 in 213ms (next.js: 3ms, proxy.ts: 5ms, application-code: 205ms)
+ GET /pengelola/ruangan 200 in 128ms (next.js: 4ms, proxy.ts: 6ms, application-code: 117ms)
+ GET /pengelola/akun 200 in 130ms (next.js: 4ms, proxy.ts: 4ms, application-code: 121ms)
+ GET /login 200 in 46ms (next.js: 3ms, proxy.ts: 3ms, application-code: 40ms)
+ GET /bidang 200 in 211ms (next.js: 68ms, proxy.ts: 5ms, application-code: 138ms)
+ POST /login 303 in 320ms (next.js: 3ms, proxy.ts: 4ms, application-code: 313ms)
+  └─ ƒ aksiLogin({}, {}) in 86ms src/app/login/actions.ts
+ GET /bidang/kalender 200 in 282ms (next.js: 54ms, proxy.ts: 6ms, application-code: 223ms)
+ GET /bidang/booking/baru 200 in 164ms (next.js: 56ms, proxy.ts: 6ms, application-code: 101ms)
+ GET / 307 in 1595ms (next.js: 959ms, proxy.ts: 28ms, application-code: 608ms)
+ GET /login 200 in 133ms (next.js: 10ms, proxy.ts: 9ms, application-code: 114ms)
+ GET /manifest.webmanifest 200 in 1267ms (next.js: 1197ms, proxy.ts: 24ms, application-code: 46ms)
+ GET /icons/icon-192.png 200 in 1639ms (next.js: 1165ms, proxy.ts: 8ms, application-code: 466ms)
+ GET /pengelola 200 in 176ms (next.js: 6ms, proxy.ts: 5ms, application-code: 165ms)
+ POST /login 303 in 482ms (next.js: 5ms, proxy.ts: 6ms, application-code: 472ms)
+  └─ ƒ aksiLogin({}, {}) in 276ms src/app/login/actions.ts
+ GET /manifest.webmanifest 200 in 20ms (next.js: 6ms, proxy.ts: 8ms, application-code: 7ms)
+ POST /pengelola 200 in 53ms (next.js: 11ms, proxy.ts: 10ms, application-code: 32ms)
+  └─ ƒ prosesBooking({}, {}) in 20ms src/app/pengelola/actions.ts
+ POST /pengelola 200 in 147ms (next.js: 6ms, proxy.ts: 9ms, application-code: 131ms)
+  └─ ƒ prosesBooking({"error":"Tidak bisa disetujui — bentrok dengan: Aula A — Bidang Kesehatan Masyarakat (Minggu, 14 Juni 2026, 10.13–10.15)."}, {}) in 60ms src/app/pengelola/actions.ts
+ GET /manifest.webmanifest 200 in 12ms (next.js: 3ms, proxy.ts: 5ms, application-code: 5ms)
+ POST /pengelola 200 in 108ms (next.js: 7ms, proxy.ts: 8ms, application-code: 93ms)
+  └─ ƒ prosesBooking({}, {}) in 26ms src/app/pengelola/actions.ts
+ GET /manifest.webmanifest 200 in 15ms (next.js: 4ms, proxy.ts: 4ms, application-code: 6ms)
+ POST /pengelola 200 in 82ms (next.js: 7ms, proxy.ts: 7ms, application-code: 68ms)
+  └─ ƒ prosesBooking({}, {}) in 18ms src/app/pengelola/actions.ts
+ GET /manifest.webmanifest 200 in 17ms (next.js: 4ms, proxy.ts: 8ms, application-code: 5ms)
+ GET /pengelola 200 in 36ms (next.js: 7ms, proxy.ts: 8ms, application-code: 22ms)
+ GET /pengelola 200 in 56ms (next.js: 4ms, proxy.ts: 7ms, application-code: 45ms)
+ GET /manifest.webmanifest 200 in 17ms (next.js: 3ms, proxy.ts: 9ms, application-code: 5ms)
+ GET /pengelola/riwayat 200 in 225ms (next.js: 142ms, proxy.ts: 7ms, application-code: 76ms)
+ GET /manifest.webmanifest 200 in 20ms (next.js: 6ms, proxy.ts: 7ms, application-code: 8ms)
+ GET /pengelola/kalender 200 in 100ms (next.js: 10ms, proxy.ts: 6ms, application-code: 84ms)
+ GET /manifest.webmanifest 200 in 12ms (next.js: 2ms, proxy.ts: 3ms, application-code: 6ms)
+ GET /login 200 in 45ms (next.js: 5ms, proxy.ts: 4ms, application-code: 36ms)
+ POST /pengelola/kalender 303 in 77ms (next.js: 4ms, proxy.ts: 6ms, application-code: 66ms)
+  └─ ƒ aksiLogout() in 5ms src/lib/auth-actions.ts
+ GET /manifest.webmanifest 200 in 18ms (next.js: 5ms, proxy.ts: 7ms, application-code: 7ms)
+ GET /pengelola 200 in 53ms (next.js: 3ms, proxy.ts: 5ms, application-code: 44ms)
+ POST /login 303 in 173ms (next.js: 6ms, proxy.ts: 6ms, application-code: 161ms)
+  └─ ƒ aksiLogin({}, {}) in 95ms src/app/login/actions.ts
+ GET /manifest.webmanifest 200 in 17ms (next.js: 5ms, proxy.ts: 5ms, application-code: 7ms)
+ GET /pengelola/riwayat 200 in 68ms (next.js: 6ms, proxy.ts: 7ms, application-code: 55ms)
+ GET /manifest.webmanifest 200 in 13ms (next.js: 4ms, proxy.ts: 5ms, application-code: 5ms)
+ GET /pengelola/riwayat?status=MENUNGGU 200 in 122ms (next.js: 5ms, proxy.ts: 6ms, application-code: 110ms)
+ GET /manifest.webmanifest 200 in 59ms (next.js: 21ms, proxy.ts: 22ms, application-code: 15ms)
+ GET /pengelola/riwayat?status=DISETUJUI 200 in 155ms (next.js: 6ms, proxy.ts: 7ms, application-code: 141ms)
+ GET /manifest.webmanifest 200 in 25ms (next.js: 7ms, proxy.ts: 10ms, application-code: 8ms)
+ GET /pengelola/riwayat 200 in 117ms (next.js: 6ms, proxy.ts: 6ms, application-code: 105ms)
+ GET /manifest.webmanifest 200 in 26ms (next.js: 11ms, proxy.ts: 8ms, application-code: 7ms)
+ GET /login 200 in 46ms (next.js: 4ms, proxy.ts: 7ms, application-code: 35ms)
+ POST /pengelola/riwayat 303 in 96ms (next.js: 7ms, proxy.ts: 9ms, application-code: 79ms)
+  └─ ƒ aksiLogout() in 9ms src/lib/auth-actions.ts
+ GET /manifest.webmanifest 200 in 16ms (next.js: 4ms, proxy.ts: 5ms, application-code: 6ms)
+ GET /bidang 200 in 136ms (next.js: 12ms, proxy.ts: 5ms, application-code: 118ms)
+ POST /login 303 in 241ms (next.js: 4ms, proxy.ts: 5ms, application-code: 232ms)
+  └─ ƒ aksiLogin({}, {}) in 79ms src/app/login/actions.ts
+ GET /manifest.webmanifest 200 in 20ms (next.js: 6ms, proxy.ts: 8ms, application-code: 6ms)
+ GET /bidang/jadwal?tanggal=2026-06-08 200 in 141ms (next.js: 67ms, proxy.ts: 8ms, application-code: 66ms)
+ GET /manifest.webmanifest 200 in 24ms (next.js: 6ms, proxy.ts: 10ms, application-code: 8ms)
+ GET /bidang/jadwal?tanggal=2026-06-09 200 in 73ms (next.js: 3ms, proxy.ts: 5ms, application-code: 64ms)
+ GET /manifest.webmanifest 200 in 13ms (next.js: 3ms, proxy.ts: 5ms, application-code: 6ms)
+ GET /bidang/jadwal?tanggal=2026-06-10 200 in 73ms (next.js: 4ms, proxy.ts: 7ms, application-code: 61ms)
+ GET /manifest.webmanifest 200 in 10ms (next.js: 2ms, proxy.ts: 4ms, application-code: 4ms)
+ GET /bidang/jadwal?tanggal=2026-06-11 200 in 69ms (next.js: 6ms, proxy.ts: 7ms, application-code: 55ms)
+ GET /manifest.webmanifest 200 in 9ms (next.js: 2ms, proxy.ts: 4ms, application-code: 2ms)
+ GET /bidang/jadwal?tanggal=2026-06-12 200 in 83ms (next.js: 7ms, proxy.ts: 7ms, application-code: 70ms)
+ GET /manifest.webmanifest 200 in 13ms (next.js: 3ms, proxy.ts: 5ms, application-code: 5ms)
+ GET /bidang/jadwal?tanggal=2026-06-13 200 in 77ms (next.js: 6ms, proxy.ts: 8ms, application-code: 63ms)
+ GET /manifest.webmanifest 200 in 13ms (next.js: 3ms, proxy.ts: 5ms, application-code: 5ms)
+ GET /bidang/jadwal?tanggal=2026-06-14 200 in 75ms (next.js: 5ms, proxy.ts: 6ms, application-code: 65ms)
+ GET /manifest.webmanifest 200 in 10ms (next.js: 3ms, proxy.ts: 3ms, application-code: 3ms)
+ GET /bidang/jadwal?tanggal=2026-06-15 200 in 65ms (next.js: 7ms, proxy.ts: 7ms, application-code: 51ms)
+ GET /manifest.webmanifest 200 in 39ms (next.js: 28ms, proxy.ts: 6ms, application-code: 5ms)
+ GET /bidang/jadwal?tanggal=2026-06-16 200 in 68ms (next.js: 6ms, proxy.ts: 6ms, application-code: 56ms)
+ GET /manifest.webmanifest 200 in 13ms (next.js: 3ms, proxy.ts: 4ms, application-code: 6ms)
+ GET /bidang/jadwal?tanggal=2026-06-15 200 in 69ms (next.js: 6ms, proxy.ts: 8ms, application-code: 55ms)
+ GET /manifest.webmanifest 200 in 9ms (next.js: 1902µs, proxy.ts: 4ms, application-code: 3ms)
+ GET /bidang/jadwal?tanggal=2026-06-14 200 in 66ms (next.js: 6ms, proxy.ts: 6ms, application-code: 54ms)
+ GET /manifest.webmanifest 200 in 11ms (next.js: 3ms, proxy.ts: 4ms, application-code: 4ms)
+ GET /bidang/jadwal?tanggal=2026-06-13 200 in 81ms (next.js: 5ms, proxy.ts: 7ms, application-code: 68ms)
+ GET /manifest.webmanifest 200 in 11ms (next.js: 3ms, proxy.ts: 4ms, application-code: 3ms)
+ GET /bidang/jadwal?tanggal=2026-06-12 200 in 62ms (next.js: 6ms, proxy.ts: 8ms, application-code: 48ms)
+ GET /manifest.webmanifest 200 in 14ms (next.js: 7ms, proxy.ts: 3ms, application-code: 4ms)
+ GET /bidang/jadwal?tanggal=2026-06-11 200 in 59ms (next.js: 5ms, proxy.ts: 6ms, application-code: 48ms)
+ GET /manifest.webmanifest 200 in 10ms (next.js: 2ms, proxy.ts: 5ms, application-code: 3ms)
+ GET /bidang/jadwal?tanggal=2026-06-10 200 in 70ms (next.js: 6ms, proxy.ts: 7ms, application-code: 57ms)
+ GET /manifest.webmanifest 200 in 10ms (next.js: 3ms, proxy.ts: 4ms, application-code: 3ms)
+ GET /bidang/jadwal?tanggal=2026-06-09 200 in 75ms (next.js: 6ms, proxy.ts: 7ms, application-code: 62ms)
+ GET /manifest.webmanifest 200 in 12ms (next.js: 3ms, proxy.ts: 5ms, application-code: 3ms)
+ GET /bidang/jadwal?tanggal=2026-06-08 200 in 75ms (next.js: 6ms, proxy.ts: 7ms, application-code: 62ms)
+ GET /manifest.webmanifest 200 in 14ms (next.js: 4ms, proxy.ts: 5ms, application-code: 6ms)
+ GET /bidang/jadwal?tanggal=2026-06-08 200 in 230ms (next.js: 4ms, proxy.ts: 6ms, application-code: 220ms)
+ GET /manifest.webmanifest 200 in 21ms (next.js: 8ms, proxy.ts: 7ms, application-code: 6ms)
+ GET /bidang/jadwal?tanggal=2026-06-08 200 in 129ms (next.js: 4ms, proxy.ts: 7ms, application-code: 118ms)
+ GET /manifest.webmanifest 200 in 21ms (next.js: 10ms, proxy.ts: 5ms, application-code: 7ms)
+ GET /bidang 200 in 103ms (next.js: 6ms, proxy.ts: 7ms, application-code: 90ms)
+ GET /manifest.webmanifest 200 in 11ms (next.js: 3ms, proxy.ts: 4ms, application-code: 4ms)
+ GET /bidang/jadwal 200 in 69ms (next.js: 5ms, proxy.ts: 7ms, application-code: 58ms)
+ GET /manifest.webmanifest 200 in 11ms (next.js: 3ms, proxy.ts: 4ms, application-code: 4ms)
+ GET /bidang 200 in 99ms (next.js: 5ms, proxy.ts: 5ms, application-code: 89ms)
+ GET /manifest.webmanifest 200 in 15ms (next.js: 5ms, proxy.ts: 5ms, application-code: 5ms)
+ GET /bidang/kalender 200 in 103ms (next.js: 9ms, proxy.ts: 9ms, application-code: 85ms)
+ GET /manifest.webmanifest 200 in 26ms (next.js: 4ms, proxy.ts: 11ms, application-code: 11ms)
+ GET /bidang/jadwal?tanggal=2026-06-21 200 in 75ms (next.js: 4ms, proxy.ts: 6ms, application-code: 65ms)
+ GET /manifest.webmanifest 200 in 16ms (next.js: 4ms, proxy.ts: 6ms, application-code: 6ms)
+ GET /bidang/kalender 200 in 81ms (next.js: 6ms, proxy.ts: 7ms, application-code: 68ms)
+ GET /manifest.webmanifest 200 in 12ms (next.js: 3ms, proxy.ts: 4ms, application-code: 4ms)
+ GET /bidang 200 in 92ms (next.js: 5ms, proxy.ts: 7ms, application-code: 79ms)
+ GET /manifest.webmanifest 200 in 13ms (next.js: 5ms, proxy.ts: 4ms, application-code: 5ms)
+ GET /bidang/jadwal 200 in 62ms (next.js: 6ms, proxy.ts: 8ms, application-code: 48ms)
+ GET /manifest.webmanifest 200 in 9ms (next.js: 3ms, proxy.ts: 4ms, application-code: 3ms)
+ GET /bidang 200 in 91ms (next.js: 4ms, proxy.ts: 5ms, application-code: 82ms)
+ GET /manifest.webmanifest 200 in 18ms (next.js: 5ms, proxy.ts: 6ms, application-code: 7ms)
+ GET /bidang/kalender 200 in 85ms (next.js: 4ms, proxy.ts: 5ms, application-code: 76ms)
+ GET /manifest.webmanifest 200 in 12ms (next.js: 3ms, proxy.ts: 5ms, application-code: 4ms)
+ GET /bidang 200 in 96ms (next.js: 6ms, proxy.ts: 6ms, application-code: 84ms)
+ GET /manifest.webmanifest 200 in 12ms (next.js: 3ms, proxy.ts: 5ms, application-code: 5ms)
+ GET /bidang/kalender 200 in 89ms (next.js: 6ms, proxy.ts: 6ms, application-code: 77ms)
+ GET /manifest.webmanifest 200 in 12ms (next.js: 3ms, proxy.ts: 4ms, application-code: 5ms)
+ GET /bidang 200 in 86ms (next.js: 6ms, proxy.ts: 6ms, application-code: 73ms)
+ GET /manifest.webmanifest 200 in 9ms (next.js: 3ms, proxy.ts: 3ms, application-code: 3ms)
+ GET /bidang/jadwal 200 in 248ms (next.js: 7ms, proxy.ts: 7ms, application-code: 235ms)
+ GET /manifest.webmanifest 200 in 23ms (next.js: 6ms, proxy.ts: 7ms, application-code: 9ms)
+⨯ Error: Route /bidang/notifikasi used "revalidatePath /bidang" during render which is unsupported. To ensure revalidation is performed consistently it must always happen outside of renders and cached functions. See more info here: https://nextjs.org/docs/app/building-your-application/rendering/static-and-dynamic#dynamic-rendering
+    at HalamanNotifikasi (src\app\bidang\notifikasi\page.tsx:37:19)
+  35 |       data: { sudahDibaca: true },
+  36 |     });
+> 37 |     revalidatePath("/bidang");
+     |                   ^
+  38 |   }
+  39 |
+  40 |   return ( {
+  digest: '2029141334@E7'
+}
+ GET /bidang/notifikasi 200 in 3.4s (next.js: 3.1s, proxy.ts: 5ms, application-code: 309ms)
+[browser] Uncaught Error: Route /bidang/notifikasi used "revalidatePath /bidang" during render which is unsupported. To ensure revalidation is performed consistently it must always happen outside of renders and cached functions. See more info here: https://nextjs.org/docs/app/building-your-application/rendering/static-and-dynamic#dynamic-rendering
+    at HalamanNotifikasi (src\app\bidang\notifikasi\page.tsx:37:19)
+  35 |       data: { sudahDibaca: true },
+  36 |     });
+> 37 |     revalidatePath("/bidang");
+     |                   ^
+  38 |   }
+  39 |
+  40 |   return (
+ GET / 307 in 128ms (next.js: 19ms, proxy.ts: 10ms, application-code: 99ms)
+ GET /bidang 200 in 341ms (next.js: 5ms, proxy.ts: 6ms, application-code: 330ms)
+ GET /manifest.webmanifest 200 in 22ms (next.js: 6ms, proxy.ts: 9ms, application-code: 8ms)
+ GET /bidang/booking/baru 200 in 58ms (next.js: 8ms, proxy.ts: 6ms, application-code: 44ms)
+ GET /manifest.webmanifest 200 in 22ms (next.js: 7ms, proxy.ts: 10ms, application-code: 5ms)
+ GET /bidang/jadwal 200 in 88ms (next.js: 6ms, proxy.ts: 7ms, application-code: 76ms)
+ GET /manifest.webmanifest 200 in 11ms (next.js: 3ms, proxy.ts: 5ms, application-code: 3ms)
+ GET /manifest.webmanifest 200 in 15ms (next.js: 4ms, proxy.ts: 4ms, application-code: 7ms)
+ GET /bidang/jadwal?tanggal=2026-06-15 200 in 72ms (next.js: 6ms, proxy.ts: 7ms, application-code: 59ms)
+ GET /manifest.webmanifest 200 in 18ms (next.js: 4ms, proxy.ts: 6ms, application-code: 8ms)
+ GET /bidang/jadwal?tanggal=2026-06-16 200 in 72ms (next.js: 4ms, proxy.ts: 7ms, application-code: 60ms)
+ GET /manifest.webmanifest 200 in 14ms (next.js: 3ms, proxy.ts: 6ms, application-code: 4ms)
+ GET /bidang/jadwal?tanggal=2026-06-17 200 in 77ms (next.js: 5ms, proxy.ts: 6ms, application-code: 66ms)
+ GET /manifest.webmanifest 200 in 15ms (next.js: 5ms, proxy.ts: 5ms, application-code: 5ms)
+ GET /bidang/jadwal?tanggal=2026-06-18 200 in 79ms (next.js: 5ms, proxy.ts: 8ms, application-code: 66ms)
+ GET /manifest.webmanifest 200 in 11ms (next.js: 3ms, proxy.ts: 3ms, application-code: 4ms)
+ GET /bidang/jadwal?tanggal=2026-06-19 200 in 79ms (next.js: 5ms, proxy.ts: 7ms, application-code: 68ms)
+ GET /manifest.webmanifest 200 in 11ms (next.js: 3ms, proxy.ts: 4ms, application-code: 4ms)
+ GET /bidang/jadwal?tanggal=2026-06-20 200 in 78ms (next.js: 7ms, proxy.ts: 7ms, application-code: 65ms)
+ GET /manifest.webmanifest 200 in 12ms (next.js: 3ms, proxy.ts: 5ms, application-code: 4ms)
+ GET /bidang/jadwal?tanggal=2026-06-21 200 in 79ms (next.js: 6ms, proxy.ts: 5ms, application-code: 68ms)
+ GET /manifest.webmanifest 200 in 12ms (next.js: 3ms, proxy.ts: 4ms, application-code: 4ms)
+ GET /bidang/jadwal?tanggal=2026-06-22 200 in 85ms (next.js: 5ms, proxy.ts: 9ms, application-code: 71ms)
+ GET /manifest.webmanifest 200 in 12ms (next.js: 3ms, proxy.ts: 4ms, application-code: 4ms)
+ GET /bidang/jadwal?tanggal=2026-06-23 200 in 75ms (next.js: 5ms, proxy.ts: 7ms, application-code: 63ms)
+ GET /manifest.webmanifest 200 in 19ms (next.js: 5ms, proxy.ts: 7ms, application-code: 7ms)
+ GET /bidang/jadwal?tanggal=2026-06-24 200 in 70ms (next.js: 6ms, proxy.ts: 8ms, application-code: 56ms)
+ GET /manifest.webmanifest 200 in 13ms (next.js: 2ms, proxy.ts: 6ms, application-code: 4ms)
+ GET /bidang/jadwal?tanggal=2026-06-25 200 in 69ms (next.js: 5ms, proxy.ts: 5ms, application-code: 60ms)
+ GET /manifest.webmanifest 200 in 14ms (next.js: 4ms, proxy.ts: 5ms, application-code: 5ms)
+ GET /bidang 200 in 83ms (next.js: 4ms, proxy.ts: 7ms, application-code: 72ms)
+ GET /manifest.webmanifest 200 in 19ms (next.js: 6ms, proxy.ts: 8ms, application-code: 5ms)
+ GET /bidang/kalender 200 in 103ms (next.js: 8ms, proxy.ts: 10ms, application-code: 85ms)
+ GET /manifest.webmanifest 200 in 19ms (next.js: 4ms, proxy.ts: 6ms, application-code: 9ms)
+ GET /bidang 200 in 86ms (next.js: 5ms, proxy.ts: 6ms, application-code: 75ms)
+ GET /manifest.webmanifest 200 in 15ms (next.js: 4ms, proxy.ts: 5ms, application-code: 5ms)
+ GET /bidang/kalender 200 in 90ms (next.js: 6ms, proxy.ts: 7ms, application-code: 77ms)
+ GET /manifest.webmanifest 200 in 12ms (next.js: 3ms, proxy.ts: 4ms, application-code: 5ms)
+ GET /bidang/kalender 200 in 85ms (next.js: 6ms, proxy.ts: 5ms, application-code: 74ms)
+ GET /manifest.webmanifest 200 in 13ms (next.js: 4ms, proxy.ts: 5ms, application-code: 5ms)
+ GET /bidang/jadwal 200 in 75ms (next.js: 4ms, proxy.ts: 6ms, application-code: 65ms)
+ GET /manifest.webmanifest 200 in 13ms (next.js: 3ms, proxy.ts: 5ms, application-code: 5ms)
+ GET /bidang 200 in 93ms (next.js: 4ms, proxy.ts: 6ms, application-code: 83ms)
+ GET /manifest.webmanifest 200 in 18ms (next.js: 4ms, proxy.ts: 6ms, application-code: 8ms)
+ GET /login 200 in 44ms (next.js: 6ms, proxy.ts: 4ms, application-code: 34ms)
+ POST /bidang 303 in 97ms (next.js: 6ms, proxy.ts: 9ms, application-code: 83ms)
+  └─ ƒ aksiLogout() in 5ms src/lib/auth-actions.ts
+ GET /manifest.webmanifest 200 in 22ms (next.js: 9ms, proxy.ts: 7ms, application-code: 5ms)
+ GET /pengelola 200 in 198ms (next.js: 6ms, proxy.ts: 5ms, application-code: 187ms)
+ POST /login 303 in 353ms (next.js: 5ms, proxy.ts: 7ms, application-code: 341ms)
+  └─ ƒ aksiLogin({}, {}) in 128ms src/app/login/actions.ts
+ GET /manifest.webmanifest 200 in 19ms (next.js: 5ms, proxy.ts: 6ms, application-code: 8ms)
+ GET /pengelola/ruangan 200 in 84ms (next.js: 8ms, proxy.ts: 5ms, application-code: 70ms)
+ GET /manifest.webmanifest 200 in 18ms (next.js: 5ms, proxy.ts: 4ms, application-code: 9ms)
+ GET /pengelola/ruangan/3/ubah 200 in 1015ms (next.js: 950ms, proxy.ts: 6ms, application-code: 58ms)
+ GET /manifest.webmanifest 200 in 31ms (next.js: 10ms, proxy.ts: 10ms, application-code: 11ms)
+ GET /pengelola/ruangan 200 in 108ms (next.js: 5ms, proxy.ts: 6ms, application-code: 96ms)
+ POST /pengelola/ruangan/3/ubah 303 in 178ms (next.js: 18ms, proxy.ts: 6ms, application-code: 154ms)
+  └─ ƒ ubahRuangan({}, {}) in 29ms src/app/pengelola/ruangan/actions.ts
+ GET /manifest.webmanifest 200 in 17ms (next.js: 5ms, proxy.ts: 7ms, application-code: 6ms)
+ GET /pengelola/ruangan/4/ubah 200 in 62ms (next.js: 17ms, proxy.ts: 5ms, application-code: 41ms)
+ GET /manifest.webmanifest 200 in 11ms (next.js: 3ms, proxy.ts: 5ms, application-code: 4ms)
+ GET /pengelola/ruangan 200 in 113ms (next.js: 6ms, proxy.ts: 8ms, application-code: 99ms)
+ POST /pengelola/ruangan/4/ubah 303 in 167ms (next.js: 15ms, proxy.ts: 6ms, application-code: 146ms)
+  └─ ƒ ubahRuangan({}, {}) in 13ms src/app/pengelola/ruangan/actions.ts
+ GET /manifest.webmanifest 200 in 15ms (next.js: 3ms, proxy.ts: 4ms, application-code: 7ms)
+ GET /pengelola/ruangan/3/ubah 200 in 72ms (next.js: 20ms, proxy.ts: 9ms, application-code: 43ms)
+ GET /manifest.webmanifest 200 in 12ms (next.js: 3ms, proxy.ts: 5ms, application-code: 4ms)
+ GET /pengelola/ruangan 200 in 122ms (next.js: 12ms, proxy.ts: 6ms, application-code: 104ms)
+ POST /pengelola/ruangan/3/ubah 303 in 168ms (next.js: 16ms, proxy.ts: 5ms, application-code: 147ms)
+  └─ ƒ ubahRuangan({}, {}) in 10ms src/app/pengelola/ruangan/actions.ts
+ GET /manifest.webmanifest 200 in 25ms (next.js: 9ms, proxy.ts: 8ms, application-code: 8ms)
+ GET /pengelola/ruangan/4/ubah 200 in 68ms (next.js: 17ms, proxy.ts: 6ms, application-code: 45ms)
+ GET /manifest.webmanifest 200 in 12ms (next.js: 4ms, proxy.ts: 5ms, application-code: 3ms)
+ GET /pengelola/ruangan 200 in 82ms (next.js: 6ms, proxy.ts: 7ms, application-code: 69ms)
+ GET /manifest.webmanifest 200 in 14ms (next.js: 3ms, proxy.ts: 7ms, application-code: 4ms)
+ GET /pengelola/ruangan/3/ubah 200 in 65ms (next.js: 16ms, proxy.ts: 6ms, application-code: 42ms)
+ GET /manifest.webmanifest 200 in 13ms (next.js: 4ms, proxy.ts: 6ms, application-code: 3ms)
+ GET /pengelola/ruangan 200 in 110ms (next.js: 5ms, proxy.ts: 6ms, application-code: 99ms)
+ POST /pengelola/ruangan/3/ubah 303 in 188ms (next.js: 23ms, proxy.ts: 9ms, application-code: 156ms)
+  └─ ƒ ubahRuangan({}, {}) in 20ms src/app/pengelola/ruangan/actions.ts
+ GET /manifest.webmanifest 200 in 21ms (next.js: 7ms, proxy.ts: 7ms, application-code: 7ms)
+ GET /pengelola/ruangan/4/ubah 200 in 74ms (next.js: 19ms, proxy.ts: 8ms, application-code: 47ms)
+ GET /manifest.webmanifest 200 in 11ms (next.js: 2ms, proxy.ts: 4ms, application-code: 4ms)
+ GET /pengelola/ruangan 200 in 83ms (next.js: 5ms, proxy.ts: 5ms, application-code: 73ms)
+ POST /pengelola/ruangan/4/ubah 303 in 133ms (next.js: 14ms, proxy.ts: 6ms, application-code: 113ms)
+  └─ ƒ ubahRuangan({}, {}) in 16ms src/app/pengelola/ruangan/actions.ts
+ GET /manifest.webmanifest 200 in 15ms (next.js: 4ms, proxy.ts: 5ms, application-code: 5ms)
+ GET /pengelola/ruangan/5/ubah 200 in 60ms (next.js: 13ms, proxy.ts: 6ms, application-code: 41ms)
+ GET /manifest.webmanifest 200 in 15ms (next.js: 4ms, proxy.ts: 5ms, application-code: 6ms)
+ GET /pengelola/ruangan 200 in 97ms (next.js: 5ms, proxy.ts: 7ms, application-code: 85ms)
+ POST /pengelola/ruangan/5/ubah 303 in 150ms (next.js: 15ms, proxy.ts: 6ms, application-code: 129ms)
+  └─ ƒ ubahRuangan({}, {}) in 14ms src/app/pengelola/ruangan/actions.ts
+ GET /manifest.webmanifest 200 in 14ms (next.js: 4ms, proxy.ts: 5ms, application-code: 5ms)
+ GET /pengelola/ruangan/1/ubah 200 in 62ms (next.js: 14ms, proxy.ts: 6ms, application-code: 43ms)
+ GET /manifest.webmanifest 200 in 15ms (next.js: 4ms, proxy.ts: 6ms, application-code: 5ms)
+ GET /pengelola/ruangan 200 in 68ms (next.js: 5ms, proxy.ts: 7ms, application-code: 56ms)
+ GET /manifest.webmanifest 200 in 15ms (next.js: 4ms, proxy.ts: 6ms, application-code: 4ms)
+ GET /pengelola/ruangan/baru 200 in 190ms (next.js: 144ms, proxy.ts: 6ms, application-code: 40ms)
+ GET /manifest.webmanifest 200 in 14ms (next.js: 4ms, proxy.ts: 5ms, application-code: 5ms)
+ GET /pengelola/ruangan 200 in 60ms (next.js: 4ms, proxy.ts: 5ms, application-code: 51ms)
+ GET /manifest.webmanifest 200 in 15ms (next.js: 3ms, proxy.ts: 7ms, application-code: 5ms)
+✓ Compiled in 736ms
+ GET /pengelola/ruangan 200 in 620ms (next.js: 233ms, proxy.ts: 113ms, application-code: 274ms)
+ GET /pengelola/ruangan 200 in 149ms (next.js: 10ms, proxy.ts: 14ms, application-code: 126ms)
+ GET /manifest.webmanifest 200 in 92ms (next.js: 73ms, proxy.ts: 8ms, application-code: 12ms)
+ GET /pengelola 200 in 213ms (next.js: 74ms, proxy.ts: 8ms, application-code: 130ms)
+ GET /manifest.webmanifest 200 in 20ms (next.js: 7ms, proxy.ts: 6ms, application-code: 7ms)
+ GET /pengelola/riwayat 200 in 123ms (next.js: 38ms, proxy.ts: 7ms, application-code: 78ms)
+ GET /manifest.webmanifest 200 in 13ms (next.js: 1782µs, proxy.ts: 5ms, application-code: 7ms)
+ GET /pengelola/kalender 200 in 150ms (next.js: 46ms, proxy.ts: 7ms, application-code: 96ms)
+ GET /manifest.webmanifest 200 in 24ms (next.js: 6ms, proxy.ts: 9ms, application-code: 8ms)
+✓ Compiled in 580ms
+ GET /pengelola/kalender 200 in 668ms (next.js: 147ms, proxy.ts: 103ms, application-code: 418ms)
+ GET /pengelola/kalender 200 in 304ms (next.js: 7ms, proxy.ts: 10ms, application-code: 286ms)
+ GET /pengelola/kalender 200 in 167ms (next.js: 7ms, proxy.ts: 61ms, application-code: 100ms)
+ GET /manifest.webmanifest 200 in 74ms (next.js: 58ms, proxy.ts: 5ms, application-code: 11ms)
+✓ Compiled in 86ms
+ GET /pengelola/kalender 200 in 972ms (next.js: 125ms, proxy.ts: 108ms, application-code: 739ms)
+ GET /pengelola/kalender 200 in 648ms (next.js: 9ms, proxy.ts: 76ms, application-code: 563ms)
+ GET /pengelola/kalender 200 in 489ms (next.js: 80ms, proxy.ts: 104ms, application-code: 305ms)
+ GET /pengelola/kalender 200 in 492ms (next.js: 48ms, proxy.ts: 106ms, application-code: 338ms)
+ GET /pengelola/kalender 200 in 489ms (next.js: 130ms, proxy.ts: 103ms, application-code: 256ms)
+ GET /pengelola/kalender 200 in 498ms (next.js: 11ms, proxy.ts: 109ms, application-code: 378ms)
+ GET /manifest.webmanifest 200 in 74ms (next.js: 57ms, proxy.ts: 6ms, application-code: 11ms)
+✓ Compiled in 95ms
+ GET /pengelola/kalender 200 in 833ms (next.js: 133ms, proxy.ts: 94ms, application-code: 606ms)
+ GET /pengelola/kalender 200 in 588ms (next.js: 5ms, proxy.ts: 51ms, application-code: 533ms)
+ GET /pengelola/kalender 200 in 547ms (next.js: 47ms, proxy.ts: 58ms, application-code: 442ms)
+ GET /pengelola/kalender 200 in 549ms (next.js: 16ms, proxy.ts: 58ms, application-code: 475ms)
+ GET /pengelola/kalender 200 in 581ms (next.js: 97ms, proxy.ts: 57ms, application-code: 427ms)
+ GET /pengelola/kalender 200 in 581ms (next.js: 129ms, proxy.ts: 61ms, application-code: 391ms)
+ GET /pengelola/kalender 200 in 218ms (next.js: 13ms, proxy.ts: 7ms, application-code: 198ms)
+ GET /pengelola/kalender 200 in 108ms (next.js: 8ms, proxy.ts: 8ms, application-code: 92ms)
+ GET /manifest.webmanifest 200 in 71ms (next.js: 52ms, proxy.ts: 10ms, application-code: 9ms)
+✓ Compiled in 184ms
+✓ Compiled in 159ms
+ GET /pengelola/kalender 200 in 927ms (next.js: 120ms, proxy.ts: 84ms, application-code: 724ms)
+ GET /pengelola/kalender 200 in 1105ms (next.js: 6ms, proxy.ts: 52ms, application-code: 1047ms)
+ GET /pengelola/kalender 200 in 1017ms (next.js: 20ms, proxy.ts: 65ms, application-code: 932ms)
+ GET /pengelola/kalender 200 in 1531ms (next.js: 138ms, proxy.ts: 109ms, application-code: 1284ms)
+ GET /pengelola/kalender 200 in 1198ms (next.js: 573ms, proxy.ts: 135ms, application-code: 489ms)
+ GET /pengelola/kalender 200 in 966ms (next.js: 432ms, proxy.ts: 8ms, application-code: 527ms)
+ GET /pengelola/kalender 200 in 1204ms (next.js: 777ms, proxy.ts: 135ms, application-code: 293ms)
+ GET /pengelola/kalender 307 in 1829ms (next.js: 619ms, proxy.ts: 230ms, application-code: 980ms)
+ GET /pengelola/kalender 200 in 713ms (next.js: 18ms, proxy.ts: 227ms, application-code: 467ms)
+ GET /pengelola/kalender 200 in 833ms (next.js: 52ms, proxy.ts: 395ms, application-code: 386ms)
+ GET /pengelola/kalender 200 in 506ms (next.js: 97ms, proxy.ts: 67ms, application-code: 342ms)
+ GET /pengelola/kalender 200 in 843ms (next.js: 23ms, proxy.ts: 389ms, application-code: 430ms)
+ GET /pengelola 200 in 864ms (next.js: 208ms, proxy.ts: 8ms, application-code: 648ms)
+ GET /manifest.webmanifest 200 in 78ms (next.js: 56ms, proxy.ts: 6ms, application-code: 16ms)
+ GET /pengelola 200 in 819ms (next.js: 173ms, proxy.ts: 95ms, application-code: 550ms)
+ GET /pengelola 200 in 486ms (next.js: 32ms, proxy.ts: 22ms, application-code: 431ms)
+ GET /pengelola 200 in 380ms (next.js: 46ms, proxy.ts: 27ms, application-code: 307ms)
+ GET /pengelola 200 in 379ms (next.js: 87ms, proxy.ts: 25ms, application-code: 267ms)
+ GET /pengelola 200 in 378ms (next.js: 85ms, proxy.ts: 57ms, application-code: 236ms)
+ GET /manifest.webmanifest 200 in 84ms (next.js: 61ms, proxy.ts: 7ms, application-code: 16ms)
+ GET /login 200 in 373ms (next.js: 146ms, proxy.ts: 10ms, application-code: 217ms)
+ GET /pengelola 200 in 140ms (next.js: 6ms, proxy.ts: 8ms, application-code: 126ms)
+ POST /login 303 in 316ms (next.js: 8ms, proxy.ts: 9ms, application-code: 299ms)
+  └─ ƒ aksiLogin({}, {}) in 115ms src/app/login/actions.ts
+ GET /login 200 in 81ms (next.js: 4ms, proxy.ts: 5ms, application-code: 72ms)
+ GET /bidang 200 in 544ms (next.js: 285ms, proxy.ts: 8ms, application-code: 251ms)
+ POST /login 303 in 684ms (next.js: 5ms, proxy.ts: 7ms, application-code: 671ms)
+  └─ ƒ aksiLogin({}, {}) in 101ms src/app/login/actions.ts
+ GET /login 200 in 43ms (next.js: 5ms, proxy.ts: 4ms, application-code: 35ms)
+ POST /pengelola 303 in 90ms (next.js: 6ms, proxy.ts: 6ms, application-code: 78ms)
+  └─ ƒ aksiLogout() in 13ms src/lib/auth-actions.ts
+ GET /manifest.webmanifest 200 in 21ms (next.js: 6ms, proxy.ts: 6ms, application-code: 9ms)
+ GET /bidang 200 in 167ms (next.js: 5ms, proxy.ts: 6ms, application-code: 156ms)
+ POST /login 303 in 306ms (next.js: 5ms, proxy.ts: 6ms, application-code: 295ms)
+  └─ ƒ aksiLogin({}, {}) in 106ms src/app/login/actions.ts
+ GET /manifest.webmanifest 200 in 17ms (next.js: 4ms, proxy.ts: 7ms, application-code: 6ms)
+✓ Compiled in 692ms
+ GET /bidang 200 in 1618ms (next.js: 391ms, proxy.ts: 191ms, application-code: 1036ms)
+ GET /bidang 200 in 913ms (next.js: 563ms, proxy.ts: 199ms, application-code: 151ms)
+ GET /manifest.webmanifest 200 in 122ms (next.js: 86ms, proxy.ts: 18ms, application-code: 17ms)
+ GET /login 200 in 431ms (next.js: 75ms, proxy.ts: 7ms, application-code: 349ms)
+ GET /pengelola 200 in 216ms (next.js: 68ms, proxy.ts: 6ms, application-code: 142ms)
+ POST /login 303 in 377ms (next.js: 5ms, proxy.ts: 7ms, application-code: 365ms)
+  └─ ƒ aksiLogin({}, {}) in 128ms src/app/login/actions.ts
+ GET /login 200 in 93ms (next.js: 6ms, proxy.ts: 6ms, application-code: 81ms)
+ GET /bidang 200 in 150ms (next.js: 5ms, proxy.ts: 6ms, application-code: 139ms)
+ POST /login 303 in 312ms (next.js: 5ms, proxy.ts: 7ms, application-code: 300ms)
+  └─ ƒ aksiLogin({}, {}) in 139ms src/app/login/actions.ts
+ GET /bidang?tanggal=2026-06-12 200 in 109ms (next.js: 4ms, proxy.ts: 9ms, application-code: 96ms)
+ GET /manifest.webmanifest 200 in 13ms (next.js: 4ms, proxy.ts: 6ms, application-code: 4ms)
+ GET /bidang?tanggal=2026-06-13 200 in 106ms (next.js: 6ms, proxy.ts: 10ms, application-code: 90ms)
+ GET /manifest.webmanifest 200 in 18ms (next.js: 4ms, proxy.ts: 6ms, application-code: 8ms)
+ GET /bidang?tanggal=2026-06-14 200 in 92ms (next.js: 6ms, proxy.ts: 7ms, application-code: 79ms)
+ GET /manifest.webmanifest 200 in 12ms (next.js: 3ms, proxy.ts: 5ms, application-code: 5ms)
+ GET /bidang?tanggal=2026-06-21 200 in 104ms (next.js: 6ms, proxy.ts: 10ms, application-code: 88ms)
+ GET /manifest.webmanifest 200 in 14ms (next.js: 3ms, proxy.ts: 5ms, application-code: 6ms)
+ GET /bidang?tanggal=2026-06-19 200 in 104ms (next.js: 5ms, proxy.ts: 7ms, application-code: 92ms)
+ GET /manifest.webmanifest 200 in 12ms (next.js: 3ms, proxy.ts: 4ms, application-code: 5ms)
+ GET /bidang?tanggal=2026-06-18 200 in 117ms (next.js: 4ms, proxy.ts: 6ms, application-code: 106ms)
+ GET /manifest.webmanifest 200 in 15ms (next.js: 3ms, proxy.ts: 5ms, application-code: 6ms)
+ GET /bidang?tanggal=2026-06-13 200 in 113ms (next.js: 12ms, proxy.ts: 6ms, application-code: 94ms)
+ GET /manifest.webmanifest 200 in 14ms (next.js: 3ms, proxy.ts: 5ms, application-code: 6ms)
+ GET /bidang?tanggal=2026-06-07 200 in 100ms (next.js: 5ms, proxy.ts: 7ms, application-code: 88ms)
+ GET /manifest.webmanifest 200 in 20ms (next.js: 5ms, proxy.ts: 7ms, application-code: 9ms)
+ GET /bidang?tanggal=2026-06-14 200 in 113ms (next.js: 5ms, proxy.ts: 7ms, application-code: 101ms)
+ GET /manifest.webmanifest 200 in 20ms (next.js: 5ms, proxy.ts: 8ms, application-code: 7ms)
+ GET /bidang?tanggal=2026-06-21 200 in 132ms (next.js: 5ms, proxy.ts: 5ms, application-code: 121ms)
+ GET /manifest.webmanifest 200 in 19ms (next.js: 6ms, proxy.ts: 6ms, application-code: 6ms)
+ GET /bidang?tanggal=2026-06-28 200 in 96ms (next.js: 5ms, proxy.ts: 8ms, application-code: 83ms)
+ GET /manifest.webmanifest 200 in 12ms (next.js: 3ms, proxy.ts: 4ms, application-code: 5ms)
+ GET /bidang/booking/baru 200 in 293ms (next.js: 231ms, proxy.ts: 8ms, application-code: 54ms)
+ GET /manifest.webmanifest 200 in 10ms (next.js: 3ms, proxy.ts: 4ms, application-code: 3ms)
+ GET /bidang/notifikasi 200 in 231ms (next.js: 162ms, proxy.ts: 8ms, application-code: 61ms)
+ GET /manifest.webmanifest 200 in 14ms (next.js: 4ms, proxy.ts: 5ms, application-code: 5ms)
+ GET /bidang 200 in 95ms (next.js: 4ms, proxy.ts: 5ms, application-code: 86ms)
+ GET /manifest.webmanifest 200 in 13ms (next.js: 3ms, proxy.ts: 5ms, application-code: 5ms)
+ GET /bidang/notifikasi 200 in 58ms (next.js: 6ms, proxy.ts: 6ms, application-code: 46ms)
+ GET /manifest.webmanifest 200 in 13ms (next.js: 3ms, proxy.ts: 5ms, application-code: 5ms)
+ GET /bidang 200 in 104ms (next.js: 7ms, proxy.ts: 6ms, application-code: 91ms)
+ GET /manifest.webmanifest 200 in 15ms (next.js: 4ms, proxy.ts: 4ms, application-code: 7ms)
+ GET /login 200 in 111ms (next.js: 7ms, proxy.ts: 7ms, application-code: 96ms)
+ GET /bidang 200 in 310ms (next.js: 7ms, proxy.ts: 7ms, application-code: 296ms)
+ POST /login 303 in 523ms (next.js: 10ms, proxy.ts: 11ms, application-code: 501ms)
+  └─ ƒ aksiLogin({}, {}) in 161ms src/app/login/actions.ts
+✓ Compiled in 246ms
+ GET /bidang 200 in 773ms (next.js: 283ms, proxy.ts: 114ms, application-code: 376ms)
+ GET /bidang 200 in 245ms (next.js: 7ms, proxy.ts: 79ms, application-code: 159ms)
+ GET /manifest.webmanifest 200 in 90ms (next.js: 72ms, proxy.ts: 8ms, application-code: 10ms)
+✓ Compiled in 180ms
+ GET /bidang 200 in 496ms (next.js: 163ms, proxy.ts: 66ms, application-code: 268ms)
+ GET /bidang 200 in 171ms (next.js: 32ms, proxy.ts: 30ms, application-code: 109ms)
+ GET /manifest.webmanifest 200 in 60ms (next.js: 39ms, proxy.ts: 12ms, application-code: 9ms)
+✓ Compiled in 49ms
+ GET /bidang 200 in 425ms (next.js: 170ms, proxy.ts: 69ms, application-code: 187ms)
+ GET /bidang 200 in 130ms (next.js: 25ms, proxy.ts: 29ms, application-code: 76ms)
+ GET /manifest.webmanifest 200 in 48ms (next.js: 38ms, proxy.ts: 3ms, application-code: 7ms)
+✓ Compiled in 64ms
+ GET /bidang 200 in 673ms (next.js: 206ms, proxy.ts: 101ms, application-code: 366ms)
+ GET /bidang 200 in 260ms (next.js: 7ms, proxy.ts: 68ms, application-code: 185ms)
+ GET /manifest.webmanifest 200 in 72ms (next.js: 55ms, proxy.ts: 6ms, application-code: 12ms)
+✓ Compiled in 60ms
+ GET /bidang 200 in 134ms (next.js: 3ms, proxy.ts: 6ms, application-code: 125ms)
+ GET /manifest.webmanifest 200 in 68ms (next.js: 53ms, proxy.ts: 5ms, application-code: 9ms)
+ GET /bidang 200 in 644ms (next.js: 200ms, proxy.ts: 81ms, application-code: 363ms)
+✓ Compiled in 53ms
+ GET /bidang 200 in 567ms (next.js: 196ms, proxy.ts: 87ms, application-code: 284ms)
+ GET /bidang 200 in 187ms (next.js: 3ms, proxy.ts: 57ms, application-code: 127ms)
+ GET /manifest.webmanifest 200 in 77ms (next.js: 60ms, proxy.ts: 6ms, application-code: 12ms)
+ GET /bidang 200 in 1499ms (next.js: 472ms, proxy.ts: 5ms, application-code: 1022ms)
+ GET /bidang 200 in 834ms (next.js: 196ms, proxy.ts: 159ms, application-code: 480ms)
+ GET /bidang 200 in 386ms (next.js: 17ms, proxy.ts: 80ms, application-code: 289ms)
+ GET /bidang 200 in 378ms (next.js: 49ms, proxy.ts: 71ms, application-code: 258ms)
+ GET /manifest.webmanifest 200 in 76ms (next.js: 58ms, proxy.ts: 6ms, application-code: 11ms)
+✓ Compiled in 117ms
+ GET /bidang 200 in 642ms (next.js: 215ms, proxy.ts: 97ms, application-code: 330ms)
+ GET /bidang 200 in 230ms (next.js: 63ms, proxy.ts: 29ms, application-code: 137ms)
+ GET /manifest.webmanifest 200 in 76ms (next.js: 61ms, proxy.ts: 6ms, application-code: 10ms)
+✓ Compiled in 123ms
+ GET /bidang 200 in 616ms (next.js: 210ms, proxy.ts: 78ms, application-code: 328ms)
+ GET /bidang 200 in 225ms (next.js: 21ms, proxy.ts: 68ms, application-code: 136ms)
+ GET /manifest.webmanifest 200 in 70ms (next.js: 56ms, proxy.ts: 3ms, application-code: 11ms)
+✓ Compiled in 63ms
+ GET /bidang 200 in 607ms (next.js: 185ms, proxy.ts: 100ms, application-code: 323ms)
+ GET /bidang 200 in 242ms (next.js: 21ms, proxy.ts: 69ms, application-code: 152ms)
+ GET /manifest.webmanifest 200 in 123ms (next.js: 105ms, proxy.ts: 7ms, application-code: 11ms)
+✓ Compiled in 60ms
+ GET /bidang 200 in 682ms (next.js: 227ms, proxy.ts: 106ms, application-code: 349ms)
+ GET /bidang 200 in 228ms (next.js: 22ms, proxy.ts: 60ms, application-code: 146ms)
+ GET /manifest.webmanifest 200 in 76ms (next.js: 57ms, proxy.ts: 8ms, application-code: 11ms)
+✓ Compiled in 54ms
+ GET /bidang 200 in 641ms (next.js: 210ms, proxy.ts: 86ms, application-code: 344ms)
+ GET /bidang 200 in 246ms (next.js: 5ms, proxy.ts: 19ms, application-code: 221ms)
+ GET /manifest.webmanifest 200 in 73ms (next.js: 56ms, proxy.ts: 5ms, application-code: 12ms)
+✓ Compiled in 55ms
+ GET /bidang 200 in 618ms (next.js: 185ms, proxy.ts: 102ms, application-code: 331ms)
+ GET /bidang 200 in 242ms (next.js: 5ms, proxy.ts: 8ms, application-code: 229ms)
+ GET /manifest.webmanifest 200 in 67ms (next.js: 52ms, proxy.ts: 5ms, application-code: 9ms)
+✓ Compiled in 59ms
+ GET /bidang 200 in 601ms (next.js: 196ms, proxy.ts: 85ms, application-code: 319ms)
+ GET /bidang 200 in 226ms (next.js: 20ms, proxy.ts: 74ms, application-code: 132ms)
+ GET /manifest.webmanifest 200 in 71ms (next.js: 54ms, proxy.ts: 8ms, application-code: 9ms)
+✓ Compiled in 152ms
+ GET /bidang 200 in 1271ms (next.js: 8ms, proxy.ts: 6ms, application-code: 1257ms)
+ GET /bidang 200 in 942ms (next.js: 211ms, proxy.ts: 155ms, application-code: 576ms)
+ GET /bidang 200 in 480ms (next.js: 31ms, proxy.ts: 72ms, application-code: 377ms)
+ GET /bidang 200 in 478ms (next.js: 61ms, proxy.ts: 71ms, application-code: 346ms)
+ GET /bidang 200 in 478ms (next.js: 105ms, proxy.ts: 86ms, application-code: 287ms)
+ GET /manifest.webmanifest 200 in 64ms (next.js: 50ms, proxy.ts: 5ms, application-code: 9ms)
+ GET /login 200 in 307ms (next.js: 63ms, proxy.ts: 6ms, application-code: 239ms)
+ GET /bidang 200 in 184ms (next.js: 4ms, proxy.ts: 6ms, application-code: 174ms)
+ POST /login 303 in 347ms (next.js: 6ms, proxy.ts: 9ms, application-code: 333ms)
+  └─ ƒ aksiLogin({}, {}) in 121ms src/app/login/actions.ts
+ GET /bidang?bulan=7&tahun=2026 200 in 183ms (next.js: 5ms, proxy.ts: 13ms, application-code: 165ms)
+ GET /manifest.webmanifest 200 in 18ms (next.js: 4ms, proxy.ts: 6ms, application-code: 7ms)
+ GET /bidang?bulan=7&tahun=2026 200 in 148ms (next.js: 8ms, proxy.ts: 7ms, application-code: 133ms)
+ GET /manifest.webmanifest 200 in 14ms (next.js: 3ms, proxy.ts: 5ms, application-code: 5ms)
+ GET /bidang?bulan=7&tahun=2026 200 in 108ms (next.js: 6ms, proxy.ts: 8ms, application-code: 95ms)
+ GET /manifest.webmanifest 200 in 12ms (next.js: 3ms, proxy.ts: 4ms, application-code: 4ms)
+ GET /bidang?bulan=7&tahun=2026 200 in 137ms (next.js: 5ms, proxy.ts: 6ms, application-code: 126ms)
+ GET /manifest.webmanifest 200 in 10ms (next.js: 3ms, proxy.ts: 3ms, application-code: 5ms)
+ GET /bidang?bulan=7&tahun=2026 200 in 104ms (next.js: 6ms, proxy.ts: 7ms, application-code: 91ms)
+ GET /manifest.webmanifest 200 in 14ms (next.js: 3ms, proxy.ts: 6ms, application-code: 5ms)
+ GET /bidang?bulan=7&tahun=2026 200 in 177ms (next.js: 6ms, proxy.ts: 6ms, application-code: 165ms)
+ GET /manifest.webmanifest 200 in 15ms (next.js: 4ms, proxy.ts: 6ms, application-code: 4ms)
+ GET /bidang?bulan=7&tahun=2026 200 in 145ms (next.js: 11ms, proxy.ts: 6ms, application-code: 128ms)
+ GET /manifest.webmanifest 200 in 18ms (next.js: 5ms, proxy.ts: 8ms, application-code: 5ms)
+ GET /bidang?bulan=7&tahun=2026 200 in 133ms (next.js: 12ms, proxy.ts: 9ms, application-code: 113ms)
+ GET /manifest.webmanifest 200 in 14ms (next.js: 4ms, proxy.ts: 4ms, application-code: 6ms)
+ GET /bidang?bulan=7&tahun=2026 200 in 123ms (next.js: 4ms, proxy.ts: 5ms, application-code: 115ms)
+ GET /manifest.webmanifest 200 in 14ms (next.js: 4ms, proxy.ts: 5ms, application-code: 5ms)
+ GET /bidang?tanggal=2026-06-15 200 in 144ms (next.js: 5ms, proxy.ts: 8ms, application-code: 132ms)
+ GET /manifest.webmanifest 200 in 18ms (next.js: 5ms, proxy.ts: 6ms, application-code: 7ms)
+ GET /bidang?tanggal=2026-06-16 200 in 140ms (next.js: 7ms, proxy.ts: 7ms, application-code: 126ms)
+ GET /manifest.webmanifest 200 in 13ms (next.js: 3ms, proxy.ts: 5ms, application-code: 5ms)
+ GET /bidang?tanggal=2026-06-17 200 in 153ms (next.js: 9ms, proxy.ts: 6ms, application-code: 138ms)
+ GET /manifest.webmanifest 200 in 21ms (next.js: 6ms, proxy.ts: 8ms, application-code: 8ms)
+ GET /bidang?tanggal=2026-06-18 200 in 139ms (next.js: 4ms, proxy.ts: 8ms, application-code: 127ms)
+ GET /manifest.webmanifest 200 in 14ms (next.js: 3ms, proxy.ts: 6ms, application-code: 5ms)
+ GET /bidang?tanggal=2026-06-17 200 in 129ms (next.js: 5ms, proxy.ts: 7ms, application-code: 117ms)
+ GET /manifest.webmanifest 200 in 17ms (next.js: 4ms, proxy.ts: 8ms, application-code: 6ms)
+ GET /bidang?tanggal=2026-06-16 200 in 138ms (next.js: 6ms, proxy.ts: 7ms, application-code: 124ms)
+ GET /manifest.webmanifest 200 in 14ms (next.js: 4ms, proxy.ts: 5ms, application-code: 6ms)
+✓ Compiled in 150ms
+ GET /bidang?tanggal=2026-06-16 200 in 1582ms (next.js: 304ms, proxy.ts: 167ms, application-code: 1111ms)
+ GET /bidang?tanggal=2026-06-16 200 in 973ms (next.js: 20ms, proxy.ts: 24ms, application-code: 929ms)
+ GET /bidang?tanggal=2026-06-16 200 in 819ms (next.js: 233ms, proxy.ts: 132ms, application-code: 453ms)
+ GET /manifest.webmanifest 200 in 127ms (next.js: 98ms, proxy.ts: 15ms, application-code: 13ms)
+✓ Compiled in 155ms
+ GET /bidang?tanggal=2026-06-16 200 in 562ms (next.js: 146ms, proxy.ts: 93ms, application-code: 324ms)
+ GET /bidang?tanggal=2026-06-16 200 in 237ms (next.js: 6ms, proxy.ts: 77ms, application-code: 153ms)
+ GET /manifest.webmanifest 200 in 73ms (next.js: 55ms, proxy.ts: 6ms, application-code: 12ms)
+ GET /bidang?tanggal=2026-06-15 200 in 138ms (next.js: 5ms, proxy.ts: 8ms, application-code: 125ms)
+ GET /manifest.webmanifest 200 in 23ms (next.js: 7ms, proxy.ts: 8ms, application-code: 8ms)
+ GET /bidang?tanggal=2026-06-14 200 in 110ms (next.js: 5ms, proxy.ts: 8ms, application-code: 97ms)
+ GET /manifest.webmanifest 200 in 11ms (next.js: 3ms, proxy.ts: 5ms, application-code: 4ms)
+ GET /bidang?tanggal=2026-06-28 200 in 123ms (next.js: 5ms, proxy.ts: 6ms, application-code: 112ms)
+ GET /manifest.webmanifest 200 in 16ms (next.js: 3ms, proxy.ts: 6ms, application-code: 7ms)
+ GET /bidang?bulan=7&tahun=2026 200 in 149ms (next.js: 5ms, proxy.ts: 8ms, application-code: 136ms)
+ GET /manifest.webmanifest 200 in 30ms (next.js: 7ms, proxy.ts: 9ms, application-code: 14ms)
+ GET /bidang?bulan=7&tahun=2026 200 in 157ms (next.js: 5ms, proxy.ts: 6ms, application-code: 146ms)
+ GET /manifest.webmanifest 200 in 15ms (next.js: 5ms, proxy.ts: 5ms, application-code: 5ms)
+ GET /bidang?tanggal=2026-06-20 200 in 126ms (next.js: 6ms, proxy.ts: 10ms, application-code: 111ms)
+ GET /manifest.webmanifest 200 in 15ms (next.js: 4ms, proxy.ts: 6ms, application-code: 5ms)
+ GET /bidang?tanggal=2026-06-30 200 in 131ms (next.js: 7ms, proxy.ts: 9ms, application-code: 116ms)
+ GET /manifest.webmanifest 200 in 15ms (next.js: 3ms, proxy.ts: 5ms, application-code: 7ms)
+ GET /bidang?tanggal=2026-06-20 200 in 128ms (next.js: 6ms, proxy.ts: 7ms, application-code: 115ms)
+ GET /manifest.webmanifest 200 in 18ms (next.js: 4ms, proxy.ts: 6ms, application-code: 8ms)
+ GET /bidang?tanggal=2026-06-21 200 in 141ms (next.js: 6ms, proxy.ts: 6ms, application-code: 129ms)
+ GET /manifest.webmanifest 200 in 11ms (next.js: 2ms, proxy.ts: 4ms, application-code: 5ms)
+ GET /bidang?tanggal=2026-06-21 200 in 189ms (next.js: 7ms, proxy.ts: 6ms, application-code: 176ms)
+ GET /manifest.webmanifest 200 in 26ms (next.js: 7ms, proxy.ts: 13ms, application-code: 5ms)
+ GET /bidang?tanggal=2026-06-28 200 in 138ms (next.js: 5ms, proxy.ts: 8ms, application-code: 125ms)
+ GET /manifest.webmanifest 200 in 16ms (next.js: 4ms, proxy.ts: 7ms, application-code: 6ms)
+ GET /bidang?tanggal=2026-06-20 200 in 137ms (next.js: 4ms, proxy.ts: 8ms, application-code: 124ms)
+ GET /manifest.webmanifest 200 in 13ms (next.js: 3ms, proxy.ts: 4ms, application-code: 5ms)
+ GET /bidang?tanggal=2026-06-07 200 in 142ms (next.js: 6ms, proxy.ts: 8ms, application-code: 128ms)
+ GET /manifest.webmanifest 200 in 17ms (next.js: 7ms, proxy.ts: 4ms, application-code: 6ms)
+ GET /bidang?bulan=7&tahun=2026 200 in 141ms (next.js: 12ms, proxy.ts: 7ms, application-code: 122ms)
+ GET /manifest.webmanifest 200 in 13ms (next.js: 3ms, proxy.ts: 5ms, application-code: 5ms)
+ GET /bidang?bulan=5&tahun=2026 200 in 164ms (next.js: 7ms, proxy.ts: 5ms, application-code: 151ms)
+ GET /manifest.webmanifest 200 in 32ms (next.js: 10ms, proxy.ts: 10ms, application-code: 12ms)
+✓ Compiled in 102ms
+ GET /bidang?bulan=5&tahun=2026 200 in 801ms (next.js: 246ms, proxy.ts: 121ms, application-code: 434ms)
+ GET /bidang?bulan=5&tahun=2026 200 in 293ms (next.js: 82ms, proxy.ts: 39ms, application-code: 172ms)
+ GET /manifest.webmanifest 200 in 82ms (next.js: 64ms, proxy.ts: 6ms, application-code: 12ms)
+✓ Compiled in 58ms
+ GET /bidang?bulan=5&tahun=2026 200 in 640ms (next.js: 175ms, proxy.ts: 94ms, application-code: 371ms)
+ GET /bidang?bulan=5&tahun=2026 200 in 276ms (next.js: 76ms, proxy.ts: 32ms, application-code: 168ms)
+ GET /manifest.webmanifest 200 in 81ms (next.js: 60ms, proxy.ts: 9ms, application-code: 12ms)
+✓ Compiled in 148ms
+ GET /bidang?bulan=5&tahun=2026 200 in 1108ms (next.js: 144ms, proxy.ts: 90ms, application-code: 874ms)
+ GET /bidang?bulan=5&tahun=2026 200 in 757ms (next.js: 22ms, proxy.ts: 77ms, application-code: 658ms)
+ GET /bidang?bulan=5&tahun=2026 200 in 564ms (next.js: 42ms, proxy.ts: 260ms, application-code: 261ms)
+ GET /bidang?bulan=5&tahun=2026 200 in 567ms (next.js: 7ms, proxy.ts: 262ms, application-code: 298ms)
+ GET /manifest.webmanifest 200 in 74ms (next.js: 57ms, proxy.ts: 6ms, application-code: 12ms)
+✓ Compiled in 56ms
+ GET /bidang?bulan=5&tahun=2026 200 in 711ms (next.js: 187ms, proxy.ts: 92ms, application-code: 432ms)
+ GET /bidang?bulan=5&tahun=2026 200 in 316ms (next.js: 9ms, proxy.ts: 116ms, application-code: 190ms)
+ GET /manifest.webmanifest 200 in 80ms (next.js: 61ms, proxy.ts: 6ms, application-code: 14ms)
+ GET /bidang?bulan=6&tahun=2026 200 in 145ms (next.js: 5ms, proxy.ts: 6ms, application-code: 134ms)
+ GET /manifest.webmanifest 200 in 19ms (next.js: 4ms, proxy.ts: 7ms, application-code: 8ms)
+ GET /bidang?bulan=7&tahun=2026 200 in 145ms (next.js: 6ms, proxy.ts: 7ms, application-code: 132ms)
+ GET /manifest.webmanifest 200 in 24ms (next.js: 9ms, proxy.ts: 8ms, application-code: 7ms)
+ GET /bidang?bulan=8&tahun=2026 200 in 132ms (next.js: 6ms, proxy.ts: 7ms, application-code: 119ms)
+ GET /manifest.webmanifest 200 in 16ms (next.js: 4ms, proxy.ts: 7ms, application-code: 6ms)
+ GET /bidang?bulan=7&tahun=2026 200 in 132ms (next.js: 4ms, proxy.ts: 10ms, application-code: 118ms)
+ GET /manifest.webmanifest 200 in 14ms (next.js: 3ms, proxy.ts: 4ms, application-code: 7ms)
+ GET /bidang?bulan=8&tahun=2026 200 in 122ms (next.js: 5ms, proxy.ts: 6ms, application-code: 111ms)
+ GET /manifest.webmanifest 200 in 12ms (next.js: 3ms, proxy.ts: 5ms, application-code: 5ms)
+ GET /bidang?tanggal=2026-08-02 200 in 124ms (next.js: 6ms, proxy.ts: 7ms, application-code: 111ms)
+ GET /manifest.webmanifest 200 in 13ms (next.js: 2ms, proxy.ts: 5ms, application-code: 5ms)
+ GET /bidang?bulan=7&tahun=2026 200 in 116ms (next.js: 4ms, proxy.ts: 7ms, application-code: 105ms)
+ GET /manifest.webmanifest 200 in 19ms (next.js: 6ms, proxy.ts: 7ms, application-code: 7ms)
+ GET /bidang?tanggal=2026-07-05 200 in 118ms (next.js: 7ms, proxy.ts: 8ms, application-code: 103ms)
+ GET /manifest.webmanifest 200 in 15ms (next.js: 3ms, proxy.ts: 5ms, application-code: 7ms)
+ GET /bidang?bulan=7&tahun=2026 200 in 140ms (next.js: 7ms, proxy.ts: 7ms, application-code: 126ms)
+ GET /manifest.webmanifest 200 in 15ms (next.js: 3ms, proxy.ts: 5ms, application-code: 7ms)
+ GET /bidang?tanggal=2026-07-05 200 in 135ms (next.js: 6ms, proxy.ts: 7ms, application-code: 122ms)
+ GET /manifest.webmanifest 200 in 14ms (next.js: 4ms, proxy.ts: 5ms, application-code: 5ms)
+✓ Compiled in 90ms
+ GET /bidang?tanggal=2026-07-05 200 in 1024ms (next.js: 186ms, proxy.ts: 106ms, application-code: 732ms)
+ GET /bidang?tanggal=2026-07-05 200 in 620ms (next.js: 8ms, proxy.ts: 9ms, application-code: 603ms)
+ GET /bidang?tanggal=2026-07-05 200 in 531ms (next.js: 9ms, proxy.ts: 197ms, application-code: 325ms)
+ GET /bidang?tanggal=2026-07-05 200 in 531ms (next.js: 48ms, proxy.ts: 196ms, application-code: 287ms)
+ GET /manifest.webmanifest 200 in 92ms (next.js: 71ms, proxy.ts: 6ms, application-code: 15ms)
+✓ Compiled in 69ms
+ GET /bidang?tanggal=2026-07-05 200 in 567ms (next.js: 118ms, proxy.ts: 93ms, application-code: 356ms)
+ GET /bidang?tanggal=2026-07-05 200 in 254ms (next.js: 5ms, proxy.ts: 94ms, application-code: 156ms)
+ GET /manifest.webmanifest 200 in 79ms (next.js: 60ms, proxy.ts: 5ms, application-code: 14ms)
+ GET /bidang?bulan=7&tahun=2026 200 in 314ms (next.js: 9ms, proxy.ts: 8ms, application-code: 298ms)
+ GET /manifest.webmanifest 200 in 17ms (next.js: 4ms, proxy.ts: 7ms, application-code: 6ms)
+ GET /bidang?bulan=7&tahun=2026&tanggal=2026-07-05 200 in 133ms (next.js: 5ms, proxy.ts: 15ms, application-code: 113ms)
+ GET /manifest.webmanifest 200 in 21ms (next.js: 7ms, proxy.ts: 8ms, application-code: 5ms)
+ GET /bidang?bulan=6&tahun=2026 200 in 165ms (next.js: 5ms, proxy.ts: 8ms, application-code: 152ms)
+ GET /manifest.webmanifest 200 in 20ms (next.js: 7ms, proxy.ts: 6ms, application-code: 6ms)
+ GET /bidang?bulan=6&tahun=2026&tanggal=2026-06-14 200 in 131ms (next.js: 5ms, proxy.ts: 9ms, application-code: 117ms)
+ GET /manifest.webmanifest 200 in 15ms (next.js: 4ms, proxy.ts: 5ms, application-code: 7ms)
+✓ Compiled in 290ms
+⨯ ReferenceError: geserTanggal is not defined
+    at TimelineJadwal (src\components\timeline-jadwal.tsx:35:20)
+  33 |
+  34 | export default function TimelineJadwal({ ruangan, tanggal, baseHref }: Props) {
+> 35 |   const prevDate = geserTanggal(tanggal, -1);
+     |                    ^
+  36 |   const nextDate = geserTanggal(tanggal, 1);
+  37 |
+  38 |   return ( {
+  digest: '3186260587'
+}
+⨯ ReferenceError: geserTanggal is not defined
+    at TimelineJadwal (src\components\timeline-jadwal.tsx:35:20)
+  33 |
+  34 | export default function TimelineJadwal({ ruangan, tanggal, baseHref }: Props) {
+> 35 |   const prevDate = geserTanggal(tanggal, -1);
+     |                    ^
+  36 |   const nextDate = geserTanggal(tanggal, 1);
+  37 |
+  38 |   return ( {
+  digest: '3186260587'
+}
+⨯ ReferenceError: geserTanggal is not defined
+    at TimelineJadwal (src\components\timeline-jadwal.tsx:35:20)
+  33 |
+  34 | export default function TimelineJadwal({ ruangan, tanggal, baseHref }: Props) {
+> 35 |   const prevDate = geserTanggal(tanggal, -1);
+     |                    ^
+  36 |   const nextDate = geserTanggal(tanggal, 1);
+  37 |
+  38 |   return ( {
+  digest: '3186260587'
+}
+⨯ ReferenceError: geserTanggal is not defined
+    at TimelineJadwal (src\components\timeline-jadwal.tsx:35:20)
+  33 |
+  34 | export default function TimelineJadwal({ ruangan, tanggal, baseHref }: Props) {
+> 35 |   const prevDate = geserTanggal(tanggal, -1);
+     |                    ^
+  36 |   const nextDate = geserTanggal(tanggal, 1);
+  37 |
+  38 |   return ( {
+  digest: '3186260587'
+}
+⨯ ReferenceError: geserTanggal is not defined
+    at TimelineJadwal (src\components\timeline-jadwal.tsx:35:20)
+  33 |
+  34 | export default function TimelineJadwal({ ruangan, tanggal, baseHref }: Props) {
+> 35 |   const prevDate = geserTanggal(tanggal, -1);
+     |                    ^
+  36 |   const nextDate = geserTanggal(tanggal, 1);
+  37 |
+  38 |   return ( {
+  digest: '3186260587'
+}
+⨯ ReferenceError: geserTanggal is not defined
+    at TimelineJadwal (src\components\timeline-jadwal.tsx:35:20)
+  33 |
+  34 | export default function TimelineJadwal({ ruangan, tanggal, baseHref }: Props) {
+> 35 |   const prevDate = geserTanggal(tanggal, -1);
+     |                    ^
+  36 |   const nextDate = geserTanggal(tanggal, 1);
+  37 |
+  38 |   return ( {
+  digest: '3186260587'
+}
+ GET /bidang?bulan=6&tahun=2026&tanggal=2026-06-14 200 in 1740ms (next.js: 182ms, proxy.ts: 707ms, application-code: 851ms)
+ GET /bidang?bulan=6&tahun=2026&tanggal=2026-06-14 200 in 834ms (next.js: 5ms, proxy.ts: 90ms, application-code: 739ms)
+⨯ ReferenceError: geserTanggal is not defined
+    at TimelineJadwal (src\components\timeline-jadwal.tsx:35:20)
+  33 |
+  34 | export default function TimelineJadwal({ ruangan, tanggal, baseHref }: Props) {
+> 35 |   const prevDate = geserTanggal(tanggal, -1);
+     |                    ^
+  36 |   const nextDate = geserTanggal(tanggal, 1);
+  37 |
+  38 |   return ( {
+  digest: '3186260587'
+}
+ GET /bidang?bulan=6&tahun=2026&tanggal=2026-06-14 200 in 763ms (next.js: 56ms, proxy.ts: 80ms, application-code: 627ms)
+ GET /bidang?bulan=6&tahun=2026&tanggal=2026-06-14 200 in 762ms (next.js: 96ms, proxy.ts: 78ms, application-code: 587ms)
+ GET /bidang?bulan=6&tahun=2026&tanggal=2026-06-14 200 in 799ms (next.js: 118ms, proxy.ts: 86ms, application-code: 595ms)
+ GET /bidang?bulan=6&tahun=2026&tanggal=2026-06-14 200 in 805ms (next.js: 19ms, proxy.ts: 80ms, application-code: 706ms)
+⨯ ReferenceError: geserTanggal is not defined
+    at TimelineJadwal (src\components\timeline-jadwal.tsx:35:20)
+  33 |
+  34 | export default function TimelineJadwal({ ruangan, tanggal, baseHref }: Props) {
+> 35 |   const prevDate = geserTanggal(tanggal, -1);
+     |                    ^
+  36 |   const nextDate = geserTanggal(tanggal, 1);
+  37 |
+  38 |   return ( {
+  digest: '3186260587'
+}
+⨯ ReferenceError: geserTanggal is not defined
+    at TimelineJadwal (src\components\timeline-jadwal.tsx:35:20)
+  33 |
+  34 | export default function TimelineJadwal({ ruangan, tanggal, baseHref }: Props) {
+> 35 |   const prevDate = geserTanggal(tanggal, -1);
+     |                    ^
+  36 |   const nextDate = geserTanggal(tanggal, 1);
+  37 |
+  38 |   return ( {
+  digest: '3186260587'
+}
+⨯ ReferenceError: geserTanggal is not defined
+    at TimelineJadwal (src\components\timeline-jadwal.tsx:35:20)
+  33 |
+  34 | export default function TimelineJadwal({ ruangan, tanggal, baseHref }: Props) {
+> 35 |   const prevDate = geserTanggal(tanggal, -1);
+     |                    ^
+  36 |   const nextDate = geserTanggal(tanggal, 1);
+  37 |
+  38 |   return ( {
+  digest: '3186260587'
+}
+ GET /bidang?bulan=6&tahun=2026&tanggal=2026-06-14 200 in 583ms (next.js: 7ms, proxy.ts: 10ms, application-code: 566ms)
+ GET /bidang?bulan=6&tahun=2026&tanggal=2026-06-14 200 in 501ms (next.js: 16ms, proxy.ts: 65ms, application-code: 419ms)
+ GET /bidang?bulan=6&tahun=2026&tanggal=2026-06-14 200 in 358ms (next.js: 72ms, proxy.ts: 61ms, application-code: 225ms)
+ GET /bidang?bulan=6&tahun=2026&tanggal=2026-06-14 200 in 370ms (next.js: 60ms, proxy.ts: 30ms, application-code: 280ms)
+[browser] Uncaught ReferenceError: geserTanggal is not defined
+    at TimelineJadwal (src\components\timeline-jadwal.tsx:35:20)
+  33 |
+  34 | export default function TimelineJadwal({ ruangan, tanggal, baseHref }: Props) {
+> 35 |   const prevDate = geserTanggal(tanggal, -1);
+     |                    ^
+  36 |   const nextDate = geserTanggal(tanggal, 1);
+  37 |
+  38 |   return (
+✓ Compiled in 76ms
+ GET /bidang?bulan=6&tahun=2026&tanggal=2026-06-14 200 in 1512ms (next.js: 301ms, proxy.ts: 194ms, application-code: 1017ms)
+ GET /manifest.webmanifest 200 in 109ms (next.js: 89ms, proxy.ts: 7ms, application-code: 13ms)
+✓ Compiled in 59ms
+ GET /bidang?bulan=6&tahun=2026&tanggal=2026-06-14 200 in 864ms (next.js: 155ms, proxy.ts: 83ms, application-code: 627ms)
+ GET /bidang?bulan=6&tahun=2026&tanggal=2026-06-14 200 in 527ms (next.js: 15ms, proxy.ts: 84ms, application-code: 428ms)
+ GET /bidang?bulan=6&tahun=2026&tanggal=2026-06-14 200 in 381ms (next.js: 14ms, proxy.ts: 87ms, application-code: 280ms)
+ GET /bidang?bulan=6&tahun=2026&tanggal=2026-06-14 200 in 371ms (next.js: 66ms, proxy.ts: 74ms, application-code: 231ms)
+ GET /manifest.webmanifest 200 in 77ms (next.js: 56ms, proxy.ts: 12ms, application-code: 9ms)
+ GET /bidang?bulan=6&tahun=2026&tanggal=2026-06-21 200 in 136ms (next.js: 5ms, proxy.ts: 7ms, application-code: 125ms)
+ GET /manifest.webmanifest 200 in 16ms (next.js: 4ms, proxy.ts: 6ms, application-code: 6ms)
+✓ Compiled in 73ms
+ GET /bidang?bulan=6&tahun=2026&tanggal=2026-06-21 200 in 634ms (next.js: 148ms, proxy.ts: 89ms, application-code: 397ms)
+ GET /bidang?bulan=6&tahun=2026&tanggal=2026-06-21 200 in 351ms (next.js: 12ms, proxy.ts: 74ms, application-code: 265ms)
+ GET /bidang?bulan=6&tahun=2026&tanggal=2026-06-19 200 in 137ms (next.js: 6ms, proxy.ts: 9ms, application-code: 122ms)
+ GET /manifest.webmanifest 200 in 70ms (next.js: 54ms, proxy.ts: 5ms, application-code: 10ms)
+✓ Compiled in 86ms
+ GET /bidang?bulan=6&tahun=2026&tanggal=2026-06-19 200 in 580ms (next.js: 132ms, proxy.ts: 95ms, application-code: 352ms)
+ GET /bidang?bulan=6&tahun=2026&tanggal=2026-06-19 200 in 250ms (next.js: 6ms, proxy.ts: 87ms, application-code: 157ms)
+ GET /manifest.webmanifest 200 in 95ms (next.js: 69ms, proxy.ts: 16ms, application-code: 10ms)
+ GET /bidang?bulan=6&tahun=2026&tanggal=2026-06-14 200 in 2.4s (next.js: 154ms, proxy.ts: 294ms, application-code: 1908ms)
+ GET /bidang?bulan=6&tahun=2026&tanggal=2026-06-13 200 in 797ms (next.js: 19ms, proxy.ts: 24ms, application-code: 755ms)
+ GET /manifest.webmanifest 200 in 136ms (next.js: 61ms, proxy.ts: 24ms, application-code: 50ms)
+ GET /bidang?bulan=6&tahun=2026&tanggal=2026-06-14 200 in 241ms (next.js: 7ms, proxy.ts: 16ms, application-code: 218ms)
+ GET /manifest.webmanifest 200 in 181ms (next.js: 6ms, proxy.ts: 8ms, application-code: 167ms)
+ GET /bidang?bulan=6&tahun=2026&tanggal=2026-06-20 200 in 198ms (next.js: 16ms, proxy.ts: 9ms, application-code: 173ms)
+ GET /manifest.webmanifest 200 in 21ms (next.js: 5ms, proxy.ts: 8ms, application-code: 7ms)
+ GET /bidang?bulan=6&tahun=2026&tanggal=2026-06-21 200 in 357ms (next.js: 7ms, proxy.ts: 7ms, application-code: 342ms)
+ GET /manifest.webmanifest 200 in 23ms (next.js: 7ms, proxy.ts: 6ms, application-code: 9ms)
+ GET /bidang?bulan=6&tahun=2026&tanggal=2026-06-19 200 in 131ms (next.js: 5ms, proxy.ts: 11ms, application-code: 115ms)
+ GET /manifest.webmanifest 200 in 20ms (next.js: 8ms, proxy.ts: 5ms, application-code: 7ms)
+ GET /bidang?bulan=6&tahun=2026&tanggal=2026-06-19 200 in 145ms (next.js: 10ms, proxy.ts: 7ms, application-code: 129ms)
+ GET /manifest.webmanifest 200 in 20ms (next.js: 8ms, proxy.ts: 6ms, application-code: 6ms)
+ GET /bidang?bulan=6&tahun=2026&tanggal=2026-06-13 200 in 129ms (next.js: 5ms, proxy.ts: 5ms, application-code: 118ms)
+ GET /manifest.webmanifest 200 in 16ms (next.js: 4ms, proxy.ts: 7ms, application-code: 5ms)
+ GET /bidang?bulan=6&tahun=2026&tanggal=2026-06-27 200 in 142ms (next.js: 7ms, proxy.ts: 6ms, application-code: 129ms)
+ GET /manifest.webmanifest 200 in 27ms (next.js: 9ms, proxy.ts: 8ms, application-code: 10ms)
+ GET /bidang?bulan=6&tahun=2026&tanggal=2026-06-07 200 in 157ms (next.js: 6ms, proxy.ts: 7ms, application-code: 144ms)
+ GET /manifest.webmanifest 200 in 30ms (next.js: 12ms, proxy.ts: 10ms, application-code: 8ms)
+ GET /bidang?bulan=6&tahun=2026&tanggal=2026-06-14 200 in 1715ms (next.js: 632ms, proxy.ts: 86ms, application-code: 997ms)
+ GET /bidang?bulan=6&tahun=2026&tanggal=2026-06-20 200 in 2.2s (next.js: 230ms, proxy.ts: 466ms, application-code: 1492ms)
+ GET /manifest.webmanifest 200 in 78ms (next.js: 22ms, proxy.ts: 10ms, application-code: 46ms)
+ GET /bidang?bulan=6&tahun=2026&tanggal=2026-06-14 200 in 1094ms (next.js: 16ms, proxy.ts: 12ms, application-code: 1066ms)
+ GET /manifest.webmanifest 200 in 53ms (next.js: 39ms, proxy.ts: 7ms, application-code: 7ms)
+ GET /bidang?bulan=6&tahun=2026&tanggal=2026-06-14 200 in 633ms (next.js: 12ms, proxy.ts: 7ms, application-code: 614ms)
+ GET /manifest.webmanifest 200 in 31ms (next.js: 12ms, proxy.ts: 7ms, application-code: 11ms)
+ GET /bidang/booking/baru 200 in 205ms (next.js: 121ms, proxy.ts: 10ms, application-code: 74ms)
+ GET /manifest.webmanifest 200 in 17ms (next.js: 3ms, proxy.ts: 5ms, application-code: 9ms)
+ GET /manifest.webmanifest 200 in 31ms (next.js: 9ms, proxy.ts: 13ms, application-code: 9ms)
+ GET /bidang/booking/baru 200 in 66ms (next.js: 16ms, proxy.ts: 7ms, application-code: 43ms)
+ GET /manifest.webmanifest 200 in 14ms (next.js: 5ms, proxy.ts: 4ms, application-code: 5ms)
+ GET /manifest.webmanifest 200 in 14ms (next.js: 5ms, proxy.ts: 5ms, application-code: 5ms)
+ GET /bidang/booking/baru 200 in 63ms (next.js: 11ms, proxy.ts: 6ms, application-code: 46ms)
+ GET /manifest.webmanifest 200 in 57ms (next.js: 44ms, proxy.ts: 5ms, application-code: 8ms)
+ GET /bidang 200 in 304ms (next.js: 6ms, proxy.ts: 9ms, application-code: 290ms)
+ POST /bidang/booking/baru 303 in 544ms (next.js: 5ms, proxy.ts: 13ms, application-code: 525ms)
+  └─ ƒ buatBooking({}, {}) in 114ms src/app/bidang/booking/actions.ts
+ GET /manifest.webmanifest 200 in 34ms (next.js: 9ms, proxy.ts: 12ms, application-code: 12ms)
+ GET /bidang/booking/baru 200 in 79ms (next.js: 5ms, proxy.ts: 27ms, application-code: 47ms)
+ GET /manifest.webmanifest 200 in 13ms (next.js: 3ms, proxy.ts: 7ms, application-code: 4ms)
+ GET /bidang 200 in 272ms (next.js: 6ms, proxy.ts: 8ms, application-code: 258ms)
+ POST /bidang/booking/baru 303 in 333ms (next.js: 6ms, proxy.ts: 7ms, application-code: 321ms)
+  └─ ƒ buatBooking({}, {}) in 24ms src/app/bidang/booking/actions.ts
+ GET /manifest.webmanifest 200 in 26ms (next.js: 8ms, proxy.ts: 10ms, application-code: 8ms)
+ GET /bidang/booking/baru 200 in 57ms (next.js: 5ms, proxy.ts: 6ms, application-code: 46ms)
+ GET /manifest.webmanifest 200 in 15ms (next.js: 5ms, proxy.ts: 5ms, application-code: 5ms)
+ GET /bidang 200 in 2.2s (next.js: 6ms, proxy.ts: 7ms, application-code: 2.2s)
+ POST /bidang/booking/baru 303 in 2.3s (next.js: 7ms, proxy.ts: 9ms, application-code: 2.3s)
+  └─ ƒ buatBooking({}, {}) in 37ms src/app/bidang/booking/actions.ts
+ GET /manifest.webmanifest 200 in 103ms (next.js: 30ms, proxy.ts: 37ms, application-code: 36ms)
+ GET /login 200 in 124ms (next.js: 72ms, proxy.ts: 3ms, application-code: 49ms)
+ POST /bidang 303 in 178ms (next.js: 5ms, proxy.ts: 6ms, application-code: 167ms)
+  └─ ƒ aksiLogout() in 19ms src/lib/auth-actions.ts
+ GET /manifest.webmanifest 200 in 10ms (next.js: 2ms, proxy.ts: 3ms, application-code: 5ms)
+ GET /pengelola 200 in 529ms (next.js: 269ms, proxy.ts: 4ms, application-code: 257ms)
+ POST /login 303 in 690ms (next.js: 4ms, proxy.ts: 6ms, application-code: 680ms)
+  └─ ƒ aksiLogin({}, {}) in 134ms src/app/login/actions.ts
+ GET /manifest.webmanifest 200 in 27ms (next.js: 7ms, proxy.ts: 8ms, application-code: 13ms)
+ POST /pengelola 200 in 195ms (next.js: 6ms, proxy.ts: 6ms, application-code: 184ms)
+  └─ ƒ prosesBooking({}, {}) in 35ms src/app/pengelola/actions.ts
+ GET /manifest.webmanifest 200 in 13ms (next.js: 3ms, proxy.ts: 5ms, application-code: 5ms)
+ POST /pengelola 200 in 193ms (next.js: 3ms, proxy.ts: 6ms, application-code: 184ms)
+  └─ ƒ prosesBooking({}, {}) in 42ms src/app/pengelola/actions.ts
+ GET /manifest.webmanifest 200 in 17ms (next.js: 4ms, proxy.ts: 8ms, application-code: 5ms)
+ GET /pengelola?tanggal=2026-06-21 200 in 136ms (next.js: 5ms, proxy.ts: 8ms, application-code: 124ms)
+ GET /manifest.webmanifest 200 in 11ms (next.js: 3ms, proxy.ts: 4ms, application-code: 3ms)
+ GET /pengelola?tanggal=2026-06-14 200 in 155ms (next.js: 6ms, proxy.ts: 8ms, application-code: 141ms)
+ GET /manifest.webmanifest 200 in 14ms (next.js: 3ms, proxy.ts: 5ms, application-code: 6ms)

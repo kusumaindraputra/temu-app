@@ -260,7 +260,7 @@ export default async function HalamanPersetujuan({
       </div>
 
       {/* Timeline jadwal per ruangan */}
-      <TimelineJadwal ruangan={ruangan} tanggal={tanggal} baseHref="/pengelola" />
+      <TimelineJadwal ruangan={ruangan} tanggal={tanggal} />
 
       {/* Jadwal semua booking */}
       <section>

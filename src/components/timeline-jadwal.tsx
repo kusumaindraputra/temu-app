@@ -1,4 +1,3 @@
-import Link from "next/link";
 import {
   JAM_MULAI,
   JAM_SELESAI,
@@ -6,9 +5,7 @@ import {
   posisiSlot,
   labelJam,
   labelTanggal,
-  geserTanggal,
 } from "@/lib/jadwal";
-import TanggalPicker from "./tanggal-picker";
 
 export type BookingSlot = {
   id: number;
@@ -29,40 +26,14 @@ export type RuanganSlot = {
 type Props = {
   ruangan: RuanganSlot[];
   tanggal: string;
-  baseHref: string;
 };
 
 const jamTick = Array.from({ length: RENTANG_JAM + 1 }, (_, i) => JAM_MULAI + i);
 
-export default function TimelineJadwal({ ruangan, tanggal, baseHref }: Props) {
-  const prevDate = geserTanggal(tanggal, -1);
-  const nextDate = geserTanggal(tanggal, 1);
-
+export default function TimelineJadwal({ ruangan, tanggal }: Props) {
   return (
     <div>
-      {/* Navigasi tanggal */}
-      <div className="mb-6 flex flex-wrap items-center gap-2">
-        <Link
-          href={`${baseHref}?tanggal=${prevDate}`}
-          scroll={false}
-          className="flex h-8 w-8 items-center justify-center rounded-lg border border-stone-200 bg-white text-stone-500 transition-colors hover:bg-stone-50"
-          title="Kemarin"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-        </Link>
-        <TanggalPicker tanggal={tanggal} />
-        <Link
-          href={`${baseHref}?tanggal=${nextDate}`}
-          scroll={false}
-          className="flex h-8 w-8 items-center justify-center rounded-lg border border-stone-200 bg-white text-stone-500 transition-colors hover:bg-stone-50"
-          title="Besok"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-        </Link>
-        <span className="ml-1 hidden text-sm font-medium text-stone-500 sm:block">
-          {labelTanggal(tanggal)}
-        </span>
-      </div>
+      <p className="mb-4 text-sm font-semibold text-stone-700">{labelTanggal(tanggal)}</p>
 
       {/* Timeline */}
       <div className="overflow-x-auto rounded-2xl bg-white shadow-sm">

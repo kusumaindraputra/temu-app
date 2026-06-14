@@ -267,7 +267,7 @@ export default async function BerandaBidang({
       </div>
 
       {/* Timeline jadwal per ruangan */}
-      <TimelineJadwal ruangan={ruangan} tanggal={tanggal} baseHref="/bidang" />
+      <TimelineJadwal ruangan={ruangan} tanggal={tanggal} />
 
       {/* Jadwal semua booking — paginated */}
       <section>

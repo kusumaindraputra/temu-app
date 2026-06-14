@@ -45,12 +45,14 @@ function StatCard({
 export default async function BerandaBidang({
   searchParams,
 }: {
-  searchParams: Promise<{ halaman?: string; tanggal?: string }>;
+  searchParams: Promise<{ bulan?: string; tahun?: string; halaman?: string; tanggal?: string }>;
 }) {
   const sesi = await wajibBidang();
   const now = new Date();
-  const { bulan, tahun } = bulanTahunJakarta();
+  const { bulan: bJakarta, tahun: tJakarta } = bulanTahunJakarta();
   const sp = await searchParams;
+  const bulan = Math.max(1, Math.min(12, Number(sp.bulan) || bJakarta));
+  const tahun = Number(sp.tahun) || tJakarta;
   const halamanParam = Math.max(1, Number(sp.halaman) || 1);
   const tanggal =
     sp.tanggal && /^\d{4}-\d{2}-\d{2}$/.test(sp.tanggal)
@@ -58,7 +60,11 @@ export default async function BerandaBidang({
       : hariIniJakarta();
 
   const startBulan = new Date(`${padDateStr(tahun, bulan, 1)}T00:00:00+07:00`);
-  const endBulan = new Date(new Date(tahun, bulan, 1).getTime() - 1);
+  const endBulan = new Date(
+    bulan === 12
+      ? new Date(tahun + 1, 0, 1).getTime() - 1
+      : new Date(tahun, bulan, 1).getTime() - 1,
+  );
 
   const hariMulai = new Date(`${tanggal}T00:00:00+07:00`);
   const hariSelesai = new Date(`${tanggal}T23:59:59+07:00`);

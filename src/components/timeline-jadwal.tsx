@@ -44,16 +44,20 @@ export default function TimelineJadwal({ ruangan, tanggal, baseHref }: Props) {
       <div className="mb-6 flex flex-wrap items-center gap-2">
         <Link
           href={`${baseHref}?tanggal=${prevDate}`}
-          className="rounded-lg border border-stone-200 bg-white px-3 py-1.5 text-sm text-stone-600 transition-colors hover:bg-stone-50"
+          scroll={false}
+          className="flex h-8 w-8 items-center justify-center rounded-lg border border-stone-200 bg-white text-stone-500 transition-colors hover:bg-stone-50"
+          title="Kemarin"
         >
-          ← Kemarin
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
         </Link>
         <TanggalPicker tanggal={tanggal} />
         <Link
           href={`${baseHref}?tanggal=${nextDate}`}
-          className="rounded-lg border border-stone-200 bg-white px-3 py-1.5 text-sm text-stone-600 transition-colors hover:bg-stone-50"
+          scroll={false}
+          className="flex h-8 w-8 items-center justify-center rounded-lg border border-stone-200 bg-white text-stone-500 transition-colors hover:bg-stone-50"
+          title="Besok"
         >
-          Besok →
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
         </Link>
         <span className="ml-1 hidden text-sm font-medium text-stone-500 sm:block">
           {labelTanggal(tanggal)}

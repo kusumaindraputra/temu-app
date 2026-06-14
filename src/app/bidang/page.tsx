@@ -212,17 +212,6 @@ export default async function BerandaBidang({
             jadwalHref="/bidang"
             kalenderHref="/bidang"
           />
-          {/* Legend */}
-          <div className="mt-3 flex flex-wrap gap-3 border-t border-stone-100 pt-3 text-xs text-stone-500">
-            <span className="flex items-center gap-1.5">
-              <span className="h-2 w-2 rounded-full bg-teal-500" />
-              Disetujui
-            </span>
-            <span className="flex items-center gap-1.5">
-              <span className="h-2 w-2 rounded-full bg-amber-400" />
-              Menunggu
-            </span>
-          </div>
         </div>
 
         {/* Booking mendatang */}

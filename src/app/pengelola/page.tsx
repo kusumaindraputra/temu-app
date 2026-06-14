@@ -257,21 +257,6 @@ export default async function HalamanPersetujuan({
           kalenderHref="/pengelola"
         />
 
-        <div className="mt-4 flex flex-wrap items-center gap-4 border-t border-stone-100 pt-3 text-xs text-stone-500">
-          <span className="font-medium text-stone-400">Keterangan:</span>
-          <span className="flex items-center gap-1.5">
-            <span className="h-2 w-2 rounded-full bg-teal-500" />
-            Disetujui
-          </span>
-          <span className="flex items-center gap-1.5">
-            <span className="h-2 w-2 rounded-full bg-amber-400" />
-            Menunggu
-          </span>
-          <span className="flex items-center gap-1.5">
-            <span className="h-2 w-2 rounded-full bg-red-400" />
-            Ditolak / Batal
-          </span>
-        </div>
       </div>
 
       {/* Timeline jadwal per ruangan */}

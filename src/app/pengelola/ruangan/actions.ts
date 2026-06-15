@@ -108,7 +108,12 @@ export async function toggleAktifRuangan(fd: FormData) {
   revalidatePath("/pengelola/ruangan");
 }
 
-export async function buatKomponen(fd: FormData): Promise<{ error?: string }> {
+export type KomponenState = { error?: string };
+
+export async function buatKomponen(
+  _prev: KomponenState,
+  fd: FormData,
+): Promise<KomponenState> {
   await wajibAdmin();
   const nama = String(fd.get("nama") ?? "").trim();
   if (!nama) return { error: "Nama komponen wajib diisi." };

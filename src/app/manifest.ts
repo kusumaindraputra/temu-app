@@ -2,13 +2,14 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Booking Ruang Meeting – Dinas Kesehatan",
-    short_name: "Booking DK",
-    description: "Aplikasi pemesanan ruang meeting Dinas Kesehatan",
+    name: "Temu — Booking Ruang Meeting Dinas Kesehatan",
+    short_name: "Temu",
+    description:
+      "Temu — sistem booking ruang meeting Dinas Kesehatan Kabupaten Bogor",
     start_url: "/",
     display: "standalone",
     background_color: "#ffffff",
-    theme_color: "#0d9488",
+    theme_color: "#8612d2",
     orientation: "portrait-primary",
     scope: "/",
     lang: "id",

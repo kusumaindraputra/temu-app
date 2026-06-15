@@ -1,4 +1,3 @@
-import { revalidatePath } from "next/cache";
 import { db } from "@/lib/db";
 import { wajibBidang } from "@/lib/auth";
 
@@ -13,7 +12,7 @@ function fmtWaktu(dt: Date): string {
   if (hari < 7) return `${hari} hari lalu`;
   return dt.toLocaleDateString("id-ID", {
     day: "numeric",
-    month: "short",
+    month: "long",
     year: "numeric",
     timeZone: "Asia/Jakarta",
   });
@@ -34,7 +33,6 @@ export default async function HalamanNotifikasi() {
       where: { bidangId: sesi.id, sudahDibaca: false },
       data: { sudahDibaca: true },
     });
-    revalidatePath("/bidang");
   }
 
   return (
@@ -59,13 +57,13 @@ export default async function HalamanNotifikasi() {
               <li
                 key={n.id}
                 className={`rounded-2xl p-4 transition-colors ${
-                  isNew ? "bg-teal-50" : "bg-white shadow-sm"
+                  isNew ? "bg-brand-50" : "bg-white shadow-sm"
                 }`}
               >
                 <div className="flex items-start gap-3.5">
                   <div
                     className={`mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-xl ${
-                      isApproved ? "bg-teal-100 text-teal-600" : "bg-red-50 text-red-400"
+                      isApproved ? "bg-success-100 text-success-600" : "bg-red-50 text-red-400"
                     }`}
                   >
                     {isApproved ? (
@@ -87,7 +85,7 @@ export default async function HalamanNotifikasi() {
                   </div>
 
                   {isNew && (
-                    <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-teal-500" />
+                    <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-brand-500" />
                   )}
                 </div>
               </li>

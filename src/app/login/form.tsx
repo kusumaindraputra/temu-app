@@ -28,7 +28,7 @@ export default function FormLogin() {
           autoFocus
           required
           placeholder="mis. kesmas / pengelola / admin"
-          className="rounded-lg border border-stone-200 bg-white px-3.5 py-2.5 text-sm text-stone-900 outline-none transition placeholder:text-stone-300 focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10"
+          className="rounded-lg border border-stone-200 bg-white px-3.5 py-2.5 text-sm text-stone-900 outline-none transition placeholder:text-stone-300 focus:border-brand-500 focus:ring-4 focus:ring-brand-500/10"
         />
       </div>
 
@@ -43,14 +43,14 @@ export default function FormLogin() {
           autoComplete="current-password"
           required
           placeholder="••••••••"
-          className="rounded-lg border border-stone-200 bg-white px-3.5 py-2.5 text-sm text-stone-900 outline-none transition placeholder:text-stone-300 focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10"
+          className="rounded-lg border border-stone-200 bg-white px-3.5 py-2.5 text-sm text-stone-900 outline-none transition placeholder:text-stone-300 focus:border-brand-500 focus:ring-4 focus:ring-brand-500/10"
         />
       </div>
 
       <button
         type="submit"
         disabled={pending}
-        className="mt-1 rounded-lg bg-teal-600 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-teal-700 disabled:cursor-not-allowed disabled:opacity-60"
+        className="mt-1 rounded-lg bg-brand-600 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-60"
       >
         {pending ? "Memproses…" : "Masuk"}
       </button>

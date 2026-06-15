@@ -22,7 +22,7 @@ export default async function HalamanAkun() {
           </div>
           <Link
             href="/pengelola/akun/bidang/baru"
-            className="rounded-lg bg-teal-600 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-700"
+            className="rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-700"
           >
             + Tambah Akun Bidang
           </Link>
@@ -50,7 +50,7 @@ export default async function HalamanAkun() {
           </div>
           <Link
             href="/pengelola/akun/pengelola/baru"
-            className="rounded-lg bg-teal-600 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-700"
+            className="rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-700"
           >
             + Tambah Akun Pengelola
           </Link>

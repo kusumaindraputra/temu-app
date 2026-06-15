@@ -1,24 +1,54 @@
 @import "tailwindcss";
 
+/* ============================================================
+   TEMU — Sistem Booking Ruang Meeting (Dinkes Bogor)
+   Brand = Ungu (purple). Status "Disetujui/sukses" = Hijau (green).
+   Lihat design_handoff_temu/ untuk sumber kebenaran.
+   ============================================================ */
+
 :root {
-  --background: #f7f5f2;
-  --foreground: #1c1816;
+  --background: #f5f7f6;
+  --foreground: #222b26;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-jakarta), "Segoe UI", Arial, sans-serif;
+  --font-mono: var(--font-jetbrains), "Courier New", monospace;
+
+  /* Brand — Purple (Temu) */
+  --color-brand-50: #f7ecfe;
+  --color-brand-100: #eed7fc;
+  --color-brand-200: #deb2f9;
+  --color-brand-300: #c98af5;
+  --color-brand-400: #b455f2;
+  --color-brand-500: #a020f0;
+  --color-brand-600: #8612d2;
+  --color-brand-700: #6a0ea6;
+  --color-brand-800: #4e0b7a;
+  --color-brand-900: #34064f;
+
+  /* Success — Green ("Disetujui"/sukses only, never brand) */
+  --color-success-50: #f0f8f4;
+  --color-success-100: #d8efe6;
+  --color-success-200: #afdacc;
+  --color-success-300: #78c2a6;
+  --color-success-400: #3ea67e;
+  --color-success-500: #1a8a5c;
+  --color-success-600: #1a7a4c;
+  --color-success-700: #0d5c3a;
+  --color-success-800: #0a4229;
+  --color-success-900: #072c1b;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), system-ui, sans-serif;
+  font-family: var(--font-sans);
 }
 
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #d6d0c8; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #b8b0a6; }
+::-webkit-scrollbar-thumb { background: #d5ddd9; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #b8c4be; }

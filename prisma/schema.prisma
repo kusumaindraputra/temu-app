@@ -83,6 +83,8 @@ model Booking {
   waktuSelesai  DateTime
   tujuan        String
   jumlahPeserta Int
+  picNama       String
+  picHp         String
   status        StatusBooking @default(MENUNGGU)
   catatan       String? // catatan dari pengelola saat menyetujui/menolak
   diprosesOleh  Pengelola?    @relation("BookingDiproses", fields: [diprosesOlehId], references: [id])

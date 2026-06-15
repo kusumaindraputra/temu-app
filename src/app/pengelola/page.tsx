@@ -27,11 +27,12 @@ function StatCard({
   label: string;
   nilai: number;
   sub?: string;
-  warna?: "stone" | "teal" | "amber" | "red";
+  warna?: "stone" | "brand" | "success" | "amber" | "red";
 }) {
   const cls = {
     stone: "text-stone-900",
-    teal: "text-teal-600",
+    brand: "text-brand-600",
+    success: "text-success-600",
     amber: "text-amber-600",
     red: "text-red-500",
   }[warna];
@@ -63,7 +64,11 @@ export default async function HalamanPersetujuan({
       : hariIniJakarta();
 
   const startBulan = new Date(`${padDateStr(tahun, bulan, 1)}T00:00:00+07:00`);
-  const endBulan = new Date(new Date(tahun, bulan, 1).getTime() - 1);
+  const endBulan = new Date(
+    new Date(
+      `${padDateStr(bulan === 12 ? tahun + 1 : tahun, bulan === 12 ? 1 : bulan + 1, 1)}T00:00:00+07:00`,
+    ).getTime() - 1,
+  );
 
   const hariMulai = new Date(
     `${new Date(Date.now() + 7 * 3600 * 1000).toISOString().slice(0, 10)}T00:00:00+07:00`,
@@ -155,7 +160,7 @@ export default async function HalamanPersetujuan({
     const ds = toJakartaDateStr(b.waktuMulai);
     if (!tandai[ds]) tandai[ds] = { dots: [] };
     const dot =
-      b.status === "DISETUJUI" ? "teal" : b.status === "MENUNGGU" ? "amber" : "red";
+      b.status === "DISETUJUI" ? "success" : b.status === "MENUNGGU" ? "amber" : "red";
     if (!tandai[ds].dots.includes(dot)) tandai[ds].dots.push(dot);
   }
 
@@ -176,6 +181,8 @@ export default async function HalamanPersetujuan({
         rentang: fmtRentang(b.waktuMulai, b.waktuSelesai),
         tujuan: b.tujuan,
         jumlahPeserta: b.jumlahPeserta,
+        picNama: b.picNama,
+        picHp: b.picHp,
         peringatanBentrok: bentrok.map(deskripsiBentrok),
       };
     }),
@@ -216,7 +223,7 @@ export default async function HalamanPersetujuan({
           warna={kartu.length > 0 ? "amber" : "stone"}
           sub={kartu.length > 0 ? "menunggu tindakan" : "sudah bersih"}
         />
-        <StatCard label="Disetujui Hari Ini" nilai={disetujuiHariIni} warna="teal" />
+        <StatCard label="Disetujui Hari Ini" nilai={disetujuiHariIni} warna="success" />
         <StatCard label="Booking Bulan Ini" nilai={totalBulanIni} sub="disetujui + menunggu" />
         <StatCard label="Ruangan Aktif" nilai={ruanganAktif} sub="siap dibooking" />
       </div>
@@ -253,7 +260,7 @@ export default async function HalamanPersetujuan({
           bulan={bulan}
           tahun={tahun}
           tandai={tandai}
-          jadwalHref="/pengelola"
+          jadwalHref={`/pengelola?bulan=${bulan}&tahun=${tahun}`}
           kalenderHref="/pengelola"
         />
 

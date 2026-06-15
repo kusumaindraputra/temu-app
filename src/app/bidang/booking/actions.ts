@@ -13,6 +13,11 @@ const skema = z.object({
   waktuSelesai: z.string().min(1, "Waktu selesai wajib diisi."),
   tujuan: z.string().trim().min(3, "Tujuan rapat minimal 3 karakter."),
   jumlahPeserta: z.coerce.number().int().min(1, "Jumlah peserta minimal 1."),
+  picNama: z.string().trim().min(2, "Nama PIC minimal 2 karakter."),
+  picHp: z
+    .string()
+    .trim()
+    .regex(/^08\d{8,11}$/, "Nomor HP harus diawali 08 dan minimal 10 digit."),
 });
 
 /** Nilai input dikembalikan agar form tidak ter-reset saat terjadi error. */
@@ -22,6 +27,8 @@ export type NilaiBooking = {
   waktuSelesai: string;
   tujuan: string;
   jumlahPeserta: string;
+  picNama: string;
+  picHp: string;
 };
 
 export type BookingState = { error?: string; nilai?: NilaiBooking };
@@ -39,6 +46,8 @@ export async function buatBooking(
     waktuSelesai: String(fd.get("waktuSelesai") ?? ""),
     tujuan: String(fd.get("tujuan") ?? ""),
     jumlahPeserta: String(fd.get("jumlahPeserta") ?? ""),
+    picNama: String(fd.get("picNama") ?? ""),
+    picHp: String(fd.get("picHp") ?? ""),
   };
   const gagal = (error: string): BookingState => ({ error, nilai });
 
@@ -46,7 +55,7 @@ export async function buatBooking(
   if (!parsed.success) {
     return gagal(parsed.error.issues[0]?.message ?? "Input tidak valid.");
   }
-  const { ruanganId, waktuMulai, waktuSelesai, tujuan, jumlahPeserta } = parsed.data;
+  const { ruanganId, waktuMulai, waktuSelesai, tujuan, jumlahPeserta, picNama, picHp } = parsed.data;
 
   const mulai = new Date(waktuMulai);
   const selesai = new Date(waktuSelesai);
@@ -87,6 +96,8 @@ export async function buatBooking(
       waktuSelesai: selesai,
       tujuan,
       jumlahPeserta,
+      picNama,
+      picHp,
     },
   });
 
@@ -94,15 +105,24 @@ export async function buatBooking(
   redirect("/bidang");
 }
 
+export type BatalState = { error?: string };
+
 /** Membatalkan booking milik sendiri yang masih berstatus MENUNGGU. */
-export async function batalBooking(fd: FormData) {
+export async function batalBooking(
+  _prev: BatalState,
+  fd: FormData,
+): Promise<BatalState> {
   const sesi = await wajibBidang();
   const id = Number(fd.get("id"));
-  if (!Number.isInteger(id) || id <= 0) return;
+  if (!Number.isInteger(id) || id <= 0) return { error: "ID booking tidak valid." };
 
-  await db.booking.updateMany({
+  const result = await db.booking.updateMany({
     where: { id, bidangId: sesi.id, status: "MENUNGGU" },
     data: { status: "BATAL" },
   });
+
+  if (result.count === 0) return { error: "Booking tidak dapat dibatalkan." };
+
   revalidatePath("/bidang");
+  return {};
 }

@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Logo Temu — Eksplorasi</title>
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root{
+  --green-50:#F0F8F4;--green-100:#D8EFE6;--green-200:#AFDACC;--green-300:#78C2A6;
+  --green-400:#3EA67E;--green-500:#1A8A5C;--green-600:#A020F0;--green-700:#6A0EA6;
+  --green-800:#0A4229;--green-900:#072C1B;
+  --purple-50:#F7ECFE;--purple-100:#EED7FC;--purple-200:#DEB2F9;--purple-300:#C98AF5;
+  --purple-400:#B455F2;--purple-500:#A020F0;--purple-600:#8612D2;--purple-700:#6A0EA6;
+  --purple-800:#4E0B7A;--purple-900:#34064F;
+  --gold-300:#EBB840;--gold-400:#D49A1A;--gold-500:#B8800E;
+  --blue-600:#1556A0;
+  --n0:#FFFFFF;--n50:#F5F7F6;--n100:#E8EDEB;--n200:#D5DDD9;--n300:#B8C4BE;
+  --n400:#8E9E96;--n500:#6B7B72;--n600:#4C5A53;--n700:#374239;--n800:#222B26;--n900:#141A16;
+  --fg:#222B26;--muted:#6B7B72;--subtle:#8E9E96;
+  --bg:#F5F7F6;--card:#FFFFFF;--border:#E1E7E4;
+  --font:'Plus Jakarta Sans',system-ui,sans-serif;
+  --mono:'JetBrains Mono',monospace;
+}
+[data-theme="dark"]{
+  --fg:#D7E6DF;--muted:#7E948B;--subtle:#5C7268;
+  --bg:#0C1310;--card:#141E18;--border:#21302A;
+  --n50:#141E18;--n100:#1E2C26;--n200:#2A3C34;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font);background:var(--bg);color:var(--fg);line-height:1.5;-webkit-font-smoothing:antialiased;transition:background .3s,color .3s}
+
+/* ── HEADER ── */
+.top{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:16px;
+  padding:18px 40px;background:color-mix(in srgb,var(--bg) 88%,transparent);
+  backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.top-mark{display:flex;align-items:center;gap:11px}
+.top-mark svg{width:30px;height:30px}
+.top-title{font-weight:800;font-size:19px;letter-spacing:-.02em;color:var(--fg)}
+.top-sub{margin-left:2px;font-size:12.5px;color:var(--subtle);font-weight:500}
+.theme-btn{margin-left:auto;display:flex;align-items:center;gap:7px;padding:7px 15px;
+  border:1px solid var(--border);background:var(--card);color:var(--muted);
+  border-radius:100px;font:600 12.5px var(--font);cursor:pointer;transition:all .15s}
+.theme-btn:hover{color:var(--fg);border-color:var(--n300)}
+
+/* ── LAYOUT ── */
+.wrap{max-width:1180px;margin:0 auto;padding:48px 40px 100px}
+.lede{max-width:680px;margin-bottom:14px}
+.lede h1{font-size:34px;font-weight:800;letter-spacing:-.03em;line-height:1.1}
+.lede p{margin-top:12px;font-size:15px;color:var(--muted)}
+.lede .why{margin-top:18px;display:inline-flex;align-items:center;gap:10px;padding:10px 16px;
+  background:var(--purple-50);border:1px solid var(--purple-100);border-radius:10px;
+  font-size:13.5px;color:var(--purple-700);font-weight:600}
+[data-theme="dark"] .lede .why{background:rgba(160,32,240,.12);border-color:rgba(160,32,240,.25);color:var(--purple-300)}
+
+.section-label{margin:54px 0 18px;display:flex;align-items:center;gap:12px;
+  font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--subtle)}
+.section-label::after{content:"";flex:1;height:1px;background:var(--border)}
+
+/* ── CONCEPT GRID ── */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.concept{background:var(--card);border:1px solid var(--border);border-radius:16px;
+  overflow:hidden;transition:transform .18s,box-shadow .18s,border-color .18s}
+.concept:hover{transform:translateY(-3px);box-shadow:0 12px 34px rgba(160,32,240,.13);border-color:var(--purple-200)}
+.concept.rec{border-color:var(--purple-400);box-shadow:0 0 0 1px var(--purple-400)}
+.c-stage{position:relative;height:200px;display:flex;align-items:center;justify-content:center;
+  background:
+    radial-gradient(circle at 1px 1px,var(--n200) 1px,transparent 0) 0 0/22px 22px,
+    var(--n50)}
+.c-stage svg{width:88px;height:88px;filter:drop-shadow(0 6px 14px rgba(160,32,240,.16))}
+.c-tag{position:absolute;top:14px;left:14px;display:flex;align-items:center;gap:6px;
+  padding:5px 11px;border-radius:100px;background:var(--card);border:1px solid var(--border);
+  font-size:11px;font-weight:700;color:var(--muted)}
+.c-rec-pill{position:absolute;top:14px;right:14px;display:flex;align-items:center;gap:5px;
+  padding:5px 11px;border-radius:100px;background:var(--purple-600);color:#fff;
+  font-size:10.5px;font-weight:700;letter-spacing:.04em}
+.c-body{padding:20px 22px 22px}
+.c-name{font-size:17px;font-weight:800;letter-spacing:-.02em;display:flex;align-items:center;gap:9px}
+.c-id{font:600 11px var(--mono);color:var(--subtle)}
+.c-desc{margin-top:8px;font-size:13.5px;color:var(--muted);line-height:1.55}
+.c-lockups{margin-top:18px;display:flex;align-items:center;gap:14px}
+.lock-light,.lock-dark{flex:1;height:62px;border-radius:10px;display:flex;align-items:center;
+  justify-content:center;gap:9px;border:1px solid var(--border)}
+.lock-light{background:#fff}
+.lock-dark{background:#1B1A20;border-color:transparent}
+.lock-light svg,.lock-dark svg{width:26px;height:26px}
+.lock-word{font-weight:800;font-size:18px;letter-spacing:-.03em}
+.lock-light .lock-word{color:var(--purple-700)}
+.lock-dark .lock-word{color:#fff}
+
+/* ── RECOMMENDED DEEP-DIVE ── */
+.deep{margin-top:22px;background:var(--card);border:1px solid var(--border);border-radius:18px;padding:34px}
+.deep-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:34px;align-items:center}
+.deep-hero{border-radius:14px;padding:44px;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(140deg,#23262D,#13151A)}
+.deep-hero .lockup{display:flex;align-items:center;gap:18px}
+.deep-hero svg{width:72px;height:72px}
+.deep-hero .word{font-weight:800;font-size:54px;letter-spacing:-.04em;color:#fff;line-height:1}
+.deep-hero .word .dot{color:#C98AF5}
+.deep h3{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--subtle)}
+.deep p{margin-top:12px;font-size:14.5px;color:var(--muted);line-height:1.65}
+.deep ul{margin-top:16px;display:flex;flex-direction:column;gap:11px;list-style:none}
+.deep li{display:flex;gap:11px;font-size:13.5px;color:var(--fg)}
+.deep li i{color:var(--purple-500);font-size:18px;flex-shrink:0;margin-top:1px}
+.deep li b{font-weight:700}
+
+/* ── SPECIMENS ── */
+.spec-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.spec{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.spec-stage{height:128px;display:flex;align-items:center;justify-content:center}
+.spec-cap{padding:11px 14px;border-top:1px solid var(--border);font-size:12px;color:var(--muted);font-weight:600}
+.spec-cap span{color:var(--subtle);font-weight:500;font-family:var(--mono);font-size:10.5px;display:block;margin-top:2px}
+
+/* app icons */
+.icons-row{display:flex;align-items:flex-end;gap:26px;flex-wrap:wrap}
+.app-ico{display:flex;flex-direction:column;align-items:center;gap:10px}
+.ico-tile{border-radius:22.5%;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(155deg,#FFFFFF,#F2E8FB);border:1px solid var(--purple-100);
+  box-shadow:0 8px 22px rgba(160,32,240,.16)}
+.ico-tile svg{width:60%;height:60%}
+.ico-cap{font-size:11.5px;color:var(--subtle);font-weight:600;font-family:var(--mono)}
+
+/* misuse */
+.rules{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.rule{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 20px}
+.rule-h{display:flex;align-items:center;gap:9px;font-weight:700;font-size:14px;margin-bottom:6px}
+.rule.do .rule-h{color:var(--purple-600)}
+.rule.dont .rule-h{color:var(--red-500,#C42828)}
+.rule p{font-size:13px;color:var(--muted)}
+
+@media(max-width:880px){
+  .wrap{padding:32px 22px 80px}.top{padding:16px 22px}
+  .grid,.deep-grid,.rules{grid-template-columns:1fr}
+  .spec-grid{grid-template-columns:repeat(2,1fr)}
+  .deep-hero .word{font-size:40px}
+}
+
+/* ============ REUSABLE SVG SYMBOLS ============ */
+</style>
+</head>
+<body>
+
+<!-- SVG symbol defs: each logo mark defined once, reused via <use> -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- ① TITIK TEMU — two circles meet, gold lens -->
+    <symbol id="mark-vesica" viewBox="0 0 64 64">
+      <clipPath id="vL"><circle cx="25" cy="32" r="15"/></clipPath>
+      <circle cx="25" cy="32" r="15" fill="#A020F0"/>
+      <circle cx="39" cy="32" r="15" fill="#6A0EA6"/>
+      <g clip-path="url(#vL)"><circle cx="39" cy="32" r="15" fill="#EED7FC"/></g>
+    </symbol>
+
+    <!-- ①w TITIK TEMU — reversed (white) WITH explicit lens, for dark backgrounds -->
+    <symbol id="mark-vesica-white" viewBox="0 0 64 64">
+      <clipPath id="vLw"><circle cx="25" cy="32" r="15"/></clipPath>
+      <circle cx="25" cy="32" r="15" fill="#fff" fill-opacity="0.78"/>
+      <circle cx="39" cy="32" r="15" fill="#fff" fill-opacity="0.48"/>
+      <g clip-path="url(#vLw)"><circle cx="39" cy="32" r="15" fill="#fff"/></g>
+    </symbol>
+
+    <!-- ② RUANG — overlapping rounded rooms -->
+    <symbol id="mark-ruang" viewBox="0 0 64 64">
+      <clipPath id="rA"><rect x="11" y="15" width="29" height="29" rx="8"/></clipPath>
+      <rect x="11" y="15" width="29" height="29" rx="8" fill="#A020F0"/>
+      <rect x="24" y="20" width="29" height="29" rx="8" fill="#6A0EA6"/>
+      <g clip-path="url(#rA)"><rect x="24" y="20" width="29" height="29" rx="8" fill="#EED7FC"/></g>
+    </symbol>
+
+    <!-- ③ MONOGRAM — tile T with gold meeting point -->
+    <symbol id="mark-mono" viewBox="0 0 64 64">
+      <rect width="64" height="64" rx="16" fill="#6A0EA6"/>
+      <rect x="28.5" y="20" width="7" height="28" rx="3.5" fill="#fff"/>
+      <rect x="15" y="18" width="15" height="7" rx="3.5" fill="#fff"/>
+      <rect x="34" y="18" width="15" height="7" rx="3.5" fill="#fff"/>
+      <circle cx="32" cy="21.5" r="4.2" fill="#A020F0"/>
+    </symbol>
+
+    <!-- ④ PIN TEMU — venue pin, meeting point inside -->
+    <symbol id="mark-pin" viewBox="0 0 64 64">
+      <path d="M32 6C21.5 6 13 14.3 13 24.6c0 12.9 15.6 28.4 18 30.7a1.4 1.4 0 0 0 2 0c2.4-2.3 18-17.8 18-30.7C51 14.3 42.5 6 32 6Z" fill="#A020F0"/>
+      <circle cx="32" cy="24.5" r="10" fill="#fff"/>
+      <circle cx="32" cy="24.5" r="4.4" fill="#A020F0"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="top">
+  <div class="top-mark">
+    <svg><use href="#mark-vesica"/></svg>
+    <span class="top-title">Temu</span>
+  </div>
+  <span class="top-sub">Eksplorasi Logo</span>
+  <button class="theme-btn" id="themeBtn" onclick="toggleTheme()"><i class="ph ph-moon"></i>Dark</button>
+</header>
+
+<div class="wrap">
+
+  <div class="lede">
+    <h1>Logo Temu</h1>
+    <p>“Temu” berarti <em>bertemu</em> — inti dari aplikasi: mempertemukan orang dan ruangan pada satu waktu. Empat konsep di bawah memvisualkan gagasan <strong>titik temu</strong>, dengan <strong>warna brand ungu #A020F0</strong>, palet ungu monokrom yang bersih.</p>
+    <div class="why"><i class="ph ph-sparkle"></i>Pilih satu arah — saya akan terapkan ke seluruh design system &amp; handover</div>
+  </div>
+
+  <div class="section-label">Empat Konsep</div>
+  <div class="grid">
+
+    <!-- CONCEPT 1 -->
+    <div class="concept rec">
+      <div class="c-stage">
+        <span class="c-tag"><i class="ph ph-circles-three"></i>Konsep 01</span>
+        <span class="c-rec-pill"><i class="ph ph-star"></i>REKOMENDASI</span>
+        <svg><use href="#mark-vesica"/></svg>
+      </div>
+      <div class="c-body">
+        <div class="c-name">Titik Temu <span class="c-id">/ vesica</span></div>
+        <div class="c-desc">Dua lingkaran bertemu; irisannya disorot lavender terang — momen ketika dua pihak berbagi satu ruang &amp; waktu. Paling lugas memaknai “temu”, kuat sebagai ikon app.</div>
+        <div class="c-lockups">
+          <div class="lock-light"><svg><use href="#mark-vesica"/></svg><span class="lock-word">Temu</span></div>
+          <div class="lock-dark"><svg><use href="#mark-vesica"/></svg><span class="lock-word">Temu</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONCEPT 2 -->
+    <div class="concept">
+      <div class="c-stage">
+        <span class="c-tag"><i class="ph ph-squares-four"></i>Konsep 02</span>
+        <svg><use href="#mark-ruang"/></svg>
+      </div>
+      <div class="c-body">
+        <div class="c-name">Ruang <span class="c-id">/ overlap</span></div>
+        <div class="c-desc">Dua “ruangan” (kotak membulat) bertumpang; area bersama menyala lebih terang — kebutuhan bertemu ketersediaan ruang. Tegas, kontemporer, terasa seperti produk booking.</div>
+        <div class="c-lockups">
+          <div class="lock-light"><svg><use href="#mark-ruang"/></svg><span class="lock-word">Temu</span></div>
+          <div class="lock-dark"><svg><use href="#mark-ruang"/></svg><span class="lock-word">Temu</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONCEPT 3 -->
+    <div class="concept">
+      <div class="c-stage">
+        <span class="c-tag"><i class="ph ph-square"></i>Konsep 03</span>
+        <svg><use href="#mark-mono"/></svg>
+      </div>
+      <div class="c-body">
+        <div class="c-name">Monogram T <span class="c-id">/ tile</span></div>
+        <div class="c-desc">Pengembangan mark “T” yang sudah dipakai — palang dibelah dengan titik ungu di tengah sebagai <em>titik temu</em>. Aman, familiar, langsung pas di topbar 28px.</div>
+        <div class="c-lockups">
+          <div class="lock-light"><svg><use href="#mark-mono"/></svg><span class="lock-word">Temu</span></div>
+          <div class="lock-dark"><svg><use href="#mark-mono"/></svg><span class="lock-word">Temu</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONCEPT 4 -->
+    <div class="concept">
+      <div class="c-stage">
+        <span class="c-tag"><i class="ph ph-map-pin"></i>Konsep 04</span>
+        <svg><use href="#mark-pin"/></svg>
+      </div>
+      <div class="c-body">
+        <div class="c-name">Pin Temu <span class="c-id">/ venue</span></div>
+        <div class="c-desc">Penanda lokasi dengan titik temu ungu di tengah — menegaskan konteks <em>tempat</em> &amp; ruangan fisik. Ramah dikenali, cocok untuk peta/denah ruangan.</div>
+        <div class="c-lockups">
+          <div class="lock-light"><svg><use href="#mark-pin"/></svg><span class="lock-word">Temu</span></div>
+          <div class="lock-dark"><svg><use href="#mark-pin"/></svg><span class="lock-word">Temu</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- RECOMMENDED DEEP DIVE -->
+  <div class="section-label">Rekomendasi · Titik Temu</div>
+  <div class="deep">
+    <div class="deep-grid">
+      <div class="deep-hero">
+        <div class="lockup">
+          <svg><use href="#mark-vesica"/></svg>
+          <span class="word">Tem<span class="dot">u</span></span>
+        </div>
+      </div>
+      <div>
+        <h3>Kenapa Titik Temu</h3>
+        <p>Logo ini menerjemahkan nama secara harfiah: dua lingkaran yang beririsan adalah <em>pertemuan</em> itu sendiri. Bentuknya geometris murni sehingga tetap tajam dari favicon 16px hingga spanduk, dan irisan lavender memberi sorot lembut tanpa warna kedua yang menabrak.</p>
+        <ul>
+          <li><i class="ph ph-check-circle"></i><span><b>Bermakna</b> — irisan = ruang &amp; waktu yang dibagikan dua pihak</span></li>
+          <li><i class="ph ph-check-circle"></i><span><b>Skalabel</b> — dua lingkaran tetap terbaca pada ukuran terkecil</span></li>
+          <li><i class="ph ph-check-circle"></i><span><b>On-brand</b> — ungu #A020F0 + ungu tua + sorot lavender, monokrom bersih</span></li>
+          <li><i class="ph ph-check-circle"></i><span><b>Fleksibel</b> — mark berdiri sendiri sebagai ikon app/PWA</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPECIMENS -->
+  <div class="section-label">Penerapan · Titik Temu</div>
+  <div class="spec-grid">
+    <div class="spec">
+      <div class="spec-stage" style="background:#fff">
+        <div style="display:flex;align-items:center;gap:10px">
+          <svg style="width:30px;height:30px"><use href="#mark-vesica"/></svg>
+          <span style="font-weight:800;font-size:21px;letter-spacing:-.03em;color:#6A0EA6">Temu</span>
+        </div>
+      </div>
+      <div class="spec-cap">Horizontal<span>latar terang · utama</span></div>
+    </div>
+    <div class="spec">
+      <div class="spec-stage" style="background:#17161C">
+        <div style="display:flex;align-items:center;gap:10px">
+          <svg style="width:30px;height:30px"><use href="#mark-vesica-white"/></svg>
+          <span style="font-weight:800;font-size:21px;letter-spacing:-.03em;color:#fff">Temu</span>
+        </div>
+      </div>
+      <div class="spec-cap">Reversed<span>latar gelap</span></div>
+    </div>
+    <div class="spec">
+      <div class="spec-stage" style="background:#fff">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+          <svg style="width:34px;height:34px"><use href="#mark-vesica"/></svg>
+          <span style="font-weight:800;font-size:16px;letter-spacing:-.02em;color:#6A0EA6">Temu</span>
+        </div>
+      </div>
+      <div class="spec-cap">Stacked<span>splash · login</span></div>
+    </div>
+    <div class="spec">
+      <div class="spec-stage" style="background:var(--n50)">
+        <svg style="width:46px;height:46px"><use href="#mark-vesica"/></svg>
+      </div>
+      <div class="spec-cap">Mark only<span>avatar · favicon</span></div>
+    </div>
+  </div>
+
+  <!-- APP ICONS -->
+  <div class="section-label">Ikon Aplikasi &amp; Favicon</div>
+  <div class="icons-row">
+    <div class="app-ico">
+      <div class="ico-tile" style="width:120px;height:120px"><svg><use href="#mark-vesica"/></svg></div>
+      <span class="ico-cap">120 · iOS</span>
+    </div>
+    <div class="app-ico">
+      <div class="ico-tile" style="width:80px;height:80px"><svg><use href="#mark-vesica"/></svg></div>
+      <span class="ico-cap">80 · PWA</span>
+    </div>
+    <div class="app-ico">
+      <div class="ico-tile" style="width:56px;height:56px"><svg><use href="#mark-vesica"/></svg></div>
+      <span class="ico-cap">56</span>
+    </div>
+    <div class="app-ico">
+      <div class="ico-tile" style="width:40px;height:40px"><svg><use href="#mark-vesica"/></svg></div>
+      <span class="ico-cap">40</span>
+    </div>
+    <div class="app-ico">
+      <div class="ico-tile" style="width:28px;height:28px"><svg><use href="#mark-vesica"/></svg></div>
+      <span class="ico-cap">28</span>
+    </div>
+    <div class="app-ico">
+      <div style="width:16px;height:16px;border-radius:4px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid var(--border)"><svg style="width:14px;height:14px"><use href="#mark-vesica"/></svg></div>
+      <span class="ico-cap">16 · favicon</span>
+    </div>
+  </div>
+
+  <!-- USAGE RULES -->
+  <div class="section-label">Aturan Singkat</div>
+  <div class="rules">
+    <div class="rule do">
+      <div class="rule-h"><i class="ph ph-check-circle"></i>Lakukan</div>
+      <p>Jaga ruang kosong di sekitar mark minimal selebar satu lingkaran. Di latar gelap/ungu gunakan versi mark putih (reversed). Wordmark selalu “Temu” — kapital T, sisanya kecil.</p>
+    </div>
+    <div class="rule dont">
+      <div class="rule-h"><i class="ph ph-x-circle"></i>Hindari</div>
+      <p>Jangan ubah warna sorot lavender jadi warna lain, jangan regangkan/miringkan mark, jangan letakkan mark berwarna di atas latar ungu (pakai versi putih), dan jangan ganti font selain Plus Jakarta Sans.</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function toggleTheme(){
+    const el=document.documentElement;
+    const btn=document.getElementById('themeBtn');
+    const dark=el.getAttribute('data-theme')==='dark';
+    if(dark){el.removeAttribute('data-theme');btn.innerHTML='<i class="ph ph-moon"></i>Dark';localStorage.setItem('logo-theme','light');}
+    else{el.setAttribute('data-theme','dark');btn.innerHTML='<i class="ph ph-sun"></i>Light';localStorage.setItem('logo-theme','dark');}
+  }
+  if(localStorage.getItem('logo-theme')==='dark'){
+    document.documentElement.setAttribute('data-theme','dark');
+    document.getElementById('themeBtn').innerHTML='<i class="ph ph-sun"></i>Light';
+  }
+</script>
+</body>
+</html>

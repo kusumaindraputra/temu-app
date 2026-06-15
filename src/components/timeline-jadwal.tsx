@@ -90,7 +90,7 @@ export default function TimelineJadwal({ ruangan, tanggal }: Props) {
                       key={b.id}
                       className={`absolute top-1 bottom-1 flex items-center overflow-hidden rounded-md px-2 ${
                         isApproved
-                          ? "bg-teal-500 text-white"
+                          ? "bg-success-500 text-white"
                           : "bg-amber-100 text-amber-800 ring-1 ring-amber-200"
                       }`}
                       style={{ left: `${left}%`, width: `${width}%` }}
@@ -117,7 +117,7 @@ export default function TimelineJadwal({ ruangan, tanggal }: Props) {
       {/* Legenda */}
       <div className="mt-3 flex flex-wrap items-center gap-5 text-xs text-stone-400">
         <span className="flex items-center gap-1.5">
-          <span className="inline-block h-2.5 w-5 rounded bg-teal-500" />
+          <span className="inline-block h-2.5 w-5 rounded bg-success-500" />
           Disetujui
         </span>
         <span className="flex items-center gap-1.5">

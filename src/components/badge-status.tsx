@@ -12,9 +12,9 @@ const peta: Record<
   },
   DISETUJUI: {
     label: "Disetujui",
-    dot: "bg-teal-500",
-    text: "text-teal-700",
-    bg: "bg-teal-50",
+    dot: "bg-success-500",
+    text: "text-success-700",
+    bg: "bg-success-50",
   },
   DITOLAK: {
     label: "Ditolak",

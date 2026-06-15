@@ -1,0 +1,2547 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design System — Temu · Booking Ruang Dinkes Bogor</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3CclipPath id='c'%3E%3Ccircle cx='25' cy='32' r='15'/%3E%3C/clipPath%3E%3C/defs%3E%3Ccircle cx='25' cy='32' r='15' fill='%23A020F0'/%3E%3Ccircle cx='39' cy='32' r='15' fill='%236A0EA6'/%3E%3Cg clip-path='url(%23c)'%3E%3Ccircle cx='39' cy='32' r='15' fill='%23EED7FC'/%3E%3C/g%3E%3C/svg%3E">
+<style>
+/* =====================================================
+   DESIGN TOKENS — Dinkes Bogor DS
+   ===================================================== */
+:root {
+  --green-50:#F0F8F4;--green-100:#D8EFE6;--green-200:#AFDACC;--green-300:#78C2A6;
+  --green-400:#3EA67E;--green-500:#1A8A5C;--green-600:#1A7A4C;--green-700:#0D5C3A;
+  --green-800:#0A4229;--green-900:#072C1B;
+  --purple-50:#F7ECFE;--purple-100:#EED7FC;--purple-200:#DEB2F9;--purple-300:#C98AF5;
+  --purple-400:#B455F2;--purple-500:#A020F0;--purple-600:#8612D2;--purple-700:#6A0EA6;
+  --purple-800:#4E0B7A;--purple-900:#34064F;
+  --success-50:#F0F8F4;--success-100:#D8EFE6;--success-300:#78C2A6;--success-500:#1A8A5C;--success-600:#1A7A4C;--success-700:#0D5C3A;
+  --gold-50:#FDF8EE;--gold-100:#FAECD0;--gold-200:#F3D28A;--gold-300:#EBB840;
+  --gold-400:#D49A1A;--gold-500:#B8800E;
+  --red-50:#FEF2F2;--red-100:#FCD9D9;--red-200:#F9A8A8;--red-400:#E03C3C;--red-500:#C42828;--red-600:#9B1E1E;
+  --blue-50:#EFF4FB;--blue-100:#D6E4F5;--blue-500:#1A6AB5;--blue-600:#1556A0;--blue-700:#0F3F7A;
+  --neutral-0:#FFFFFF;--neutral-50:#F5F7F6;--neutral-100:#E8EDEB;--neutral-200:#D5DDD9;
+  --neutral-300:#B8C4BE;--neutral-400:#8E9E96;--neutral-500:#6B7B72;--neutral-600:#4E5C54;
+  --neutral-700:#364039;--neutral-800:#222B26;--neutral-900:#111714;
+
+  --color-brand-primary:var(--purple-600);
+  --color-brand-primary-dark:var(--purple-700);
+  --color-brand-primary-light:var(--purple-100);
+  --color-fg-default:var(--neutral-800);
+  --color-fg-muted:var(--neutral-500);
+  --color-fg-subtle:var(--neutral-400);
+  --color-bg-default:var(--neutral-0);
+  --color-bg-subtle:var(--neutral-50);
+  --color-bg-inset:var(--neutral-100);
+  --color-border-default:var(--neutral-200);
+  --color-border-muted:var(--neutral-100);
+  --color-border-focus:var(--purple-600);
+  --color-status-success:var(--success-500);--color-status-success-bg:var(--success-50);
+  --color-status-warning:var(--gold-400);--color-status-warning-bg:var(--gold-50);
+  --warning-fg:#7A5209;
+  --color-status-danger:var(--red-400);--color-status-danger-bg:var(--red-50);
+  --color-status-neutral:var(--neutral-300);--color-status-neutral-bg:var(--neutral-100);
+
+  --font-sans:'Plus Jakarta Sans','Segoe UI',sans-serif;
+  --font-mono:'JetBrains Mono',monospace;
+  --text-xs:.75rem;--text-sm:.875rem;--text-base:1rem;--text-md:1.125rem;
+  --text-lg:1.25rem;--text-xl:1.5rem;--text-2xl:1.875rem;--text-3xl:2.25rem;
+  --weight-regular:400;--weight-medium:500;--weight-semibold:600;--weight-bold:700;
+
+  --space-1:.25rem;--space-2:.5rem;--space-3:.75rem;--space-4:1rem;
+  --space-5:1.25rem;--space-6:1.5rem;--space-8:2rem;--space-10:2.5rem;
+  --space-12:3rem;--space-16:4rem;
+
+  --radius-sm:4px;--radius-md:6px;--radius-lg:8px;
+  --radius-xl:10px;--radius-2xl:16px;--radius-full:9999px;
+
+  --shadow-1:0 1px 3px rgba(0,0,0,.08);
+  --shadow-2:0 4px 12px rgba(0,0,0,.10);
+  --shadow-3:0 8px 24px rgba(0,0,0,.14);
+  --shadow-focus:0 0 0 3px rgba(160,32,240,.25);
+
+  --transition-fast:150ms ease;
+  --transition-base:200ms ease-out;
+  --transition-exit:150ms ease-in;
+}
+
+/* =====================================================
+   DOC SHELL
+   ===================================================== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font-sans);background:var(--neutral-100);color:var(--color-fg-default);-webkit-font-smoothing:antialiased}
+[id]{scroll-margin-top:76px}
+
+.doc-header{
+  position:sticky;top:0;z-index:200;height:60px;
+  background:var(--purple-700);color:#fff;
+  display:flex;align-items:center;gap:var(--space-4);padding:0 var(--space-6);
+  box-shadow:var(--shadow-2);
+}
+.doc-header-logo{
+  width:36px;height:36px;background:#fff;border-radius:var(--radius-lg);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:13px;color:var(--purple-700);flex-shrink:0;
+}
+.doc-header h1{font-size:var(--text-base);font-weight:700;line-height:1.2}
+.doc-header p{font-size:11px;opacity:.65;margin-top:1px}
+.doc-header-badge{
+  margin-left:auto;padding:4px 12px;border-radius:var(--radius-full);
+  background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);
+  font-size:11px;font-weight:500;white-space:nowrap;
+}
+
+.doc-layout{display:grid;grid-template-columns:220px 1fr;min-height:calc(100vh - 60px);max-width:1440px;margin:0 auto}
+
+.doc-sidebar{
+  background:#fff;border-right:1px solid var(--neutral-200);
+  padding:var(--space-5) 0;position:sticky;top:60px;
+  height:calc(100vh - 60px);overflow-y:auto;
+}
+.sidebar-group{
+  padding:var(--space-2) var(--space-5);margin-top:var(--space-3);
+  font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--neutral-400);
+}
+.doc-sidebar a{
+  display:block;padding:5px var(--space-5);font-size:var(--text-sm);
+  color:var(--neutral-600);text-decoration:none;border-left:2px solid transparent;
+  transition:all var(--transition-fast);line-height:1.4;
+}
+.doc-sidebar a:hover{color:var(--purple-700);background:var(--purple-50);border-left-color:var(--purple-400)}
+.doc-sidebar a.active{color:var(--purple-700);background:var(--purple-50);border-left-color:var(--purple-600);font-weight:600}
+
+.doc-main{padding:var(--space-8);display:flex;flex-direction:column;gap:var(--space-12)}
+
+/* =====================================================
+   SECTION HEADERS
+   ===================================================== */
+.ds-section{display:flex;flex-direction:column;gap:var(--space-5)}
+.ds-header{padding-bottom:var(--space-3);border-bottom:2px solid var(--purple-600)}
+.ds-header h2{font-size:var(--text-xl);font-weight:700;color:var(--purple-700)}
+.ds-header p{font-size:var(--text-sm);color:var(--neutral-400);margin-top:3px}
+
+/* =====================================================
+   DEMO CARD WRAPPER
+   ===================================================== */
+.demo{background:#fff;border-radius:var(--radius-xl);border:1px solid var(--neutral-200);overflow:hidden}
+.demo-header{
+  padding:var(--space-2) var(--space-5);background:var(--neutral-50);
+  border-bottom:1px solid var(--neutral-200);
+  font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--neutral-500);
+  display:flex;align-items:center;justify-content:space-between;gap:var(--space-4);
+}
+.demo-body{padding:var(--space-5)}
+.demo-body.subtle{background:var(--neutral-50)}
+.demo-body.pad0{padding:0}
+
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4)}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-4)}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-3)}
+.row{display:flex;flex-wrap:wrap;gap:var(--space-3);align-items:center}
+.col{display:flex;flex-direction:column;gap:var(--space-3)}
+
+pre.code{
+  background:#1a1f1c;color:#a8d5b5;border-radius:0 0 var(--radius-xl) var(--radius-xl);
+  padding:var(--space-4) var(--space-5);font-family:var(--font-mono);font-size:12px;
+  line-height:1.75;overflow-x:auto;
+}
+.c-key{color:#78C2A6}.c-val{color:#EBB840}.c-cmt{color:#3EA67E}
+
+.pill{
+  display:inline-block;background:var(--neutral-100);border:1px solid var(--neutral-200);
+  border-radius:var(--radius-sm);font-family:var(--font-mono);font-size:11px;
+  color:var(--neutral-600);padding:2px 7px;
+}
+
+.note{
+  background:var(--neutral-800);color:#cdd8d2;border-radius:var(--radius-lg);
+  padding:var(--space-3) var(--space-4);font-size:var(--text-xs);line-height:1.7;
+}
+.note strong{color:var(--purple-300)}
+.note-info{background:var(--blue-50);color:var(--blue-600);border-radius:var(--radius-lg);padding:var(--space-3) var(--space-4);font-size:var(--text-xs);line-height:1.7;display:flex;gap:var(--space-3);align-items:flex-start}
+
+/* =====================================================
+   COMPONENT STYLES — mirrors the actual app
+   ===================================================== */
+
+/* --- BUTTON --- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:var(--space-2);
+  padding:8px 20px;border-radius:var(--radius-md);font-family:var(--font-sans);
+  font-size:var(--text-sm);font-weight:600;cursor:pointer;border:none;
+  transition:all var(--transition-fast);text-decoration:none;white-space:nowrap;
+}
+.btn:active{transform:scale(.98)}
+.btn-primary{background:var(--color-brand-primary);color:#fff}
+.btn-primary:hover{background:var(--color-brand-primary-dark)}
+.btn-secondary{background:#fff;color:var(--color-fg-default);border:1px solid var(--color-border-default)}
+.btn-secondary:hover{background:var(--neutral-50)}
+.btn-danger{background:var(--color-bg-default);color:var(--red-500);border:1px solid var(--neutral-200)}
+.btn-danger:hover{background:var(--red-50);border-color:var(--red-200)}
+.btn-ghost{background:transparent;color:var(--color-brand-primary);border:none}
+.btn-ghost:hover{background:var(--purple-50)}
+.btn-sm{padding:5px 14px;font-size:var(--text-xs)}
+.btn-lg{padding:12px 28px;font-size:var(--text-base)}
+.btn-full{width:100%}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+
+/* --- FORM --- */
+.form-group{display:flex;flex-direction:column;gap:6px}
+.form-label{font-size:var(--text-sm);font-weight:500;color:var(--color-fg-default)}
+.form-input,.form-select,.form-textarea{
+  font-family:var(--font-sans);font-size:var(--text-sm);color:var(--color-fg-default);
+  background:#fff;border:1px solid var(--color-border-default);border-radius:var(--radius-md);
+  padding:9px 14px;width:100%;outline:none;appearance:none;
+  transition:border-color var(--transition-fast),box-shadow var(--transition-fast);
+}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--color-border-focus);box-shadow:var(--shadow-focus)}
+.form-input::placeholder,.form-textarea::placeholder{color:var(--neutral-300)}
+.form-input.is-error{border-color:var(--red-400)}
+.form-input.is-error:focus{box-shadow:0 0 0 3px rgba(196,40,40,.15)}
+.form-select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%238E9E96' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:36px}
+.form-textarea{resize:vertical;min-height:72px}
+.form-helper{font-size:var(--text-xs);color:var(--neutral-400)}
+.form-error-msg{font-size:var(--text-xs);color:var(--red-500)}
+.form-req{color:var(--red-500)}
+
+/* --- BADGE --- */
+.badge{
+  display:inline-flex;align-items:center;gap:6px;padding:4px 10px;
+  border-radius:var(--radius-full);font-size:12px;font-weight:600;
+}
+.badge-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.badge-menunggu{background:var(--gold-50);color:var(--warning-fg)}.badge-menunggu .badge-dot{background:var(--gold-400)}
+.badge-disetujui{background:var(--success-50);color:var(--success-700)}.badge-disetujui .badge-dot{background:var(--success-500)}
+.badge-ditolak{background:var(--red-50);color:var(--red-600)}.badge-ditolak .badge-dot{background:var(--red-400)}
+.badge-batal{background:var(--neutral-100);color:var(--neutral-500)}.badge-batal .badge-dot{background:var(--neutral-300)}
+.badge-aktif{background:var(--success-50);color:var(--success-700)}.badge-aktif .badge-dot{background:var(--success-500)}
+.badge-nonaktif{background:var(--neutral-100);color:var(--neutral-500)}.badge-nonaktif .badge-dot{background:var(--neutral-300)}
+
+/* --- STAT CARD --- */
+.stat-card{background:#fff;border-radius:var(--radius-2xl);padding:var(--space-5);box-shadow:var(--shadow-1);border:1px solid var(--neutral-100)}
+.sc-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--neutral-400)}
+.sc-value{font-size:var(--text-3xl);font-weight:700;letter-spacing:-.03em;line-height:1.1;margin:var(--space-2) 0 var(--space-1);font-variant-numeric:tabular-nums}
+.sc-sub{font-size:var(--text-xs);color:var(--neutral-400)}
+.sc-default{color:var(--color-fg-default)}
+.sc-primary{color:var(--purple-600)}
+.sc-warning{color:var(--gold-500)}
+.sc-danger{color:var(--red-500)}
+
+/* --- TOPBAR --- */
+.topbar{
+  background:rgba(255,255,255,.92);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--neutral-100);height:56px;
+  display:flex;align-items:center;padding:0 var(--space-4);gap:var(--space-4);
+}
+.tb-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.tb-icon{
+  width:28px;height:28px;background:var(--color-brand-primary);border-radius:var(--radius-lg);
+  display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;
+}
+.tb-name{font-size:var(--text-sm);font-weight:600;color:var(--color-fg-default)}
+.tb-nav{display:flex;gap:2px;margin-left:var(--space-2)}
+.tb-nav a{
+  padding:6px 10px;border-radius:var(--radius-md);font-size:var(--text-sm);
+  color:var(--neutral-500);text-decoration:none;transition:all var(--transition-fast);
+}
+.tb-nav a:hover{background:var(--neutral-100);color:var(--color-fg-default)}
+.tb-nav a.active{color:var(--purple-700);font-weight:600;background:var(--purple-50)}
+.tb-right{display:flex;align-items:center;gap:4px;margin-left:auto}
+.tb-bell{
+  width:36px;height:36px;border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;
+  color:var(--neutral-400);cursor:pointer;transition:all var(--transition-fast);
+  position:relative;background:transparent;border:none;
+}
+.tb-bell:hover{background:var(--neutral-100);color:var(--neutral-600)}
+.tb-bell-dot{
+  position:absolute;top:4px;right:4px;width:14px;height:14px;background:var(--red-500);
+  border-radius:50%;font-size:9px;font-weight:700;color:#fff;
+  display:flex;align-items:center;justify-content:center;
+}
+.tb-avatar{display:flex;align-items:center;gap:var(--space-2);padding:4px 8px;border-radius:var(--radius-md)}
+.tb-avatar-circle{
+  width:28px;height:28px;background:var(--purple-100);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--purple-700);flex-shrink:0;
+}
+.tb-avatar-name{font-size:var(--text-xs);font-weight:600;line-height:1.2}
+.tb-avatar-role{font-size:10px;color:var(--neutral-400)}
+.tb-logout{padding:6px 12px;border:1px solid var(--neutral-200);border-radius:var(--radius-md);font-size:var(--text-xs);font-weight:500;color:var(--neutral-600);background:#fff;cursor:pointer;transition:all var(--transition-fast)}
+.tb-logout:hover{background:var(--neutral-50)}
+
+/* --- BOOKING CARD --- */
+.booking-card{
+  background:#fff;border-radius:var(--radius-2xl);padding:var(--space-4) var(--space-5);
+  box-shadow:var(--shadow-1);border:1px solid var(--neutral-100);
+  display:flex;align-items:flex-start;justify-content:space-between;gap:var(--space-4);
+  transition:box-shadow var(--transition-fast),transform var(--transition-fast);
+}
+.booking-card:hover{box-shadow:var(--shadow-2);transform:translateY(-1px)}
+.bc-room{font-weight:600;font-size:var(--text-sm);color:var(--color-fg-default)}
+.bc-sep{color:var(--neutral-300);margin:0 4px}
+.bc-loc{font-size:var(--text-xs);color:var(--neutral-400)}
+.bc-time{font-size:var(--text-sm);color:var(--neutral-600);margin-top:4px}
+.bc-purpose{font-size:var(--text-sm);color:var(--neutral-500)}
+.bc-meta{font-size:var(--text-xs);color:var(--neutral-400);margin-top:2px}
+.bc-note{margin-top:var(--space-2);background:var(--neutral-50);border-radius:var(--radius-md);padding:var(--space-2) var(--space-3);font-size:var(--text-xs);color:var(--neutral-600)}
+
+/* --- APPROVAL CARD --- */
+.approval-card{background:#fff;border-radius:var(--radius-2xl);padding:var(--space-5);box-shadow:var(--shadow-1);border:1px solid var(--neutral-100)}
+.ac-conflict{background:var(--gold-50);border-radius:var(--radius-md);padding:var(--space-3) var(--space-4);font-size:var(--text-xs);color:var(--warning-fg);margin-top:var(--space-4)}
+.ac-conflict strong{display:block;font-weight:600;margin-bottom:3px}
+.ac-notes{
+  width:100%;font-family:var(--font-sans);font-size:var(--text-sm);
+  border:1px solid var(--neutral-200);border-radius:var(--radius-md);
+  padding:var(--space-2) var(--space-3);color:var(--color-fg-default);
+  outline:none;resize:none;transition:border-color var(--transition-fast),box-shadow var(--transition-fast);
+}
+.ac-notes:focus{border-color:var(--purple-600);box-shadow:var(--shadow-focus)}
+.ac-notes::placeholder{color:var(--neutral-300)}
+
+/* --- UPCOMING ITEM --- */
+.upcoming-item{display:flex;align-items:flex-start;gap:var(--space-3);padding:var(--space-3) 0;border-bottom:1px solid var(--neutral-50)}
+.upcoming-item:last-child{border-bottom:none}
+.ui-date{width:40px;height:40px;background:var(--purple-50);border-radius:var(--radius-xl);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0}
+.ui-day{font-size:var(--text-xs);font-weight:700;color:var(--purple-700);line-height:1}
+.ui-month{font-size:10px;color:var(--purple-500);margin-top:2px}
+.ui-room{font-size:var(--text-sm);font-weight:500;color:var(--color-fg-default)}
+.ui-time{font-size:var(--text-xs);color:var(--neutral-500)}
+.ui-purpose{font-size:var(--text-xs);color:var(--neutral-400)}
+
+/* --- EMPTY STATE --- */
+.empty{
+  background:#fff;border:1.5px dashed var(--neutral-200);border-radius:var(--radius-2xl);
+  padding:var(--space-12);text-align:center;color:var(--neutral-400);font-size:var(--text-sm);
+}
+.empty a{color:var(--purple-600);font-weight:500;text-decoration:none}
+
+/* --- ALERT --- */
+.alert{border-radius:var(--radius-lg);padding:var(--space-3) var(--space-4);font-size:var(--text-sm);display:flex;align-items:flex-start;gap:var(--space-3)}
+.alert-success{background:var(--success-50);color:var(--success-700)}
+.alert-warning{background:var(--gold-50);color:var(--warning-fg)}
+.alert-danger{background:var(--red-50);color:var(--red-600)}
+.alert-info{background:var(--blue-50);color:var(--blue-600)}
+
+/* --- PAGINATION --- */
+.pagination{display:flex;align-items:center;justify-content:center;gap:var(--space-2);margin-top:var(--space-5)}
+.pg-btn{padding:6px 14px;border:1px solid var(--neutral-200);border-radius:var(--radius-md);font-size:var(--text-xs);font-weight:500;color:var(--neutral-600);text-decoration:none;background:#fff;transition:all var(--transition-fast)}
+.pg-btn:hover{background:var(--neutral-50)}
+.pg-btn.disabled{color:var(--neutral-300);border-color:var(--neutral-100);pointer-events:none}
+.pg-info{font-size:var(--text-xs);color:var(--neutral-400)}
+
+/* --- TABLE --- */
+.data-table{width:100%;border-collapse:collapse;font-size:var(--text-sm)}
+.data-table th{background:var(--purple-700);color:#fff;padding:var(--space-3) var(--space-4);text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.data-table tbody tr{border-bottom:1px solid var(--neutral-100);transition:background var(--transition-fast)}
+.data-table tbody tr:hover{background:var(--purple-50)}
+.data-table tbody tr:nth-child(even){background:var(--neutral-50)}
+.data-table tbody tr:nth-child(even):hover{background:var(--purple-50)}
+.data-table td{padding:var(--space-3) var(--space-4);color:var(--neutral-700);vertical-align:middle}
+.dt-tag{display:inline-block;background:var(--purple-50);color:var(--purple-700);border-radius:var(--radius-sm);padding:2px 8px;font-size:11px;font-weight:500;margin:1px}
+.dt-action{padding:4px 10px;border-radius:var(--radius-sm);font-size:11px;font-weight:500;color:var(--neutral-600);background:transparent;border:none;cursor:pointer;transition:background var(--transition-fast);text-decoration:none}
+.dt-action:hover{background:var(--neutral-100)}
+.dt-action.red{color:var(--red-500)}.dt-action.red:hover{background:var(--red-50)}
+.dt-action.green{color:var(--success-600)}.dt-action.green:hover{background:var(--success-50)}
+
+/* --- KALENDER --- */
+.kalender{width:100%}
+.kal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-4)}
+.kal-nav{width:28px;height:28px;border-radius:50%;border:none;background:transparent;color:var(--neutral-400);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all var(--transition-fast);font-size:14px}
+.kal-nav:hover{background:var(--neutral-100);color:var(--color-fg-default)}
+.kal-month{font-size:var(--text-sm);font-weight:600;color:var(--neutral-800)}
+.kal-days-header{display:grid;grid-template-columns:repeat(7,1fr);margin-bottom:var(--space-2)}
+.kal-dh{text-align:center;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--neutral-400);padding:4px 0}
+.kal-grid{display:grid;grid-template-columns:repeat(7,1fr)}
+.kal-day{display:flex;flex-direction:column;align-items:center;padding:3px 0;cursor:pointer}
+.kal-num{width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:50%;font-size:var(--text-xs);color:var(--neutral-700);transition:all var(--transition-fast)}
+.kal-day:hover .kal-num{background:var(--neutral-100)}
+.kal-day.today .kal-num{background:var(--purple-600);color:#fff;font-weight:700}
+.kal-dots{display:flex;gap:2px;margin-top:2px;height:5px}
+.kal-dot{width:4px;height:4px;border-radius:50%}
+.dot-g{background:var(--success-500)}.dot-a{background:var(--gold-400)}.dot-r{background:var(--red-400)}
+.kal-legend{display:flex;gap:var(--space-4);flex-wrap:wrap;border-top:1px solid var(--neutral-100);padding-top:var(--space-3);margin-top:var(--space-3);font-size:11px;color:var(--neutral-400)}
+.kal-legend-item{display:flex;align-items:center;gap:5px}
+
+/* --- TIMELINE --- */
+.tl-wrap{overflow-x:auto}
+.tl{min-width:600px}
+.tl-header{display:flex;border-bottom:1px solid var(--neutral-100);background:var(--neutral-50)}
+.tl-label-col{width:128px;flex-shrink:0;border-right:1px solid var(--neutral-100)}
+.tl-hours{flex:1;position:relative;height:36px}
+.tl-tick{position:absolute;top:10px;font-size:10px;color:var(--neutral-400);font-weight:500;transform:translateX(-50%)}
+.tl-row{display:flex;align-items:center;border-bottom:1px solid var(--neutral-50)}
+.tl-row:last-child{border-bottom:none}
+.tl-room{width:128px;flex-shrink:0;padding:var(--space-3) var(--space-4);font-size:var(--text-sm);font-weight:500;color:var(--neutral-700);border-right:1px solid var(--neutral-100)}
+.tl-track{flex:1;position:relative;height:36px;margin:var(--space-2) var(--space-3);background:var(--neutral-50);border-radius:var(--radius-md)}
+.tl-bar{position:absolute;top:4px;bottom:4px;border-radius:var(--radius-sm);display:flex;align-items:center;padding:0 var(--space-2);overflow:hidden}
+.tl-approved{background:var(--success-500)}.tl-pending{background:var(--gold-100);box-shadow:inset 0 0 0 1px var(--gold-200)}
+.tl-bar span{font-size:11px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#fff}
+.tl-pending span{color:var(--warning-fg)}
+.tl-legend{display:flex;gap:var(--space-5);margin-top:var(--space-3);flex-wrap:wrap}
+.tl-legend-item{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--neutral-400)}
+.tl-swatch{width:20px;height:10px;border-radius:3px}
+
+/* --- NOTIFIKASI --- */
+.notif-item{display:flex;gap:var(--space-3);padding:var(--space-3) var(--space-4);border-bottom:1px solid var(--neutral-100);transition:background var(--transition-fast)}
+.notif-item:hover{background:var(--neutral-50)}
+.notif-item.unread{background:var(--purple-50)}
+.notif-icon{width:32px;height:32px;background:var(--purple-100);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--purple-600);flex-shrink:0;font-size:16px}
+.notif-title{font-size:var(--text-sm);font-weight:600;color:var(--color-fg-default)}
+.notif-body{font-size:var(--text-xs);color:var(--neutral-500);margin-top:2px;line-height:1.5}
+.notif-time{font-size:10px;color:var(--neutral-400);margin-top:3px}
+.notif-unread-dot{width:8px;height:8px;background:var(--purple-500);border-radius:50%;flex-shrink:0;margin-top:6px}
+
+/* --- COLOR SWATCH --- */
+.swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(72px,1fr));gap:var(--space-2)}
+.swatch{border-radius:var(--radius-md);overflow:hidden;border:1px solid rgba(0,0,0,.06)}
+.sw-color{height:44px}
+.sw-info{background:#fff;padding:4px 6px;border-top:1px solid rgba(0,0,0,.06)}
+.sw-name{font-family:var(--font-mono);font-size:10px;color:var(--neutral-600)}
+.sw-hex{font-family:var(--font-mono);font-size:9px;color:var(--neutral-400)}
+
+/* --- TYPE SPECIMEN --- */
+.type-row{display:flex;align-items:baseline;gap:var(--space-5);padding:var(--space-3) 0;border-bottom:1px solid var(--neutral-100)}
+.type-row:last-child{border-bottom:none}
+.type-meta{flex-shrink:0;width:180px}
+.type-meta-name{font-size:11px;font-weight:600;color:var(--neutral-500)}
+.type-meta-token{font-family:var(--font-mono);font-size:10px;color:var(--neutral-400);margin-top:2px}
+
+/* --- MOBILE FRAME --- */
+.phone{width:300px;border:2px solid var(--neutral-300);border-radius:28px;overflow:hidden;box-shadow:var(--shadow-3);margin:0 auto}
+.phone-bar{background:var(--purple-700);height:24px;display:flex;align-items:center;justify-content:space-between;padding:0 16px}
+.phone-bar span{font-size:9px;color:#fff;font-weight:600}
+.mobile-nav{background:#fff;border-top:1px solid var(--neutral-200);display:flex;padding:var(--space-2) 0}
+.mob-nav-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--neutral-400);text-decoration:none;font-size:10px;font-weight:500;transition:color var(--transition-fast);padding:var(--space-1)}
+.mob-nav-item.active{color:var(--purple-600)}
+.mob-nav-item i{font-size:20px}
+
+/* --- SPACING VISUAL --- */
+.sp-row{display:flex;align-items:center;gap:var(--space-3);padding:3px 0}
+.sp-bar{background:var(--purple-200);height:14px;border-radius:2px;min-width:4px}
+.sp-lbl{font-family:var(--font-mono);font-size:11px;color:var(--neutral-500);width:80px}
+.sp-val{font-size:11px;color:var(--neutral-400)}
+
+/* --- RADIUS VISUAL --- */
+.radius-grid{display:flex;flex-wrap:wrap;gap:var(--space-4);align-items:flex-end}
+.radius-item{display:flex;flex-direction:column;align-items:center;gap:var(--space-2)}
+.radius-box{background:var(--purple-100);border:2px solid var(--purple-300);width:52px;height:52px}
+.radius-label{font-family:var(--font-mono);font-size:10px;color:var(--neutral-500);text-align:center;line-height:1.4}
+
+@media(max-width:900px){
+  .doc-layout{grid-template-columns:1fr}
+  .doc-sidebar{display:none}
+  .g2,.g3,.g4{grid-template-columns:1fr}
+}
+
+/* --- SKELETON --- */
+@keyframes shimmer{0%{background-position:-600px 0}100%{background-position:600px 0}}
+.skeleton{border-radius:var(--radius-md);background:linear-gradient(90deg,var(--neutral-100) 25%,var(--neutral-50) 50%,var(--neutral-100) 75%);background-size:600px 100%;animation:shimmer 1.4s ease infinite}
+.skel-text{height:14px;margin-bottom:6px;border-radius:3px}
+.skel-text.short{width:40%}.skel-text.medium{width:65%}.skel-text.full{width:100%}
+.skel-num{height:36px;width:60px;border-radius:var(--radius-md)}
+.skel-badge{height:22px;width:80px;border-radius:var(--radius-full)}
+.skel-avatar{width:28px;height:28px;border-radius:50%}
+
+/* --- TOAST --- */
+.toast-stack{display:flex;flex-direction:column;gap:var(--space-2);padding:var(--space-4);background:var(--neutral-800);border-radius:var(--radius-xl);min-width:300px}
+.toast{display:flex;align-items:flex-start;gap:var(--space-3);padding:var(--space-3) var(--space-4);border-radius:var(--radius-lg);font-size:var(--text-sm);box-shadow:var(--shadow-2)}
+.toast-success{background:#fff;border-left:3px solid var(--purple-500)}
+.toast-error{background:#fff;border-left:3px solid var(--red-400)}
+.toast-warning{background:#fff;border-left:3px solid var(--gold-400)}
+.toast-icon{font-size:18px;flex-shrink:0;margin-top:1px}
+.toast-title{font-weight:600;color:var(--color-fg-default)}
+.toast-body{font-size:var(--text-xs);color:var(--neutral-500);margin-top:2px}
+.toast-close{margin-left:auto;color:var(--neutral-300);background:none;border:none;cursor:pointer;font-size:16px;flex-shrink:0;line-height:1}
+.toast-close:hover{color:var(--neutral-500)}
+
+/* --- MODAL --- */
+.modal-backdrop{background:rgba(17,23,20,.55);border-radius:var(--radius-xl);padding:var(--space-8);display:flex;align-items:center;justify-content:center}
+.modal{background:#fff;border-radius:var(--radius-xl);padding:var(--space-6);box-shadow:var(--shadow-3);width:100%;max-width:420px}
+.modal-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:var(--space-4)}
+.modal-title{font-size:var(--text-base);font-weight:700;color:var(--color-fg-default)}
+.modal-close{width:28px;height:28px;border-radius:50%;border:none;background:var(--neutral-100);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--neutral-500);transition:background var(--transition-fast);flex-shrink:0}
+.modal-close:hover{background:var(--neutral-200)}
+.modal-body{font-size:var(--text-sm);color:var(--neutral-600);line-height:1.6;margin-bottom:var(--space-5)}
+.modal-actions{display:flex;gap:var(--space-2);justify-content:flex-end}
+
+/* --- TAILWIND MAP TABLE --- */
+.tw-table{width:100%;border-collapse:collapse;font-size:var(--text-xs)}
+.tw-table th{background:var(--neutral-800);color:#fff;padding:var(--space-2) var(--space-3);text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.tw-table td{padding:var(--space-2) var(--space-3);border-bottom:1px solid var(--neutral-100);vertical-align:middle}
+.tw-table tr:last-child td{border-bottom:none}
+.tw-table tr:hover td{background:var(--neutral-50)}
+.tw-table td:first-child{font-family:var(--font-mono);color:var(--purple-700)}
+.tw-table td:nth-child(2){font-family:var(--font-mono);color:var(--neutral-500)}
+.tw-table td:nth-child(3){font-family:var(--font-mono);color:var(--neutral-400)}
+.tw-chip-old{display:inline-block;background:var(--red-50);color:var(--red-600);border-radius:3px;padding:1px 6px;font-family:var(--font-mono);font-size:10px}
+.tw-chip-new{display:inline-block;background:var(--success-50);color:var(--success-700);border-radius:3px;padding:1px 6px;font-family:var(--font-mono);font-size:10px}
+
+/* --- CHECKLIST --- */
+.checklist{display:flex;flex-direction:column;gap:4px}
+.check-item{display:flex;align-items:flex-start;gap:var(--space-3);padding:var(--space-3) var(--space-4);border-radius:var(--radius-lg);font-size:var(--text-sm);border:1px solid var(--neutral-100);background:#fff}
+.check-item:hover{background:var(--neutral-50)}
+.check-box{width:18px;height:18px;border:2px solid var(--neutral-300);border-radius:4px;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all var(--transition-fast)}
+.check-box.done{background:var(--purple-600);border-color:var(--purple-600);color:#fff;font-size:11px}
+.check-group-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--neutral-400);margin:var(--space-3) 0 var(--space-2)}
+
+/* --- ANIM DEMO --- */
+@keyframes fadeInUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.anim-demo-card{background:#fff;border:1px solid var(--neutral-200);border-radius:var(--radius-xl);padding:var(--space-5);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-3);min-height:100px;cursor:pointer;transition:box-shadow var(--transition-fast),transform var(--transition-fast)}
+.anim-demo-card:hover{box-shadow:var(--shadow-2);transform:translateY(-2px)}
+.anim-demo-card.playing .anim-target{animation-play-state:running!important}
+.anim-target{animation-play-state:paused}
+.anim-label{font-size:11px;font-weight:600;color:var(--neutral-400);text-transform:uppercase;letter-spacing:.06em}
+
+/* --- COPY BUTTON --- */
+.code-wrap{position:relative}
+.copy-btn{position:absolute;top:var(--space-2);right:var(--space-2);padding:4px 10px;border-radius:var(--radius-sm);font-size:11px;font-weight:600;font-family:var(--font-sans);background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.7);cursor:pointer;transition:all var(--transition-fast)}
+.copy-btn:hover{background:rgba(255,255,255,.2);color:#fff}
+.copy-btn.copied{background:var(--success-700);border-color:var(--success-600);color:#fff}
+
+/* --- RESPONSIVE DEMO --- */
+.bp-demo{display:flex;flex-direction:column;gap:var(--space-4)}
+.bp-row{display:flex;gap:var(--space-3);align-items:stretch}
+.bp-label{width:80px;flex-shrink:0;display:flex;align-items:center;font-size:11px;font-weight:600;color:var(--neutral-500)}
+.bp-bar{flex:1;border-radius:var(--radius-md);padding:var(--space-3) var(--space-4);font-size:11px;color:var(--neutral-600);display:flex;align-items:center;gap:var(--space-2)}
+
+/* --- NOT FOUND / ERROR STATE --- */
+.error-page{background:#fff;border-radius:var(--radius-2xl);padding:var(--space-12);text-align:center;border:1px solid var(--neutral-200)}
+.error-code{font-size:64px;font-weight:800;line-height:1;color:var(--neutral-100);letter-spacing:-.04em}
+.error-title{font-size:var(--text-xl);font-weight:700;color:var(--color-fg-default);margin-top:var(--space-2)}
+.error-body{font-size:var(--text-sm);color:var(--neutral-400);margin-top:var(--space-2)}
+
+/* --- TEMU BRAND --- */
+.temu-mark{width:28px;height:28px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.temu-mark svg{width:100%;height:100%;display:block}
+.temu-mark-sm{width:22px;height:22px}
+.temu-mark-lg{width:52px;height:52px}
+.temu-wordmark{font-weight:700;color:var(--color-fg-default);letter-spacing:-.01em}
+.brand-combo{display:flex;align-items:center;gap:var(--space-2)}
+
+/* --- DARK MODE DOCUMENT --- */
+html[data-theme="dark"]{
+  color-scheme:dark;
+  /* Remap semua var() agar inline styles otomatis ikut dark mode */
+  --neutral-0:#221A2E;--neutral-50:#181122;--neutral-100:#271E36;
+  --neutral-200:#382C4A;--neutral-300:#4C3C62;--neutral-400:#5E4F74;
+  --neutral-500:#897C9A;--neutral-600:#A294B4;--neutral-700:#BFB0D0;
+  --neutral-800:#E4DAF0;--neutral-900:#F2ECF8;
+  --color-fg-default:#E4DAF0;--color-fg-muted:#897C9A;--color-fg-subtle:#5E4F74;
+  --color-fg-on-primary:#fff;
+  --color-bg-default:#221A2E;--color-bg-subtle:#181122;--color-bg-inset:#271E36;
+  --color-border-default:#382C4A;--color-border-muted:#271E36;
+  --color-status-success-bg:#091A10;--color-status-warning-bg:#14100A;
+  --color-status-danger-bg:#140808;--color-status-info-bg:#081018;
+  --shadow-1:0 1px 4px rgba(0,0,0,.35);--shadow-2:0 4px 14px rgba(0,0,0,.45);
+}
+[data-theme="dark"] body{background:#0E0A16;color:#E4DAF0}
+[data-theme="dark"] .doc-sidebar{background:#181122;border-right-color:#271E36}
+[data-theme="dark"] .sidebar-group{color:#897C9A}
+[data-theme="dark"] .doc-sidebar a{color:#5E4F74}
+[data-theme="dark"] .doc-sidebar a:hover,[data-theme="dark"] .doc-sidebar a.active{background:rgba(160,32,240,.12);color:var(--purple-300);border-left-color:var(--purple-500)}
+[data-theme="dark"] .doc-main{background:#0E0A16}
+[data-theme="dark"] .ds-header{border-bottom-color:var(--purple-800)}
+[data-theme="dark"] .ds-header h2{color:var(--purple-300)}
+[data-theme="dark"] .ds-header p{color:#5E4F74}
+[data-theme="dark"] .demo{background:#181122;border-color:#271E36}
+[data-theme="dark"] .demo-header{background:#120C1A;border-bottom-color:#271E36;color:#5E4F74}
+[data-theme="dark"] .demo-body.subtle{background:#120C1A}
+[data-theme="dark"] .note{background:#0A0710;color:#897C9A}
+[data-theme="dark"] .note-info{background:#081018;color:var(--blue-300)}
+[data-theme="dark"] .stat-card{background:#1E1730;border-color:#271E36}
+[data-theme="dark"] .sc-label{color:#897C9A}[data-theme="dark"] .sc-sub{color:#897C9A}
+[data-theme="dark"] .booking-card{background:#1E1730;border-color:#271E36}
+[data-theme="dark"] .approval-card{background:#1E1730;border-color:#271E36}
+[data-theme="dark"] .bc-room{color:#E4DAF0}[data-theme="dark"] .bc-time{color:#897C9A}[data-theme="dark"] .bc-purpose{color:#A294B4}[data-theme="dark"] .bc-meta{color:#897C9A}
+[data-theme="dark"] .topbar{background:rgba(24,18,32,.95);border-bottom-color:#271E36}
+[data-theme="dark"] .tb-name{color:#E4DAF0}
+[data-theme="dark"] .tb-nav a{color:#5E4F74}
+[data-theme="dark"] .tb-nav a:hover{background:#271E36;color:#B6A8C8}
+[data-theme="dark"] .tb-nav a.active{background:rgba(160,32,240,.18);color:#C98AF5 !important}
+[data-theme="dark"] .tb-avatar-circle{background:#2C1A46;color:var(--purple-300)}
+[data-theme="dark"] .tb-avatar-name{color:#E4DAF0}[data-theme="dark"] .tb-avatar-role{color:#897C9A}
+[data-theme="dark"] .tb-logout{background:#181122;border-color:#271E36;color:#5E4F74}
+[data-theme="dark"] .tb-bell{color:#5E4F74}
+[data-theme="dark"] .form-input,[data-theme="dark"] .form-select,[data-theme="dark"] .form-textarea{background:#181122;border-color:#271E36;color:#E4DAF0}
+[data-theme="dark"] .form-label{color:#B6A8C8}[data-theme="dark"] .form-helper{color:#897C9A}
+[data-theme="dark"] .btn-secondary{background:#181122;border-color:#271E36;color:#B6A8C8}
+[data-theme="dark"] .btn-danger{background:#181122;border-color:#271E36;color:var(--red-400)}
+[data-theme="dark"] .btn-danger:hover{background:#1C0A0A;border-color:#3A1818}
+[data-theme="dark"] .tl-pending{background:#33240C;box-shadow:inset 0 0 0 1px #524018}
+[data-theme="dark"] .tl-approved{background:#1A8A5C}
+[data-theme="dark"] .btn-ghost{color:var(--purple-300)}
+[data-theme="dark"] .badge-menunggu{background:var(--gold-50);color:var(--gold-300)}
+[data-theme="dark"] .badge-disetujui{background:var(--success-50);color:var(--success-300)}
+[data-theme="dark"] .badge-ditolak{background:var(--red-50);color:var(--red-400)}
+[data-theme="dark"] .badge-batal{background:var(--neutral-100);color:var(--neutral-500)}
+[data-theme="dark"] .badge-aktif{background:var(--success-50);color:var(--success-300)}
+[data-theme="dark"] .badge-nonaktif{background:var(--neutral-100);color:var(--neutral-500)}
+[data-theme="dark"] .form-error-msg{color:var(--red-400)}
+[data-theme="dark"] .form-input.is-error{border-color:var(--red-400)}
+[data-theme="dark"] .form-input.is-error:focus{box-shadow:0 0 0 3px rgba(241,101,101,.18)}
+[data-theme="dark"] .data-table th{background:#2A1248}
+[data-theme="dark"] .data-table tbody tr{border-bottom-color:#271E36}
+[data-theme="dark"] .data-table tbody tr:hover{background:rgba(160,32,240,.06)}
+[data-theme="dark"] .data-table td{color:#897C9A}
+[data-theme="dark"] .dt-tag{background:#2C1A46;color:var(--purple-300)}
+[data-theme="dark"] .empty{background:#181122;border-color:#271E36;color:#897C9A}
+[data-theme="dark"] .alert-success{background:var(--success-50);color:var(--success-300)}
+[data-theme="dark"] .alert-warning{background:var(--gold-50);color:var(--gold-300)}
+[data-theme="dark"] .alert-danger{background:var(--red-50);color:var(--red-400)}
+[data-theme="dark"] .alert-info{background:var(--blue-50);color:var(--blue-600)}
+[data-theme="dark"] .pg-btn{background:#181122;border-color:#271E36;color:#5E4F74}
+[data-theme="dark"] .pg-btn:hover{background:#1E1730}
+[data-theme="dark"] .pg-btn.disabled{color:#271E36;border-color:#181122}
+[data-theme="dark"] .notif-item{border-bottom-color:#271E36}
+[data-theme="dark"] .notif-item:hover{background:#1E1730}
+[data-theme="dark"] .notif-item.unread{background:rgba(160,32,240,.06)}
+[data-theme="dark"] .notif-title{color:#E4DAF0}[data-theme="dark"] .notif-body{color:#5E4F74}
+[data-theme="dark"] .notif-icon{background:#2C1A46;color:var(--purple-300)}
+[data-theme="dark"] .modal{background:#181122}
+[data-theme="dark"] .modal-title{color:#E4DAF0}[data-theme="dark"] .modal-body{color:#897C9A}
+[data-theme="dark"] .modal-close{background:#271E36;color:#5E4F74}
+[data-theme="dark"] .modal-backdrop{background:rgba(10,6,16,.72)}
+[data-theme="dark"] .toast-success{background:#221A2E;border-left-color:var(--success-300)}
+[data-theme="dark"] .toast-error{background:#221A2E;border-left-color:var(--red-400)}
+[data-theme="dark"] .toast-warning{background:#221A2E;border-left-color:var(--gold-300)}
+[data-theme="dark"] .toast-title{color:#E4DAF0}[data-theme="dark"] .toast-close{color:#897C9A}
+[data-theme="dark"] .check-item{background:#181122;border-color:#271E36;color:#B6A8C8}
+[data-theme="dark"] .check-item:hover{background:#1E1730}
+[data-theme="dark"] .check-group-title{color:#897C9A}
+[data-theme="dark"] .tw-table th{background:#2A1248}
+[data-theme="dark"] .tw-table td{border-bottom-color:#271E36;color:#897C9A}
+[data-theme="dark"] .tw-table td:first-child{color:var(--purple-300)}
+[data-theme="dark"] .tw-table tr:hover td{background:#1E1730}
+[data-theme="dark"] .error-page{background:#181122;border-color:#271E36}
+[data-theme="dark"] .error-code{color:#271E36}
+[data-theme="dark"] .error-title{color:#E4DAF0}
+[data-theme="dark"] .swatch .sw-info{background:#181122;border-color:#271E36}
+[data-theme="dark"] .sw-name{color:#5E4F74}[data-theme="dark"] .sw-hex{color:#897C9A}
+[data-theme="dark"] .type-row{border-bottom-color:#271E36}
+[data-theme="dark"] .sp-bar{background:#2C1A46}
+[data-theme="dark"] .radius-box{background:#2C1A46;border-color:#3E2C58}
+[data-theme="dark"] .kal-dh{color:#897C9A}[data-theme="dark"] .kal-num{color:#897C9A}
+[data-theme="dark"] .kal-day:hover .kal-num{background:#271E36}
+[data-theme="dark"] .kal-legend{border-top-color:#271E36}
+[data-theme="dark"] .tl-header{background:#120C1A;border-bottom-color:#271E36}
+[data-theme="dark"] .tl-room{color:#897C9A;border-right-color:#271E36}
+[data-theme="dark"] .tl-track{background:#120C1A}[data-theme="dark"] .tl-row{border-bottom-color:#181122}
+[data-theme="dark"] .tl-label-col{border-right-color:#271E36}
+[data-theme="dark"] .upcoming-item{border-bottom-color:#271E36}
+[data-theme="dark"] .ui-date{background:#2C1A46}
+[data-theme="dark"] .phone{border-color:#271E36}
+[data-theme="dark"] .anim-demo-card{background:#181122;border-color:#271E36}
+[data-theme="dark"] .anim-demo-card:hover{box-shadow:0 4px 12px rgba(0,0,0,.5)}
+[data-theme="dark"] .bp-bar{border-color:#271E36!important;color:#897C9A!important}
+[data-theme="dark"] .ac-notes{background:#181122;border-color:#271E36;color:#E4DAF0}
+[data-theme="dark"] .ac-conflict{background:#1A1408;color:var(--gold-300)}
+[data-theme="dark"] .toast-stack{background:#120C1A}
+[data-theme="dark"] .pagination .pg-info{color:#897C9A}
+[data-theme="dark"] .sc-default,.sc-value{color:#E4DAF0}
+[data-theme="dark"] .bc-sep{color:#271E36}
+
+/* --- THEME TOGGLE --- */
+.theme-toggle{display:flex;align-items:center;gap:5px;padding:5px 14px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:var(--radius-full);font-size:12px;font-weight:600;color:rgba(255,255,255,.85);cursor:pointer;transition:all var(--transition-fast);font-family:var(--font-sans);margin-left:var(--space-3);flex-shrink:0}
+.theme-toggle:hover{background:rgba(255,255,255,.2)}
+</style>
+</head>
+<body>
+
+<!-- Reusable Temu logomark (Titik Temu / vesica) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="tm-vesica" viewBox="0 0 64 64">
+    <clipPath id="tmL"><circle cx="25" cy="32" r="15"/></clipPath>
+    <circle cx="25" cy="32" r="15" fill="#A020F0"/>
+    <circle cx="39" cy="32" r="15" fill="#6A0EA6"/>
+    <g clip-path="url(#tmL)"><circle cx="39" cy="32" r="15" fill="#EED7FC"/></g>
+  </symbol>
+  <symbol id="tm-vesica-white" viewBox="0 0 64 64">
+    <clipPath id="tmLw"><circle cx="25" cy="32" r="15"/></clipPath>
+    <circle cx="25" cy="32" r="15" fill="#fff" fill-opacity="0.78"/>
+    <circle cx="39" cy="32" r="15" fill="#fff" fill-opacity="0.48"/>
+    <g clip-path="url(#tmLw)"><circle cx="39" cy="32" r="15" fill="#fff"/></g>
+  </symbol>
+</defs></svg>
+
+<!-- HEADER -->
+<header class="doc-header">
+  <div class="doc-header-logo"><svg style="width:24px;height:24px"><use href="#tm-vesica"/></svg></div>
+  <div>
+    <h1>Design System — Temu</h1>
+    <p>Booking Ruang Meeting · Dinas Kesehatan Kabupaten Bogor</p>
+  </div>
+  <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">☾ Dark</button>
+  <span class="doc-header-badge">v2.0 · Handover ke Claude Code</span>
+</header>
+
+<div class="doc-layout">
+
+<!-- SIDEBAR -->
+<nav class="doc-sidebar">
+  <div class="sidebar-group">Fondasi</div>
+  <a href="#overview">Gambaran Umum</a>
+  <a href="#brand">Brand &amp; Logo</a>
+  <a href="#colors">Warna</a>
+  <a href="#typography">Tipografi</a>
+  <a href="#spacing">Spasi &amp; Layout</a>
+  <a href="#effects">Radius &amp; Bayangan</a>
+  <div class="sidebar-group">Komponen</div>
+  <a href="#buttons">Tombol</a>
+  <a href="#forms">Form Input</a>
+  <a href="#badges">Badge Status</a>
+  <a href="#stat-cards">Stat Card</a>
+  <a href="#topbar">Top Bar</a>
+  <a href="#booking-card">Kartu Booking</a>
+  <a href="#approval-card">Kartu Persetujuan</a>
+  <a href="#upcoming">Upcoming Item</a>
+  <a href="#calendar">Kalender Mini</a>
+  <a href="#timeline">Timeline Jadwal</a>
+  <a href="#table">Tabel Data</a>
+  <a href="#empty">Empty State</a>
+  <a href="#alerts">Alert</a>
+  <a href="#pagination">Pagination</a>
+  <a href="#notifications">Notifikasi</a>
+  <div class="sidebar-group">Pola Halaman</div>
+  <a href="#login-pattern">Login</a>
+  <a href="#app-shell">App Shell</a>
+  <a href="#mobile">Mobile Navigation</a>
+  <div class="sidebar-group">Interaksi</div>
+  <a href="#loading">Skeleton Loading</a>
+  <a href="#toast">Toast Notifikasi</a>
+  <a href="#modal">Modal Konfirmasi</a>
+  <a href="#form-ruangan">Form Ruangan</a>
+  <a href="#riwayat">Pola Riwayat</a>
+  <a href="#not-found">Error &amp; Not Found</a>
+  <div class="sidebar-group">Referensi</div>
+  <a href="#dark-mode">Dark Mode</a>
+  <a href="#tailwind-map">Tailwind Mapping</a>
+  <a href="#responsive">Responsive Demo</a>
+  <a href="#motion">Gerak &amp; Animasi</a>
+  <a href="#checklist">Checklist Impl.</a>
+  <a href="#token-ref">Token Lengkap</a>
+</nav>
+
+<!-- MAIN -->
+<main class="doc-main">
+
+<!-- ── OVERVIEW ── -->
+<section id="overview" class="ds-section">
+  <div class="ds-header"><h2>Gambaran Umum</h2><p>Aplikasi, peran pengguna, halaman, dan stack teknologi</p></div>
+
+  <div class="g2">
+    <div class="demo">
+      <div class="demo-header">Aplikasi</div>
+      <div class="demo-body">
+        <p style="font-size:var(--text-xl);font-weight:700;margin-bottom:2px">Temu</p>
+        <p style="font-size:var(--text-sm);color:var(--neutral-400);margin-bottom:var(--space-4)">Booking Ruang Meeting · Dinkes Kab. Bogor</p>
+        <div class="col" style="gap:var(--space-2)">
+          <div style="display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm)"><i class="ph ph-stack" style="color:var(--purple-600)"></i> Next.js 15 App Router · TypeScript</div>
+          <div style="display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm)"><i class="ph ph-paint-bucket" style="color:var(--purple-600)"></i> Tailwind CSS v4</div>
+          <div style="display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm)"><i class="ph ph-database" style="color:var(--purple-600)"></i> PostgreSQL · Prisma ORM</div>
+          <div style="display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm)"><i class="ph ph-device-mobile" style="color:var(--purple-600)"></i> PWA (manifest + sw.js)</div>
+        </div>
+      </div>
+    </div>
+    <div class="demo">
+      <div class="demo-header">Peran Pengguna</div>
+      <div class="demo-body col" style="gap:var(--space-4)">
+        <div>
+          <div class="row" style="margin-bottom:var(--space-2)">
+            <span style="background:var(--purple-600);color:#fff;border-radius:var(--radius-full);padding:2px 10px;font-size:11px;font-weight:700">BIDANG</span>
+            <span style="font-size:var(--text-xs);color:var(--neutral-400)">Pemesan ruangan</span>
+          </div>
+          <div style="font-size:var(--text-xs);color:var(--neutral-500);line-height:1.7">Buat booking · Lihat status · Batalkan · Terima notifikasi</div>
+        </div>
+        <hr style="border:none;border-top:1px solid var(--neutral-100)">
+        <div>
+          <div class="row" style="margin-bottom:var(--space-2)">
+            <span style="background:var(--blue-600);color:#fff;border-radius:var(--radius-full);padding:2px 10px;font-size:11px;font-weight:700">PENGELOLA</span>
+            <span style="font-size:var(--text-xs);color:var(--neutral-400)">Menyetujui booking</span>
+          </div>
+          <div style="font-size:var(--text-xs);color:var(--neutral-500);line-height:1.7">Setujui/tolak · Lihat semua jadwal · Riwayat</div>
+        </div>
+        <hr style="border:none;border-top:1px solid var(--neutral-100)">
+        <div>
+          <div class="row" style="margin-bottom:var(--space-2)">
+            <span style="background:var(--neutral-700);color:#fff;border-radius:var(--radius-full);padding:2px 10px;font-size:11px;font-weight:700">ADMIN</span>
+            <span style="font-size:var(--text-xs);color:var(--neutral-400)">Superuser</span>
+          </div>
+          <div style="font-size:var(--text-xs);color:var(--neutral-500);line-height:1.7">Semua hak pengelola + kelola ruangan + kelola akun</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="demo">
+    <div class="demo-header">Peta Halaman</div>
+    <div class="demo-body">
+      <div class="g2" style="gap:var(--space-6)">
+        <div>
+          <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--purple-600);margin-bottom:var(--space-3)">Bidang (/bidang)</p>
+          <div class="col" style="gap:5px;font-size:var(--text-xs)">
+            <div style="display:flex;justify-content:space-between;padding:5px 8px;background:var(--neutral-50);border-radius:var(--radius-sm)"><code>/bidang</code><span style="color:var(--neutral-400)">Dashboard beranda</span></div>
+            <div style="display:flex;justify-content:space-between;padding:5px 8px;background:var(--neutral-50);border-radius:var(--radius-sm)"><code>/bidang/booking/baru</code><span style="color:var(--neutral-400)">Buat booking</span></div>
+            <div style="display:flex;justify-content:space-between;padding:5px 8px;background:var(--neutral-50);border-radius:var(--radius-sm)"><code>/bidang/kalender</code><span style="color:var(--neutral-400)">Kalender bulan</span></div>
+            <div style="display:flex;justify-content:space-between;padding:5px 8px;background:var(--neutral-50);border-radius:var(--radius-sm)"><code>/bidang/jadwal</code><span style="color:var(--neutral-400)">Timeline per hari</span></div>
+            <div style="display:flex;justify-content:space-between;padding:5px 8px;background:var(--neutral-50);border-radius:var(--radius-sm)"><code>/bidang/notifikasi</code><span style="color:var(--neutral-400)">Notifikasi status</span></div>
+          </div>
+        </div>
+        <div>
+          <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--blue-600);margin-bottom:var(--space-3)">Pengelola (/pengelola)</p>
+          <div class="col" style="gap:5px;font-size:var(--text-xs)">
+            <div style="display:flex;justify-content:space-between;padding:5px 8px;background:var(--neutral-50);border-radius:var(--radius-sm)"><code>/pengelola</code><span style="color:var(--neutral-400)">Dashboard + antrean</span></div>
+            <div style="display:flex;justify-content:space-between;padding:5px 8px;background:var(--neutral-50);border-radius:var(--radius-sm)"><code>/pengelola/riwayat</code><span style="color:var(--neutral-400)">Semua booking</span></div>
+            <div style="display:flex;justify-content:space-between;padding:5px 8px;background:var(--neutral-50);border-radius:var(--radius-sm)"><code>/pengelola/ruangan</code><span style="color:var(--neutral-400)">Kelola ruangan (admin)</span></div>
+            <div style="display:flex;justify-content:space-between;padding:5px 8px;background:var(--neutral-50);border-radius:var(--radius-sm)"><code>/pengelola/akun</code><span style="color:var(--neutral-400)">Kelola akun (admin)</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BRAND ── -->
+<section id="brand" class="ds-section">
+  <div class="ds-header"><h2>Brand &amp; Logomark</h2><p>Temu · Identitas visual aplikasi booking ruang · Penggunaan logo dan wordmark</p></div>
+
+  <div class="demo">
+    <div class="demo-header">Logomark — Skala &amp; Variasi</div>
+    <div class="demo-body">
+      <div class="row" style="align-items:flex-end;gap:var(--space-8);flex-wrap:wrap">
+        <div style="text-align:center">
+          <span class="temu-mark temu-mark-sm" style="margin:0 auto var(--space-2)"><svg><use href="#tm-vesica"/></svg></span>
+          <div style="font-size:10px;color:var(--neutral-400)">22px · mobile topbar</div>
+        </div>
+        <div style="text-align:center">
+          <span class="temu-mark" style="margin:0 auto var(--space-2)"><svg><use href="#tm-vesica"/></svg></span>
+          <div style="font-size:10px;color:var(--neutral-400)">28px · desktop topbar</div>
+        </div>
+        <div style="text-align:center">
+          <span class="temu-mark temu-mark-lg" style="margin:0 auto var(--space-2)"><svg><use href="#tm-vesica"/></svg></span>
+          <div style="font-size:10px;color:var(--neutral-400)">52px · splash / login</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:var(--space-3)">
+          <div class="brand-combo"><span class="temu-mark temu-mark-sm"><svg><use href="#tm-vesica"/></svg></span><span class="temu-wordmark" style="font-size:var(--text-sm)">Temu</span></div>
+          <div class="brand-combo"><span class="temu-mark"><svg><use href="#tm-vesica"/></svg></span><span class="temu-wordmark" style="font-size:var(--text-base)">Temu</span></div>
+          <div class="brand-combo"><span class="temu-mark temu-mark-lg"><svg><use href="#tm-vesica"/></svg></span><span class="temu-wordmark" style="font-size:var(--text-2xl)">Temu</span></div>
+        </div>
+        <div style="background:var(--purple-700);padding:var(--space-5) var(--space-6);border-radius:var(--radius-xl);display:flex;flex-direction:column;gap:var(--space-3)">
+          <div style="display:flex;align-items:center;gap:10px">
+            <span style="width:28px;height:28px;display:flex;align-items:center;justify-content:center"><svg><use href="#tm-vesica-white"/></svg></span>
+            <span style="font-weight:700;font-size:var(--text-sm);color:#fff;letter-spacing:-.01em">Temu</span>
+          </div>
+          <div style="font-size:10px;color:rgba(255,255,255,.45)">Di atas bg gelap — mark putih</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="g2">
+    <div class="demo">
+      <div class="demo-header">Login Panel — Branding Kiri</div>
+      <div class="demo-body" style="background:var(--purple-700);border-radius:0 0 var(--radius-xl) var(--radius-xl)">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:var(--space-5)">
+          <span style="width:44px;height:44px;display:flex;align-items:center;justify-content:center"><svg><use href="#tm-vesica-white"/></svg></span>
+          <span style="font-size:var(--text-2xl);font-weight:800;color:#fff;letter-spacing:-.03em">Temu</span>
+        </div>
+        <div style="font-size:var(--text-sm);color:rgba(255,255,255,.6);line-height:1.6">Sistem Booking Ruang Meeting<br>Dinas Kesehatan Kabupaten Bogor</div>
+      </div>
+    </div>
+    <div class="demo">
+      <div class="demo-header">Aturan Penggunaan</div>
+      <div class="demo-body col" style="gap:var(--space-3)">
+        <div style="display:flex;align-items:flex-start;gap:var(--space-3);font-size:var(--text-sm)">
+          <span style="color:var(--purple-500);font-size:18px;line-height:1.4">✓</span>
+          <span><strong>Gunakan “Temu”</strong> sebagai nama app di semua surface — topbar, tab browser, PWA, notifikasi</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:var(--space-3);font-size:var(--text-sm)">
+          <span style="color:var(--purple-500);font-size:18px;line-height:1.4">✓</span>
+          <span><strong>Logomark “T” italic bold</strong> — putih di atas green-600, hijau di atas putih</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:var(--space-3);font-size:var(--text-sm)">
+          <span style="color:var(--purple-500);font-size:18px;line-height:1.4">✓</span>
+          <span>Login: Wordmark besar + tagline “Sistem Booking Ruang Meeting”</span>
+        </div>
+        <hr style="border:none;border-top:1px solid var(--neutral-100)">
+        <div style="display:flex;align-items:flex-start;gap:var(--space-3);font-size:var(--text-sm)">
+          <span style="color:var(--red-400);font-size:18px;line-height:1.4">✗</span>
+          <span style="color:var(--neutral-500)">Jangan pakai “Booking Ruang” sebagai nama — itu deskripsi, bukan nama</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:var(--space-3);font-size:var(--text-sm)">
+          <span style="color:var(--red-400);font-size:18px;line-height:1.4">✗</span>
+          <span style="color:var(--neutral-500)">Jangan pakai “DK” sebagai logo app — itu inisial instansi, bukan produk</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── COLORS ── -->
+<section id="colors" class="ds-section">
+  <div class="ds-header"><h2>Warna</h2><p>Token semantik berbasis Dinkes Bogor Design System · Brand ungu #A020F0 · status "Disetujui" tetap hijau</p></div>
+
+  <div class="demo">
+    <div class="demo-header">Brand Ungu — Primer <span style="font-size:10px;font-weight:400;color:var(--neutral-400)">★ = token yang aktif dipakai</span></div>
+    <div class="demo-body">
+      <div class="swatches">
+        <div class="swatch"><div class="sw-color" style="background:#F7ECFE;border:1px solid #E8EDEB"></div><div class="sw-info"><div class="sw-name">purple-50</div><div class="sw-hex">#F7ECFE</div></div></div>
+        <div class="swatch"><div class="sw-color" style="background:#EED7FC"></div><div class="sw-info"><div class="sw-name">purple-100</div><div class="sw-hex">#EED7FC</div></div></div>
+        <div class="swatch"><div class="sw-color" style="background:#DEB2F9"></div><div class="sw-info"><div class="sw-name">purple-200</div><div class="sw-hex">#DEB2F9</div></div></div>
+        <div class="swatch"><div class="sw-color" style="background:#C98AF5"></div><div class="sw-info"><div class="sw-name">purple-300</div><div class="sw-hex">#C98AF5</div></div></div>
+        <div class="swatch"><div class="sw-color" style="background:#A020F0"></div><div class="sw-info"><div class="sw-name">purple-500 ★</div><div class="sw-hex">#A020F0</div></div></div>
+        <div class="swatch" style="outline:2px solid var(--purple-600);outline-offset:2px;border-radius:var(--radius-md)"><div class="sw-color" style="background:#8612D2"></div><div class="sw-info"><div class="sw-name">purple-600 ★★</div><div class="sw-hex">#8612D2 Primary</div></div></div>
+        <div class="swatch"><div class="sw-color" style="background:#6A0EA6"></div><div class="sw-info"><div class="sw-name">purple-700 ★</div><div class="sw-hex">#6A0EA6 Dark</div></div></div>
+        <div class="swatch"><div class="sw-color" style="background:#4E0B7A"></div><div class="sw-info"><div class="sw-name">purple-800</div><div class="sw-hex">#4E0B7A</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="g2">
+    <div class="demo">
+      <div class="demo-header">Status Booking</div>
+      <div class="demo-body col" style="gap:var(--space-3)">
+        <div style="display:flex;align-items:center;gap:var(--space-3);background:var(--success-50);padding:var(--space-3);border-radius:var(--radius-md)">
+          <span style="width:12px;height:12px;border-radius:50%;background:var(--success-500);flex-shrink:0"></span>
+          <div><div style="font-size:var(--text-xs);font-weight:600;color:var(--success-700)">DISETUJUI</div><div style="font-family:var(--font-mono);font-size:10px;color:var(--neutral-400)">success-50 bg · success-700 text · success-500 dot</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:var(--space-3);background:var(--gold-50);padding:var(--space-3);border-radius:var(--radius-md)">
+          <span style="width:12px;height:12px;border-radius:50%;background:var(--gold-400);flex-shrink:0"></span>
+          <div><div style="font-size:var(--text-xs);font-weight:600;color:var(--warning-fg)">MENUNGGU</div><div style="font-family:var(--font-mono);font-size:10px;color:var(--neutral-400)">gold-50 bg · #7A5209 text · gold-400 dot</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:var(--space-3);background:var(--red-50);padding:var(--space-3);border-radius:var(--radius-md)">
+          <span style="width:12px;height:12px;border-radius:50%;background:var(--red-400);flex-shrink:0"></span>
+          <div><div style="font-size:var(--text-xs);font-weight:600;color:var(--red-600)">DITOLAK</div><div style="font-family:var(--font-mono);font-size:10px;color:var(--neutral-400)">red-50 bg · red-600 text · red-400 dot</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:var(--space-3);background:var(--neutral-100);padding:var(--space-3);border-radius:var(--radius-md)">
+          <span style="width:12px;height:12px;border-radius:50%;background:var(--neutral-300);flex-shrink:0"></span>
+          <div><div style="font-size:var(--text-xs);font-weight:600;color:var(--neutral-500)">BATAL</div><div style="font-family:var(--font-mono);font-size:10px;color:var(--neutral-400)">neutral-100 bg · neutral-500 text · neutral-300 dot</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="demo">
+      <div class="demo-header">Neutral Scale</div>
+      <div class="demo-body">
+        <div class="swatches" style="grid-template-columns:repeat(5,1fr)">
+          <div class="swatch"><div class="sw-color" style="background:#F5F7F6;border:1px solid #E8EDEB"></div><div class="sw-info"><div class="sw-name">50</div><div class="sw-hex">#F5F7F6</div></div></div>
+          <div class="swatch"><div class="sw-color" style="background:#E8EDEB"></div><div class="sw-info"><div class="sw-name">100</div><div class="sw-hex">#E8EDEB</div></div></div>
+          <div class="swatch"><div class="sw-color" style="background:#D5DDD9"></div><div class="sw-info"><div class="sw-name">200</div><div class="sw-hex">#D5DDD9</div></div></div>
+          <div class="swatch"><div class="sw-color" style="background:#B8C4BE"></div><div class="sw-info"><div class="sw-name">300</div><div class="sw-hex">#B8C4BE</div></div></div>
+          <div class="swatch"><div class="sw-color" style="background:#8E9E96"></div><div class="sw-info"><div class="sw-name">400</div><div class="sw-hex">#8E9E96</div></div></div>
+          <div class="swatch"><div class="sw-color" style="background:#6B7B72"></div><div class="sw-info"><div class="sw-name">500</div><div class="sw-hex">#6B7B72</div></div></div>
+          <div class="swatch"><div class="sw-color" style="background:#4E5C54"></div><div class="sw-info"><div class="sw-name">600</div><div class="sw-hex">#4E5C54</div></div></div>
+          <div class="swatch"><div class="sw-color" style="background:#364039"></div><div class="sw-info"><div class="sw-name">700</div><div class="sw-hex">#364039</div></div></div>
+          <div class="swatch"><div class="sw-color" style="background:#222B26"></div><div class="sw-info"><div class="sw-name">800</div><div class="sw-hex">#222B26</div></div></div>
+          <div class="swatch"><div class="sw-color" style="background:#111714"></div><div class="sw-info"><div class="sw-name">900</div><div class="sw-hex">#111714</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    <strong>⚠ Brand ungu vs status hijau:</strong> Warna brand &amp; aksi utama adalah <strong>ungu #A020F0</strong> (<code>--color-brand-primary</code> = purple-600 #8612D2). Hijau <strong>dipertahankan khusus untuk status "Disetujui/sukses"</strong> (<code>--success-*</code>) agar maknanya tidak hilang. Kode lama pakai <code>teal-*</code> / <code>green-*</code> sebagai brand — migrasi ke <code>brand-*</code> (ungu) di <code>tailwind.config.ts</code>: <code>colors: { brand: { primary:'#8612D2', dark:'#6A0EA6', light:'#EED7FC' }, success: { DEFAULT:'#1A8A5C', dark:'#0D5C3A', light:'#F0F8F4' } }</code>.
+  </div>
+</section>
+
+<!-- ── TYPOGRAPHY ── -->
+<section id="typography" class="ds-section">
+  <div class="ds-header"><h2>Tipografi</h2><p>Plus Jakarta Sans · 400/500/600/700 · JetBrains Mono untuk kode & tabel data</p></div>
+  <div class="demo">
+    <div class="demo-header">Skala Tipe</div>
+    <div class="demo-body">
+      <div class="type-row"><div class="type-meta"><div class="type-meta-name">Page Title / H1</div><div class="type-meta-token">text-3xl · bold · tracking-tight</div></div><div style="font-size:var(--text-3xl);font-weight:700;letter-spacing:-.02em;line-height:1.2">Selamat pagi</div></div>
+      <div class="type-row"><div class="type-meta"><div class="type-meta-name">Section / H2</div><div class="type-meta-token">text-xl · semibold</div></div><div style="font-size:var(--text-xl);font-weight:600">Persetujuan Booking</div></div>
+      <div class="type-row"><div class="type-meta"><div class="type-meta-name">Card Title / H3</div><div class="type-meta-token">text-base · semibold</div></div><div style="font-size:var(--text-base);font-weight:600">Ruang Rapat Lantai 1</div></div>
+      <div class="type-row"><div class="type-meta"><div class="type-meta-name">Body</div><div class="type-meta-token">text-base · regular</div></div><div style="font-size:var(--text-base);line-height:1.6">Rapat koordinasi program imunisasi nasional tahun 2026</div></div>
+      <div class="type-row"><div class="type-meta"><div class="type-meta-name">Body Small</div><div class="type-meta-token">text-sm · regular</div></div><div style="font-size:var(--text-sm);color:var(--neutral-600)">Senin, 14 Juni 2026 · 09:00–11:00 · 25 peserta</div></div>
+      <div class="type-row"><div class="type-meta"><div class="type-meta-name">Caption / Meta</div><div class="type-meta-token">text-xs · regular · muted</div></div><div style="font-size:var(--text-xs);color:var(--neutral-400)">Lantai 2 · Kapasitas 40 orang</div></div>
+      <div class="type-row"><div class="type-meta"><div class="type-meta-name">Overline / Label</div><div class="type-meta-token">text-xs · semibold · uppercase · wider</div></div><div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--neutral-400)">Booking Bulan Ini</div></div>
+      <div class="type-row"><div class="type-meta"><div class="type-meta-name">Stat Number</div><div class="type-meta-token">text-3xl · bold · tabular-nums</div></div><div style="font-size:var(--text-3xl);font-weight:700;letter-spacing:-.03em;font-variant-numeric:tabular-nums;color:var(--purple-600)">42</div></div>
+      <div class="type-row"><div class="type-meta"><div class="type-meta-name">Code / Mono</div><div class="type-meta-token">font-mono · text-sm</div></div><div style="font-family:var(--font-mono);font-size:var(--text-sm);background:var(--neutral-100);padding:4px 10px;border-radius:var(--radius-sm)">--color-brand-primary: #8612D2</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SPACING ── -->
+<section id="spacing" class="ds-section">
+  <div class="ds-header"><h2>Spasi &amp; Layout</h2><p>Unit dasar 4px · Max-width 1152px (max-w-6xl) · Padding halaman 16px</p></div>
+  <div class="g2">
+    <div class="demo">
+      <div class="demo-header">Token Spasi</div>
+      <div class="demo-body">
+        <div class="sp-row"><div class="sp-bar" style="width:4px"></div><span class="sp-lbl">--space-1</span><span class="sp-val">4px</span></div>
+        <div class="sp-row"><div class="sp-bar" style="width:8px"></div><span class="sp-lbl">--space-2</span><span class="sp-val">8px</span></div>
+        <div class="sp-row"><div class="sp-bar" style="width:12px"></div><span class="sp-lbl">--space-3</span><span class="sp-val">12px</span></div>
+        <div class="sp-row"><div class="sp-bar" style="width:16px"></div><span class="sp-lbl">--space-4</span><span class="sp-val">16px</span></div>
+        <div class="sp-row"><div class="sp-bar" style="width:20px"></div><span class="sp-lbl">--space-5</span><span class="sp-val">20px</span></div>
+        <div class="sp-row"><div class="sp-bar" style="width:24px"></div><span class="sp-lbl">--space-6</span><span class="sp-val">24px</span></div>
+        <div class="sp-row"><div class="sp-bar" style="width:32px"></div><span class="sp-lbl">--space-8</span><span class="sp-val">32px</span></div>
+        <div class="sp-row"><div class="sp-bar" style="width:40px"></div><span class="sp-lbl">--space-10</span><span class="sp-val">40px</span></div>
+        <div class="sp-row"><div class="sp-bar" style="width:48px"></div><span class="sp-lbl">--space-12</span><span class="sp-val">48px</span></div>
+        <div class="sp-row"><div class="sp-bar" style="width:64px"></div><span class="sp-lbl">--space-16</span><span class="sp-val">64px</span></div>
+      </div>
+    </div>
+    <div class="demo">
+      <div class="demo-header">Grid &amp; Breakpoints</div>
+      <div class="demo-body note" style="background:var(--neutral-800)">
+        <p style="margin-bottom:var(--space-3)"><strong>Desktop ≥1024px</strong><br>max-w-6xl (1152px) · px-4 · gap-8 antar seksi<br>Stat cards: grid-cols-4 · Kalender+mendatang: lg:grid-cols-[auto_1fr]</p>
+        <p style="margin-bottom:var(--space-3)"><strong>Tablet 768–1024px</strong><br>Lebar penuh · px-4 · Stat cards: grid-cols-2 · Kalender 1-kolom</p>
+        <p><strong>Mobile &lt;640px</strong><br>Lebar penuh · px-4 · Semua 1-kolom · Bottom nav 3–4 tab<br>TopBar nav tersembunyi → hanya logo + bell</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── RADIUS & SHADOWS ── -->
+<section id="effects" class="ds-section">
+  <div class="ds-header"><h2>Radius &amp; Bayangan</h2><p>Border radius konsisten per jenis elemen · Elevasi box-shadow</p></div>
+  <div class="g2">
+    <div class="demo">
+      <div class="demo-header">Border Radius</div>
+      <div class="demo-body">
+        <div class="radius-grid">
+          <div class="radius-item"><div class="radius-box" style="border-radius:4px"></div><div class="radius-label">--radius-sm<br>4px<br>tag, chip</div></div>
+          <div class="radius-item"><div class="radius-box" style="border-radius:6px"></div><div class="radius-label">--radius-md<br>6px<br>btn, input</div></div>
+          <div class="radius-item"><div class="radius-box" style="border-radius:8px"></div><div class="radius-label">--radius-lg<br>8px<br>card inner</div></div>
+          <div class="radius-item"><div class="radius-box" style="border-radius:10px"></div><div class="radius-label">--radius-xl<br>10px<br>modal</div></div>
+          <div class="radius-item"><div class="radius-box" style="border-radius:16px"></div><div class="radius-label">--radius-2xl<br>16px<br>main card</div></div>
+          <div class="radius-item"><div class="radius-box" style="border-radius:9999px;width:52px;height:26px"></div><div class="radius-label">--radius-full<br>pill<br>badge</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="demo">
+      <div class="demo-header">Elevasi Bayangan</div>
+      <div class="demo-body col" style="gap:var(--space-5)">
+        <div style="display:flex;align-items:center;gap:var(--space-4)">
+          <div style="width:72px;height:44px;background:var(--color-bg-default);border-radius:8px;box-shadow:none;border:1px solid var(--neutral-200)"></div>
+          <div><div style="font-size:11px;font-weight:600;color:var(--neutral-600)">--shadow-none</div><div style="font-family:var(--font-mono);font-size:10px;color:var(--neutral-400)">panel rata</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:var(--space-4)">
+          <div style="width:72px;height:44px;background:var(--color-bg-default);border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.08)"></div>
+          <div><div style="font-size:11px;font-weight:600;color:var(--neutral-600)">--shadow-1</div><div style="font-family:var(--font-mono);font-size:10px;color:var(--neutral-400)">stat card · booking card</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:var(--space-4)">
+          <div style="width:72px;height:44px;background:var(--color-bg-default);border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.10)"></div>
+          <div><div style="font-size:11px;font-weight:600;color:var(--neutral-600)">--shadow-2</div><div style="font-family:var(--font-mono);font-size:10px;color:var(--neutral-400)">hover card · dropdown</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:var(--space-4)">
+          <div style="width:72px;height:44px;background:var(--color-bg-default);border-radius:8px;box-shadow:0 0 0 3px rgba(160,32,240,.25)"></div>
+          <div><div style="font-size:11px;font-weight:600;color:var(--neutral-600)">--shadow-focus</div><div style="font-family:var(--font-mono);font-size:10px;color:var(--neutral-400)">focus ring input</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BUTTONS ── -->
+<section id="buttons" class="ds-section">
+  <div class="ds-header"><h2>Tombol</h2><p>4 varian · 3 ukuran · hover + press + disabled states</p></div>
+  <div class="demo">
+    <div class="demo-header">Varian &amp; Ukuran</div>
+    <div class="demo-body">
+      <div class="row" style="margin-bottom:var(--space-4)">
+        <button class="btn btn-primary"><i class="ph ph-check"></i> Setujui</button>
+        <button class="btn btn-secondary"><i class="ph ph-x"></i> Tolak</button>
+        <button class="btn btn-danger">Batalkan</button>
+        <button class="btn btn-ghost">Lihat selengkapnya →</button>
+      </div>
+      <div class="row" style="margin-bottom:var(--space-4)">
+        <button class="btn btn-primary btn-sm">+ Tambah</button>
+        <button class="btn btn-primary">+ Buat Booking</button>
+        <button class="btn btn-primary btn-lg">Masuk</button>
+      </div>
+      <div class="row">
+        <button class="btn btn-primary" disabled>Memproses…</button>
+        <button class="btn btn-secondary" disabled>Nonaktif</button>
+      </div>
+    </div>
+  </div>
+  <div class="demo"><pre class="code"><span class="c-cmt">/* Primary — Setujui, Buat Booking, Masuk, Ajukan */</span>
+<span class="c-key">bg:</span> <span class="c-val">var(--color-brand-primary)</span>  <span class="c-cmt">/* #8612D2 */</span>    <span class="c-key">color:</span> <span class="c-val">white</span>    <span class="c-key">border-radius:</span> <span class="c-val">var(--radius-md)</span>
+<span class="c-key">hover:</span> <span class="c-val">var(--color-brand-primary-dark)</span>  <span class="c-cmt">/* #6A0EA6 */</span>
+
+<span class="c-cmt">/* Danger — Tolak */</span>
+<span class="c-key">color:</span> <span class="c-val">var(--red-500)</span>    <span class="c-key">border:</span> <span class="c-val">1px solid var(--neutral-200)</span>    <span class="c-key">hover-bg:</span> <span class="c-val">var(--red-50)</span>
+
+<span class="c-cmt">/* Disabled */</span>
+opacity: 0.5    cursor: not-allowed    pointer-events: none
+
+<span class="c-cmt">/* Press state (semua varian) */</span>
+:active { transform: scale(0.98) }</pre></div>
+</section>
+
+<!-- ── FORMS ── -->
+<section id="forms" class="ds-section">
+  <div class="ds-header"><h2>Form Input</h2><p>Text · Select · Textarea · Datetime · focus ring hijau · error state merah</p></div>
+  <div class="demo">
+    <div class="demo-header">Komponen Form — Buat Booking</div>
+    <div class="demo-body">
+      <div class="g2" style="gap:var(--space-5)">
+        <div class="form-group">
+          <label class="form-label">Ruangan <span class="form-req">*</span></label>
+          <select class="form-select">
+            <option>— Pilih ruangan —</option>
+            <option>Ruang Rapat 1 — Lantai 1 (20 orang)</option>
+            <option>Aula Besar — Gedung Utama (200 orang)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Waktu mulai <span class="form-req">*</span></label>
+          <input type="datetime-local" class="form-input">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Waktu selesai <span class="form-req">*</span></label>
+          <input type="datetime-local" class="form-input">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Jumlah peserta <span class="form-req">*</span></label>
+          <input type="number" class="form-input" value="1" min="1">
+          <span class="form-helper">Sesuaikan dengan kapasitas ruangan</span>
+        </div>
+        <div class="form-group" style="grid-column:span 2">
+          <label class="form-label">Tujuan / agenda rapat <span class="form-req">*</span></label>
+          <input type="text" class="form-input" placeholder="mis. Rapat koordinasi program imunisasi">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Username</label>
+          <input type="text" class="form-input is-error" value="salah_user">
+          <span class="form-error-msg">Username tidak ditemukan</span>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Catatan pengelola <span style="color:var(--neutral-400);font-weight:400">(opsional)</span></label>
+          <textarea class="form-textarea" placeholder="Catatan untuk pemohon…" rows="3"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BADGES ── -->
+<section id="badges" class="ds-section">
+  <div class="ds-header"><h2>Badge Status</h2><p>Komponen BadgeStatus · src/components/badge-status.tsx · 4 status dari enum StatusBooking</p></div>
+  <div class="demo">
+    <div class="demo-header">Status Booking</div>
+    <div class="demo-body">
+      <div class="row" style="margin-bottom:var(--space-4)">
+        <span class="badge badge-menunggu"><span class="badge-dot"></span>Menunggu</span>
+        <span class="badge badge-disetujui"><span class="badge-dot"></span>Disetujui</span>
+        <span class="badge badge-ditolak"><span class="badge-dot"></span>Ditolak</span>
+        <span class="badge badge-batal"><span class="badge-dot"></span>Dibatalkan</span>
+      </div>
+      <div class="row">
+        <span class="badge badge-aktif" style="font-size:11px;padding:3px 8px"><span class="badge-dot"></span>Aktif</span>
+        <span class="badge badge-nonaktif" style="font-size:11px;padding:3px 8px"><span class="badge-dot"></span>Nonaktif</span>
+        <span style="font-size:var(--text-xs);color:var(--neutral-400)">(digunakan di tabel ruangan)</span>
+      </div>
+    </div>
+  </div>
+  <div class="demo"><pre class="code"><span class="c-cmt">/* Peta warna badge — badge-status.tsx */</span>
+MENUNGGU  → bg: <span class="c-val">gold-50</span>    · text: <span class="c-val">#7A5209</span>        · dot: <span class="c-val">gold-400</span>
+DISETUJUI → bg: <span class="c-val">green-50</span>   · text: <span class="c-val">var(--purple-700)</span> · dot: <span class="c-val">green-500</span>
+DITOLAK   → bg: <span class="c-val">red-50</span>     · text: <span class="c-val">var(--red-600)</span>   · dot: <span class="c-val">red-400</span>
+BATAL     → bg: <span class="c-val">neutral-100</span> · text: <span class="c-val">neutral-500</span>     · dot: <span class="c-val">neutral-300</span></pre></div>
+</section>
+
+<!-- ── STAT CARDS ── -->
+<section id="stat-cards" class="ds-section">
+  <div class="ds-header"><h2>Stat Card</h2><p>Kartu metrik ringkasan · 4 kartu berderet di atas dashboard · responsive 4-col → 2-col</p></div>
+  <div class="demo">
+    <div class="demo-header">Dashboard Pengelola</div>
+    <div class="demo-body subtle">
+      <div class="g4">
+        <div class="stat-card"><div class="sc-label">Perlu Disetujui</div><div class="sc-value sc-warning">3</div><div class="sc-sub">menunggu tindakan</div></div>
+        <div class="stat-card"><div class="sc-label">Disetujui Hari Ini</div><div class="sc-value sc-primary">1</div><div class="sc-sub">&nbsp;</div></div>
+        <div class="stat-card"><div class="sc-label">Booking Bulan Ini</div><div class="sc-value sc-default">12</div><div class="sc-sub">disetujui + menunggu</div></div>
+        <div class="stat-card"><div class="sc-label">Ruangan Aktif</div><div class="sc-value sc-default">5</div><div class="sc-sub">siap dibooking</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="demo">
+    <div class="demo-header">Dashboard Bidang</div>
+    <div class="demo-body subtle">
+      <div class="g4">
+        <div class="stat-card"><div class="sc-label">Total Booking</div><div class="sc-value sc-default">6</div><div class="sc-sub">semua waktu</div></div>
+        <div class="stat-card"><div class="sc-label">Menunggu</div><div class="sc-value sc-warning">0</div><div class="sc-sub">tidak ada</div></div>
+        <div class="stat-card"><div class="sc-label">Mendatang</div><div class="sc-value sc-primary">3</div><div class="sc-sub">sudah disetujui</div></div>
+        <div class="stat-card"><div class="sc-label">Batal / Ditolak</div><div class="sc-value sc-danger">1</div><div class="sc-sub">&nbsp;</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="demo"><pre class="code"><span class="c-cmt">/* Stat Card — warna nilai berdasar konteks */</span>
+warna default → <span class="c-val">var(--color-fg-default)</span>   <span class="c-cmt">/* angka netral */</span>
+warna primary → <span class="c-val">var(--purple-600)</span>          <span class="c-cmt">/* disetujui, mendatang */</span>
+warna warning → <span class="c-val">var(--gold-500)</span>           <span class="c-cmt">/* menunggu (>0 kuning, =0 default) */</span>
+warna danger  → <span class="c-val">var(--red-500)</span>            <span class="c-cmt">/* batal/ditolak (>0 merah, =0 default) */</span></pre></div>
+</section>
+
+<!-- ── TOPBAR ── -->
+<section id="topbar" class="ds-section">
+  <div class="ds-header"><h2>Top Bar / Header</h2><p>Sticky · backdrop-blur · Logo kiri · Nav tengah · User + logout kanan · src/components/topbar.tsx</p></div>
+  <div class="demo">
+    <div class="demo-header">Bidang (dengan notifikasi bell)</div>
+    <div class="demo-body pad0">
+      <div class="topbar">
+        <a class="tb-logo" href="#"><span class="temu-mark"><svg><use href="#tm-vesica"/></svg></span><span class="tb-name">Temu</span></a>
+        <nav class="tb-nav">
+          <a href="#" class="active">Beranda</a>
+          <a href="#">Buat Booking</a>
+          <a href="#">Notifikasi</a>
+        </nav>
+        <div class="tb-right">
+          <button class="tb-bell"><i class="ph ph-bell" style="font-size:18px"></i><span class="tb-bell-dot">3</span></button>
+          <div class="tb-avatar"><div class="tb-avatar-circle">BK</div><div><div class="tb-avatar-name">Bidang Kesmas</div><div class="tb-avatar-role">Bidang</div></div></div>
+          <button class="tb-logout">Keluar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="demo">
+    <div class="demo-header">Pengelola / Admin</div>
+    <div class="demo-body pad0">
+      <div class="topbar">
+        <a class="tb-logo" href="#"><span class="temu-mark"><svg><use href="#tm-vesica"/></svg></span><span class="tb-name">Temu</span></a>
+        <nav class="tb-nav">
+          <a href="#">Beranda</a>
+          <a href="#" class="active">Riwayat</a>
+          <a href="#">Ruangan</a>
+          <a href="#">Akun</a>
+        </nav>
+        <div class="tb-right">
+          <div class="tb-avatar"><div class="tb-avatar-circle" style="background:var(--blue-100);color:var(--blue-700)">PR</div><div><div class="tb-avatar-name">Pengelola Ruangan</div><div class="tb-avatar-role">Pengelola</div></div></div>
+          <button class="tb-logout">Keluar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="demo"><pre class="code"><span class="c-cmt">/* TopBar */</span>
+position: sticky    top: 0    z-index: 40    height: 56px
+background: <span class="c-val">rgba(255,255,255,0.92)</span>    backdrop-filter: blur(12px)
+border-bottom: 1px solid <span class="c-val">var(--neutral-100)</span>
+
+<span class="c-cmt">/* Inisial avatar — 2 kata pertama nama */</span>
+"Bidang Kesmas" → "BK"    background: <span class="c-val">green-100</span>    color: <span class="c-val">green-700</span>
+"Pengelola Ruangan" → "PR"  background: <span class="c-val">blue-100</span>    color: <span class="c-val">blue-700</span>
+
+<span class="c-cmt">/* Nav aktif */</span>
+color: <span class="c-val">var(--purple-700)</span>    background: <span class="c-val">var(--purple-50)</span>    font-weight: 600
+
+<span class="c-cmt">/* Bell badge — hanya untuk peran BIDANG */</span>
+position: absolute    top: 4px right: 4px    background: <span class="c-val">red-500</span>    border-radius: 50%</pre></div>
+</section>
+
+<!-- ── BOOKING CARD ── -->
+<section id="booking-card" class="ds-section">
+  <div class="ds-header"><h2>Kartu Booking</h2><p>Item daftar semua booking · Dipakai di Bidang dan Pengelola</p></div>
+  <div class="demo">
+    <div class="demo-header">Daftar Booking</div>
+    <div class="demo-body subtle col" style="gap:var(--space-2)">
+      <div class="booking-card">
+        <div style="min-width:0">
+          <div><span class="bc-room">Ruang Rapat 1</span><span class="bc-sep">·</span><span class="bc-loc">Lantai 1</span></div>
+          <div class="bc-time">Senin, 15 Jun 2026 · 09:00–11:00</div>
+          <div class="bc-purpose">Rapat koordinasi program imunisasi</div>
+          <div class="bc-meta">12 peserta</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:var(--space-2);flex-shrink:0">
+          <span class="badge badge-disetujui"><span class="badge-dot"></span>Disetujui</span>
+        </div>
+      </div>
+      <div class="booking-card">
+        <div style="min-width:0">
+          <div><span class="bc-room">Aula Besar</span><span class="bc-sep">·</span><span class="bc-loc">Gedung Utama</span></div>
+          <div class="bc-time">Selasa, 16 Jun 2026 · 13:00–15:00</div>
+          <div class="bc-purpose">Pelatihan kader posyandu</div>
+          <div class="bc-meta">50 peserta</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:var(--space-2);flex-shrink:0">
+          <span class="badge badge-menunggu"><span class="badge-dot"></span>Menunggu</span>
+          <button class="btn btn-secondary btn-sm">Batalkan</button>
+        </div>
+      </div>
+      <div class="booking-card">
+        <div style="min-width:0">
+          <div><span class="bc-room">Ruang Rapat 2</span><span class="bc-sep">·</span><span class="bc-loc">Lantai 2</span></div>
+          <div class="bc-time">Rabu, 17 Jun 2026 · 08:00–09:00</div>
+          <div class="bc-purpose">Evaluasi program P2P</div>
+          <div class="bc-meta">8 peserta</div>
+          <div class="bc-note">Catatan pengelola: Gunakan proyektor di ruang sebelah.</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:var(--space-2);flex-shrink:0">
+          <span class="badge badge-ditolak"><span class="badge-dot"></span>Ditolak</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── APPROVAL CARD ── -->
+<section id="approval-card" class="ds-section">
+  <div class="ds-header"><h2>Kartu Persetujuan</h2><p>KartuPersetujuan — hanya di dashboard Pengelola · src/app/pengelola/kartu-persetujuan.tsx</p></div>
+  <div class="demo">
+    <div class="demo-header">Antrean Persetujuan (dengan peringatan bentrok)</div>
+    <div class="demo-body subtle">
+      <div class="approval-card">
+        <div style="display:flex;justify-content:space-between;gap:var(--space-4);flex-wrap:wrap">
+          <div style="min-width:0">
+            <div style="display:flex;align-items:center;gap:var(--space-2);flex-wrap:wrap">
+              <span style="font-weight:600;color:var(--color-fg-default)">Aula Besar dan Kecil</span>
+              <span style="color:var(--neutral-300)">·</span>
+              <span style="font-size:var(--text-xs);color:var(--neutral-400)">Gedung Utama</span>
+            </div>
+            <div style="font-size:var(--text-sm);color:var(--neutral-600);margin-top:6px">Kamis, 18 Jun 2026 · 14:00–16:00</div>
+            <div style="font-size:var(--text-sm);color:var(--neutral-700);margin-top:2px">Seminar Kesehatan Ibu dan Anak</div>
+          </div>
+          <div style="text-align:right;flex-shrink:0">
+            <div style="font-size:11px;color:var(--neutral-400)">Pemohon</div>
+            <div style="font-size:var(--text-sm);font-weight:600;color:var(--color-fg-default)">Bidang KIA</div>
+            <div style="font-size:11px;color:var(--neutral-400);margin-top:2px">75 peserta</div>
+          </div>
+        </div>
+        <div class="ac-conflict">
+          <strong><i class="ph ph-warning" style="margin-right:4px"></i>Berpotensi bentrok:</strong>
+          Aula Besar sudah dibooking oleh Bidang P2P · Kamis 18 Jun 14:00–15:30 (Disetujui)
+        </div>
+        <div class="col" style="margin-top:var(--space-4);gap:var(--space-3)">
+          <textarea class="ac-notes" rows="2" placeholder="Catatan untuk pemohon (opsional)…"></textarea>
+          <div class="row">
+            <button class="btn btn-primary btn-sm"><i class="ph ph-check"></i> Setujui</button>
+            <button class="btn btn-danger btn-sm">Tolak</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── UPCOMING ── -->
+<section id="upcoming" class="ds-section">
+  <div class="ds-header"><h2>Booking Mendatang</h2><p>Item dalam panel "Booking Mendatang" di dashboard Bidang · Maks 5 item terbaru</p></div>
+  <div class="demo">
+    <div class="demo-header">Panel Booking Mendatang</div>
+    <div class="demo-body" style="max-width:400px">
+      <div class="upcoming-item">
+        <div class="ui-date"><span class="ui-day">14</span><span class="ui-month">Jun</span></div>
+        <div style="min-width:0"><div class="ui-room">Ruang Rapat 1</div><div class="ui-time">Minggu, 14 Jun 2026 · 09:00–11:00</div><div class="ui-purpose">Rapat koordinasi program imunisasi</div></div>
+      </div>
+      <div class="upcoming-item">
+        <div class="ui-date"><span class="ui-day">15</span><span class="ui-month">Jun</span></div>
+        <div style="min-width:0"><div class="ui-room">Aula Besar</div><div class="ui-time">Senin, 15 Jun 2026 · 13:00–16:00</div><div class="ui-purpose">Pelatihan kader posyandu</div></div>
+      </div>
+      <div class="upcoming-item">
+        <div class="ui-date"><span class="ui-day">18</span><span class="ui-month">Jun</span></div>
+        <div style="min-width:0"><div class="ui-room">Ruang Rapat 2</div><div class="ui-time">Kamis, 18 Jun 2026 · 09:00–10:00</div><div class="ui-purpose">Evaluasi program PTM</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CALENDAR ── -->
+<section id="calendar" class="ds-section">
+  <div class="ds-header"><h2>Kalender Mini</h2><p>KalenderBulanan · src/components/kalender-bulanan.tsx · Dot penanda per hari · Klik → filter timeline</p></div>
+  <div class="demo">
+    <div class="demo-header">Juni 2026</div>
+    <div class="demo-body" style="max-width:340px">
+      <div class="kalender">
+        <div class="kal-header">
+          <button class="kal-nav">←</button>
+          <span class="kal-month">Juni 2026</span>
+          <button class="kal-nav">→</button>
+        </div>
+        <div class="kal-days-header">
+          <div class="kal-dh">Sen</div><div class="kal-dh">Sel</div><div class="kal-dh">Rab</div>
+          <div class="kal-dh">Kam</div><div class="kal-dh">Jum</div><div class="kal-dh">Sab</div><div class="kal-dh">Min</div>
+        </div>
+        <div class="kal-grid">
+          <div class="kal-day" style="opacity:0"></div><div class="kal-day" style="opacity:0"></div>
+          <div class="kal-day" style="opacity:0"></div><div class="kal-day" style="opacity:0"></div>
+          <div class="kal-day" style="opacity:0"></div>
+          <div class="kal-day"><div class="kal-num">7</div><div class="kal-dots"></div></div>
+          <div class="kal-day"><div class="kal-num">8</div><div class="kal-dots"></div></div>
+          <div class="kal-day"><div class="kal-num">9</div><div class="kal-dots"></div></div>
+          <div class="kal-day"><div class="kal-num">10</div><div class="kal-dots"><span class="kal-dot dot-g"></span></div></div>
+          <div class="kal-day"><div class="kal-num">11</div><div class="kal-dots"></div></div>
+          <div class="kal-day"><div class="kal-num">12</div><div class="kal-dots"><span class="kal-dot dot-a"></span><span class="kal-dot dot-g"></span></div></div>
+          <div class="kal-day"><div class="kal-num">13</div><div class="kal-dots"></div></div>
+          <div class="kal-day today"><div class="kal-num">14</div><div class="kal-dots"><span class="kal-dot dot-g"></span><span class="kal-dot dot-a"></span></div></div>
+          <div class="kal-day"><div class="kal-num">15</div><div class="kal-dots"></div></div>
+          <div class="kal-day"><div class="kal-num">16</div><div class="kal-dots"><span class="kal-dot dot-g"></span></div></div>
+          <div class="kal-day"><div class="kal-num">17</div><div class="kal-dots"></div></div>
+          <div class="kal-day"><div class="kal-num">18</div><div class="kal-dots"><span class="kal-dot dot-a"></span></div></div>
+          <div class="kal-day"><div class="kal-num">19</div><div class="kal-dots"></div></div>
+          <div class="kal-day"><div class="kal-num">20</div><div class="kal-dots"></div></div>
+          <div class="kal-day"><div class="kal-num">21</div><div class="kal-dots"><span class="kal-dot dot-r"></span></div></div>
+          <div class="kal-day"><div class="kal-num">22</div><div class="kal-dots"></div></div>
+          <div class="kal-day"><div class="kal-num">23</div><div class="kal-dots"></div></div>
+          <div class="kal-day"><div class="kal-num">24</div><div class="kal-dots"></div></div>
+          <div class="kal-day"><div class="kal-num">25</div><div class="kal-dots"></div></div>
+          <div class="kal-day"><div class="kal-num">26</div><div class="kal-dots"></div></div>
+          <div class="kal-day"><div class="kal-num">27</div><div class="kal-dots"></div></div>
+          <div class="kal-day"><div class="kal-num">28</div><div class="kal-dots"></div></div>
+          <div class="kal-day"><div class="kal-num">29</div><div class="kal-dots"></div></div>
+          <div class="kal-day"><div class="kal-num">30</div><div class="kal-dots"></div></div>
+        </div>
+        <div class="kal-legend">
+          <div class="kal-legend-item"><span class="kal-dot dot-g" style="width:6px;height:6px"></span>Disetujui</div>
+          <div class="kal-legend-item"><span class="kal-dot dot-a" style="width:6px;height:6px"></span>Menunggu</div>
+          <div class="kal-legend-item"><span class="kal-dot dot-r" style="width:6px;height:6px"></span>Ditolak/Batal</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="demo"><pre class="code"><span class="c-cmt">/* Hari ini */</span>
+.today .kal-num { background: <span class="c-val">var(--purple-600)</span>; color: white; font-weight: 700; border-radius: 50% }
+
+<span class="c-cmt">/* Dot warna */</span>
+dot-ungu  → <span class="c-val">success-500</span>  (DISETUJUI)
+dot-amber → <span class="c-val">gold-400</span>   (MENUNGGU)
+dot-red   → <span class="c-val">red-400</span>    (DITOLAK / BATAL)
+
+<span class="c-cmt">/* Klik hari → update URL ?tanggal=YYYY-MM-DD untuk filter timeline */</span></pre></div>
+</section>
+
+<!-- ── TIMELINE ── -->
+<section id="timeline" class="ds-section">
+  <div class="ds-header"><h2>Timeline Jadwal</h2><p>TimelineJadwal · src/components/timeline-jadwal.tsx · Horizontal scroll · Jam 07–21 · Baris per ruangan</p></div>
+  <div class="demo">
+    <div class="demo-header">Minggu, 14 Juni 2026</div>
+    <div class="demo-body" style="padding:var(--space-4)">
+      <div class="tl-wrap">
+        <div class="tl">
+          <div class="tl-header">
+            <div class="tl-label-col"></div>
+            <div class="tl-hours">
+              <span class="tl-tick" style="left:0%">07:00</span>
+              <span class="tl-tick" style="left:14.3%">09:00</span>
+              <span class="tl-tick" style="left:28.6%">11:00</span>
+              <span class="tl-tick" style="left:42.9%">13:00</span>
+              <span class="tl-tick" style="left:57.1%">15:00</span>
+              <span class="tl-tick" style="left:71.4%">17:00</span>
+              <span class="tl-tick" style="left:85.7%">19:00</span>
+              <span class="tl-tick" style="left:100%">21:00</span>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-room">Ruang Rapat 1</div>
+            <div class="tl-track">
+              <div class="tl-bar tl-approved" style="left:14.3%;width:14.3%"><span>Bidang KIA · Rapat</span></div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-room">Ruang Rapat 2</div>
+            <div class="tl-track">
+              <div class="tl-bar tl-pending" style="left:42.9%;width:10.7%"><span>P2P · Evaluasi</span></div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-room">Aula Besar</div>
+            <div class="tl-track">
+              <div class="tl-bar tl-approved" style="left:7.1%;width:35.7%"><span>Promkes · Seminar tahunan</span></div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-room" style="color:var(--neutral-300)">Aula Kecil<br><span style="font-size:10px">nonaktif</span></div>
+            <div class="tl-track" style="opacity:.3"></div>
+          </div>
+        </div>
+      </div>
+      <div class="tl-legend">
+        <div class="tl-legend-item"><div class="tl-swatch" style="background:var(--purple-500)"></div>Disetujui</div>
+        <div class="tl-legend-item"><div class="tl-swatch" style="background:var(--gold-100);box-shadow:inset 0 0 0 1px var(--gold-200)"></div>Menunggu</div>
+      </div>
+    </div>
+  </div>
+  <div class="demo"><pre class="code"><span class="c-cmt">/* Bar posisi dihitung dari jam 07:00–21:00 (14 jam = 100%) */</span>
+left  = ((jamMulai  - 7) / 14) * 100 + '%'
+width = ((durasi_jam) / 14) * 100 + '%'
+
+<span class="c-cmt">/* Bar warna */</span>
+DISETUJUI → bg: <span class="c-val">green-500</span>    text: white
+MENUNGGU  → bg: <span class="c-val">gold-100</span>     text: <span class="c-val">#7A5209</span>     ring: inset gold-200
+
+<span class="c-cmt">/* Ruangan nonaktif — opacity 0.3 pada label + track */</span></pre></div>
+</section>
+
+<!-- ── TABLE ── -->
+<section id="table" class="ds-section">
+  <div class="ds-header"><h2>Tabel Data</h2><p>Dipakai di halaman Ruangan (admin) dan Riwayat · Header hijau gelap</p></div>
+  <div class="demo">
+    <div class="demo-header">Tabel Ruangan — /pengelola/ruangan</div>
+    <div class="demo-body pad0" style="overflow:hidden">
+      <div style="overflow-x:auto">
+        <table class="data-table">
+          <thead>
+            <tr><th>Nama</th><th>Lokasi</th><th>Kapasitas</th><th>Komponen</th><th>Status</th><th></th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="font-weight:500;color:var(--color-fg-default)">Ruang Rapat 1</td>
+              <td>Lantai 1</td><td>20</td>
+              <td><span class="dt-tag">RR-1</span></td>
+              <td><span class="badge badge-aktif" style="font-size:11px;padding:3px 8px"><span class="badge-dot"></span>Aktif</span></td>
+              <td><a class="dt-action" href="#">Ubah</a><a class="dt-action red" href="#">Nonaktifkan</a></td>
+            </tr>
+            <tr>
+              <td style="font-weight:500;color:var(--color-fg-default)">Aula Besar</td>
+              <td>Gedung Utama</td><td>200</td>
+              <td><span class="dt-tag">Aula-1</span><span class="dt-tag">Aula-2</span></td>
+              <td><span class="badge badge-aktif" style="font-size:11px;padding:3px 8px"><span class="badge-dot"></span>Aktif</span></td>
+              <td><a class="dt-action" href="#">Ubah</a><a class="dt-action red" href="#">Nonaktifkan</a></td>
+            </tr>
+            <tr style="opacity:.6">
+              <td style="font-weight:500;color:var(--color-fg-default)">Ruang Arsip</td>
+              <td>Lantai 3</td><td>10</td>
+              <td><span class="dt-tag">Arsip-1</span></td>
+              <td><span class="badge badge-nonaktif" style="font-size:11px;padding:3px 8px"><span class="badge-dot"></span>Nonaktif</span></td>
+              <td><a class="dt-action" href="#">Ubah</a><a class="dt-action green" href="#">Aktifkan</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="demo"><pre class="code"><span class="c-cmt">/* Table header */</span>
+background: <span class="c-val">var(--purple-700)</span>    color: white    font-size: 11px    uppercase    tracking-wider
+
+<span class="c-cmt">/* Row states */</span>
+default   → white
+even-row  → <span class="c-val">neutral-50</span>
+hover     → <span class="c-val">green-50</span>
+nonaktif  → opacity: 0.6
+
+<span class="c-cmt">/* Komponen tag */</span>
+background: <span class="c-val">green-50</span>    color: <span class="c-val">green-700</span>    border-radius: <span class="c-val">radius-sm</span>    font-size: 11px</pre></div>
+</section>
+
+<!-- ── EMPTY STATE ── -->
+<section id="empty" class="ds-section">
+  <div class="ds-header"><h2>Empty State</h2><p>Tampilkan saat tidak ada data · Border dashed · Teks muted · CTA opsional</p></div>
+  <div class="demo">
+    <div class="demo-header">Contoh Empty State</div>
+    <div class="demo-body subtle col" style="gap:var(--space-3)">
+      <div class="empty">Tidak ada permintaan yang menunggu.</div>
+      <div class="empty">Belum ada booking.<br><a href="#">Buat booking pertama →</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ALERTS ── -->
+<section id="alerts" class="ds-section">
+  <div class="ds-header"><h2>Alert Inline</h2><p>4 varian semantik · Digunakan dalam form, kartu persetujuan, dan halaman konfirmasi</p></div>
+  <div class="demo">
+    <div class="demo-header">Varian Alert</div>
+    <div class="demo-body col" style="gap:var(--space-3)">
+      <div class="alert alert-success"><i class="ph ph-check-circle" style="font-size:18px;flex-shrink:0"></i><span>Booking berhasil disetujui.</span></div>
+      <div class="alert alert-warning"><i class="ph ph-warning" style="font-size:18px;flex-shrink:0"></i><span>Berpotensi bentrok dengan booking yang sudah disetujui. Periksa jadwal sebelum menyetujui.</span></div>
+      <div class="alert alert-danger"><i class="ph ph-x-circle" style="font-size:18px;flex-shrink:0"></i><span>Username atau password salah. Silakan coba lagi.</span></div>
+      <div class="alert alert-info"><i class="ph ph-info" style="font-size:18px;flex-shrink:0"></i><span>Booking akan berstatus <strong>Menunggu</strong> hingga disetujui pengelola. Cek jadwal ruangan untuk melihat ketersediaan.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PAGINATION ── -->
+<section id="pagination" class="ds-section">
+  <div class="ds-header"><h2>Pagination</h2><p>10 item per halaman · PAGE_SIZE = 10 · Tombol prev/next dengan disabled state</p></div>
+  <div class="demo">
+    <div class="demo-header">Kontrol Halaman</div>
+    <div class="demo-body col">
+      <div class="pagination"><a href="#" class="pg-btn disabled">← Sebelumnya</a><span class="pg-info">1 / 4</span><a href="#" class="pg-btn">Berikutnya →</a></div>
+      <div class="pagination"><a href="#" class="pg-btn">← Sebelumnya</a><span class="pg-info">2 / 4</span><a href="#" class="pg-btn">Berikutnya →</a></div>
+      <div class="pagination"><a href="#" class="pg-btn">← Sebelumnya</a><span class="pg-info">4 / 4</span><a href="#" class="pg-btn disabled">Berikutnya →</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── NOTIFICATIONS ── -->
+<section id="notifications" class="ds-section">
+  <div class="ds-header"><h2>Notifikasi</h2><p>Halaman /bidang/notifikasi · Dibaca vs belum dibaca · Model Notifikasi di Prisma</p></div>
+  <div class="demo">
+    <div class="demo-header">Daftar Notifikasi</div>
+    <div class="demo-body pad0">
+      <div class="notif-item unread">
+        <div class="notif-icon"><i class="ph ph-check-circle"></i></div>
+        <div style="min-width:0;flex:1">
+          <div class="notif-title">Booking disetujui</div>
+          <div class="notif-body">Booking Ruang Rapat 1 · Senin 15 Jun 09:00–11:00 telah disetujui oleh pengelola.</div>
+          <div class="notif-time">2 menit lalu</div>
+        </div>
+        <div class="notif-unread-dot"></div>
+      </div>
+      <div class="notif-item unread">
+        <div class="notif-icon" style="background:var(--red-50);color:var(--red-500)"><i class="ph ph-x-circle"></i></div>
+        <div style="min-width:0;flex:1">
+          <div class="notif-title">Booking ditolak</div>
+          <div class="notif-body">Booking Aula Besar · Kamis 18 Jun 14:00–16:00 ditolak. Catatan: Bentrok dengan kegiatan lain.</div>
+          <div class="notif-time">1 jam lalu</div>
+        </div>
+        <div class="notif-unread-dot"></div>
+      </div>
+      <div class="notif-item">
+        <div class="notif-icon" style="background:var(--neutral-100);color:var(--neutral-400)"><i class="ph ph-bell"></i></div>
+        <div style="min-width:0;flex:1">
+          <div class="notif-title" style="color:var(--neutral-600)">Booking disetujui</div>
+          <div class="notif-body">Booking Ruang Rapat 2 · Rabu 10 Jun 08:00–10:00 telah disetujui.</div>
+          <div class="notif-time">3 hari lalu</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="demo"><pre class="code"><span class="c-cmt">/* Notifikasi unread */</span>
+background: <span class="c-val">green-50</span>    dot: 8px green-500 circle pojok kanan
+
+<span class="c-cmt">/* Icon per tipe */</span>
+disetujui → ph-check-circle  bg: <span class="c-val">green-100</span>    color: <span class="c-val">green-600</span>
+ditolak   → ph-x-circle     bg: <span class="c-val">red-50</span>       color: <span class="c-val">red-500</span>
+default   → ph-bell         bg: <span class="c-val">neutral-100</span>  color: <span class="c-val">neutral-400</span></pre></div>
+</section>
+
+<!-- ── LOGIN PATTERN ── -->
+<section id="login-pattern" class="ds-section">
+  <div class="ds-header"><h2>Pola Halaman: Login</h2><p>Split layout · Panel kiri hijau branding · Panel kanan form · src/app/login/</p></div>
+  <div class="demo">
+    <div class="demo-header">Layout Login — /login</div>
+    <div class="demo-body pad0" style="display:grid;grid-template-columns:2fr 3fr;min-height:380px">
+      <div style="background:var(--purple-600);padding:var(--space-8);display:flex;flex-direction:column;justify-content:center;color:#fff">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:var(--space-8)">
+          <span style="width:40px;height:40px;display:flex;align-items:center;justify-content:center"><svg><use href="#tm-vesica-white"/></svg></span>
+          <span style="font-size:var(--text-2xl);font-weight:800;color:#fff;letter-spacing:-.02em">Temu</span>
+        </div>
+        <div style="font-size:var(--text-sm);opacity:.7;margin-bottom:var(--space-2)">Sistem Booking Ruang Meeting</div>
+        <div style="font-size:var(--text-sm);opacity:.55;margin-bottom:var(--space-6)">Dinas Kesehatan Kabupaten Bogor</div>
+        <div class="col" style="gap:var(--space-3)">
+          <div style="display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-xs);opacity:.85"><i class="ph ph-check-circle"></i>Kelola pemesanan ruang meeting</div>
+          <div style="display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-xs);opacity:.85"><i class="ph ph-check-circle"></i>Approval workflow real-time</div>
+          <div style="display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-xs);opacity:.85"><i class="ph ph-check-circle"></i>Jadwal visual &amp; ketersediaan</div>
+          <div style="display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-xs);opacity:.85"><i class="ph ph-check-circle"></i>Notifikasi status booking</div>
+        </div>
+      </div>
+      <div style="padding:var(--space-8);display:flex;flex-direction:column;justify-content:center;max-width:380px;margin:0 auto;width:100%">
+        <div style="font-size:var(--text-2xl);font-weight:700;margin-bottom:3px">Selamat datang</div>
+        <div style="font-size:var(--text-sm);color:var(--neutral-400);margin-bottom:var(--space-6)">Masuk untuk melanjutkan</div>
+        <div class="form-group" style="margin-bottom:var(--space-4)">
+          <label class="form-label">Username</label>
+          <input type="text" class="form-input" placeholder="mis. kesmas / pengelola / admin">
+        </div>
+        <div class="form-group" style="margin-bottom:var(--space-5)">
+          <label class="form-label">Password</label>
+          <input type="password" class="form-input">
+        </div>
+        <button class="btn btn-primary btn-full btn-lg">Masuk</button>
+        <div style="text-align:center;font-size:var(--text-xs);color:var(--neutral-400);margin-top:var(--space-4)">Gunakan akun bidang atau akun pengelola Anda.</div>
+      </div>
+    </div>
+  </div>
+  <div class="note">
+    <strong>Responsive login:</strong> Di mobile (&lt;640px) panel kiri disembunyikan (display:none). Hanya form login + logo kecil di atas. Form padding dikurangi jadi px-6 py-8.
+  </div>
+</section>
+
+<!-- ── APP SHELL ── -->
+<section id="app-shell" class="ds-section">
+  <div class="ds-header"><h2>Pola Halaman: App Shell</h2><p>Struktur layout umum semua halaman setelah login</p></div>
+  <div class="demo"><pre class="code"><span class="c-cmt">/* App shell — layout.tsx (bidang dan pengelola) */</span>
+&lt;div class="min-h-screen" style="background: var(--neutral-50)"&gt;
+  &lt;TopBar /&gt;                                           <span class="c-cmt">// sticky top-0 z-40 h-14</span>
+  &lt;main class="mx-auto max-w-6xl px-4 py-6"&gt;          <span class="c-cmt">// 1152px max-width</span>
+    &lt;div class="flex flex-col gap-8"&gt;                  <span class="c-cmt">// gap-8 antar seksi</span>
+      &lt;GreetingSection /&gt;                              <span class="c-cmt">// judul + tanggal</span>
+      &lt;StatCards /&gt;                                    <span class="c-cmt">// grid-cols-2 sm:grid-cols-4</span>
+      &lt;ContentSection /&gt;                              <span class="c-cmt">// kalender, timeline, dll</span>
+    &lt;/div&gt;
+  &lt;/main&gt;
+&lt;/div&gt;
+
+<span class="c-cmt">/* Greeting */</span>
+salamWaktu() → "Selamat pagi" | "Selamat siang" | "Selamat sore" | "Selamat malam"
+Nama pengguna → sesi.nama dari JWT cookie</pre></div>
+</section>
+
+<!-- ── MOBILE ── -->
+<section id="mobile" class="ds-section">
+  <div class="ds-header"><h2>Navigasi Mobile</h2><p>Topbar tetap dipakai · Nav links tetap tampil di topbar · Tidak perlu bottom nav bar</p></div>
+
+  <div class="g2">
+    <div class="demo">
+      <div class="demo-header">Bidang — 3 nav items</div>
+      <div class="demo-body subtle" style="padding:var(--space-6);display:flex;justify-content:center">
+        <div class="phone">
+          <div class="phone-bar"><span>09:41</span><span>● 5G ■</span></div>
+          <div style="background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--neutral-100);padding:0 12px;height:52px;display:flex;align-items:center;gap:8px">
+            <span class="temu-mark temu-mark-sm"><svg><use href="#tm-vesica"/></svg></span>
+            <nav style="display:flex;gap:1px;flex:1">
+              <a style="padding:5px 8px;border-radius:var(--radius-md);font-size:11px;color:var(--purple-700);font-weight:600;background:var(--purple-50);text-decoration:none">Beranda</a>
+              <a style="padding:5px 8px;border-radius:var(--radius-md);font-size:11px;color:var(--neutral-500);text-decoration:none">Booking</a>
+            </nav>
+            <button class="tb-bell" style="width:32px;height:32px"><i class="ph ph-bell" style="font-size:15px"></i><span class="tb-bell-dot">2</span></button>
+          </div>
+          <div style="background:var(--neutral-50);padding:var(--space-4);min-height:240px">
+            <div style="font-size:var(--text-lg);font-weight:700;margin-bottom:2px">Selamat pagi</div>
+            <div style="font-size:11px;color:var(--neutral-400);margin-bottom:var(--space-4)">Minggu, 14 Juni 2026</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-2);margin-bottom:var(--space-3)">
+              <div class="stat-card" style="padding:var(--space-3)"><div class="sc-label" style="font-size:9px">Total</div><div class="sc-value sc-default" style="font-size:var(--text-xl)">6</div></div>
+              <div class="stat-card" style="padding:var(--space-3)"><div class="sc-label" style="font-size:9px">Mendatang</div><div class="sc-value sc-primary" style="font-size:var(--text-xl)">3</div></div>
+            </div>
+            <button class="btn btn-primary btn-full btn-sm">+ Buat Booking</button>
+            <div style="margin-top:var(--space-4)">
+              <div class="booking-card" style="padding:var(--space-3);gap:var(--space-2)">
+                <div style="min-width:0;flex:1">
+                  <div style="font-size:12px;font-weight:600">Ruang Rapat 1</div>
+                  <div style="font-size:11px;color:var(--neutral-500)">Sen 15 Jun · 09:00–11:00</div>
+                </div>
+                <span class="badge badge-disetujui" style="font-size:10px;padding:3px 7px"><span class="badge-dot"></span>Disetujui</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo">
+      <div class="demo-header">Pengelola — 2 nav items</div>
+      <div class="demo-body subtle" style="padding:var(--space-6);display:flex;justify-content:center">
+        <div class="phone">
+          <div class="phone-bar"><span>09:41</span><span>● 5G ■</span></div>
+          <div style="background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--neutral-100);padding:0 12px;height:52px;display:flex;align-items:center;gap:8px">
+            <span class="temu-mark temu-mark-sm"><svg><use href="#tm-vesica"/></svg></span>
+            <nav style="display:flex;gap:1px;flex:1">
+              <a style="padding:5px 8px;border-radius:var(--radius-md);font-size:11px;color:var(--purple-700);font-weight:600;background:var(--purple-50);text-decoration:none">Beranda</a>
+              <a style="padding:5px 8px;border-radius:var(--radius-md);font-size:11px;color:var(--neutral-500);text-decoration:none">Riwayat</a>
+            </nav>
+            <div style="display:flex;align-items:center;gap:6px;padding:3px 6px">
+              <div style="width:24px;height:24px;background:var(--blue-100);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:var(--blue-700)">PR</div>
+            </div>
+          </div>
+          <div style="background:var(--neutral-50);padding:var(--space-4);min-height:240px">
+            <div style="font-size:var(--text-lg);font-weight:700;margin-bottom:2px">Selamat pagi</div>
+            <div style="font-size:11px;color:var(--neutral-400);margin-bottom:var(--space-4)">Minggu, 14 Juni 2026</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-2);margin-bottom:var(--space-3)">
+              <div class="stat-card" style="padding:var(--space-3)"><div class="sc-label" style="font-size:9px">Perlu Disetujui</div><div class="sc-value sc-warning" style="font-size:var(--text-xl)">3</div></div>
+              <div class="stat-card" style="padding:var(--space-3)"><div class="sc-label" style="font-size:9px">Ruangan Aktif</div><div class="sc-value sc-default" style="font-size:var(--text-xl)">5</div></div>
+            </div>
+            <div class="approval-card" style="padding:var(--space-3)">
+              <div style="font-size:12px;font-weight:600;margin-bottom:2px">Aula Besar</div>
+              <div style="font-size:11px;color:var(--neutral-500);margin-bottom:var(--space-3)">Bidang KIA · Kam 18 Jun · 14:00–16:00</div>
+              <div style="display:flex;gap:var(--space-2)">
+                <button class="btn btn-primary btn-sm" style="font-size:11px;padding:4px 10px"><i class="ph ph-check"></i> Setujui</button>
+                <button class="btn btn-danger btn-sm" style="font-size:11px;padding:4px 10px">Tolak</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    <strong>Mengapa tidak perlu bottom nav:</strong> Bidang hanya punya 3 nav items (Beranda, Buat Booking, Notifikasi) dan Pengelola hanya 2 (Beranda, Riwayat). Semua muat di topbar bahkan di layar 320px. Topbar kompak 52px — logo mark + nav links text + bell/avatar. Link "Buat Booking" bisa dipersingkat jadi "Booking" di mobile. Notifikasi cukup dari bell icon di kanan.
+  </div>
+
+  <div class="demo"><pre class="code"><span class="c-cmt">/* Mobile topbar — kompak, tetap gunakan TopBar yang sama */</span>
+height: 52px    <span class="c-cmt">/* turun dari 56px */</span>
+
+<span class="c-cmt">/* Nav link font-size di mobile */</span>
+@media (max-width: 640px) {
+  .tb-nav a  { font-size: 11px; padding: 5px 8px }   <span class="c-cmt">/* muat 3 item */</span>
+  .tb-name   { display: none }                       <span class="c-cmt">/* sembunyikan wordmark */</span>
+  .tb-avatar-info { display: none }                  <span class="c-cmt">/* sembunyikan nama user */</span>
+}
+
+<span class="c-cmt">/* Bidang: "Buat Booking" → "Booking" di mobile */</span>
+&lt;Link href="/bidang/booking/baru"&gt;
+  &lt;span className="hidden sm:inline"&gt;Buat Booking&lt;/span&gt;
+  &lt;span className="sm:hidden"&gt;Booking&lt;/span&gt;
+&lt;/Link&gt;</pre></div>
+</section>
+
+<!-- ── MOTION ── -->
+<section id="motion" class="ds-section">
+  <div class="ds-header"><h2>Gerak &amp; Transisi</h2><p>Minimal — pemerintahan · utamakan aksesibilitas dan kejelasan</p></div>
+  <div class="demo"><pre class="code"><span class="c-cmt">/* Token transisi */</span>
+<span class="c-key">--transition-fast:</span>  <span class="c-val">150ms ease</span>      <span class="c-cmt">// hover bg/color (nav, btn, badge)</span>
+<span class="c-key">--transition-base:</span>  <span class="c-val">200ms ease-out</span>  <span class="c-cmt">// card lift, dropdown enter</span>
+<span class="c-key">--transition-exit:</span>  <span class="c-val">150ms ease-in</span>   <span class="c-cmt">// dropdown leave</span>
+
+<span class="c-cmt">/* Card hover */</span>
+.booking-card:hover  { box-shadow: var(--shadow-2); transform: translateY(-1px) }
+
+<span class="c-cmt">/* Button press */</span>
+.btn:active          { transform: scale(0.98) }
+
+<span class="c-cmt">/* Input focus */</span>
+.form-input:focus    { border-color: var(--purple-600); box-shadow: var(--shadow-focus) }
+
+<span class="c-cmt">/* TopBar backdrop */</span>
+backdrop-filter: blur(12px)   background: rgba(255,255,255,0.92)
+
+<span class="c-cmt">/* TIDAK dipakai: spring physics, parallax, infinite loop, bounce */</span></pre></div>
+</section>
+
+<!-- ── SKELETON LOADING ── -->
+<section id="loading" class="ds-section">
+  <div class="ds-header"><h2>Skeleton Loading</h2><p>Tampilkan saat data sedang di-fetch · Hindari layout shift · Cocokkan dimensi konten nyata</p></div>
+  <div class="demo">
+    <div class="demo-header">Stat Cards — Loading State</div>
+    <div class="demo-body subtle">
+      <div class="g4">
+        <div class="stat-card"><div class="skeleton skel-text short" style="height:11px;width:50%;margin-bottom:var(--space-3)"></div><div class="skeleton skel-num"></div><div class="skeleton skel-text" style="height:10px;width:40%;margin-top:var(--space-2)"></div></div>
+        <div class="stat-card"><div class="skeleton skel-text short" style="height:11px;width:55%;margin-bottom:var(--space-3)"></div><div class="skeleton skel-num"></div><div class="skeleton skel-text" style="height:10px;width:30%;margin-top:var(--space-2)"></div></div>
+        <div class="stat-card"><div class="skeleton skel-text short" style="height:11px;width:60%;margin-bottom:var(--space-3)"></div><div class="skeleton skel-num"></div><div class="skeleton skel-text" style="height:10px;width:45%;margin-top:var(--space-2)"></div></div>
+        <div class="stat-card"><div class="skeleton skel-text short" style="height:11px;width:50%;margin-bottom:var(--space-3)"></div><div class="skeleton skel-num"></div><div class="skeleton skel-text" style="height:10px;width:35%;margin-top:var(--space-2)"></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="demo">
+    <div class="demo-header">Booking Card — Loading State</div>
+    <div class="demo-body subtle col" style="gap:var(--space-2)">
+      <div class="booking-card" style="pointer-events:none">
+        <div style="flex:1;min-width:0">
+          <div style="display:flex;align-items:center;gap:var(--space-2);margin-bottom:var(--space-2)"><div class="skeleton skel-text" style="width:120px;height:14px"></div><div class="skeleton" style="width:60px;height:12px;border-radius:3px"></div></div>
+          <div class="skeleton skel-text medium" style="height:13px"></div>
+          <div class="skeleton skel-text" style="width:70%;height:12px"></div>
+          <div class="skeleton skel-text short" style="height:11px"></div>
+        </div>
+        <div class="skeleton skel-badge"></div>
+      </div>
+      <div class="booking-card" style="pointer-events:none">
+        <div style="flex:1;min-width:0">
+          <div style="display:flex;align-items:center;gap:var(--space-2);margin-bottom:var(--space-2)"><div class="skeleton skel-text" style="width:100px;height:14px"></div><div class="skeleton" style="width:50px;height:12px;border-radius:3px"></div></div>
+          <div class="skeleton skel-text" style="width:80%;height:13px"></div>
+          <div class="skeleton skel-text" style="width:60%;height:12px"></div>
+        </div>
+        <div class="skeleton skel-badge"></div>
+      </div>
+    </div>
+  </div>
+  <div class="demo"><pre class="code"><span class="c-cmt">/* Skeleton — shimmer animation */</span>
+@keyframes shimmer {
+  0%   { background-position: -600px 0 }
+  100% { background-position:  600px 0 }
+}
+.skeleton {
+  background: linear-gradient(90deg, <span class="c-val">neutral-100</span> 25%, <span class="c-val">neutral-50</span> 50%, <span class="c-val">neutral-100</span> 75%);
+  background-size: 600px 100%;
+  animation: shimmer 1.4s ease infinite;
+  border-radius: <span class="c-val">var(--radius-md)</span>;
+}
+
+<span class="c-cmt">/* Gunakan React Suspense + skeleton sebagai fallback di Next.js App Router */</span>
+export default function Loading() {
+  return &lt;StatCardSkeleton /&gt;
+}</pre></div>
+</section>
+
+<!-- ── TOAST ── -->
+<section id="toast" class="ds-section">
+  <div class="ds-header"><h2>Toast Notifikasi</h2><p>Feedback aksi: approve, reject, submit, error · Muncul pojok kanan atas · Auto-dismiss 4 detik</p></div>
+  <div class="demo">
+    <div class="demo-header">Varian Toast · (simulasi: klik untuk dismiss)</div>
+    <div class="demo-body subtle" style="display:flex;justify-content:center;padding:var(--space-8)">
+      <div class="toast-stack">
+        <div class="toast toast-success">
+          <i class="ph ph-check-circle toast-icon" style="color:var(--purple-500)"></i>
+          <div><div class="toast-title">Booking disetujui</div><div class="toast-body">Ruang Rapat 1 · Senin 15 Jun 09:00–11:00</div></div>
+          <button class="toast-close" onclick="this.closest('.toast').style.display='none'">×</button>
+        </div>
+        <div class="toast toast-error">
+          <i class="ph ph-x-circle toast-icon" style="color:var(--red-400)"></i>
+          <div><div class="toast-title">Gagal membatalkan booking</div><div class="toast-body">Booking sudah dalam status Disetujui.</div></div>
+          <button class="toast-close" onclick="this.closest('.toast').style.display='none'">×</button>
+        </div>
+        <div class="toast toast-warning">
+          <i class="ph ph-warning toast-icon" style="color:var(--gold-400)"></i>
+          <div><div class="toast-title">Peringatan bentrok</div><div class="toast-body">Ruangan sudah dibooking di jam yang sama.</div></div>
+          <button class="toast-close" onclick="this.closest('.toast').style.display='none'">×</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="demo"><pre class="code"><span class="c-cmt">/* Posisi — fixed, pojok kanan atas, z-50 */</span>
+position: fixed    top: 80px    right: 16px    z-index: 50
+display: flex    flex-direction: column    gap: 8px
+
+<span class="c-cmt">/* Auto-dismiss */</span>
+setTimeout(() => toast.remove(), <span class="c-val">4000</span>)
+
+<span class="c-cmt">/* Warna border-left per tipe */</span>
+success → <span class="c-val">green-500</span>    error → <span class="c-val">red-400</span>    warning → <span class="c-val">gold-400</span></pre></div>
+</section>
+
+<!-- ── MODAL ── -->
+<section id="modal" class="ds-section">
+  <div class="ds-header"><h2>Modal Konfirmasi</h2><p>Digunakan untuk: batalkan booking, nonaktifkan ruangan, hapus data · Selalu minta konfirmasi eksplisit</p></div>
+  <div class="demo">
+    <div class="demo-header">Modal — Konfirmasi Batalkan Booking</div>
+    <div class="demo-body" style="padding:0">
+      <div class="modal-backdrop">
+        <div class="modal">
+          <div class="modal-header">
+            <div class="modal-title">Batalkan booking ini?</div>
+            <button class="modal-close"><i class="ph ph-x"></i></button>
+          </div>
+          <div class="modal-body">
+            Booking <strong>Ruang Rapat 1</strong> pada Senin, 15 Juni 2026 pukul 09:00–11:00 akan dibatalkan dan tidak bisa dikembalikan.
+          </div>
+          <div class="modal-actions">
+            <button class="btn btn-secondary btn-sm">Kembali</button>
+            <button class="btn btn-danger btn-sm">Ya, batalkan</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="demo">
+    <div class="demo-header">Modal — Konfirmasi Nonaktifkan Ruangan (Admin)</div>
+    <div class="demo-body" style="padding:0">
+      <div class="modal-backdrop">
+        <div class="modal">
+          <div class="modal-header">
+            <div class="modal-title">Nonaktifkan ruangan?</div>
+            <button class="modal-close"><i class="ph ph-x"></i></button>
+          </div>
+          <div class="modal-body">
+            <strong>Aula Besar</strong> tidak akan bisa dipesan oleh bidang. Booking yang sudah ada tidak terpengaruh.
+          </div>
+          <div class="modal-actions">
+            <button class="btn btn-secondary btn-sm">Batal</button>
+            <button class="btn btn-primary btn-sm">Nonaktifkan</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="demo"><pre class="code"><span class="c-cmt">/* Modal — backdrop + centered box */</span>
+backdrop: position fixed    inset 0    bg rgba(17,23,20,.55)    z-50
+box:      max-w 420px    border-radius <span class="c-val">var(--radius-xl)</span>    shadow <span class="c-val">var(--shadow-3)</span>
+
+<span class="c-cmt">/* Tutup dengan: Escape key, klik backdrop, tombol ×, tombol Kembali */</span>
+<span class="c-cmt">/* Gunakan React Portal atau Next.js &lt;dialog&gt; native untuk aksesibilitas */</span>
+
+<span class="c-cmt">/* Aksi primer selalu di kanan, sekunder di kiri */</span>
+Destructive → btn-danger (merah)    Non-destructive → btn-primary</pre></div>
+</section>
+
+<!-- ── FORM RUANGAN ── -->
+<section id="form-ruangan" class="ds-section">
+  <div class="ds-header"><h2>Form Ruangan</h2><p>Tambah/Ubah Ruangan · src/app/pengelola/ruangan/_form.tsx · Hanya Admin</p></div>
+  <div class="demo">
+    <div class="demo-header">Form Tambah / Ubah Ruangan</div>
+    <div class="demo-body">
+      <div class="g2" style="gap:var(--space-5)">
+        <div class="form-group">
+          <label class="form-label">Nama Ruangan <span class="form-req">*</span></label>
+          <input type="text" class="form-input" placeholder="mis. Ruang Rapat 1">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Lokasi <span class="form-req">*</span></label>
+          <input type="text" class="form-input" placeholder="mis. Lantai 1, Gedung Utama">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Kapasitas (orang) <span class="form-req">*</span></label>
+          <input type="number" class="form-input" value="20" min="1">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Status</label>
+          <select class="form-select">
+            <option>Aktif</option>
+            <option>Nonaktif</option>
+          </select>
+        </div>
+        <div class="form-group" style="grid-column:span 2">
+          <label class="form-label">Fasilitas</label>
+          <input type="text" class="form-input" placeholder="mis. Proyektor, AC, Whiteboard (pisahkan koma)">
+          <span class="form-helper">Dipisahkan koma · disimpan sebagai String[]</span>
+        </div>
+        <div class="form-group" style="grid-column:span 2">
+          <label class="form-label">Komponen Ruangan <span class="form-req">*</span></label>
+          <div class="row" style="flex-wrap:wrap;gap:var(--space-2);margin-top:4px">
+            <label style="display:flex;align-items:center;gap:6px;font-size:var(--text-sm);cursor:pointer;padding:6px 12px;border:1px solid var(--neutral-200);border-radius:var(--radius-md);background:var(--color-bg-default)">
+              <input type="checkbox" checked style="accent-color:var(--purple-600)"> Aula-1
+            </label>
+            <label style="display:flex;align-items:center;gap:6px;font-size:var(--text-sm);cursor:pointer;padding:6px 12px;border:1px solid var(--purple-500);border-radius:var(--radius-md);background:var(--purple-50);color:var(--purple-700)">
+              <input type="checkbox" checked style="accent-color:var(--purple-600)"> Aula-2
+            </label>
+            <label style="display:flex;align-items:center;gap:6px;font-size:var(--text-sm);cursor:pointer;padding:6px 12px;border:1px solid var(--neutral-200);border-radius:var(--radius-md);background:var(--color-bg-default)">
+              <input type="checkbox" style="accent-color:var(--purple-600)"> RR-1
+            </label>
+            <label style="display:flex;align-items:center;gap:6px;font-size:var(--text-sm);cursor:pointer;padding:6px 12px;border:1px solid var(--neutral-200);border-radius:var(--radius-md);background:var(--color-bg-default)">
+              <input type="checkbox" style="accent-color:var(--purple-600)"> RR-2
+            </label>
+          </div>
+          <span class="form-helper">Komponen menentukan deteksi bentrok · Ruangan multi-komponen bisa split/gabung Aula</span>
+        </div>
+      </div>
+      <div class="row" style="margin-top:var(--space-5);justify-content:flex-end">
+        <a href="#" class="btn btn-secondary btn-sm">Batal</a>
+        <button class="btn btn-primary btn-sm">Simpan Ruangan</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── RIWAYAT ── -->
+<section id="riwayat" class="ds-section">
+  <div class="ds-header"><h2>Pola Halaman: Riwayat</h2><p>Tabel semua booking + filter status + pagination · src/app/pengelola/riwayat/page.tsx</p></div>
+  <div class="demo">
+    <div class="demo-header">Riwayat Booking — Filter + Tabel</div>
+    <div class="demo-body">
+      <div class="row" style="margin-bottom:var(--space-4);flex-wrap:wrap;gap:var(--space-2)">
+        <select class="form-select" style="width:auto;min-width:160px">
+          <option>Semua status</option>
+          <option>Menunggu</option>
+          <option>Disetujui</option>
+          <option>Ditolak</option>
+          <option>Dibatalkan</option>
+        </select>
+        <select class="form-select" style="width:auto;min-width:160px">
+          <option>Semua ruangan</option>
+          <option>Ruang Rapat 1</option>
+          <option>Aula Besar</option>
+        </select>
+        <select class="form-select" style="width:auto;min-width:140px">
+          <option>Semua bidang</option>
+          <option>Bidang KIA</option>
+          <option>Bidang P2P</option>
+        </select>
+        <span style="margin-left:auto;font-size:var(--text-xs);color:var(--neutral-400);align-self:center">12 booking ditemukan</span>
+      </div>
+    </div>
+    <div class="demo-body pad0" style="overflow:hidden">
+      <div style="overflow-x:auto">
+        <table class="data-table">
+          <thead><tr><th>Ruangan</th><th>Bidang</th><th>Waktu</th><th>Tujuan</th><th>Peserta</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr>
+              <td style="font-weight:500;color:var(--color-fg-default)">Ruang Rapat 1</td>
+              <td style="color:var(--neutral-500)">Bidang KIA</td>
+              <td style="font-size:11px">Sen 15 Jun · 09:00–11:00</td>
+              <td style="color:var(--neutral-600);max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Rapat koordinasi program</td>
+              <td style="text-align:center">12</td>
+              <td><span class="badge badge-disetujui" style="font-size:11px"><span class="badge-dot"></span>Disetujui</span></td>
+            </tr>
+            <tr>
+              <td style="font-weight:500;color:var(--color-fg-default)">Aula Besar</td>
+              <td style="color:var(--neutral-500)">Bidang Promkes</td>
+              <td style="font-size:11px">Sel 16 Jun · 13:00–16:00</td>
+              <td style="color:var(--neutral-600);max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Seminar tahunan</td>
+              <td style="text-align:center">80</td>
+              <td><span class="badge badge-menunggu" style="font-size:11px"><span class="badge-dot"></span>Menunggu</span></td>
+            </tr>
+            <tr style="opacity:.7">
+              <td style="font-weight:500;color:var(--color-fg-default)">Ruang Rapat 2</td>
+              <td style="color:var(--neutral-500)">Bidang P2P</td>
+              <td style="font-size:11px">Rab 17 Jun · 08:00–09:00</td>
+              <td style="color:var(--neutral-600);max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Evaluasi program P2P</td>
+              <td style="text-align:center">8</td>
+              <td><span class="badge badge-ditolak" style="font-size:11px"><span class="badge-dot"></span>Ditolak</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="demo-body">
+      <div class="pagination" style="margin-top:0">
+        <a href="#" class="pg-btn disabled">← Sebelumnya</a>
+        <span class="pg-info">1 / 2</span>
+        <a href="#" class="pg-btn">Berikutnya →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── NOT FOUND ── -->
+<section id="not-found" class="ds-section">
+  <div class="ds-header"><h2>Error &amp; Not Found</h2><p>Halaman 404 · Error state form · Server error · src/app/not-found.tsx</p></div>
+  <div class="g2">
+    <div class="demo">
+      <div class="demo-header">Halaman 404 Not Found</div>
+      <div class="demo-body">
+        <div class="error-page">
+          <div class="error-code">404</div>
+          <div class="error-title">Halaman tidak ditemukan</div>
+          <div class="error-body">Halaman yang Anda cari tidak ada atau sudah dipindahkan.</div>
+          <div class="row" style="justify-content:center;margin-top:var(--space-5)">
+            <a href="#" class="btn btn-primary btn-sm">Kembali ke Beranda</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="demo">
+      <div class="demo-header">Error States Form</div>
+      <div class="demo-body col" style="gap:var(--space-4)">
+        <div class="alert alert-danger"><i class="ph ph-x-circle" style="font-size:18px;flex-shrink:0"></i><div><div style="font-weight:600">Username atau password salah</div><div style="font-size:var(--text-xs);margin-top:2px">Periksa kembali kredensial Anda.</div></div></div>
+        <div class="alert alert-danger"><i class="ph ph-warning" style="font-size:18px;flex-shrink:0"></i><div><div style="font-weight:600">Waktu bentrok</div><div style="font-size:var(--text-xs);margin-top:2px">Ruangan sudah dibooking pada waktu yang sama. Pilih waktu lain.</div></div></div>
+        <div class="form-group">
+          <label class="form-label">Jumlah peserta</label>
+          <input type="number" class="form-input is-error" value="250">
+          <span class="form-error-msg">Melebihi kapasitas ruangan (200 orang)</span>
+        </div>
+        <div style="background:var(--neutral-50);border-radius:var(--radius-lg);padding:var(--space-3) var(--space-4)">
+          <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--neutral-400);margin-bottom:var(--space-2)">Error boundary</p>
+          <div style="font-size:var(--text-xs);color:var(--neutral-500);line-height:1.6">Next.js App Router menangkap error runtime via <code>error.tsx</code>. Tampilkan pesan ringkas + tombol retry, bukan stack trace.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TAILWIND MAP ── -->
+<section id="tailwind-map" class="ds-section">
+  <div class="ds-header"><h2>Tailwind Migration Map</h2><p>Pemetaan kelas Tailwind lama → token baru · Lakukan bertahap, mulai dari komponen terbanyak dipakai</p></div>
+  <div class="demo">
+    <div class="demo-header">Token → Tailwind → Hex</div>
+    <div class="demo-body pad0" style="overflow:hidden">
+      <div style="overflow-x:auto">
+        <table class="tw-table">
+          <thead><tr><th>CSS Token</th><th>Tailwind Baru</th><th>Lama (hapus)</th><th>Hex</th><th>Dipakai di</th></tr></thead>
+          <tbody>
+            <tr><td>--color-brand-primary</td><td>bg-brand-primary</td><td><span class="tw-chip-old">bg-teal-600</span></td><td>#8612D2</td><td>btn primary, topbar icon, kal today</td></tr>
+            <tr><td>--color-brand-primary-dark</td><td>bg-brand-dark</td><td><span class="tw-chip-old">bg-teal-700</span></td><td>#6A0EA6</td><td>btn hover, table header</td></tr>
+            <tr><td>--color-brand-primary-light</td><td>bg-brand-light</td><td><span class="tw-chip-old">bg-teal-50</span></td><td>#EED7FC</td><td>avatar bg, upcoming date box</td></tr>
+            <tr><td>--status-success</td><td>text-status-success</td><td><span class="tw-chip-old">text-teal-600</span></td><td>#1A8A5C</td><td>badge disetujui, timeline bar</td></tr>
+            <tr><td>--status-warning</td><td>text-status-warning</td><td><span class="tw-chip-old">text-amber-600</span></td><td>#D49A1A</td><td>badge menunggu, stat warning</td></tr>
+            <tr><td>--status-danger</td><td>text-status-danger</td><td><span class="tw-chip-old">text-red-500</span></td><td>#E03C3C</td><td>badge ditolak, btn danger</td></tr>
+            <tr><td>--color-fg-default</td><td>text-fg-default</td><td><span class="tw-chip-old">text-stone-900</span></td><td>#222B26</td><td>judul, nama ruangan</td></tr>
+            <tr><td>--color-fg-muted</td><td>text-fg-muted</td><td><span class="tw-chip-old">text-stone-500</span></td><td>#6B7B72</td><td>tujuan rapat, deskripsi</td></tr>
+            <tr><td>--color-fg-subtle</td><td>text-fg-subtle</td><td><span class="tw-chip-old">text-stone-400</span></td><td>#8E9E96</td><td>tanggal, meta, label stat card</td></tr>
+            <tr><td>--color-bg-subtle</td><td>bg-bg-subtle</td><td><span class="tw-chip-old">bg-stone-50</span></td><td>#F5F7F6</td><td>background halaman</td></tr>
+            <tr><td>--color-border-default</td><td>border-border-default</td><td><span class="tw-chip-old">border-stone-200</span></td><td>#D5DDD9</td><td>input, card border</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="demo"><pre class="code"><span class="c-cmt">/* tailwind.config.ts — extend colors */</span>
+theme: {
+  extend: {
+    colors: {
+      brand: {
+        primary: <span class="c-val">'#8612D2'</span>,
+        dark:    <span class="c-val">'#6A0EA6'</span>,
+        light:   <span class="c-val">'#EED7FC'</span>,
+      },
+      fg: {
+        default: <span class="c-val">'#222B26'</span>, muted: <span class="c-val">'#6B7B72'</span>, subtle: <span class="c-val">'#8E9E96'</span>,
+      },
+      status: {
+        success: <span class="c-val">'#1A8A5C'</span>, warning: <span class="c-val">'#D49A1A'</span>, danger: <span class="c-val">'#E03C3C'</span>,
+      },
+    },
+  },
+}</pre></div>
+</section>
+
+<!-- ── RESPONSIVE DEMO ── -->
+<section id="responsive" class="ds-section">
+  <div class="ds-header"><h2>Responsive Demo</h2><p>Perubahan layout konkret per breakpoint · Stat cards, kalender, nav, sidebar</p></div>
+  <div class="demo">
+    <div class="demo-header">Layout per Viewport</div>
+    <div class="demo-body">
+      <div class="bp-demo">
+        <div class="bp-row">
+          <div class="bp-label" style="color:var(--purple-600)">≥1024px</div>
+          <div class="bp-bar" style="background:var(--purple-50);border:1px solid var(--purple-200);flex:4">
+            <i class="ph ph-monitor" style="color:var(--purple-600)"></i>
+            <div>
+              <div style="font-weight:600;color:var(--purple-700);margin-bottom:2px">Desktop — Full layout</div>
+              <div style="color:var(--neutral-500)">Topbar + nav links · max-w-6xl · stat cards 4-kol · kalender+mendatang 2-kol · timeline visible</div>
+            </div>
+          </div>
+        </div>
+        <div class="bp-row">
+          <div class="bp-label" style="color:var(--gold-500)">768–1024px</div>
+          <div class="bp-bar" style="background:var(--gold-50);border:1px solid var(--gold-200);flex:3">
+            <i class="ph ph-device-tablet" style="color:var(--gold-500)"></i>
+            <div>
+              <div style="font-weight:600;color:var(--warning-fg);margin-bottom:2px">Tablet — Kompresi</div>
+              <div style="color:var(--neutral-500)">Topbar nav visible · stat cards 2-kol · kalender 1-kol · timeline scroll-x</div>
+            </div>
+          </div>
+        </div>
+        <div class="bp-row">
+          <div class="bp-label" style="color:var(--blue-600)">< 640px</div>
+          <div class="bp-bar" style="background:var(--blue-50);border:1px solid var(--blue-100);flex:2">
+            <i class="ph ph-device-mobile" style="color:var(--blue-600)"></i>
+            <div>
+              <div style="font-weight:600;color:var(--blue-700);margin-bottom:2px">Mobile — Bottom nav</div>
+              <div style="color:var(--neutral-500)">Nav links → bottom tab · stat cards 2-kol · semua 1-kol · phone-optimized touch targets 44px+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:var(--space-5);display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-3)">
+        <div style="background:var(--neutral-50);border-radius:var(--radius-lg);padding:var(--space-3);font-size:var(--text-xs)">
+          <div style="font-weight:700;color:var(--neutral-700);margin-bottom:var(--space-2)">Stat Cards</div>
+          <div style="color:var(--neutral-500)">sm:grid-cols-4 → grid-cols-2<br>gap-3 sama di semua breakpoint</div>
+        </div>
+        <div style="background:var(--neutral-50);border-radius:var(--radius-lg);padding:var(--space-3);font-size:var(--text-xs)">
+          <div style="font-weight:700;color:var(--neutral-700);margin-bottom:var(--space-2)">Kalender + Mendatang</div>
+          <div style="color:var(--neutral-500)">lg:grid-cols-[auto_1fr] → grid-cols-1<br>Kalender bisa scroll bulan di mobile</div>
+        </div>
+        <div style="background:var(--neutral-50);border-radius:var(--radius-lg);padding:var(--space-3);font-size:var(--text-xs)">
+          <div style="font-weight:700;color:var(--neutral-700);margin-bottom:var(--space-2)">Timeline Jadwal</div>
+          <div style="color:var(--neutral-500)">overflow-x: auto · min-width 600px<br>Label ruangan terpotong di mobile</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MOTION ── -->
+<section id="motion" class="ds-section">
+  <div class="ds-header"><h2>Gerak &amp; Animasi</h2><p>Minimal · Aksesibilitas diutamakan · Semua animasi hormat prefers-reduced-motion</p></div>
+  <div class="demo">
+    <div class="demo-header">Demo Interaktif — Klik kartu untuk putar animasi</div>
+    <div class="demo-body subtle">
+      <div class="g3">
+        <div class="anim-demo-card" onclick="playAnim(this,'fadeIn')">
+          <div class="anim-target" id="anim-fade" style="width:48px;height:48px;background:var(--purple-100);border-radius:var(--radius-lg)"></div>
+          <div class="anim-label">Fade In</div>
+          <div style="font-size:10px;color:var(--neutral-400)">opacity 0→1 · 200ms</div>
+        </div>
+        <div class="anim-demo-card" onclick="playAnim(this,'fadeInUp')">
+          <div class="anim-target" id="anim-up" style="width:48px;height:48px;background:var(--blue-100);border-radius:var(--radius-lg)"></div>
+          <div class="anim-label">Fade In Up</div>
+          <div style="font-size:10px;color:var(--neutral-400)">opacity+translateY · 200ms</div>
+        </div>
+        <div class="anim-demo-card" onclick="playAnim(this,'hover')">
+          <div class="booking-card" style="pointer-events:none;margin:0;padding:var(--space-3);gap:var(--space-2)">
+            <div style="font-size:11px;font-weight:600">Ruang Rapat 1</div>
+            <span class="badge badge-disetujui" style="font-size:10px;padding:2px 8px"><span class="badge-dot"></span>Disetujui</span>
+          </div>
+          <div class="anim-label">Card Hover</div>
+          <div style="font-size:10px;color:var(--neutral-400)">shadow + translateY(-2px) · 150ms</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="demo"><pre class="code"><span class="c-cmt">/* Token transisi */</span>
+<span class="c-key">--transition-fast:</span>  <span class="c-val">150ms ease</span>      <span class="c-cmt">// hover bg/color</span>
+<span class="c-key">--transition-base:</span>  <span class="c-val">200ms ease-out</span>  <span class="c-cmt">// elemen masuk, card lift</span>
+<span class="c-key">--transition-exit:</span>  <span class="c-val">150ms ease-in</span>   <span class="c-cmt">// elemen keluar</span>
+
+<span class="c-cmt">/* Page load — komponen masuk bertahap */</span>
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(8px) }
+  to   { opacity: 1; transform: translateY(0)   }
+}
+.animate-in { animation: fadeInUp <span class="c-val">200ms ease-out</span> both }
+
+<span class="c-cmt">/* Hormati prefers-reduced-motion */</span>
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important }
+}</pre></div>
+</section>
+
+<!-- ── CHECKLIST ── -->
+<section id="checklist" class="ds-section">
+  <div class="ds-header"><h2>Checklist Implementasi</h2><p>Panduan Claude Code — centang setelah setiap komponen selesai diimplementasi</p></div>
+  <div class="demo">
+    <div class="demo-header">Checklist — klik untuk centang</div>
+    <div class="demo-body col" style="gap:0">
+      <div class="check-group-title">🎨 Fondasi</div>
+      <div class="checklist">
+        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div style="font-weight:500">CSS tokens di globals.css</div><div style="font-size:11px;color:var(--neutral-400)">Salin blok token dari seksi Token Lengkap</div></div></div>
+        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div style="font-weight:500">Plus Jakarta Sans di layout.tsx</div><div style="font-size:11px;color:var(--neutral-400)">Google Fonts + weights 400/500/600/700/800</div></div></div>
+        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div style="font-weight:500">Tailwind config override</div><div style="font-size:11px;color:var(--neutral-400)">brand, fg, status colors di tailwind.config.ts</div></div></div>
+        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div style="font-weight:500">Background halaman → neutral-50 (#F5F7F6)</div><div style="font-size:11px;color:var(--neutral-400)">Ganti stone-50 (#f8fafc) → F5F7F6</div></div></div>
+      </div>
+      <div class="check-group-title">🧩 Komponen Kritis</div>
+      <div class="checklist">
+        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div style="font-weight:500">BadgeStatus — 4 varian warna</div><div style="font-size:11px;color:var(--neutral-400)">gold/green/red/neutral · badge-status.tsx</div></div></div>
+        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div style="font-weight:500">TopBar — sticky + backdrop-blur</div><div style="font-size:11px;color:var(--neutral-400)">Logo DK, nav aktif state, bell badge, avatar inisial</div></div></div>
+        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div style="font-weight:500">StatCard — 4 warna nilai</div><div style="font-size:11px;color:var(--neutral-400)">default/primary/warning/danger + responsive 4-kol→2-kol</div></div></div>
+        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div style="font-weight:500">KartuPersetujuan — conflict warning</div><div style="font-size:11px;color:var(--neutral-400)">Amber warning box · textarea notes · approve/reject btn</div></div></div>
+        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div style="font-weight:500">KalenderBulanan — dots + today</div><div style="font-size:11px;color:var(--neutral-400)">Teal/amber/red dots · green circle untuk hari ini</div></div></div>
+        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div style="font-weight:500">TimelineJadwal — horizontal scroll</div><div style="font-size:11px;color:var(--neutral-400)">Jam 07–21 · bar position dihitung % · min-width 600px</div></div></div>
+      </div>
+      <div class="check-group-title">📱 Mobile</div>
+      <div class="checklist">
+        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div style="font-weight:500">Bottom nav di &lt;640px</div><div style="font-size:11px;color:var(--neutral-400)">Beranda / Kalender / Notifikasi · tab aktif green-600</div></div></div>
+        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div style="font-weight:500">Touch targets ≥44px</div><div style="font-size:11px;color:var(--neutral-400)">Semua tombol dan nav item mobile min 44px height</div></div></div>
+        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div style="font-weight:500">PWA manifest + sw.js</div><div style="font-size:11px;color:var(--neutral-400)">Sudah ada di public/ · pastikan icon dan theme_color sesuai</div></div></div>
+      </div>
+      <div class="check-group-title">♿ Aksesibilitas</div>
+      <div class="checklist">
+        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div style="font-weight:500">Focus ring di semua input &amp; tombol</div><div style="font-size:11px;color:var(--neutral-400)">outline: 2px solid green-600 · offset 2px</div></div></div>
+        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div style="font-weight:500">ARIA labels — bell, cancel, toggle</div><div style="font-size:11px;color:var(--neutral-400)">aria-label pada ikon tanpa teks · aria-live untuk toast</div></div></div>
+        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div style="font-weight:500">Contrast ratio ≥ 4.5:1</div><div style="font-size:11px;color:var(--neutral-400)">Badge menunggu (#7A5209 on gold-50) = 5.2:1 ✓</div></div></div>
+        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div style="font-weight:500">prefers-reduced-motion</div><div style="font-size:11px;color:var(--neutral-400)">Skeleton shimmer & fadeIn dihentikan saat reduced motion</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── DARK MODE ── -->
+<section id="dark-mode" class="ds-section">
+  <div class="ds-header"><h2>Dark Mode</h2><p>Token warna gelap · Komponen di atas dark background · Implementasi dengan next-themes</p></div>
+
+  <div class="demo">
+    <div class="demo-header">Palet Dark Mode — Background &amp; Foreground</div>
+    <div class="demo-body" style="background:#0E0A16;border-radius:0 0 var(--radius-xl) var(--radius-xl)">
+      <div class="swatches">
+        <div class="swatch"><div class="sw-color" style="background:#0E0A16"></div><div class="sw-info" style="background:#181122;border-color:#271E36"><div class="sw-name" style="color:#5E4F74">bg-page</div><div class="sw-hex" style="color:#897C9A">#0E0A16</div></div></div>
+        <div class="swatch"><div class="sw-color" style="background:#181122"></div><div class="sw-info" style="background:#181122;border-color:#271E36"><div class="sw-name" style="color:#5E4F74">bg-default</div><div class="sw-hex" style="color:#897C9A">#181122</div></div></div>
+        <div class="swatch"><div class="sw-color" style="background:#1E1730"></div><div class="sw-info" style="background:#181122;border-color:#271E36"><div class="sw-name" style="color:#5E4F74">bg-card</div><div class="sw-hex" style="color:#897C9A">#1E1730</div></div></div>
+        <div class="swatch"><div class="sw-color" style="background:#271E36"></div><div class="sw-info" style="background:#181122;border-color:#271E36"><div class="sw-name" style="color:#5E4F74">border</div><div class="sw-hex" style="color:#897C9A">#271E36</div></div></div>
+        <div class="swatch"><div class="sw-color" style="background:#4C3C62"></div><div class="sw-info" style="background:#181122;border-color:#271E36"><div class="sw-name" style="color:#5E4F74">fg-subtle</div><div class="sw-hex" style="color:#897C9A">#4C3C62</div></div></div>
+        <div class="swatch"><div class="sw-color" style="background:#897C9A"></div><div class="sw-info" style="background:#181122;border-color:#271E36"><div class="sw-name" style="color:#5E4F74">fg-muted</div><div class="sw-hex" style="color:#897C9A">#897C9A</div></div></div>
+        <div class="swatch"><div class="sw-color" style="background:#E4DAF0"></div><div class="sw-info" style="background:#181122;border-color:#271E36"><div class="sw-name" style="color:#5E4F74">fg-default</div><div class="sw-hex" style="color:#897C9A">#E4DAF0</div></div></div>
+        <div class="swatch"><div class="sw-color" style="background:#78C2A6"></div><div class="sw-info" style="background:#181122;border-color:#271E36"><div class="sw-name" style="color:#5E4F74">brand</div><div class="sw-hex" style="color:#897C9A">#78C2A6 green-300</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="demo">
+    <div class="demo-header">Komponen — Dark Preview</div>
+    <div class="demo-body" style="background:#0E0A16;display:flex;flex-direction:column;gap:var(--space-3)">
+      <div style="background:rgba(24,18,32,.95);border-bottom:1px solid #271E36;height:56px;display:flex;align-items:center;padding:0 var(--space-4);gap:var(--space-4);border-radius:var(--radius-lg)">
+        <div class="brand-combo"><span class="temu-mark"><svg><use href="#tm-vesica"/></svg></span><span class="temu-wordmark" style="color:#E4DAF0;font-size:var(--text-sm)">Temu</span></div>
+        <nav style="display:flex;gap:2px;margin-left:var(--space-2)">
+          <a style="padding:6px 10px;border-radius:var(--radius-md);font-size:var(--text-sm);color:var(--purple-300);font-weight:600;background:rgba(160,32,240,.15);text-decoration:none">Beranda</a>
+          <a style="padding:6px 10px;border-radius:var(--radius-md);font-size:var(--text-sm);color:#5E4F74;text-decoration:none">Kalender</a>
+          <a style="padding:6px 10px;border-radius:var(--radius-md);font-size:var(--text-sm);color:#5E4F74;text-decoration:none">Jadwal</a>
+        </nav>
+        <div style="margin-left:auto;display:flex;align-items:center;gap:var(--space-2)">
+          <div style="width:28px;height:28px;background:#2C1A46;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--purple-300)">BK</div>
+          <div style="font-size:var(--text-xs);font-weight:600;color:#E4DAF0">Bidang Kesmas</div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-3)">
+        <div style="background:#1E1730;border:1px solid #271E36;border-radius:var(--radius-2xl);padding:var(--space-4)"><div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#4C3C62;margin-bottom:var(--space-2)">Total</div><div style="font-size:var(--text-3xl);font-weight:700;color:#E4DAF0;font-variant-numeric:tabular-nums">6</div><div style="font-size:11px;color:#4C3C62">semua waktu</div></div>
+        <div style="background:#1E1730;border:1px solid #271E36;border-radius:var(--radius-2xl);padding:var(--space-4)"><div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#4C3C62;margin-bottom:var(--space-2)">Menunggu</div><div style="font-size:var(--text-3xl);font-weight:700;color:var(--gold-300);font-variant-numeric:tabular-nums">2</div><div style="font-size:11px;color:#4C3C62">perlu tindak lanjut</div></div>
+        <div style="background:#1E1730;border:1px solid #271E36;border-radius:var(--radius-2xl);padding:var(--space-4)"><div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#4C3C62;margin-bottom:var(--space-2)">Mendatang</div><div style="font-size:var(--text-3xl);font-weight:700;color:var(--purple-300);font-variant-numeric:tabular-nums">3</div><div style="font-size:11px;color:#4C3C62">sudah disetujui</div></div>
+        <div style="background:#1E1730;border:1px solid #271E36;border-radius:var(--radius-2xl);padding:var(--space-4)"><div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#4C3C62;margin-bottom:var(--space-2)">Ditolak</div><div style="font-size:var(--text-3xl);font-weight:700;color:var(--red-300);font-variant-numeric:tabular-nums">1</div><div style="font-size:11px;color:#4C3C62">&nbsp;</div></div>
+      </div>
+      <div style="background:#1E1730;border:1px solid #271E36;border-radius:var(--radius-2xl);padding:var(--space-4) var(--space-5);display:flex;justify-content:space-between;align-items:flex-start;gap:var(--space-4)">
+        <div><div style="font-weight:600;font-size:var(--text-sm);color:#E4DAF0">Ruang Rapat 1<span style="color:#271E36;margin:0 4px">·</span><span style="font-size:var(--text-xs);color:#4C3C62">Lantai 1</span></div><div style="font-size:var(--text-sm);color:#897C9A;margin-top:4px">Senin, 15 Jun 2026 · 09:00–11:00</div><div style="font-size:var(--text-sm);color:#5E4F74">Rapat koordinasi program imunisasi</div></div>
+        <span style="display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:var(--radius-full);font-size:12px;font-weight:600;background:#0A1E12;color:var(--purple-300)"><span style="width:6px;height:6px;border-radius:50%;background:var(--purple-400)"></span>Disetujui</span>
+      </div>
+      <div style="background:#091A10;border-radius:var(--radius-lg);padding:var(--space-3) var(--space-4);font-size:var(--text-sm);display:flex;align-items:center;gap:var(--space-3);color:var(--purple-300)"><i class="ph ph-check-circle" style="font-size:18px;flex-shrink:0"></i><span>Booking berhasil disetujui.</span></div>
+    </div>
+  </div>
+
+  <div class="demo"><pre class="code"><span class="c-cmt">/* Implementasi dark mode dengan next-themes (direkomendasikan) */</span>
+npm install next-themes
+
+<span class="c-cmt">// app/layout.tsx</span>
+import { ThemeProvider } from 'next-themes'
+export default function RootLayout({ children }) {
+  return (
+    &lt;html suppressHydrationWarning&gt;
+      &lt;body&gt;
+        &lt;ThemeProvider attribute="class" defaultTheme="system" enableSystem&gt;
+          {children}
+        &lt;/ThemeProvider&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;
+  )
+}
+
+<span class="c-cmt">// globals.css — tambahkan dark class overrides</span>
+.dark {
+  <span class="c-key">--color-bg-page:</span>    <span class="c-val">#0E0A16</span>;
+  <span class="c-key">--color-bg-default:</span> <span class="c-val">#181122</span>;
+  <span class="c-key">--color-bg-card:</span>    <span class="c-val">#1E1730</span>;
+  <span class="c-key">--color-border:</span>     <span class="c-val">#271E36</span>;
+  <span class="c-key">--color-fg-default:</span> <span class="c-val">#E4DAF0</span>;
+  <span class="c-key">--color-fg-muted:</span>   <span class="c-val">#897C9A</span>;
+  <span class="c-key">--color-fg-subtle:</span>  <span class="c-val">#4C3C62</span>;
+  <span class="c-key">--color-brand:</span>      <span class="c-val">#78C2A6</span>;   <span class="c-cmt">/* green-300, lebih cerah di dark */</span>
+}
+
+<span class="c-cmt">// Toggle button — bisa ditempatkan di TopBar</span>
+import { useTheme } from 'next-themes'
+const { theme, setTheme } = useTheme()
+&lt;button onClick={() =&gt; setTheme(theme === 'dark' ? 'light' : 'dark')}&gt;
+  {theme === 'dark' ? '☀️ Light' : '☾ Dark'}
+&lt;/button&gt;</pre></div>
+</section>
+
+<!-- ── TOKEN REF ── -->
+<section id="token-ref" class="ds-section">
+  <div class="ds-header"><h2>Token Referensi Lengkap</h2><p>Tempel ke globals.css atau dinkes-tokens.css · Gunakan var() di semua komponen</p></div>
+  <div class="demo"><pre class="code" style="max-height:520px;overflow-y:auto">@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+<span class="c-cmt">/* Phosphor Icons CDN */</span>
+&lt;link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css"&gt;
+
+:root {
+  <span class="c-cmt">/* === BRAND === */</span>
+  <span class="c-key">--color-brand-primary:</span>        <span class="c-val">#8612D2</span>;   <span class="c-cmt">/* purple-600 — tombol utama, topbar icon */</span>
+  <span class="c-key">--color-brand-primary-dark:</span>   <span class="c-val">#6A0EA6</span>;   <span class="c-cmt">/* purple-700 — hover tombol, header dok */</span>
+  <span class="c-key">--color-brand-primary-light:</span>  <span class="c-val">#EED7FC</span>;   <span class="c-cmt">/* purple-100 — avatar bg, tag bg */</span>
+  <span class="c-key">--color-brand-secondary:</span>      <span class="c-val">#1556A0</span>;   <span class="c-cmt">/* blue-600 — pengelola/admin accent */</span>
+
+  <span class="c-cmt">/* === TEXT === */</span>
+  <span class="c-key">--color-fg-default:</span>    <span class="c-val">#222B26</span>;   <span class="c-cmt">/* neutral-800 — teks utama */</span>
+  <span class="c-key">--color-fg-muted:</span>      <span class="c-val">#6B7B72</span>;   <span class="c-cmt">/* neutral-500 — teks sekunder */</span>
+  <span class="c-key">--color-fg-subtle:</span>     <span class="c-val">#8E9E96</span>;   <span class="c-cmt">/* neutral-400 — caption, meta */</span>
+  <span class="c-key">--color-fg-on-primary:</span> <span class="c-val">#FFFFFF</span>;   <span class="c-cmt">/* teks di atas bg ungu */</span>
+
+  <span class="c-cmt">/* === BACKGROUND === */</span>
+  <span class="c-key">--color-bg-default:</span>    <span class="c-val">#FFFFFF</span>;   <span class="c-cmt">/* kartu, input, topbar */</span>
+  <span class="c-key">--color-bg-subtle:</span>     <span class="c-val">#F5F7F6</span>;   <span class="c-cmt">/* neutral-50 — background halaman */</span>
+  <span class="c-key">--color-bg-inset:</span>      <span class="c-val">#E8EDEB</span>;   <span class="c-cmt">/* neutral-100 — bg code, catatan */</span>
+
+  <span class="c-cmt">/* === BORDER === */</span>
+  <span class="c-key">--color-border-default:</span> <span class="c-val">#D5DDD9</span>;  <span class="c-cmt">/* neutral-200 — input, card border */</span>
+  <span class="c-key">--color-border-muted:</span>   <span class="c-val">#E8EDEB</span>;  <span class="c-cmt">/* neutral-100 — divider ringan */</span>
+  <span class="c-key">--color-border-focus:</span>   <span class="c-val">#8612D2</span>;  <span class="c-cmt">/* ungu — focus ring input */</span>
+
+  <span class="c-cmt">/* === STATUS BOOKING === */</span>
+  <span class="c-key">--status-success:</span>     <span class="c-val">#1A8A5C</span>;  <span class="c-key">--status-success-bg:</span>  <span class="c-val">#F0F8F4</span>;  <span class="c-cmt">/* DISETUJUI */</span>
+  <span class="c-key">--status-warning:</span>     <span class="c-val">#D49A1A</span>;  <span class="c-key">--status-warning-bg:</span>  <span class="c-val">#FDF8EE</span>;  <span class="c-cmt">/* MENUNGGU */</span>
+  <span class="c-key">--status-danger:</span>      <span class="c-val">#E03C3C</span>;  <span class="c-key">--status-danger-bg:</span>   <span class="c-val">#FEF2F2</span>;  <span class="c-cmt">/* DITOLAK */</span>
+  <span class="c-key">--status-neutral:</span>     <span class="c-val">#B8C4BE</span>;  <span class="c-key">--status-neutral-bg:</span>  <span class="c-val">#E8EDEB</span>;  <span class="c-cmt">/* BATAL */</span>
+
+  <span class="c-cmt">/* === TIPOGRAFI === */</span>
+  <span class="c-key">--font-sans:</span> <span class="c-val">'Plus Jakarta Sans'</span>, 'Segoe UI', sans-serif;
+  <span class="c-key">--font-mono:</span> <span class="c-val">'JetBrains Mono'</span>, monospace;
+  <span class="c-key">--text-xs:</span>0.75rem; <span class="c-key">--text-sm:</span>0.875rem; <span class="c-key">--text-base:</span>1rem;
+  <span class="c-key">--text-md:</span>1.125rem; <span class="c-key">--text-lg:</span>1.25rem; <span class="c-key">--text-xl:</span>1.5rem;
+  <span class="c-key">--text-2xl:</span>1.875rem; <span class="c-key">--text-3xl:</span>2.25rem;
+
+  <span class="c-cmt">/* === RADIUS === */</span>
+  <span class="c-key">--radius-sm:</span>4px;  <span class="c-key">--radius-md:</span>6px;   <span class="c-key">--radius-lg:</span>8px;
+  <span class="c-key">--radius-xl:</span>10px; <span class="c-key">--radius-2xl:</span>16px; <span class="c-key">--radius-full:</span>9999px;
+
+  <span class="c-cmt">/* === BAYANGAN === */</span>
+  <span class="c-key">--shadow-1:</span>     <span class="c-val">0 1px 3px rgba(0,0,0,0.08)</span>;    <span class="c-cmt">/* card default */</span>
+  <span class="c-key">--shadow-2:</span>     <span class="c-val">0 4px 12px rgba(0,0,0,0.10)</span>;   <span class="c-cmt">/* card hover */</span>
+  <span class="c-key">--shadow-3:</span>     <span class="c-val">0 8px 24px rgba(0,0,0,0.14)</span>;   <span class="c-cmt">/* modal */</span>
+  <span class="c-key">--shadow-focus:</span> <span class="c-val">0 0 0 3px rgba(160,32,240,0.25)</span>; <span class="c-cmt">/* input focus */</span>
+
+  <span class="c-cmt">/* === TRANSISI === */</span>
+  <span class="c-key">--transition-fast:</span> <span class="c-val">150ms ease</span>;
+  <span class="c-key">--transition-base:</span> <span class="c-val">200ms ease-out</span>;
+  <span class="c-key">--transition-exit:</span> <span class="c-val">150ms ease-in</span>;
+}
+
+<span class="c-cmt">/* Tailwind v4 config override (tailwind.config.ts):
+   theme.extend.colors.brand = {
+     primary: '#8612D2', dark: '#6A0EA6', light: '#EED7FC'
+   }
+   theme.extend.colors.success = {
+     DEFAULT: '#1A8A5C', dark: '#0D5C3A', light: '#F0F8F4'
+   }
+   Ganti teal-*/green-* (brand) → brand-* ungu; sisakan success-* untuk status Disetujui
+*/</span></pre></div>
+</section>
+
+</main>
+</div>
+
+<script>
+  /* ── Theme toggle ── */
+  const DARK_VARS = {
+    '--neutral-0':'#221A2E','--neutral-50':'#181122','--neutral-100':'#271E36',
+    '--neutral-200':'#382C4A','--neutral-300':'#4C3C62','--neutral-400':'#5E4F74',
+    '--neutral-500':'#897C9A','--neutral-600':'#A294B4','--neutral-700':'#BFB0D0',
+    '--neutral-800':'#E4DAF0','--neutral-900':'#F2ECF8',
+    '--color-fg-default':'#E4DAF0','--color-fg-muted':'#897C9A','--color-fg-subtle':'#5E4F74',
+    '--color-fg-on-primary':'#fff',
+    '--color-bg-default':'#221A2E','--color-bg-subtle':'#181122','--color-bg-inset':'#271E36',
+    '--color-border-default':'#382C4A','--color-border-muted':'#271E36',
+    /* Status backgrounds — jadi gelap bukan putih/pastel */
+    '--red-50':'#1C0A0A','--red-100':'#2A1010','--red-200':'#3A1818',
+    '--red-400':'#F16565','--red-500':'#E03C3C','--red-600':'#F16565',
+    '--gold-50':'#1A1208','--gold-100':'#241808','--gold-200':'#3A2810',
+    '--gold-300':'#EBB840','--gold-400':'#D49A1A','--gold-500':'#EBB840',
+    '--success-50':'#0E2014','--success-100':'#0F2818','--success-300':'#78C2A6','--success-500':'#1A8A5C','--success-600':'#1A8A5C','--success-700':'#78C2A6',
+    '--blue-50':'#080E18','--blue-100':'#0A1020',
+    '--blue-500':'#3D87CC','--blue-600':'#72AADB',
+    '--warning-fg':'#EBB840',
+    '--color-status-success-bg':'#091A10','--color-status-warning-bg':'#14100A',
+    '--color-status-danger-bg':'#1C0A0A','--color-status-info-bg':'#080E18',
+    '--color-status-success':'#78C2A6','--color-status-warning':'#EBB840',
+    '--color-status-danger':'#F16565','--color-status-info':'#72AADB',
+    '--shadow-1':'0 1px 4px rgba(0,0,0,.35)','--shadow-2':'0 4px 14px rgba(0,0,0,.45)'
+  };
+
+  function applyDark() {
+    const el = document.documentElement;
+    el.setAttribute('data-theme','dark');
+    Object.entries(DARK_VARS).forEach(([k,v]) => el.style.setProperty(k,v));
+    document.getElementById('theme-toggle').textContent = '☀ Light';
+  }
+  function applyLight() {
+    const el = document.documentElement;
+    el.removeAttribute('data-theme');
+    Object.keys(DARK_VARS).forEach(k => el.style.removeProperty(k));
+    document.getElementById('theme-toggle').textContent = '☾ Dark';
+  }
+  function toggleTheme() {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    isDark ? applyLight() : applyDark();
+    localStorage.setItem('ds-theme', isDark ? 'light' : 'dark');
+  }
+  // Restore theme on load
+  if (localStorage.getItem('ds-theme') === 'dark') applyDark();
+
+  /* ── Sidebar active state ── */
+  const links = document.querySelectorAll('.doc-sidebar a');
+  const sections = document.querySelectorAll('.ds-section[id]');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        const a = document.querySelector(`.doc-sidebar a[href="#${e.target.id}"]`);
+        if (a) { a.classList.add('active'); a.scrollIntoView({ block: 'nearest' }); }
+      }
+    });
+  }, { rootMargin: '-10% 0px -80% 0px' });
+  sections.forEach(s => obs.observe(s));
+
+  /* ── Copy-to-clipboard ── */
+  document.querySelectorAll('pre.code').forEach(pre => {
+    const wrap = document.createElement('div');
+    wrap.className = 'code-wrap';
+    wrap.style.position = 'relative';
+    pre.parentNode.insertBefore(wrap, pre);
+    wrap.appendChild(pre);
+    const btn = document.createElement('button');
+    btn.className = 'copy-btn';
+    btn.textContent = 'Salin';
+    btn.onclick = () => {
+      navigator.clipboard.writeText(pre.innerText).then(() => {
+        btn.textContent = '✓ Tersalin';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = 'Salin'; btn.classList.remove('copied'); }, 2000);
+      });
+    };
+    wrap.appendChild(btn);
+  });
+
+  /* ── Animation demo ── */
+  function playAnim(card, type) {
+    const target = card.querySelector('.anim-target') || card.querySelector('.booking-card');
+    if (!target) return;
+    target.style.animation = 'none';
+    target.offsetHeight; // reflow
+    if (type === 'fadeIn') {
+      target.style.animation = 'fadeIn 400ms ease-out forwards';
+    } else if (type === 'fadeInUp') {
+      target.style.animation = 'fadeInUp 400ms ease-out forwards';
+    } else if (type === 'hover') {
+      target.style.transition = 'all 150ms ease';
+      target.style.boxShadow = '0 4px 12px rgba(0,0,0,.10)';
+      target.style.transform = 'translateY(-2px)';
+      setTimeout(() => {
+        target.style.boxShadow = '';
+        target.style.transform = '';
+      }, 800);
+    }
+  }
+
+  /* ── Checklist toggle ── */
+  function toggleCheck(item) {
+    const box = item.querySelector('.check-box');
+    const done = box.classList.toggle('done');
+    box.innerHTML = done ? '✓' : '';
+    item.style.opacity = done ? '.55' : '1';
+  }
+</script>
+</body>
+</html>

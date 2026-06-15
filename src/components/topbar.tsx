@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Sesi } from "@/lib/session";
 import { aksiLogout } from "@/lib/auth-actions";
+import { LogoMark, Wordmark } from "@/components/logo";
 
 type TautanNav = { href: string; label: string };
 
@@ -36,20 +37,16 @@ export default function TopBar({
             href={sesi.tipe === "BIDANG" ? "/bidang" : "/pengelola"}
             className="flex items-center gap-2.5"
           >
-            <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-teal-600 text-xs font-bold text-white">
-              DK
-            </span>
-            <span className="hidden text-sm font-semibold text-stone-900 sm:block">
-              Booking Ruang
-            </span>
+            <LogoMark size={28} />
+            <Wordmark className="hidden text-base text-stone-900 sm:block" />
           </Link>
 
-          <nav className="flex items-center gap-0.5">
+          <nav className="hidden items-center gap-0.5 sm:flex">
             {nav.map((t) => (
               <Link
                 key={t.href}
                 href={t.href}
-                className="rounded-md px-2.5 py-1.5 text-sm text-stone-500 transition-colors hover:bg-stone-100 hover:text-stone-900"
+                className="rounded-md px-2.5 py-1.5 text-sm text-stone-500 transition-colors hover:bg-brand-50 hover:text-brand-700"
               >
                 {t.label}
               </Link>
@@ -63,7 +60,7 @@ export default function TopBar({
             <Link
               href="/bidang/notifikasi"
               aria-label={`Notifikasi${unreadCount > 0 ? ` (${unreadCount})` : ""}`}
-              className="relative rounded-md p-2 text-stone-400 transition-colors hover:bg-stone-100 hover:text-stone-600"
+              className="relative rounded-md p-2.5 text-stone-400 transition-colors hover:bg-stone-100 hover:text-stone-600"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -88,7 +85,7 @@ export default function TopBar({
           )}
 
           <div className="flex items-center gap-2 rounded-md px-2 py-1.5">
-            <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-teal-100 text-[10px] font-bold text-teal-700">
+            <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-100 text-[10px] font-bold text-brand-700">
               {inisial}
             </div>
             <div className="hidden text-right sm:block">
@@ -100,7 +97,7 @@ export default function TopBar({
           <form action={aksiLogout}>
             <button
               type="submit"
-              className="rounded-md border border-stone-200 px-2.5 py-1.5 text-xs font-medium text-stone-600 transition-colors hover:bg-stone-50"
+              className="rounded-md border border-stone-200 px-3 py-2 text-xs font-medium text-stone-600 transition-colors hover:bg-stone-50"
             >
               Keluar
             </button>

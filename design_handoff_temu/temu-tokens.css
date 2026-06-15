@@ -1,0 +1,311 @@
+/* ============================================================
+   TEMU — Sistem Booking Ruang Meeting
+   Dinas Kesehatan Kabupaten Bogor
+   Design Tokens — temu-tokens.css
+   ------------------------------------------------------------
+   Brand: Ungu #A020F0 (purple-500) / Primary #8612D2 (purple-600)
+   Status "Disetujui/sukses": tetap Hijau (success-*)
+   Basis: Dinkes Bogor Design System
+   ============================================================ */
+
+/* ── Google Fonts ─────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ── Icon CDN (Phosphor Icons) ────────────────────────────── */
+/* Load in HTML: <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css"> */
+
+/* ============================================================
+   COLOR PRIMITIVES
+   ============================================================ */
+:root {
+  /* Purple scale — PRIMARY BRAND color (Temu) */
+  --purple-50:  #F7ECFE;
+  --purple-100: #EED7FC;
+  --purple-200: #DEB2F9;
+  --purple-300: #C98AF5;
+  --purple-400: #B455F2;
+  --purple-500: #A020F0;   /* ← Brand mark / accent */
+  --purple-600: #8612D2;   /* ← Brand Primary (buttons, links, active) */
+  --purple-700: #6A0EA6;   /* ← Brand Dark (hover, headers) */
+  --purple-800: #4E0B7A;
+  --purple-900: #34064F;
+
+  /* Green scale — SUCCESS / "Disetujui" status ONLY (not brand) */
+  --green-50:  #F0F8F4;
+  --green-100: #D8EFE6;
+  --green-200: #AFDACC;
+  --green-300: #78C2A6;
+  --green-400: #3EA67E;
+  --green-500: #1A8A5C;
+  --green-600: #1A7A4C;
+  --green-700: #0D5C3A;
+  --green-800: #0A4229;
+  --green-900: #072C1B;
+
+  /* Success aliases — use these for approved/success semantics */
+  --success-50:  var(--green-50);
+  --success-100: var(--green-100);
+  --success-300: var(--green-300);
+  --success-500: var(--green-500);
+  --success-600: var(--green-600);
+  --success-700: var(--green-700);
+
+  /* Blue scale — secondary / data / admin (Pengelola) surfaces */
+  --blue-50:  #EFF4FB;
+  --blue-100: #D6E4F5;
+  --blue-200: #AACBE9;
+  --blue-300: #72AADB;
+  --blue-400: #3D87CC;
+  --blue-500: #1A6AB5;
+  --blue-600: #1556A0;
+  --blue-700: #0F3F7A;
+  --blue-800: #0B2E58;
+  --blue-900: #071F3B;
+
+  /* Gold / Amber — "Menunggu" status, accent */
+  --gold-50:  #FDF8EE;
+  --gold-100: #FAECD0;
+  --gold-200: #F3D28A;
+  --gold-300: #EBB840;
+  --gold-400: #D49A1A;
+  --gold-500: #B8800E;
+  --gold-600: #8F620A;
+  --gold-700: #6B4907;
+  --warning-fg: #7A5209;   /* accessible amber text on gold-50 (≈5.2:1) */
+
+  /* Red — "Ditolak" status, alerts, danger */
+  --red-50:  #FEF2F2;
+  --red-100: #FCD9D9;
+  --red-200: #F9A8A8;
+  --red-300: #F16565;
+  --red-400: #E03C3C;
+  --red-500: #C42828;
+  --red-600: #9B1E1E;
+
+  /* Neutral / Gray scale */
+  --neutral-0:   #FFFFFF;
+  --neutral-50:  #F5F7F6;
+  --neutral-100: #E8EDEB;
+  --neutral-200: #D5DDD9;
+  --neutral-300: #B8C4BE;
+  --neutral-400: #8E9E96;
+  --neutral-500: #6B7B72;
+  --neutral-600: #4E5C54;
+  --neutral-700: #364039;
+  --neutral-800: #222B26;
+  --neutral-900: #111714;
+}
+
+/* ============================================================
+   SEMANTIC COLOR TOKENS
+   ============================================================ */
+:root {
+  /* Brand — PURPLE */
+  --color-brand-primary:       var(--purple-600);
+  --color-brand-primary-dark:  var(--purple-700);
+  --color-brand-primary-light: var(--purple-100);
+  --color-brand-secondary:     var(--blue-600);
+  --color-brand-accent:        var(--purple-500);
+
+  /* Foreground / Text */
+  --color-fg-default:        var(--neutral-800);
+  --color-fg-muted:          var(--neutral-500);
+  --color-fg-subtle:         var(--neutral-400);
+  --color-fg-on-primary:     var(--neutral-0);
+  --color-fg-on-secondary:   var(--neutral-0);
+  --color-fg-link:           var(--purple-600);
+  --color-fg-link-hover:     var(--purple-700);
+
+  /* Background */
+  --color-bg-default:        var(--neutral-0);
+  --color-bg-subtle:         var(--neutral-50);
+  --color-bg-inset:          var(--neutral-100);
+  --color-bg-overlay:        rgba(17, 23, 20, 0.55);
+  --color-bg-primary:        var(--purple-600);
+  --color-bg-primary-hover:  var(--purple-700);
+  --color-bg-secondary:      var(--blue-600);
+  --color-bg-secondary-hover: var(--blue-700);
+
+  /* Border */
+  --color-border-default:    var(--neutral-200);
+  --color-border-muted:      var(--neutral-100);
+  --color-border-strong:     var(--neutral-400);
+  --color-border-focus:      var(--purple-600);
+  --color-border-brand:      var(--purple-600);
+
+  /* Status — semantic (Disetujui=success/green, Menunggu=gold, Ditolak=red) */
+  --color-status-success:    var(--success-500);
+  --color-status-success-bg: var(--success-50);
+  --color-status-warning:    var(--gold-500);
+  --color-status-warning-bg: var(--gold-50);
+  --color-status-danger:     var(--red-500);
+  --color-status-danger-bg:  var(--red-50);
+  --color-status-info:       var(--blue-500);
+  --color-status-info-bg:    var(--blue-50);
+
+  /* Table / Data surfaces */
+  --color-table-header-bg:   var(--purple-700);
+  --color-table-header-fg:   var(--neutral-0);
+  --color-table-row-alt:     var(--neutral-50);
+  --color-table-row-hover:   var(--purple-50);
+}
+
+/* ============================================================
+   DARK MODE  —  toggle via <html data-theme="dark">
+   Brand stays purple; "Disetujui" stays green (brighter for contrast).
+   ============================================================ */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* Neutral scale → purple-tinted dark */
+  --neutral-0:   #1C2820;
+  --neutral-50:  #181122;
+  --neutral-100: #271E36;
+  --neutral-200: #382C4A;
+  --neutral-300: #4C3C62;
+  --neutral-400: #5E4F74;
+  --neutral-500: #897C9A;
+  --neutral-600: #A294B4;
+  --neutral-700: #BFB0D0;
+  --neutral-800: #E4DAF0;
+  --neutral-900: #F2ECF8;
+
+  /* Foreground / Background */
+  --color-fg-default: #E4DAF0;
+  --color-fg-muted:   #897C9A;
+  --color-fg-subtle:  #5E4F74;
+  --color-bg-default: #221A2E;
+  --color-bg-subtle:  #181122;
+  --color-bg-inset:   #271E36;
+  --color-border-default: #382C4A;
+  --color-border-muted:   #271E36;
+
+  /* Status backgrounds → dark; text → bright */
+  --red-50:    #1C0A0A;  --red-400: #F16565;
+  --gold-50:   #1A1208;  --gold-300: #EBB840;  --warning-fg: #EBB840;
+  --success-50:  #0E2014;
+  --success-300: #78C2A6;
+  --success-500: #1A8A5C;
+  --success-700: #78C2A6;   /* approved text reads bright on dark */
+  --blue-50:   #080E18;  --blue-600: #72AADB;
+
+  --color-status-success-bg: #0E2014;
+  --color-status-warning-bg: #1A1208;
+  --color-status-danger-bg:  #1C0A0A;
+  --color-status-info-bg:    #080E18;
+
+  --shadow-1: 0 1px 4px rgba(0,0,0,.35);
+  --shadow-2: 0 4px 14px rgba(0,0,0,.45);
+  --shadow-focus: 0 0 0 3px rgba(160,32,240,0.30);
+}
+
+/* ============================================================
+   TYPOGRAPHY PRIMITIVES
+   ============================================================ */
+:root {
+  --font-sans:  'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif;
+  --font-mono:  'JetBrains Mono', 'Courier New', monospace;
+
+  --text-xs:    0.75rem;    /* 12px */
+  --text-sm:    0.875rem;   /* 14px */
+  --text-base:  1rem;       /* 16px */
+  --text-md:    1.125rem;   /* 18px */
+  --text-lg:    1.25rem;    /* 20px */
+  --text-xl:    1.5rem;     /* 24px */
+  --text-2xl:   1.875rem;   /* 30px */
+  --text-3xl:   2.25rem;    /* 36px */
+  --text-4xl:   3rem;       /* 48px */
+  --text-5xl:   3.75rem;    /* 60px */
+
+  --leading-none:    1;
+  --leading-tight:   1.25;
+  --leading-snug:    1.375;
+  --leading-normal:  1.5;
+  --leading-relaxed: 1.625;
+  --leading-loose:   2;
+
+  --tracking-tight:   -0.02em;
+  --tracking-normal:   0em;
+  --tracking-wide:     0.02em;
+  --tracking-wider:    0.05em;
+  --tracking-widest:   0.12em;
+
+  --weight-regular:   400;
+  --weight-medium:    500;
+  --weight-semibold:  600;
+  --weight-bold:      700;
+  --weight-extrabold: 800;
+}
+
+/* ============================================================
+   SPACING — base unit 4px
+   ============================================================ */
+:root {
+  --space-0: 0;       --space-1: 0.25rem;  --space-2: 0.5rem;
+  --space-3: 0.75rem; --space-4: 1rem;     --space-5: 1.25rem;
+  --space-6: 1.5rem;  --space-8: 2rem;     --space-10: 2.5rem;
+  --space-12: 3rem;   --space-16: 4rem;    --space-20: 5rem;
+  --space-24: 6rem;   --space-32: 8rem;
+}
+
+/* ============================================================
+   BORDER RADIUS
+   ============================================================ */
+:root {
+  --radius-none: 0;
+  --radius-sm:   4px;    /* inputs (Dinkes spec: 6px) — used 4px for chips */
+  --radius-md:   6px;    /* inputs, buttons */
+  --radius-lg:   8px;    /* cards */
+  --radius-xl:   10px;   /* modals, popovers */
+  --radius-2xl:  16px;   /* large cards / stat cards */
+  --radius-full: 9999px; /* pill badges */
+  --radius-circle: 50%;  /* avatars */
+}
+
+/* ============================================================
+   SHADOWS / ELEVATION
+   ============================================================ */
+:root {
+  --shadow-none: none;
+  --shadow-1: 0 1px 3px rgba(0, 0, 0, 0.08);   /* cards */
+  --shadow-2: 0 4px 12px rgba(0, 0, 0, 0.10);  /* card hover, sticky nav */
+  --shadow-3: 0 8px 24px rgba(0, 0, 0, 0.14);  /* modals */
+  --shadow-4: 0 16px 40px rgba(0, 0, 0, 0.18); /* drawers */
+  --shadow-inner: inset 0 1px 3px rgba(0, 0, 0, 0.10);
+  --shadow-focus: 0 0 0 3px rgba(160, 32, 240, 0.25);  /* purple focus ring */
+}
+
+/* ============================================================
+   TRANSITIONS
+   ============================================================ */
+:root {
+  --transition-fast:  150ms ease;       /* hover bg/color */
+  --transition-base:  200ms ease-out;   /* enter, card lift */
+  --transition-slow:  300ms ease-out;
+  --transition-enter: 200ms ease-out;
+  --transition-exit:  150ms ease-in;
+}
+
+/* ============================================================
+   BASE ELEMENT STYLES
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { font-size: 16px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-relaxed);
+  color: var(--color-fg-default);
+  background-color: var(--color-bg-subtle);
+}
+
+a { color: var(--color-fg-link); text-decoration: none; transition: color var(--transition-fast); }
+a:hover { color: var(--color-fg-link-hover); text-decoration: underline; }
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}

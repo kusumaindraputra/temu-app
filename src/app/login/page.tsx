@@ -1,25 +1,27 @@
 import type { Metadata } from "next";
 import FormLogin from "./form";
+import { LogoMark, Wordmark } from "@/components/logo";
 
 export const metadata: Metadata = {
-  title: "Masuk — Booking Ruang Dinas Kesehatan",
+  title: "Masuk — Temu",
 };
 
 export default function HalamanLogin() {
   return (
     <div className="min-h-screen lg:grid lg:grid-cols-[420px_1fr]">
       {/* Left: brand panel */}
-      <div className="hidden flex-col justify-between bg-teal-600 p-12 lg:flex">
-        <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/20 text-sm font-bold text-white">
-          DK
+      <div className="hidden flex-col justify-between bg-brand-700 p-12 lg:flex">
+        <div className="flex items-center gap-3">
+          <LogoMark size={36} variant="white" />
+          <Wordmark className="text-2xl text-white" />
         </div>
 
         <div>
           <h1 className="text-3xl font-bold leading-snug text-white">
-            Booking Ruang Meeting
+            Sistem Booking Ruang Meeting
           </h1>
-          <p className="mt-2 text-teal-200">Dinas Kesehatan</p>
-          <div className="mt-10 space-y-3 text-sm text-teal-100/80">
+          <p className="mt-2 text-brand-200">Dinas Kesehatan Kabupaten Bogor</p>
+          <div className="mt-10 space-y-3 text-sm text-brand-100/80">
             <div className="flex items-center gap-2.5">
               <span className="flex h-5 w-5 items-center justify-center rounded-full bg-white/20 text-xs">✓</span>
               Kelola pemesanan ruang meeting
@@ -39,7 +41,7 @@ export default function HalamanLogin() {
           </div>
         </div>
 
-        <p className="text-xs text-teal-300/60">© 2026 Dinas Kesehatan</p>
+        <p className="text-xs text-brand-300/60">© 2026 Dinas Kesehatan Kabupaten Bogor</p>
       </div>
 
       {/* Right: form */}
@@ -47,12 +49,10 @@ export default function HalamanLogin() {
         <div className="w-full max-w-sm">
           {/* Mobile logo */}
           <div className="mb-8 flex items-center gap-3 lg:hidden">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-teal-600 text-sm font-bold text-white">
-              DK
-            </div>
+            <LogoMark size={36} />
             <div>
-              <p className="text-sm font-semibold text-stone-900">Booking Ruang Meeting</p>
-              <p className="text-xs text-stone-400">Dinas Kesehatan</p>
+              <Wordmark className="text-lg text-stone-900" />
+              <p className="text-xs text-stone-400">Booking Ruang Meeting · Dinkes Bogor</p>
             </div>
           </div>
 

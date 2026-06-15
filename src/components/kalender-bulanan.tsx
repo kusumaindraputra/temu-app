@@ -8,7 +8,7 @@ import {
 
 export type TandaiHari = Record<
   string,
-  { dots: ("teal" | "amber" | "red")[] }
+  { dots: ("success" | "amber" | "red")[] }
 >;
 
 type Props = {
@@ -22,7 +22,7 @@ type Props = {
 const LABEL_HARI = ["Sen", "Sel", "Rab", "Kam", "Jum", "Sab", "Min"];
 
 const DOT_CLASS: Record<string, string> = {
-  teal: "bg-teal-500",
+  success: "bg-success-500",
   amber: "bg-amber-400",
   red: "bg-red-400",
 };
@@ -106,7 +106,7 @@ export default function KalenderBulanan({
                 <span
                   className={`flex h-7 w-7 items-center justify-center rounded-full text-xs transition-colors ${
                     isToday
-                      ? "bg-teal-600 font-bold text-white"
+                      ? "bg-brand-600 font-bold text-white"
                       : "text-stone-700 group-hover:bg-stone-100 group-hover:text-stone-900"
                   }`}
                 >
@@ -134,7 +134,7 @@ export default function KalenderBulanan({
       {!isMini && (
         <div className="mt-5 flex flex-wrap gap-4 border-t border-stone-100 pt-4 text-xs text-stone-400">
           <span className="flex items-center gap-1.5">
-            <span className="h-1.5 w-1.5 rounded-full bg-teal-500" /> Disetujui
+            <span className="h-1.5 w-1.5 rounded-full bg-success-500" /> Disetujui
           </span>
           <span className="flex items-center gap-1.5">
             <span className="h-1.5 w-1.5 rounded-full bg-amber-400" /> Menunggu

@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { db } from "@/lib/db";
 import { wajibAdmin } from "@/lib/auth";
-import { toggleAktifRuangan, buatKomponen, hapusKomponen } from "./actions";
+import { toggleAktifRuangan, hapusKomponen } from "./actions";
+import FormKomponen from "./_komponen-form";
 
 export default async function HalamanRuangan() {
   await wajibAdmin();
@@ -28,7 +29,7 @@ export default async function HalamanRuangan() {
           </div>
           <Link
             href="/pengelola/ruangan/baru"
-            className="rounded-lg bg-teal-600 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-700"
+            className="rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-700"
           >
             + Tambah Ruangan
           </Link>
@@ -57,7 +58,7 @@ export default async function HalamanRuangan() {
                       {r.komponen.map((k) => (
                         <span
                           key={k.id}
-                          className="rounded bg-teal-50 px-1.5 py-0.5 text-xs font-medium text-teal-700"
+                          className="rounded bg-brand-50 px-1.5 py-0.5 text-xs font-medium text-brand-700"
                         >
                           {k.nama}
                         </span>
@@ -141,21 +142,7 @@ export default async function HalamanRuangan() {
             </div>
           ))}
 
-          {/* Form tambah komponen baru */}
-          <form action={buatKomponen} className="flex items-center gap-2">
-            <input
-              type="text"
-              name="nama"
-              placeholder="Nama komponen baru"
-              className="rounded-lg border border-stone-300 px-3 py-2 text-sm outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-100"
-            />
-            <button
-              type="submit"
-              className="rounded-lg border border-stone-300 px-3 py-2 text-sm font-medium text-stone-700 hover:bg-stone-50"
-            >
-              + Tambah
-            </button>
-          </form>
+          <FormKomponen />
         </div>
       </section>
     </div>

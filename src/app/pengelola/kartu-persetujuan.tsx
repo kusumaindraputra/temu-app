@@ -11,6 +11,8 @@ export type DataKartu = {
   rentang: string;
   tujuan: string;
   jumlahPeserta: number;
+  picNama: string;
+  picHp: string;
   peringatanBentrok: string[];
 };
 
@@ -30,6 +32,13 @@ export default function KartuPersetujuan({ data }: { data: DataKartu }) {
           </div>
           <p className="mt-1.5 text-sm text-stone-600">{data.rentang}</p>
           <p className="mt-0.5 text-sm text-stone-700">{data.tujuan}</p>
+          <div className="mt-2 flex items-center gap-1.5 text-xs text-stone-500">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span className="font-medium text-stone-700">{data.picNama}</span>
+            <span className="text-stone-300">·</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16.92z"/></svg>
+            <span>{data.picHp}</span>
+          </div>
         </div>
         <div className="shrink-0 text-right">
           <p className="text-xs text-stone-400">Pemohon</p>
@@ -55,7 +64,7 @@ export default function KartuPersetujuan({ data }: { data: DataKartu }) {
         </div>
       )}
       {state.ok && (
-        <div className="mt-4 rounded-lg bg-teal-50 px-4 py-3 text-sm text-teal-700">
+        <div className="mt-4 rounded-lg bg-success-50 px-4 py-3 text-sm text-success-700">
           {state.ok}
         </div>
       )}
@@ -67,7 +76,7 @@ export default function KartuPersetujuan({ data }: { data: DataKartu }) {
             name="catatan"
             rows={2}
             placeholder="Catatan untuk pemohon (opsional)…"
-            className="rounded-lg border border-stone-200 px-3.5 py-2.5 text-sm text-stone-900 outline-none transition placeholder:text-stone-300 focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10 resize-none"
+            className="rounded-lg border border-stone-200 px-3.5 py-2.5 text-sm text-stone-900 outline-none transition placeholder:text-stone-300 focus:border-brand-500 focus:ring-4 focus:ring-brand-500/10 resize-none"
           />
           <div className="flex gap-2">
             <button
@@ -75,7 +84,7 @@ export default function KartuPersetujuan({ data }: { data: DataKartu }) {
               name="aksi"
               value="setujui"
               disabled={pending}
-              className="rounded-lg bg-teal-600 px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-teal-700 disabled:opacity-60"
+              className="rounded-lg bg-brand-600 px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-700 disabled:opacity-60"
             >
               {pending ? "Memproses…" : "Setujui"}
             </button>

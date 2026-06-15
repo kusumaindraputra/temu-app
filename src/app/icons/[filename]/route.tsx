@@ -14,7 +14,11 @@ export async function GET(
   const pad = maskable ? Math.round(size * 0.1) : 0;
   const innerSize = size - pad * 2;
   const radius = maskable ? 0 : Math.round(size * 0.18);
-  const fontSize = Math.round(innerSize * 0.43);
+
+  // Logomark "Titik Temu": dua lingkaran putih translusen yang beririsan
+  // pada latar ungu brand — irisannya jadi lebih terang (dua pihak bertemu).
+  const circle = Math.round(innerSize * 0.5);
+  const overlap = Math.round(circle * 0.32);
 
   return new ImageResponse(
     (
@@ -22,7 +26,8 @@ export async function GET(
         style={{
           width: size,
           height: size,
-          backgroundColor: "#0d9488",
+          backgroundColor: "#8612d2",
+          borderRadius: radius,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -30,26 +35,28 @@ export async function GET(
       >
         <div
           style={{
-            width: innerSize,
-            height: innerSize,
-            backgroundColor: "#0d9488",
-            borderRadius: radius,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
           }}
         >
-          <span
+          <div
             style={{
-              color: "white",
-              fontSize,
-              fontWeight: 700,
-              fontFamily: "sans-serif",
-              letterSpacing: "-0.02em",
+              width: circle,
+              height: circle,
+              borderRadius: "50%",
+              backgroundColor: "rgba(255,255,255,0.82)",
+              marginRight: -overlap,
             }}
-          >
-            DK
-          </span>
+          />
+          <div
+            style={{
+              width: circle,
+              height: circle,
+              borderRadius: "50%",
+              backgroundColor: "rgba(255,255,255,0.52)",
+            }}
+          />
         </div>
       </div>
     ),

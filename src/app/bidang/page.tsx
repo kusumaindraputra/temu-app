@@ -12,7 +12,7 @@ import {
   padDateStr,
   hariIniJakarta,
 } from "@/lib/jadwal";
-import { batalBooking } from "./booking/actions";
+import FormBatal from "./_batal-form";
 
 const PAGE_SIZE = 10;
 
@@ -25,11 +25,12 @@ function StatCard({
   label: string;
   nilai: number;
   sub?: string;
-  warna?: "stone" | "teal" | "amber" | "red";
+  warna?: "stone" | "brand" | "success" | "amber" | "red";
 }) {
   const cls = {
     stone: "text-stone-900",
-    teal: "text-teal-600",
+    brand: "text-brand-600",
+    success: "text-success-600",
     amber: "text-amber-600",
     red: "text-red-500",
   }[warna];
@@ -61,9 +62,9 @@ export default async function BerandaBidang({
 
   const startBulan = new Date(`${padDateStr(tahun, bulan, 1)}T00:00:00+07:00`);
   const endBulan = new Date(
-    bulan === 12
-      ? new Date(tahun + 1, 0, 1).getTime() - 1
-      : new Date(tahun, bulan, 1).getTime() - 1,
+    new Date(
+      `${padDateStr(bulan === 12 ? tahun + 1 : tahun, bulan === 12 ? 1 : bulan + 1, 1)}T00:00:00+07:00`,
+    ).getTime() - 1,
   );
 
   const hariMulai = new Date(`${tanggal}T00:00:00+07:00`);
@@ -84,7 +85,7 @@ export default async function BerandaBidang({
     db.booking.findMany({
       where: {
         bidangId: sesi.id,
-        status: { in: ["DISETUJUI", "MENUNGGU"] },
+        status: { in: ["DISETUJUI", "MENUNGGU", "DITOLAK", "BATAL"] },
         waktuMulai: { gte: startBulan, lte: endBulan },
       },
       select: { waktuMulai: true, status: true },
@@ -147,7 +148,8 @@ export default async function BerandaBidang({
   for (const b of bookingKalender) {
     const ds = toJakartaDateStr(b.waktuMulai);
     if (!tandai[ds]) tandai[ds] = { dots: [] };
-    const dot = b.status === "DISETUJUI" ? "teal" : "amber";
+    const dot =
+      b.status === "DISETUJUI" ? "success" : b.status === "MENUNGGU" ? "amber" : "red";
     if (!tandai[ds].dots.includes(dot)) tandai[ds].dots.push(dot);
   }
 
@@ -157,6 +159,8 @@ export default async function BerandaBidang({
   const offset = (halaman - 1) * PAGE_SIZE;
 
   const jadwal = await ambilJadwalBidang(sesi.id, now, offset, PAGE_SIZE, upcomingCount);
+
+  const pageUrl = (h: number) => `/bidang?bulan=${bulan}&tahun=${tahun}&halaman=${h}`;
 
   return (
     <div className="flex flex-col gap-8">
@@ -178,7 +182,7 @@ export default async function BerandaBidang({
         </div>
         <Link
           href="/bidang/booking/baru"
-          className="rounded-lg bg-teal-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-teal-700"
+          className="hidden rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-700 sm:inline-block"
         >
           + Buat Booking
         </Link>
@@ -196,7 +200,7 @@ export default async function BerandaBidang({
         <StatCard
           label="Mendatang"
           nilai={disetujuiMendatangCount}
-          warna="teal"
+          warna="brand"
           sub="sudah disetujui"
         />
         <StatCard
@@ -227,7 +231,7 @@ export default async function BerandaBidang({
               <p className="text-sm text-stone-400">Tidak ada booking mendatang.</p>
               <Link
                 href="/bidang/booking/baru"
-                className="mt-2 text-xs font-medium text-teal-600 hover:underline"
+                className="mt-2 text-xs font-medium text-brand-600 hover:underline"
               >
                 Buat booking baru →
               </Link>
@@ -236,14 +240,14 @@ export default async function BerandaBidang({
             <ul className="flex flex-col divide-y divide-stone-50">
               {mendatang.map((b) => (
                 <li key={b.id} className="flex items-start gap-3 py-3.5 first:pt-0 last:pb-0">
-                  <div className="flex h-10 w-10 shrink-0 flex-col items-center justify-center rounded-xl bg-teal-50 text-teal-700">
+                  <div className="flex h-10 w-10 shrink-0 flex-col items-center justify-center rounded-xl bg-brand-50 text-brand-700">
                     <span className="text-xs font-bold leading-none">
                       {b.waktuMulai.toLocaleDateString("id-ID", {
                         day: "numeric",
                         timeZone: "Asia/Jakarta",
                       })}
                     </span>
-                    <span className="mt-0.5 text-[10px] leading-none text-teal-500">
+                    <span className="mt-0.5 text-[10px] leading-none text-brand-500">
                       {b.waktuMulai.toLocaleDateString("id-ID", {
                         month: "short",
                         timeZone: "Asia/Jakarta",
@@ -281,7 +285,7 @@ export default async function BerandaBidang({
             <p className="text-stone-400">Belum ada booking.</p>
             <Link
               href="/bidang/booking/baru"
-              className="mt-3 inline-block text-sm font-medium text-teal-600 hover:underline"
+              className="mt-3 inline-block text-sm font-medium text-brand-600 hover:underline"
             >
               Buat booking pertama →
             </Link>
@@ -311,17 +315,7 @@ export default async function BerandaBidang({
                     </div>
                     <div className="flex shrink-0 flex-col items-end gap-2">
                       <BadgeStatus status={b.status} />
-                      {b.status === "MENUNGGU" && (
-                        <form action={batalBooking}>
-                          <input type="hidden" name="id" value={b.id} />
-                          <button
-                            type="submit"
-                            className="rounded-lg border border-stone-200 px-2.5 py-1 text-xs font-medium text-stone-500 transition-colors hover:bg-stone-50"
-                          >
-                            Batalkan
-                          </button>
-                        </form>
-                      )}
+                      {b.status === "MENUNGGU" && <FormBatal id={b.id} />}
                     </div>
                   </div>
                 </li>
@@ -332,7 +326,7 @@ export default async function BerandaBidang({
               <div className="mt-5 flex items-center justify-center gap-2">
                 {halaman > 1 ? (
                   <Link
-                    href={`/bidang?halaman=${halaman - 1}`}
+                    href={pageUrl(halaman - 1)}
                     className="rounded-lg border border-stone-200 px-3 py-1.5 text-xs font-medium text-stone-600 transition-colors hover:bg-stone-50"
                   >
                     ← Sebelumnya
@@ -347,7 +341,7 @@ export default async function BerandaBidang({
                 </span>
                 {halaman < totalHalaman ? (
                   <Link
-                    href={`/bidang?halaman=${halaman + 1}`}
+                    href={pageUrl(halaman + 1)}
                     className="rounded-lg border border-stone-200 px-3 py-1.5 text-xs font-medium text-stone-600 transition-colors hover:bg-stone-50"
                   >
                     Berikutnya →

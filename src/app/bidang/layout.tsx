@@ -1,4 +1,5 @@
 import TopBar from "@/components/topbar";
+import BottomNav from "@/components/bottom-nav";
 import { wajibBidang } from "@/lib/auth";
 import { db } from "@/lib/db";
 
@@ -24,7 +25,14 @@ export default async function BidangLayout({
           { href: "/bidang/notifikasi", label: "Notifikasi" },
         ]}
       />
-      <main className="mx-auto max-w-6xl px-4 py-6">{children}</main>
+      <main className="mx-auto max-w-6xl px-4 py-6 pb-24 sm:pb-6">{children}</main>
+      <BottomNav
+        items={[
+          { href: "/bidang", label: "Beranda", icon: "home" },
+          { href: "/bidang/booking/baru", label: "Buat Booking", icon: "plus" },
+          { href: "/bidang/notifikasi", label: "Notifikasi", icon: "bell", badge: unreadCount },
+        ]}
+      />
     </div>
   );
 }

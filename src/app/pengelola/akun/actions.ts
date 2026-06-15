@@ -65,7 +65,8 @@ export async function buatAkunPengelola(
   const parsed = skemaAkun.safeParse(Object.fromEntries(fd));
   if (!parsed.success) return gagal(parsed.error.issues[0]?.message ?? "Input tidak valid.");
 
-  const role = fd.get("role") === "ADMIN" ? ("ADMIN" as const) : ("PENGELOLA" as const);
+  const roleResult = z.enum(["ADMIN", "PENGELOLA"]).default("PENGELOLA").safeParse(fd.get("role"));
+  const role = roleResult.success ? roleResult.data : "PENGELOLA";
 
   const ada = await db.pengelola.findUnique({ where: { username: parsed.data.username } });
   if (ada) return gagal("Username sudah dipakai.");

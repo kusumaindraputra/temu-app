@@ -7,7 +7,7 @@ import { buatAkunPengelola, type AkunState } from "../../actions";
 const kosong: AkunState = {};
 
 const inputCls =
-  "rounded-lg border border-stone-200 bg-white px-3.5 py-2.5 text-sm text-stone-900 outline-none transition placeholder:text-stone-300 focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10";
+  "rounded-lg border border-stone-200 bg-white px-3.5 py-2.5 text-sm text-stone-900 outline-none transition placeholder:text-stone-300 focus:border-brand-500 focus:ring-4 focus:ring-brand-500/10";
 
 export default function FormPengelolaBaru() {
   const [state, formAction, pending] = useActionState(buatAkunPengelola, kosong);
@@ -76,7 +76,7 @@ export default function FormPengelolaBaru() {
         <button
           type="submit"
           disabled={pending}
-          className="rounded-lg bg-teal-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-teal-700 disabled:opacity-60"
+          className="rounded-lg bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-700 disabled:opacity-60"
         >
           {pending ? "Menyimpan…" : "Buat Akun Pengelola"}
         </button>

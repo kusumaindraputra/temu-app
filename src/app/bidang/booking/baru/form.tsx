@@ -15,7 +15,7 @@ type RuanganOpsi = {
 const kondisiAwal: BookingState = {};
 
 const inputCls =
-  "rounded-lg border border-stone-200 bg-white px-3.5 py-2.5 text-sm text-stone-900 outline-none transition placeholder:text-stone-300 focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10";
+  "rounded-lg border border-stone-200 bg-white px-3.5 py-2.5 text-sm text-stone-900 outline-none transition placeholder:text-stone-300 focus:border-brand-500 focus:ring-4 focus:ring-brand-500/10";
 
 export default function FormBooking({ ruangan }: { ruangan: RuanganOpsi[] }) {
   const [state, formAction, pending] = useActionState(buatBooking, kondisiAwal);
@@ -110,11 +110,56 @@ export default function FormBooking({ ruangan }: { ruangan: RuanganOpsi[] }) {
         />
       </div>
 
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div className="flex flex-col gap-1.5">
+          <label htmlFor="picNama" className="text-sm font-medium text-stone-700">
+            Nama PIC
+          </label>
+          <input
+            id="picNama"
+            name="picNama"
+            type="text"
+            required
+            defaultValue={state.nilai?.picNama ?? ""}
+            placeholder="mis. Budi Santoso"
+            className={inputCls}
+          />
+        </div>
+        <div className="flex flex-col gap-1.5">
+          <label htmlFor="picHp" className="text-sm font-medium text-stone-700">
+            Nomor HP PIC
+          </label>
+          <input
+            id="picHp"
+            name="picHp"
+            type="tel"
+            required
+            defaultValue={state.nilai?.picHp ?? ""}
+            placeholder="08xxxxxxxxxx"
+            pattern="08\d{8,11}"
+            minLength={10}
+            maxLength={13}
+            inputMode="numeric"
+            onKeyDown={(e) => {
+              if (!/[\d]/.test(e.key) && !["Backspace","Delete","ArrowLeft","ArrowRight","Tab","Home","End"].includes(e.key)) {
+                e.preventDefault();
+              }
+            }}
+            onPaste={(e) => {
+              const teks = e.clipboardData.getData("text");
+              if (!/^\d+$/.test(teks)) e.preventDefault();
+            }}
+            className={inputCls}
+          />
+          <p className="text-xs text-stone-400">Diawali 08, minimal 10 digit</p>
+        </div>
+      </div>
+
       <div className="flex items-center gap-3 pt-1">
         <button
           type="submit"
           disabled={pending}
-          className="rounded-lg bg-teal-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-teal-700 disabled:opacity-60"
+          className="rounded-lg bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-700 disabled:opacity-60"
         >
           {pending ? "Menyimpan…" : "Ajukan Booking"}
         </button>
@@ -129,7 +174,7 @@ export default function FormBooking({ ruangan }: { ruangan: RuanganOpsi[] }) {
       <p className="text-xs text-stone-400">
         Booking akan berstatus <span className="font-medium text-stone-600">Menunggu</span> hingga
         disetujui pengelola. Cek{" "}
-        <a href="/bidang/jadwal" className="font-medium text-teal-600 hover:underline">
+        <a href="/bidang" className="font-medium text-brand-600 hover:underline">
           jadwal ruangan
         </a>{" "}
         untuk melihat ketersediaan.

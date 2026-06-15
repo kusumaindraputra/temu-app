@@ -126,18 +126,24 @@ export async function buatKomponen(
   return {};
 }
 
-export async function hapusKomponen(fd: FormData) {
+export type HapusKomponenState = { error?: string };
+
+export async function hapusKomponen(
+  _prev: HapusKomponenState,
+  fd: FormData,
+): Promise<HapusKomponenState> {
   await wajibAdmin();
   const id = Number(fd.get("id"));
-  if (!id) return;
+  if (!id) return { error: "ID tidak valid." };
 
-  // Hanya hapus jika tidak dipakai ruangan mana pun.
   const dipakai = await db.komponen.findUnique({
     where: { id },
     include: { ruangan: { take: 1 } },
   });
-  if (!dipakai || dipakai.ruangan.length > 0) return;
+  if (!dipakai) return { error: "Komponen tidak ditemukan." };
+  if (dipakai.ruangan.length > 0) return { error: "Komponen masih dipakai ruangan." };
 
   await db.komponen.delete({ where: { id } });
   revalidatePath("/pengelola/ruangan");
+  return {};
 }

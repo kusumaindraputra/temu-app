@@ -1,10 +1,12 @@
+"use client";
+
 /**
  * Logomark "Titik Temu" — dua lingkaran beririsan; irisannya disorot
  * warna lebih terang (dua pihak berbagi satu ruang & waktu).
  * Lihat design_handoff_temu/Logo Temu.html (Konsep 01).
  */
 
-let uid = 0;
+import { useId } from "react";
 
 export function LogoMark({
   size = 28,
@@ -15,8 +17,7 @@ export function LogoMark({
   variant?: "color" | "white";
   className?: string;
 }) {
-  // id unik agar beberapa clipPath di satu halaman tidak bentrok
-  const clipId = `temu-clip-${uid++}`;
+  const clipId = useId();
 
   if (variant === "white") {
     return (

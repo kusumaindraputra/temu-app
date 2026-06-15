@@ -119,7 +119,7 @@ function TabelAkun({ rows }: { rows: AkunRow[] }) {
                 <span
                   className={`rounded-full px-2 py-0.5 text-xs font-medium ${
                     r.aktif
-                      ? "bg-green-100 text-green-700"
+                      ? "bg-success-100 text-success-700"
                       : "bg-stone-200 text-stone-500"
                   }`}
                 >

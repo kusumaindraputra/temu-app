@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { db } from "@/lib/db";
 import { wajibAdmin } from "@/lib/auth";
-import { toggleAktifRuangan, hapusKomponen } from "./actions";
+import { toggleAktifRuangan } from "./actions";
 import FormKomponen from "./_komponen-form";
+import TombolHapusKomponen from "./_hapus-komponen-form";
 
 export default async function HalamanRuangan() {
   await wajibAdmin();
@@ -69,7 +70,7 @@ export default async function HalamanRuangan() {
                     <span
                       className={`rounded-full px-2 py-0.5 text-xs font-medium ${
                         r.aktif
-                          ? "bg-green-100 text-green-700"
+                          ? "bg-success-100 text-success-700"
                           : "bg-stone-200 text-stone-500"
                       }`}
                     >
@@ -127,18 +128,7 @@ export default async function HalamanRuangan() {
             >
               <span className="text-sm font-medium text-stone-800">{k.nama}</span>
               <span className="text-xs text-stone-400">({k.ruangan.length} ruangan)</span>
-              {k.ruangan.length === 0 && (
-                <form action={hapusKomponen}>
-                  <input type="hidden" name="id" value={k.id} />
-                  <button
-                    type="submit"
-                    className="ml-1 text-xs text-red-500 hover:text-red-700"
-                    title="Hapus komponen (hanya jika tidak dipakai)"
-                  >
-                    ×
-                  </button>
-                </form>
-              )}
+              {k.ruangan.length === 0 && <TombolHapusKomponen id={k.id} />}
             </div>
           ))}
 

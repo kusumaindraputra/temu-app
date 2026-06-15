@@ -57,8 +57,11 @@ export async function buatBooking(
   }
   const { ruanganId, waktuMulai, waktuSelesai, tujuan, jumlahPeserta, picNama, picHp } = parsed.data;
 
-  const mulai = new Date(waktuMulai);
-  const selesai = new Date(waktuSelesai);
+  // datetime-local menghasilkan "YYYY-MM-DDTHH:MM" — tanpa timezone.
+  // Tambah ":00+07:00" agar server UTC tidak salah interpretasi.
+  const toWIB = (s: string) => new Date(`${s}:00+07:00`);
+  const mulai = toWIB(waktuMulai);
+  const selesai = toWIB(waktuSelesai);
   if (Number.isNaN(mulai.getTime()) || Number.isNaN(selesai.getTime())) {
     return gagal("Format waktu tidak valid.");
   }
